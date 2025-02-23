@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Settings</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar" id="topbar">
+            <div class="logo">
+                <h2>Venmito</h2>
+            </div>
+            <div class="search">
+                <input type="text" id="search" placeholder="Search Here">
+                <label for="search"><i class="fas fa-search"></i></label>
+            </div>
+            <i class="fas fa-bell"></i>
+            <div class="user">
+                <img src="static/img/user-icon.png" alt="user image">
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <li><a href="{{ url_for('home') }}"><i class="fas fa-th-large"></i> <div>Dashboard</div></a></li>
+                <li><a href="{{ url_for('analytics') }}"><i class="fas fa-chart-bar"></i> <div>Analytics</div></a></li>
+                <li><a href="{{ url_for('earnings') }}"><i class="fas fa-dollar-sign"></i> <div>Financial Reports</div></a></li>
+                <li><a href="{{ url_for('transactions') }}"><i class="fas fa-exchange-alt"></i> <div>Transactions</div></a></li>
+                <li><a href="{{ url_for('customers') }}"><i class="fas fa-users"></i> <div>Customers</div></a></li>
+                <li><a href="{{ url_for('settings') }}" class="active"><i class="fas fa-cog"></i> <div>Settings</div></a></li>
+                <li><a href="{{ url_for('help') }}"><i class="fas fa-question-circle"></i> <div>Help</div></a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <h1>Settings</h1>
+
+            <!-- User Profile Settings -->
+            <div class="settings-section">
+                <h2>Profile Settings</h2>
+                <div class="form-group">
+                    <label for="username">Full Name:</label>
+                    <input type="text" id="username" value="Admin User">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" value="admin@venmito.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">New Password:</label>
+                    <input type="password" id="password">
+                </div>
+                <button class="save-btn">Save Changes</button>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="settings-section">
+                <h2>Notification Preferences</h2>
+                <label>
+                    <input type="checkbox" id="email-notifications" checked> Enable Email Notifications
+                </label>
+                <label>
+                    <input type="checkbox" id="push-notifications"> Enable Push Notifications
+                </label>
+            </div>
+
+            <!-- Theme Customization -->
+            <div class="settings-section">
+                <h2>Appearance</h2>
+                <label for="theme-select">Choose Theme:</label>
+                <select id="theme-select">
+                    <option value="light">Light Mode</option>
+                    <option value="dark">Dark Mode</option>
+                    <option value="system">System Default</option>
+                </select>
+            </div>
+
+            <!-- Security Settings -->
+            <div class="settings-section">
+                <h2>Security</h2>
+                <button class="security-btn" onclick="enable2FA()">Enable Two-Factor Authentication</button>
+                <button class="security-btn" onclick="logoutSessions()">Logout From All Devices</button>
+            </div>
+
+            <!-- Data Management -->
+            <div class="settings-section">
+                <h2>Data Management</h2>
+                <button class="export-btn">Export Data</button>
+                <button class="clear-cache-btn">Clear Cache</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>

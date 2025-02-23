@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Customers</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar" id="topbar">
+            <div class="logo">
+                <h2>Venmito</h2>
+            </div>
+            <div class="search">
+                <input type="text" id="search" placeholder="Search Here">
+                <label for="search"><i class="fas fa-search"></i></label>
+            </div>
+            <i class="fas fa-bell"></i>
+            <div class="user">
+                <img src="static/img/user-icon.png" alt="user image">
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <li><a href="{{ url_for('home') }}"><i class="fas fa-th-large"></i> <div>Dashboard</div></a></li>
+                <li><a href="{{ url_for('analytics') }}"><i class="fas fa-chart-bar"></i> <div>Analytics</div></a></li>
+                <li><a href="{{ url_for('earnings') }}"><i class="fas fa-dollar-sign"></i> <div>Financial Reports</div></a></li>
+                <li><a href="{{ url_for('transactions') }}"><i class="fas fa-exchange-alt"></i> <div>Transactions</div></a></li>
+                <li><a href="{{ url_for('customers') }}" class="active"><i class="fas fa-users"></i> <div>Customers</div></a></li>
+                <li><a href="{{ url_for('settings') }}"><i class="fas fa-cog"></i> <div>Settings</div></a></li>
+                <li><a href="{{ url_for('help') }}"><i class="fas fa-question-circle"></i> <div>Help</div></a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <h1>Customer Insights</h1>
+
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number" id="total-customers">0</div>
+                        <div class="card-name">Total Customers</div>
+                    </div> 
+                    <div class="icon-box"><i class="fas fa-users"></i></div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number" id="most-active-customer">-</div>
+                        <div class="card-name">Most Active Customer</div>
+                    </div> 
+                    <div class="icon-box"><i class="fas fa-user-clock"></i></div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="number" id="top-spender">-</div>
+                        <div class="card-name">Top Spender</div>
+                    </div> 
+                    <div class="icon-box"><i class="fas fa-money-bill-wave"></i></div>
+                </div>
+            </div>
+
+            <!-- Customer Transactions Table -->
+            <div class="table-container">
+                <h2>Recent Customer Transactions</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Transactions</th>
+                            <th>Total Spent</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customer-data">
+                        <!-- Data will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Customer Spending Chart -->
+            <div class="chart">
+                <h2>Customer Spending Trends</h2>
+                <canvas id="customerSpendingChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+    <script src="static/customer.js"></script>
+</body>
+</html>
