@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Help & Support</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div class="logo">
+                <h2>Venmito</h2>
+            </div>
+            <div class="search">
+                <input type="text" id="search" placeholder="Search Help">
+                <label for="search"><i class="fas fa-search"></i></label>
+            </div>
+            <i class="fas fa-bell"></i>
+            <div class="user">
+                <img src="static/img/user-icon.png" alt="user image">
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul>
+                <li><a href="{{ url_for('home') }}"><i class="fas fa-th-large"></i> <div>Dashboard</div></a></li>
+                <li><a href="{{ url_for('analytics') }}"><i class="fas fa-chart-bar"></i> <div>Analytics</div></a></li>
+                <li><a href="{{ url_for('earnings') }}"><i class="fas fa-dollar-sign"></i> <div>Financial Reports</div></a></li>
+                <li><a href="{{ url_for('transactions') }}"><i class="fas fa-exchange-alt"></i> <div>Transactions</div></a></li>
+                <li><a href="{{ url_for('customers') }}"><i class="fas fa-users"></i> <div>Customers</div></a></li>
+                <li><a href="{{ url_for('settings') }}"><i class="fas fa-cog"></i> <div>Settings</div></a></li>
+                <li><a href="{{ url_for('help') }}" class="active"><i class="fas fa-question-circle"></i> <div>Help</div></a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <h1>Help & Support</h1>
+
+            <!-- FAQ Section -->
+            <div class="help-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq">
+                    <details>
+                        <summary>How do I reset my password?</summary>
+                        <p>Go to <a href="{{ url_for('settings') }}">Settings</a> and enter a new password.</p>
+                    </details>
+                    <details>
+                        <summary>How can I view past transactions?</summary>
+                        <p>Check the <a href="{{ url_for('transactions') }}">Transactions</a> page to see all history.</p>
+                    </details>
+                    <details>
+                        <summary>How do I contact support?</summary>
+                        <p>You can reach us at <strong>support@venmito.com</strong> or use the Live Chat below.</p>
+                    </details>
+                </div>
+            </div>
+
+            <!-- Contact Support -->
+            <div class="help-section">
+                <h2>Contact Support</h2>
+                <p>If you need assistance, our team is here to help.</p>
+                <button class="contact-btn">Live Chat</button>
+                <button class="contact-btn">Submit a Ticket</button>
+            </div>
+
+            <!-- Resources -->
+            <div class="help-section">
+                <h2>Additional Resources</h2>
+                <ul>
+                    <li><a href="#">User Guide</a></li>
+                    <li><a href="#">API Documentation</a></li>
+                    <li><a href="#">Community Forums</a></li>
+                    <li><a href="#">System Status</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>

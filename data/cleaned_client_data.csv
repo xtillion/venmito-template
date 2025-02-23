@@ -1,0 +1,1017 @@
+Client_ID,First_Name,Last_Name,Phone,email,devices,location,Android,Desktop,Iphone,city,Full_Name,Receiver_ID,Transfer_Amount,Transfer_Date,Promotion_ID,client_email,promotion,responded,Transaction_ID,Amount_USD,Store
+693,Jayden,Dunlap,626-458-8110,Jayden.Dunlap@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1125,39.0,Urban Outfitters Loft
+197,Tiago,Dunn,728-796-4352,Tiago.Dunn@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,965.0,55.76,2024-01-19,114.0,Tiago.Dunn@example.com,Colgatex,Yes,1120,36.0,BestChoice Buy
+35,Linda,Combs,742-395-8995,Linda.Combs@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,94.0,,Flixnet,No,1038,36.0,Urban Outfitters Loft
+944,Hiba,Hicks,640-390-3390,Hiba.Hicks@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1024,34.0,Trader Tales
+169,Katy,Harrington,645-829-7495,Katy.Harrington@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1057,32.0,SparkMart
+202,Kabir,Stewart,891-887-3513,Kabir.Stewart@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,846.0,72.79,2023-01-14,68.0,,Oreoz,Yes,1012,32.0,PetPals Mart
+174,Kiera,Cotton,254-627-7406,Kiera.Cotton@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1076,29.0,Urban Outfitters Loft
+15,Leroy,Barrera,659-190-9378,Leroy.Barrera@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1138,29.0,Trader Tales
+10,Keith,Donovan,549-515-6738,Keith.Donovan@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,211.0,62.25,2023-09-14,63.0,,Oreoz,Yes,1079,26.0,SparkMart
+671,Alexander,Terry,480-560-1876,Alexander.Terry@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,160.0,35.34,2022-06-26,,,No Promotion,,1080,24.0,Trader Tales
+86,Douglas,Browning,247-523-1403,Douglas.Browning@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1124,24.0,SparkMart
+441,Conrad,Hanna,934-954-3387,Conrad.Hanna@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,882.0,58.55,2023-03-22,,,No Promotion,,1147,24.0,Urban Outfitters Loft
+332,Gertrude,Huffman,148-739-3707,Gertrude.Huffman@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1135,23.0,PetPals Mart
+259,Lily,Chan,390-911-6534,Lily.Chan@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,965.0,68.0,2022-06-15,,,No Promotion,,1081,23.0,BestChoice Buy
+697,Donald,Horne,738-911-3567,Donald.Horne@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,908.0,22.34,2024-03-10,,,No Promotion,,1052,23.0,Urban Outfitters Loft
+109,Huw,Valentine,441-847-1955,Huw.Valentine@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,3.0,,Oreoz,Yes,1016,22.0,Urban Outfitters Loft
+223,Rupert,Mejia,194-235-2353,Rupert.Mejia@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,856.0,50.51,2023-02-21,,,No Promotion,,1069,22.0,Trader Tales
+742,Kieran,Hoover,101-165-2021,Kieran.Hoover@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1020,22.0,SparkMart
+297,Ayesha,O'Reilly,273-616-5739,Ayesha.O'Reilly@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1007,22.0,SparkMart
+182,Luqman,Carrillo,124-533-2523,Luqman.Carrillo@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,182.0,Luqman.Carrillo@example.com,Coca-Splash,Yes,1072,21.0,SparkMart
+124,Carol,York,402-586-5192,Carol.York@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,546.0,7.1,2023-08-26,,,No Promotion,,1066,21.0,Urban Outfitters Loft
+518,Mabel,Pace,752-347-2146,Mabel.Pace@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1061,20.0,SparkMart
+258,Felicity,Tran,530-539-9474,Felicity.Tran@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,926.0,3.49,2022-04-02,108.0,,GatorBoost,Yes,1130,20.0,BestChoice Buy
+752,Marwa,Dennis,444-295-8051,Marwa.Dennis@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,438.0,43.27,2023-12-31,56.0,Marwa.Dennis@example.com,GatorBoost,Yes,1010,19.0,Trader Tales
+89,Everett,Fitzpatrick,520-305-7264,Everett.Fitzpatrick@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,693.0,51.23,2023-10-12,,,No Promotion,,1011,18.0,Trader Tales
+63,Johnathan,Berger,545-458-1679,Johnathan.Berger@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,621.0,22.57,2022-11-20,,,No Promotion,,1132,18.0,Trader Tales
+235,Tamara,Riddle,481-405-7265,Tamara.Riddle@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1111,17.0,Trader Tales
+854,Ffion,Knight,233-159-4158,Ffion.Knight@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,273.0,42.99,2022-11-25,,,No Promotion,,1000,17.0,Trader Tales
+132,Tina,Powell,372-218-6551,Tina.Powell@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1015,17.0,BestChoice Buy
+564,Craig,Mcknight,634-813-9351,Craig.Mcknight@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,78.0,Craig.Mcknight@example.com,Oreoz,Yes,1006,17.0,BestChoice Buy
+554,Tyrell,Holman,582-574-4299,Tyrell.Holman@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,877.0,33.99,2022-12-13,,,No Promotion,,1139,17.0,PetPals Mart
+445,Marco,Fletcher,196-551-2162,Marco.Fletcher@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1129,17.0,SparkMart
+530,Isobelle,Davidson,237-295-4490,Isobelle.Davidson@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1094,16.0,Trader Tales
+15,Leroy,Barrera,659-190-9378,Leroy.Barrera@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1002,16.0,Trader Tales
+746,Isabelle,Jenkins,724-444-3001,Isabelle.Jenkins@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,55.0,65.61,2023-06-30,,,No Promotion,,1126,16.0,Urban Outfitters Loft
+584,Darcy,Jenkins,705-890-7715,Darcy.Jenkins@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1114,16.0,PetPals Mart
+667,Theresa,Bentley,553-407-1049,Theresa.Bentley@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,98.0,84.55,2023-07-28,,,No Promotion,,1029,16.0,PetPals Mart
+43,Elena,Pineda,617-226-9486,Elena.Pineda@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,961.0,37.86,2023-11-16,,,No Promotion,,1083,15.0,PetPals Mart
+158,Ethan,Price,558-134-7531,Ethan.Price@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1065,15.0,Trader Tales
+667,Theresa,Bentley,553-407-1049,Theresa.Bentley@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,98.0,84.55,2023-07-28,,,No Promotion,,1063,15.0,Urban Outfitters Loft
+516,Kate,Key,336-283-3896,Kate.Key@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,890.0,13.79,2022-03-18,,,No Promotion,,1051,14.0,Trader Tales
+602,Jazmin,Lopez,116-866-3838,Jazmin.Lopez@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1027,14.0,Urban Outfitters Loft
+211,Gerard,Francis,958-724-3846,Gerard.Francis@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,505.0,71.72,2024-04-10,10.0,,Oreoz,Yes,1077,14.0,PetPals Mart
+430,Huw,Pearson,505-476-1251,Huw.Pearson@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,518.0,40.34,2022-03-02,,,No Promotion,,1119,14.0,PetPals Mart
+23,Danielle,Glenn,727-709-3351,Danielle.Glenn@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1047,14.0,BestChoice Buy
+64,Jason,Snyder,202-632-2346,Jason.Snyder@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,598.0,11.55,2023-03-11,,,No Promotion,,1090,14.0,Trader Tales
+436,Alan,Burton,795-682-8733,Alan.Burton@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,91.0,,Krafty Cheddar,Yes,1104,13.0,Urban Outfitters Loft
+371,Ismaeel,Roach,334-436-6254,Ismaeel.Roach@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1003,13.0,Urban Outfitters Loft
+877,Drew,Orozco,531-709-2553,Drew.Orozco@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1106,13.0,Trader Tales
+48,Esther,Mccall,573-696-6671,Esther.Mccall@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,461.0,18.51,2022-06-29,,,No Promotion,,1087,13.0,Trader Tales
+27,Frazer,Anthony,139-396-1336,Frazer.Anthony@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,197.0,,Oreoz,No,1062,13.0,PetPals Mart
+480,Abu,Miranda,615-102-4849,Abu.Miranda@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1004,13.0,PetPals Mart
+368,Marie,Hughes,918-588-9531,Marie.Hughes@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1022,13.0,Trader Tales
+735,Shane,Wheeler,315-892-7127,Shane.Wheeler@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,888.0,3.73,2022-07-29,,,No Promotion,,1023,13.0,PetPals Mart
+305,Doris,Griffith,839-124-9420,Doris.Griffith@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1008,13.0,SparkMart
+146,Edith,Walker,805-146-4773,Edith.Walker@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,615.0,4.93,2023-04-21,,,No Promotion,,1105,13.0,BestChoice Buy
+165,Amira,Berg,627-954-8991,Amira.Berg@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1146,13.0,Targeted Treasures
+212,Angela,Lynch,227-737-8739,Angela.Lynch@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1054,12.0,SparkMart
+326,Archibald,Melendez,553-482-8315,Archibald.Melendez@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,109.0,60.78,2023-09-08,,,No Promotion,,1097,12.0,BestChoice Buy
+307,Rebekah,Shaw,531-380-1711,Rebekah.Shaw@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1100,12.0,PetPals Mart
+855,Yaseen,Kennedy,778-172-1502,Yaseen.Kennedy@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1131,12.0,Trader Tales
+705,Vincent,Garrison,598-173-8153,Vincent.Garrison@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1127,12.0,Trader Tales
+970,Qasim,Bullock,392-468-4297,Qasim.Bullock@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,660.0,82.99,2023-01-25,,,No Promotion,,1056,11.0,Trader Tales
+799,Richard,Jones,478-814-3941,Richard.Jones@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1037,11.0,Trader Tales
+526,Tara,Brewer,114-507-5478,Tara.Brewer@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,720.0,94.26,2023-12-24,134.0,,Coca-Splash,Yes,1013,11.0,BestChoice Buy
+416,Emilie,Mckee,270-914-6681,Emilie.Mckee@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1136,11.0,PetPals Mart
+28,Cassie,Molina,811-806-5304,Cassie.Molina@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,907.0,12.86,2022-05-06,,,No Promotion,,1064,11.0,Trader Tales
+733,Fahad,Gill,796-816-9963,Fahad.Gill@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1116,11.0,Urban Outfitters Loft
+706,Elisha,Garza,313-206-2033,Elisha.Garza@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,408.0,33.74,2023-06-18,,,No Promotion,,1068,11.0,Targeted Treasures
+701,Tamsin,Stein,953-386-1321,Tamsin.Stein@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,947.0,85.97,2023-08-17,,,No Promotion,,1033,10.0,PetPals Mart
+894,Kyran,Foster,362-464-9875,Kyran.Foster@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1019,10.0,Trader Tales
+308,Noah,Benton,936-522-1085,Noah.Benton@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,973.0,7.76,2022-02-14,,,No Promotion,,1049,10.0,Urban Outfitters Loft
+533,Joshua,Holt,993-541-7464,Joshua.Holt@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,234.0,41.18,2022-09-20,,,No Promotion,,1026,10.0,BestChoice Buy
+102,Alina,Walls,507-883-4629,Alina.Walls@example.com,['Android'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1096,10.0,Urban Outfitters Loft
+639,Stella,Wilkinson,145-501-4975,Stella.Wilkinson@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1098,10.0,SparkMart
+171,Patrick,Morse,220-102-3684,Patrick.Morse@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,85.0,Patrick.Morse@example.com,KittyKat,Yes,1040,10.0,BestChoice Buy
+693,Jayden,Dunlap,626-458-8110,Jayden.Dunlap@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1025,10.0,Targeted Treasures
+2,Arabella,Knox,652-272-9539,Arabella.Knox@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,899.0,75.15,2024-04-15,,,No Promotion,,1108,10.0,Urban Outfitters Loft
+862,Alexandros,Ryan,849-570-8792,Alexandros.Ryan@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,947.0,44.65,2022-03-25,,,No Promotion,,1039,9.0,PetPals Mart
+819,Dewey,Lucas,323-234-9528,Dewey.Lucas@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1103,9.0,Urban Outfitters Loft
+486,Andre,Le,583-114-3994,Andre.Le@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1073,9.0,BestChoice Buy
+615,Katelyn,Collins,878-870-9506,Katelyn.Collins@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1067,9.0,Trader Tales
+990,Juliette,Luna,782-806-6417,Juliette.Luna@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1082,9.0,PetPals Mart
+990,Juliette,Luna,782-806-6417,Juliette.Luna@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1122,9.0,PetPals Mart
+343,Taha,Carroll,368-154-2650,Taha.Carroll@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1109,9.0,Urban Outfitters Loft
+150,Mariah,Castro,866-155-1011,Mariah.Castro@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1107,9.0,PetPals Mart
+210,Alessia,Jenkins,547-388-2503,Alessia.Jenkins@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1142,9.0,Trader Tales
+234,Esmee,Harmon,271-604-3446,Esmee.Harmon@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1121,9.0,Urban Outfitters Loft
+377,Phyllis,Gill,821-675-4190,Phyllis.Gill@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1140,8.0,SparkMart
+258,Felicity,Tran,530-539-9474,Felicity.Tran@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,926.0,3.49,2022-04-02,108.0,,GatorBoost,Yes,1084,8.0,Urban Outfitters Loft
+957,Effie,Jordan,778-566-2709,Effie.Jordan@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,279.0,33.96,2022-05-21,,,No Promotion,,1148,8.0,Trader Tales
+935,Chloe,Mullen,723-357-7363,Chloe.Mullen@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,989.0,4.98,2023-06-22,,,No Promotion,,1071,8.0,Trader Tales
+868,Cecilia,David,919-925-5280,Cecilia.David@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,865.0,81.69,2023-07-02,,,No Promotion,,1134,8.0,BestChoice Buy
+116,Gerard,Vargas,663-149-3581,Gerard.Vargas@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,61.0,62.87,2023-05-09,,,No Promotion,,1093,8.0,Urban Outfitters Loft
+146,Edith,Walker,805-146-4773,Edith.Walker@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,615.0,4.93,2023-04-21,,,No Promotion,,1041,8.0,Urban Outfitters Loft
+184,David,Bridges,946-447-2454,David.Bridges@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,1.0,42.48,2024-01-05,,,No Promotion,,1075,8.0,PetPals Mart
+706,Elisha,Garza,313-206-2033,Elisha.Garza@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,408.0,33.74,2023-06-18,,,No Promotion,,1141,7.0,BestChoice Buy
+577,Yasin,Rogers,416-776-3422,Yasin.Rogers@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1145,7.0,Urban Outfitters Loft
+850,Taylor,Woods,294-365-8364,Taylor.Woods@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1005,7.0,Urban Outfitters Loft
+686,Mohamed,Miller,883-481-7339,Mohamed.Miller@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,882.0,14.93,2022-02-16,,,No Promotion,,1048,7.0,Urban Outfitters Loft
+519,Eoin,Fields,507-766-7432,Eoin.Fields@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1085,7.0,Urban Outfitters Loft
+624,Nia,Adams,520-550-1148,Nia.Adams@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1058,7.0,Urban Outfitters Loft
+81,Ahmad,Castro,629-807-5687,Ahmad.Castro@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1117,7.0,PetPals Mart
+653,Lilli,Bowman,551-867-4367,Lilli.Bowman@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1101,7.0,Urban Outfitters Loft
+362,Fletcher,Moreno,228-202-6360,Fletcher.Moreno@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1089,7.0,Urban Outfitters Loft
+556,Zayn,Webb,561-761-7547,Zayn.Webb@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,109.0,Zayn.Webb@example.com,GatorBoost,No,1053,7.0,Trader Tales
+126,Bessie,Cole,424-390-3432,Bessie.Cole@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1050,6.0,PetPals Mart
+86,Douglas,Browning,247-523-1403,Douglas.Browning@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1045,6.0,PetPals Mart
+85,Clarence,Hanson,743-908-5464,Clarence.Hanson@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,944.0,20.47,2023-06-21,,,No Promotion,,1086,6.0,PetPals Mart
+207,Mark,Friedman,111-862-3502,Mark.Friedman@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,36.0,,KittyKat,No,1070,6.0,PetPals Mart
+17,Adele,Garza,429-916-1662,Adele.Garza@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1074,6.0,PetPals Mart
+251,Grayson,Rasmussen,312-891-9587,Grayson.Rasmussen@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,132.0,11.67,2022-08-01,,,No Promotion,,1144,6.0,Trader Tales
+370,Darcey,Powell,558-608-9550,Darcey.Powell@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,494.0,4.18,2023-10-08,,,No Promotion,,1014,5.0,BestChoice Buy
+692,Azaan,Barker,326-267-7811,Azaan.Barker@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1044,5.0,Urban Outfitters Loft
+169,Katy,Harrington,645-829-7495,Katy.Harrington@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1009,5.0,Trader Tales
+217,Phoebe,Rodriguez,516-779-4464,Phoebe.Rodriguez@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1059,4.0,Trader Tales
+85,Clarence,Hanson,743-908-5464,Clarence.Hanson@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,944.0,20.47,2023-06-21,,,No Promotion,,1078,4.0,SparkMart
+370,Darcey,Powell,558-608-9550,Darcey.Powell@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,494.0,4.18,2023-10-08,,,No Promotion,,1060,4.0,Trader Tales
+179,Aminah,Wells,950-639-9777,Aminah.Wells@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,438.0,81.49,2024-01-14,,,No Promotion,,1046,4.0,PetPals Mart
+540,Savannah,Boone,159-573-6793,Savannah.Boone@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1042,4.0,Urban Outfitters Loft
+702,Brayden,Patrick,173-881-1582,Brayden.Patrick@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1088,4.0,Trader Tales
+838,Aisha,Sosa,964-448-9785,Aisha.Sosa@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1113,4.0,Urban Outfitters Loft
+109,Huw,Valentine,441-847-1955,Huw.Valentine@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,3.0,,Oreoz,Yes,1095,4.0,BestChoice Buy
+35,Linda,Combs,742-395-8995,Linda.Combs@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,94.0,,Flixnet,No,1091,4.0,Trader Tales
+990,Juliette,Luna,782-806-6417,Juliette.Luna@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1030,3.0,Urban Outfitters Loft
+289,Adele,Cantrell,264-319-7312,Adele.Cantrell@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,535.0,16.33,2022-06-08,,,No Promotion,,1137,3.0,Urban Outfitters Loft
+7,Inaaya,Velasquez,489-241-7631,Inaaya.Velasquez@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1143,3.0,PetPals Mart
+568,Zaki,Mcpherson,344-278-2013,Zaki.Mcpherson@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1099,3.0,Urban Outfitters Loft
+175,Tia,Potter,137-491-6519,Tia.Potter@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1092,3.0,BestChoice Buy
+251,Grayson,Rasmussen,312-891-9587,Grayson.Rasmussen@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,132.0,11.67,2022-08-01,,,No Promotion,,1123,3.0,Urban Outfitters Loft
+202,Kabir,Stewart,891-887-3513,Kabir.Stewart@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,846.0,72.79,2023-01-14,68.0,,Oreoz,Yes,1036,3.0,PetPals Mart
+140,Gary,Hutchinson,245-506-5389,Gary.Hutchinson@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1102,3.0,PetPals Mart
+136,Hafsah,Booker,731-730-2543,Hafsah.Booker@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1034,2.0,Urban Outfitters Loft
+908,Nataniel,Glenn,504-112-5228,Nataniel.Glenn@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,772.0,48.43,2024-03-11,,,No Promotion,,1110,2.0,Urban Outfitters Loft
+528,Md,Booker,544-944-1609,Md.Booker@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1035,2.0,PetPals Mart
+986,Rosanna,Dyer,512-600-6692,Rosanna.Dyer@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,979.0,56.93,2022-05-05,,,No Promotion,,1018,2.0,Urban Outfitters Loft
+938,Alisha,Hoover,500-251-7080,Alisha.Hoover@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,452.0,20.19,2022-02-22,88.0,,Krafty Cheddar,No,1112,2.0,Trader Tales
+328,Otis,Pittman,563-494-9026,Otis.Pittman@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,538.0,33.17,2023-12-15,80.0,,Coca-Splash,Yes,1021,2.0,Urban Outfitters Loft
+927,Alejandro,Kent,915-320-3214,Alejandro.Kent@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1032,2.0,Urban Outfitters Loft
+69,Saoirse,Keller,699-966-4749,Saoirse.Keller@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,132.0,Saoirse.Keller@example.com,GatorBoost,Yes,1133,2.0,BestChoice Buy
+374,Sara,Harris,549-750-2047,Sara.Harris@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,515.0,78.1,2022-11-18,,,No Promotion,,1043,2.0,Urban Outfitters Loft
+341,Alexandros,Green,725-427-2794,Alexandros.Green@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,837.0,1.0,2024-01-30,,,No Promotion,,1001,2.0,PetPals Mart
+97,Alastair,Buckley,776-243-3725,Alastair.Buckley@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1028,2.0,Trader Tales
+283,Autumn,Hensley,107-156-5064,Autumn.Hensley@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,184.0,42.04,2022-10-20,,,No Promotion,,1118,2.0,PetPals Mart
+224,Lily-Rose,Kaufman,271-963-2123,Lily-Rose.Kaufman@example.com,['Android'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,291.0,7.94,2023-05-27,,,No Promotion,,1031,1.0,Urban Outfitters Loft
+626,Phoenix,Chapman,791-853-6464,Phoenix.Chapman@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,1115,1.0,PetPals Mart
+195,Jorge,Maldonado,220-296-3772,Jorge.Maldonado@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,973.0,20.44,2023-12-25,,,No Promotion,,1149,1.0,PetPals Mart
+54,Bethany,Santana,924-146-4189,Bethany.Santana@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,88.0,1.0,2024-03-24,,,No Promotion,,1017,1.0,PetPals Mart
+373,Robbie,Paul,852-236-4050,Robbie.Paul@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,817.0,6.98,2022-01-17,,,No Promotion,,1128,1.0,Urban Outfitters Loft
+345,Hannah,Zuniga,515-268-3667,Hannah.Zuniga@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,658.0,33.28,2024-02-28,,,No Promotion,,1055,1.0,PetPals Mart
+1,Jamie,Bright,533-849-3913,Jamie.Bright@example.com,['Android'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,52.0,25.02,2023-06-05,,,No Promotion,,,0.0,No Store
+3,Yusra,Fletcher,385-702-8874,Yusra.Fletcher@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+4,Esme,Nielsen,621-797-5367,Esme.Nielsen@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+6,Dean,Lewis,243-955-3782,Dean.Lewis@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+8,Tasnim,Cobb,262-380-8877,Tasnim.Cobb@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+9,Asa,Vazquez,504-421-4485,Asa.Vazquez@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+11,Moshe,Colon,131-622-5442,Moshe.Colon@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,171.0,25.66,2022-06-10,,,No Promotion,,,0.0,No Store
+12,Hussain,Santos,379-352-6285,Hussain.Santos@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+13,Lillian,Hanna,488-762-8236,Lillian.Hanna@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+14,Harvey,Guerrero,597-677-6862,Harvey.Guerrero@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+16,Zack,Griffin,467-370-7724,Zack.Griffin@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+18,Sandra,Cherry,218-605-4170,Sandra.Cherry@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+19,Carmen,Burton,527-368-7429,Carmen.Burton@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+20,Donald,Stone,730-260-4630,Donald.Stone@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+21,Clifford,Mcgee,715-116-6302,Clifford.Mcgee@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+22,Gerald,Maldonado,660-116-3336,Gerald.Maldonado@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,976.0,19.84,2022-07-27,,,No Promotion,,,0.0,No Store
+25,Alina,Mccoy,495-292-8149,Alina.Mccoy@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+30,Stephanie,Rice,830-901-9870,Stephanie.Rice@example.com,['Android'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+31,Bradley,Butler,937-172-2269,Bradley.Butler@example.com,['Iphone'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,121.0,,Krafty Cheddar,No,,0.0,No Store
+32,Alejandro,Brandt,334-279-1420,Alejandro.Brandt@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+34,Livia,Howe,868-828-4315,Livia.Howe@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,192.0,,GatorBoost,No,,0.0,No Store
+36,Dominik,Odling,365-145-3897,Dominik.Odling@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,924.0,67.92,2023-08-28,,,No Promotion,,,0.0,No Store
+37,Lili,Schroeder,640-348-2128,Lili.Schroeder@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+38,Jeremiah,Martin,277-350-5557,Jeremiah.Martin@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+40,Clara,Bird,958-605-3200,Clara.Bird@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,320.0,23.94,2023-05-16,,,No Promotion,,,0.0,No Store
+41,Cody,Riley,872-906-9681,Cody.Riley@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+42,Tomas,Griffith,492-337-4468,Tomas.Griffith@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,41.0,135.1,2024-03-09,55.0,,Flixnet,Yes,,0.0,No Store
+44,Diana,Davenport,505-179-8348,Diana.Davenport@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+45,Cordelia,Houston,946-560-7738,Cordelia.Houston@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+46,Abubakar,House,713-179-2294,Abubakar.House@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+47,Celia,Terry,986-149-3342,Celia.Terry@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,163.0,14.22,2022-11-14,,,No Promotion,,,0.0,No Store
+49,Idris,Proctor,584-182-6496,Idris.Proctor@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,212.0,33.08,2022-06-26,,,No Promotion,,,0.0,No Store
+50,Bruno,Noble,639-790-8394,Bruno.Noble@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+51,Herman,Munoz,689-881-9382,Herman.Munoz@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,140.0,1.0,2023-01-04,,,No Promotion,,,0.0,No Store
+52,Amaan,Rangel,837-435-2302,Amaan.Rangel@example.com,"['Android', 'Iphone']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+53,Prince,Thompson,115-215-7565,Prince.Thompson@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+55,Ernest,Martinez,448-597-4211,Ernest.Martinez@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+56,Susannah,O'Doherty,981-489-3689,Susannah.O'Doherty@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+57,Billie,Price,917-866-8131,Billie.Price@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+58,Orlando,Pitts,427-711-9658,Orlando.Pitts@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,236.0,53.23,2023-11-16,,,No Promotion,,,0.0,No Store
+59,Phoebe,Weiss,299-560-9666,Phoebe.Weiss@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,848.0,73.76,2024-03-15,,,No Promotion,,,0.0,No Store
+60,Juanita,Baldwin,989-786-8538,Juanita.Baldwin@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+61,Honor,Jacobson,624-535-4606,Honor.Jacobson@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,487.0,6.81,2022-12-09,,,No Promotion,,,0.0,No Store
+62,Ty,Mcintyre,743-856-9854,Ty.Mcintyre@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,885.0,9.12,2023-08-30,,,No Promotion,,,0.0,No Store
+65,Aled,Silva,612-360-5367,Aled.Silva@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,620.0,19.91,2024-01-01,,,No Promotion,,,0.0,No Store
+66,Aisha,Webb,447-728-9592,Aisha.Webb@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,342.0,45.42,2022-05-22,,,No Promotion,,,0.0,No Store
+67,Dewi,Keith,816-321-4054,Dewi.Keith@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+70,Valerie,Oneal,651-335-6190,Valerie.Oneal@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+71,Ilyas,Dunlap,491-981-1293,Ilyas.Dunlap@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,947.0,62.0,2024-04-01,,,No Promotion,,,0.0,No Store
+72,Kingsley,Moyer,927-708-1141,Kingsley.Moyer@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,964.0,8.65,2023-06-15,,,No Promotion,,,0.0,No Store
+74,Myrtle,Doyle,525-796-7991,Myrtle.Doyle@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,664.0,31.96,2023-07-31,2.0,,GatorBoost,Yes,,0.0,No Store
+75,Marjorie,Shields,346-207-2724,Marjorie.Shields@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,932.0,13.06,2022-09-16,,,No Promotion,,,0.0,No Store
+76,Taha,Casey,581-100-2001,Taha.Casey@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+77,Cleo,Greer,138-806-4136,Cleo.Greer@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,29.0,,Popsi,No,,0.0,No Store
+78,Angela,Mcmillan,868-463-1850,Angela.Mcmillan@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,356.0,30.48,2024-04-27,,,No Promotion,,,0.0,No Store
+79,Vivian,Peterson,598-995-3909,Vivian.Peterson@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+80,Cheryl,Owens,812-775-9881,Cheryl.Owens@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+82,Casper,Freeman,932-653-8020,Casper.Freeman@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,137.0,15.36,2023-02-17,,,No Promotion,,,0.0,No Store
+83,Zachery,Brennan,323-591-3874,Zachery.Brennan@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,1000.0,19.55,2022-04-01,,,No Promotion,,,0.0,No Store
+84,Safia,Ayers,512-649-7865,Safia.Ayers@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,697.0,51.67,2023-09-25,,,No Promotion,,,0.0,No Store
+87,Rahim,Cuevas,300-879-5941,Rahim.Cuevas@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+88,Humza,Velez,931-502-4660,Humza.Velez@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+90,Anas,Blevins,138-515-3364,Anas.Blevins@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+91,Amir,Clark,924-287-4068,Amir.Clark@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,166.0,Amir.Clark@example.com,Krafty Cheddar,No,,0.0,No Store
+92,Mohamed,Barr,604-185-7149,Mohamed.Barr@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+93,Elif,Khan,686-123-8571,Elif.Khan@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,242.0,56.3,2023-04-30,113.0,,Coca-Splash,Yes,,0.0,No Store
+94,Mia,Horne,667-185-1569,Mia.Horne@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,76.0,15.65,2022-05-09,,,No Promotion,,,0.0,No Store
+95,Miles,Fisher,702-511-6770,Miles.Fisher@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+96,Nadia,Neal,255-874-4270,Nadia.Neal@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+98,Traci,Banks,313-374-6903,Traci.Banks@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,133.0,Traci.Banks@example.com,KittyKat,No,,0.0,No Store
+99,Colby,Hart,900-712-6799,Colby.Hart@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+100,Usman,Swanson,431-103-9132,Usman.Swanson@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,129.0,99.22,2024-03-08,19.0,Usman.Swanson@example.com,Coca-Splash,No,,0.0,No Store
+101,Michelle,Love,672-651-8173,Michelle.Love@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+103,Caspar,Hudson,830-584-4874,Caspar.Hudson@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,392.0,36.88,2023-10-18,,,No Promotion,,,0.0,No Store
+104,Chelsea,Wyatt,750-801-9657,Chelsea.Wyatt@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+105,Franklin,Conway,768-545-4465,Franklin.Conway@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,118.0,49.49,2023-10-22,,,No Promotion,,,0.0,No Store
+106,Ruth,Andrews,159-468-6067,Ruth.Andrews@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+107,Polly,Reyes,296-740-3450,Polly.Reyes@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,156.0,Polly.Reyes@example.com,GatorBoost,No,,0.0,No Store
+108,Mohsin,Tucker,174-389-8757,Mohsin.Tucker@example.com,['Desktop'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,592.0,3.86,2023-08-15,,,No Promotion,,,0.0,No Store
+110,Pearl,Perez,947-926-6369,Pearl.Perez@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,258.0,1.0,2022-06-05,,,No Promotion,,,0.0,No Store
+111,Harriett,Mccoy,956-438-3865,Harriett.Mccoy@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,104.0,7.4,2022-02-20,,,No Promotion,,,0.0,No Store
+112,Aiden,Galvan,559-282-1575,Aiden.Galvan@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,169.0,71.55,2023-03-17,,,No Promotion,,,0.0,No Store
+113,Kaan,Miranda,940-569-5175,Kaan.Miranda@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+114,Laurie,Melendez,488-382-1416,Laurie.Melendez@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,176.0,,Oreoz,No,,0.0,No Store
+115,Tanya,Watson,432-515-4933,Tanya.Watson@example.com,"['Android', 'Iphone']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+118,Sean,Bolton,222-241-5406,Sean.Bolton@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,595.0,42.37,2023-05-22,,,No Promotion,,,0.0,No Store
+121,Jasper,Brandt,527-756-7352,Jasper.Brandt@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+122,Teresa,Mccarty,223-114-4003,Teresa.Mccarty@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+123,Finnian,Fisher,382-879-9946,Finnian.Fisher@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+127,Zoya,Giles,301-750-7631,Zoya.Giles@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,842.0,26.11,2023-03-28,82.0,,GatorBoost,No,,0.0,No Store
+128,Malik,Cuevas,935-337-2537,Malik.Cuevas@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+129,Alejandro,Duncan,487-150-9471,Alejandro.Duncan@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+130,Zohaib,Hartman,928-400-6426,Zohaib.Hartman@example.com,['Desktop'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,923.0,5.75,2023-05-11,,,No Promotion,,,0.0,No Store
+131,Alivia,Armstrong,398-367-7522,Alivia.Armstrong@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+133,Zack,Mcclain,586-280-9496,Zack.Mcclain@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,45.0,,KittyKat,No,,0.0,No Store
+134,Lydia,Chan,649-585-3076,Lydia.Chan@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+135,Bertie,Ward,971-922-8663,Bertie.Ward@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+137,India,Simmons,605-920-3435,India.Simmons@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,238.0,38.32,2022-12-30,,,No Promotion,,,0.0,No Store
+138,Adnan,Allen,561-365-7378,Adnan.Allen@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,796.0,68.32,2023-08-22,61.0,,Popsi,Yes,,0.0,No Store
+139,Kamran,Wilcox,476-365-7838,Kamran.Wilcox@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+141,Adriana,Stafford,473-741-6496,Adriana.Stafford@example.com,['Iphone'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,245.0,28.59,2024-01-11,,,No Promotion,,,0.0,No Store
+143,Ian,Ho,586-175-1970,Ian.Ho@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+144,Emelia,Page,929-575-4315,Emelia.Page@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,177.0,67.75,2022-01-26,1.0,,Coca-Splash,Yes,,0.0,No Store
+145,Elijah,Castaneda,354-709-5741,Elijah.Castaneda@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+147,Eleanor,Mcintosh,153-538-3431,Eleanor.Mcintosh@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,380.0,6.24,2023-01-12,,,No Promotion,,,0.0,No Store
+148,Maksymilian,Crosby,298-837-9139,Maksymilian.Crosby@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+149,Abdirahman,Mullen,669-442-8257,Abdirahman.Mullen@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+151,Laiba,Ingram,780-200-2871,Laiba.Ingram@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+152,Matteo,Moon,830-546-5378,Matteo.Moon@example.com,"['Android', 'Iphone']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+153,Blaine,Boyer,411-997-1636,Blaine.Boyer@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+154,Thomas,English,891-190-2889,Thomas.English@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,242.0,15.28,2023-02-28,,,No Promotion,,,0.0,No Store
+155,Lochlan,Fitzgerald,762-973-4444,Lochlan.Fitzgerald@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+156,Alia,Brooks,327-292-8469,Alia.Brooks@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,429.0,6.29,2023-09-24,,,No Promotion,,,0.0,No Store
+157,Aimee,Duffy,856-144-7655,Aimee.Duffy@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+159,Will,Santana,460-231-8743,Will.Santana@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+160,Alessia,Watts,619-580-5165,Alessia.Watts@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+161,Eliza,Gordon,805-946-7433,Eliza.Gordon@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+162,Martina,Boyle,145-824-4775,Martina.Boyle@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+163,Talha,Austin,279-345-3532,Talha.Austin@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,879.0,4.43,2023-02-27,,,No Promotion,,,0.0,No Store
+164,Herman,Knowles,130-936-8674,Herman.Knowles@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,27.0,,Dovee,No,,0.0,No Store
+166,Darcie,Lane,899-901-3539,Darcie.Lane@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+167,Kurtis,Marks,690-396-3965,Kurtis.Marks@example.com,['Desktop'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+168,Josie,Pham,202-569-8234,Josie.Pham@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+170,Macie,Payne,782-737-6408,Macie.Payne@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,198.0,Macie.Payne@example.com,KittyKat,No,,0.0,No Store
+172,Nathaniel,Gonzalez,421-145-6627,Nathaniel.Gonzalez@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,109.0,42.44,2023-05-19,,,No Promotion,,,0.0,No Store
+176,Melvin,Flores,708-692-8746,Melvin.Flores@example.com,"['Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+177,Hassan,Kemp,131-471-2639,Hassan.Kemp@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,480.0,34.74,2022-07-11,,,No Promotion,,,0.0,No Store
+178,Jenson,Carver,128-789-4202,Jenson.Carver@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+180,Dhruv,Villarreal,931-559-3083,Dhruv.Villarreal@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,42.0,Dhruv.Villarreal@example.com,RedCow,No,,0.0,No Store
+181,Rhodri,Kelley,106-651-2649,Rhodri.Kelley@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+183,Ishaan,Stevenson,631-367-5233,Ishaan.Stevenson@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+185,Milton,Carlson,344-559-6014,Milton.Carlson@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,867.0,44.37,2023-04-17,,,No Promotion,,,0.0,No Store
+186,Gareth,Sutherland,471-744-7605,Gareth.Sutherland@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+187,Andre,Long,883-691-2967,Andre.Long@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+188,Ridwan,Houston,530-308-5425,Ridwan.Houston@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+189,Darcey,Whitney,483-860-2350,Darcey.Whitney@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,883.0,24.84,2023-04-06,,,No Promotion,,,0.0,No Store
+190,Charlotte,Baxter,757-193-7348,Charlotte.Baxter@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+191,Damon,Bullock,130-864-9453,Damon.Bullock@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,672.0,28.4,2022-09-14,,,No Promotion,,,0.0,No Store
+192,Leonie,Sanders,248-366-9279,Leonie.Sanders@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,963.0,80.54,2024-02-06,,,No Promotion,,,0.0,No Store
+193,Susie,Gibbons,194-777-4804,Susie.Gibbons@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,879.0,18.28,2023-06-05,,,No Promotion,,,0.0,No Store
+194,Fynn,Graham,763-842-3292,Fynn.Graham@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+196,Alanna,Stephens,710-282-8586,Alanna.Stephens@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,850.0,16.16,2022-12-14,,,No Promotion,,,0.0,No Store
+198,Zakir,Russell,599-588-9264,Zakir.Russell@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,327.0,50.3,2023-06-07,,,No Promotion,,,0.0,No Store
+199,Asa,Haines,327-464-5734,Asa.Haines@example.com,"['Android', 'Iphone']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+200,Eesa,Buchanan,533-397-5445,Eesa.Buchanan@example.com,"['Android', 'Iphone']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,191.0,,Krafty Cheddar,No,,0.0,No Store
+201,Conor,Rush,663-671-4088,Conor.Rush@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+203,Lili,Patel,823-509-3052,Lili.Patel@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+204,Philippa,Webster,407-892-7705,Philippa.Webster@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+205,Zoe,Newman,620-765-4496,Zoe.Newman@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,467.0,15.7,2023-12-08,,,No Promotion,,,0.0,No Store
+206,Azaan,Roth,130-119-2032,Azaan.Roth@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,747.0,2.79,2022-07-09,,,No Promotion,,,0.0,No Store
+208,Jessie,Greer,950-317-1709,Jessie.Greer@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+209,Eliot,Stokes,864-975-1957,Eliot.Stokes@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,563.0,7.57,2023-10-29,,,No Promotion,,,0.0,No Store
+213,Kyran,Wyatt,778-841-9881,Kyran.Wyatt@example.com,"['Android', 'Iphone']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,995.0,2.49,2023-10-18,,,No Promotion,,,0.0,No Store
+214,Eugene,Taylor,712-926-3402,Eugene.Taylor@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,365.0,18.75,2024-01-01,,,No Promotion,,,0.0,No Store
+215,Katerina,Turner,753-511-5460,Katerina.Turner@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,844.0,10.54,2024-01-11,,,No Promotion,,,0.0,No Store
+216,Nataniel,Nunez,202-158-5194,Nataniel.Nunez@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+219,Sinead,Horne,340-355-9098,Sinead.Horne@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+220,Sahar,Kim,718-676-2743,Sahar.Kim@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+221,Emmie,Schmidt,130-236-9253,Emmie.Schmidt@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,831.0,1.59,2022-12-09,,,No Promotion,,,0.0,No Store
+225,Neil,Haynes,421-219-5363,Neil.Haynes@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,21.0,Neil.Haynes@example.com,Coca-Splash,Yes,,0.0,No Store
+226,Morgan,Hardy,974-761-7628,Morgan.Hardy@example.com,"['Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+227,Ibraheem,Mcgee,667-192-9013,Ibraheem.Mcgee@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+229,Kate,Cline,927-741-2027,Kate.Cline@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+230,Hana,Barr,541-180-4090,Hana.Barr@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+231,Darcy,Wall,109-398-3560,Darcy.Wall@example.com,['Desktop'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,874.0,30.03,2023-07-22,,,No Promotion,,,0.0,No Store
+232,Aisha,Winters,280-831-1664,Aisha.Winters@example.com,['Desktop'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+233,Zayd,Yoder,259-388-7717,Zayd.Yoder@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+236,Gloria,Mason,495-379-8123,Gloria.Mason@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+237,Carter,Coleman,530-826-1153,Carter.Coleman@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,981.0,1.07,2023-02-13,,,No Promotion,,,0.0,No Store
+238,Ashleigh,Trevino,621-710-6972,Ashleigh.Trevino@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+239,Edward,Ayala,416-337-3343,Edward.Ayala@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+240,Amira,Lane,321-569-4426,Amira.Lane@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+241,Chris,Zimmerman,371-875-4229,Chris.Zimmerman@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+242,Hazel,Joseph,272-647-4049,Hazel.Joseph@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,836.0,35.9,2022-10-28,,,No Promotion,,,0.0,No Store
+243,Brogan,Fitzgerald,955-732-8107,Brogan.Fitzgerald@example.com,"['Android', 'Iphone']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,130.0,15.32,2024-03-05,,,No Promotion,,,0.0,No Store
+244,Taylor,Ramos,833-282-1248,Taylor.Ramos@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,738.0,1.0,2023-12-03,,,No Promotion,,,0.0,No Store
+245,Elsie,Cuevas,186-536-6820,Elsie.Cuevas@example.com,['Iphone'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+246,Zara,Washington,679-367-1926,Zara.Washington@example.com,"['Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+247,Douglas,Lozano,916-136-3366,Douglas.Lozano@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+248,Bethan,Franco,317-895-5803,Bethan.Franco@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,135.0,130.62,2023-09-18,,,No Promotion,,,0.0,No Store
+249,Clementine,Whitaker,193-348-3198,Clementine.Whitaker@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,961.0,2.97,2023-04-10,,,No Promotion,,,0.0,No Store
+250,Sarah,Mooney,507-446-1333,Sarah.Mooney@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,192.0,11.65,2023-11-28,110.0,,KittyKat,Yes,,0.0,No Store
+252,Jemima,Leonard,149-310-5366,Jemima.Leonard@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+253,Oskar,Mccarty,582-269-7396,Oskar.Mccarty@example.com,"['Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+254,Bonnie,Woods,104-443-5734,Bonnie.Woods@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+255,Miriam,Pacheco,401-464-5796,Miriam.Pacheco@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,328.0,5.42,2022-10-21,135.0,Miriam.Pacheco@example.com,Krafty Cheddar,Yes,,0.0,No Store
+256,Zahraa,Villanueva,130-183-4153,Zahraa.Villanueva@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+257,Alia,Hess,735-371-7432,Alia.Hess@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+260,Darcey,Robles,790-759-5249,Darcey.Robles@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+262,Everly,Cortez,954-995-1806,Everly.Cortez@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,317.0,4.94,2024-01-27,,,No Promotion,,,0.0,No Store
+263,Tommy,Farmer,999-431-4584,Tommy.Farmer@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,714.0,19.32,2023-06-19,,,No Promotion,,,0.0,No Store
+264,Maximillian,Atkins,421-834-8740,Maximillian.Atkins@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,620.0,47.19,2023-01-12,57.0,Maximillian.Atkins@example.com,Oreoz,Yes,,0.0,No Store
+265,Eddie,Archer,130-279-8355,Eddie.Archer@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+266,Gregory,Strong,952-404-1885,Gregory.Strong@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+267,Jake,Spencer,445-216-5918,Jake.Spencer@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,812.0,35.92,2022-12-07,,,No Promotion,,,0.0,No Store
+268,Johnny,Ford,760-126-9651,Johnny.Ford@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+269,Yusuf,Salazar,311-351-7403,Yusuf.Salazar@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+270,Nelson,Huff,169-619-4582,Nelson.Huff@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,838.0,41.36,2023-05-09,128.0,Nelson.Huff@example.com,Coca-Splash,Yes,,0.0,No Store
+272,Findlay,Velasquez,675-319-8856,Findlay.Velasquez@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,966.0,79.49,2022-05-19,,,No Promotion,,,0.0,No Store
+273,Georgiana,Horton,290-200-9393,Georgiana.Horton@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+274,Bronte,Riley,786-291-8203,Bronte.Riley@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,382.0,12.26,2023-08-21,120.0,,Popsi,Yes,,0.0,No Store
+275,Harriett,Villegas,329-505-8826,Harriett.Villegas@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+276,Bertha,Carter,708-356-2109,Bertha.Carter@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+277,Fay,Lucas,436-818-1915,Fay.Lucas@example.com,"['Android', 'Iphone']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+278,Rachael,Sykes,623-319-1782,Rachael.Sykes@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+279,Annabelle,Atkinson,494-263-3527,Annabelle.Atkinson@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,852.0,71.71,2022-07-27,,,No Promotion,,,0.0,No Store
+280,Zac,Wagner,131-396-9743,Zac.Wagner@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,735.0,21.88,2022-01-10,,,No Promotion,,,0.0,No Store
+282,Elysia,Mata,111-388-1063,Elysia.Mata@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+284,Maximilian,Whitney,804-245-1465,Maximilian.Whitney@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,195.0,,Popsi,No,,0.0,No Store
+285,Lorna,Levy,809-114-1988,Lorna.Levy@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,147.0,36.98,2023-10-13,,,No Promotion,,,0.0,No Store
+286,Cordelia,Marquez,636-910-2488,Cordelia.Marquez@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,640.0,53.81,2022-08-26,,,No Promotion,,,0.0,No Store
+287,Jan,Daniels,305-449-8274,Jan.Daniels@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+288,Donald,Dale,995-494-7868,Donald.Dale@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+290,Brenda,Ingram,919-358-6885,Brenda.Ingram@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+291,Brooklyn,Gamble,187-138-7951,Brooklyn.Gamble@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+292,Anya,Bray,396-900-5179,Anya.Bray@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,140.0,,Oreoz,No,,0.0,No Store
+293,Oliwia,Dominguez,161-309-1110,Oliwia.Dominguez@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+294,Faizan,Hill,572-649-5353,Faizan.Hill@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,33.0,Faizan.Hill@example.com,RedCow,No,,0.0,No Store
+295,Maisy,Clark,966-801-8945,Maisy.Clark@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+296,Steven,Reid,490-977-4025,Steven.Reid@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,683.0,10.0,2022-10-11,6.0,Steven.Reid@example.com,Popsi,Yes,,0.0,No Store
+298,Chanel,Lang,284-895-4854,Chanel.Lang@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+299,Aadam,Browning,702-276-7562,Aadam.Browning@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+300,Danny,Knapp,665-657-4948,Danny.Knapp@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,147.0,Danny.Knapp@example.com,Coca-Splash,No,,0.0,No Store
+301,Huda,Rogers,714-169-1009,Huda.Rogers@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+302,Ellena,Ramsey,639-267-5334,Ellena.Ramsey@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+303,Nikita,Marquez,492-815-1793,Nikita.Marquez@example.com,['Android'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,993.0,28.82,2023-08-24,,,No Promotion,,,0.0,No Store
+304,Siena,Stanton,247-260-7851,Siena.Stanton@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+306,Libbie,Swanson,176-108-4411,Libbie.Swanson@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,190.0,,Flixnet,No,,0.0,No Store
+309,Barnaby,Payne,140-296-7511,Barnaby.Payne@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,119.0,140.03,2024-01-02,,,No Promotion,,,0.0,No Store
+310,Aya,Hoover,640-104-6782,Aya.Hoover@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+311,Mariam,Campos,102-916-1394,Mariam.Campos@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+312,Marissa,Rubio,400-815-9011,Marissa.Rubio@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+313,Alice,Nielsen,988-763-8894,Alice.Nielsen@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+314,Neve,Hendrix,965-871-6717,Neve.Hendrix@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,927.0,18.87,2022-12-18,,,No Promotion,,,0.0,No Store
+315,Kiara,Sosa,982-969-2499,Kiara.Sosa@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+316,Mathilda,Abbott,893-420-4063,Mathilda.Abbott@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+317,Bessie,Cuevas,629-379-6872,Bessie.Cuevas@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+318,Mario,Luna,547-624-3479,Mario.Luna@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,263.0,6.75,2024-01-17,,,No Promotion,,,0.0,No Store
+319,Tess,Short,990-918-2059,Tess.Short@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+320,Liberty,Stephenson,613-740-5020,Liberty.Stephenson@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+321,Leena,Castillo,648-845-8799,Leena.Castillo@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+322,Melissa,Harding,614-765-9511,Melissa.Harding@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,64.0,11.62,2022-02-23,,,No Promotion,,,0.0,No Store
+323,Seren,Rocha,880-236-4632,Seren.Rocha@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,37.0,22.32,2023-08-03,,,No Promotion,,,0.0,No Store
+324,Thea,Hamilton,868-547-6826,Thea.Hamilton@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+325,Matilda,Griffin,176-758-4552,Matilda.Griffin@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,149.0,56.12,2023-05-15,,,No Promotion,,,0.0,No Store
+327,Oliver,Sanford,628-646-1375,Oliver.Sanford@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+329,Rory,Bartlett,429-411-4734,Rory.Bartlett@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+331,Lia,Hudson,671-560-5008,Lia.Hudson@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,829.0,13.73,2022-12-17,,,No Promotion,,,0.0,No Store
+333,Tamzin,Hernandez,657-945-1077,Tamzin.Hernandez@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+334,Elisabeth,Tran,363-441-2226,Elisabeth.Tran@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,37.0,,Popsi,No,,0.0,No Store
+335,Aaminah,Daniel,877-314-7868,Aaminah.Daniel@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,234.0,28.18,2023-09-12,,,No Promotion,,,0.0,No Store
+336,Katrina,Foster,497-544-5065,Katrina.Foster@example.com,"['Android', 'Iphone']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,23.0,Katrina.Foster@example.com,Coca-Splash,No,,0.0,No Store
+337,Xavier,Mcguire,329-569-7858,Xavier.Mcguire@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,561.0,25.98,2023-04-16,,,No Promotion,,,0.0,No Store
+339,Sahil,Lyons,494-702-9881,Sahil.Lyons@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+340,Lilly-Rose,Richards,264-213-8415,Lilly-Rose.Richards@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+342,Alfred,Stuart,713-145-1454,Alfred.Stuart@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,827.0,45.99,2023-05-04,,,No Promotion,,,0.0,No Store
+346,Caiden,Kaufman,805-349-3127,Caiden.Kaufman@example.com,['Desktop'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,135.0,1.0,2023-09-29,,,No Promotion,,,0.0,No Store
+347,Jemma,Greer,220-752-3577,Jemma.Greer@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+348,Alistair,Moore,358-489-3754,Alistair.Moore@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+349,Rachael,Shields,557-384-9605,Rachael.Shields@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,528.0,27.28,2023-04-06,,,No Promotion,,,0.0,No Store
+350,Jed,Myers,920-927-4758,Jed.Myers@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+351,Keaton,Ortiz,676-716-9033,Keaton.Ortiz@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,920.0,23.69,2023-02-06,,,No Promotion,,,0.0,No Store
+352,Maliha,Hood,296-552-6256,Maliha.Hood@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+353,Jennie,Monroe,613-385-2077,Jennie.Monroe@example.com,['Desktop'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+354,Sharon,Rojas,901-513-9962,Sharon.Rojas@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,175.0,,Colgatex,No,,0.0,No Store
+355,Dawid,Lozano,410-788-9917,Dawid.Lozano@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+356,Romeo,Martin,834-460-4855,Romeo.Martin@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+357,Nikhil,Peck,395-769-3300,Nikhil.Peck@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,35.0,Nikhil.Peck@example.com,RedCow,No,,0.0,No Store
+359,Jayden,Meyers,233-480-8798,Jayden.Meyers@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+361,Joel,Baldwin,161-534-8719,Joel.Baldwin@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+363,Layton,Suarez,909-218-5658,Layton.Suarez@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,927.0,69.89,2023-06-03,,,No Promotion,,,0.0,No Store
+364,Markus,Weaver,806-124-5977,Markus.Weaver@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,932.0,35.42,2023-06-19,,,No Promotion,,,0.0,No Store
+365,Martina,Moran,641-323-9929,Martina.Moran@example.com,['Desktop'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+366,Maxwell,Lee,221-138-8090,Maxwell.Lee@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+367,Eryn,Bowers,767-372-8468,Eryn.Bowers@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,102.0,83.56,2022-09-18,,,No Promotion,,,0.0,No Store
+369,Reggie,Strong,459-645-8476,Reggie.Strong@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,204.0,29.11,2023-03-01,,,No Promotion,,,0.0,No Store
+372,Holly,Gillespie,537-653-7820,Holly.Gillespie@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+375,Brandon,Rangel,417-706-8052,Brandon.Rangel@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+376,Saskia,Glover,883-302-1765,Saskia.Glover@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,888.0,24.51,2023-06-02,,,No Promotion,,,0.0,No Store
+378,Junior,Mcgowan,820-164-6757,Junior.Mcgowan@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+380,James,Warner,839-312-5829,James.Warner@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+381,Elsa,Hebert,389-739-1832,Elsa.Hebert@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+382,Zachery,Snow,354-295-2894,Zachery.Snow@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,356.0,7.77,2023-09-25,,,No Promotion,,,0.0,No Store
+383,Owen,Michael,178-910-8863,Owen.Michael@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,154.0,,Coca-Splash,No,,0.0,No Store
+384,Fraser,Hooper,228-636-9031,Fraser.Hooper@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,34.0,Fraser.Hooper@example.com,Oreoz,No,,0.0,No Store
+385,Olivia,Slater,618-239-1471,Olivia.Slater@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,954.0,4.36,2022-03-11,,,No Promotion,,,0.0,No Store
+386,Gregory,Mcgrath,284-161-5702,Gregory.Mcgrath@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+387,Jesse,Perry,711-621-8470,Jesse.Perry@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,605.0,10.9,2022-06-15,,,No Promotion,,,0.0,No Store
+388,Yousef,Andrews,532-910-6535,Yousef.Andrews@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+389,Levi,Hoffman,442-352-9243,Levi.Hoffman@example.com,"['Android', 'Iphone']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+390,Camilla,Wells,149-482-9546,Camilla.Wells@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+391,Laiba,Knapp,311-460-4985,Laiba.Knapp@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,234.0,11.55,2024-02-11,,,No Promotion,,,0.0,No Store
+392,Kyle,Joseph,499-600-6164,Kyle.Joseph@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+394,Guy,Osborn,990-686-6129,Guy.Osborn@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+395,Maxim,Romero,398-796-6242,Maxim.Romero@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+396,Penny,Hanson,853-297-6593,Penny.Hanson@example.com,['Desktop'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+397,Zaynab,Salas,696-692-1941,Zaynab.Salas@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,753.0,75.66,2023-03-26,,,No Promotion,,,0.0,No Store
+398,Myrtle,Lewis,727-289-2785,Myrtle.Lewis@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,98.0,,GatorBoost,No,,0.0,No Store
+399,Nathan,Pearce,161-192-5834,Nathan.Pearce@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+400,Joanna,Durham,302-863-6548,Joanna.Durham@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+401,Gloria,Quinn,225-175-9968,Gloria.Quinn@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,478.0,15.72,2023-06-06,,,No Promotion,,,0.0,No Store
+402,Safaa,Lopez,863-714-5286,Safaa.Lopez@example.com,['Android'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,47.0,Safaa.Lopez@example.com,Colgatex,No,,0.0,No Store
+404,Verity,Oneal,736-555-3571,Verity.Oneal@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+405,Cecily,Blaese,234-446-2115,Cecily.Blaese@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+406,Gideon,Perez,135-944-5781,Gideon.Perez@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+407,Trinity,Mora,406-645-2610,Trinity.Mora@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+408,Adnan,Moore,132-644-9432,Adnan.Moore@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+409,Aleksander,Durham,582-306-5689,Aleksander.Durham@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,607.0,27.24,2024-04-26,,,No Promotion,,,0.0,No Store
+410,Findlay,O'Quinn,605-713-8734,Findlay.O'Quinn@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+411,Candice,Hooper,382-506-1338,Candice.Hooper@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,405.0,22.73,2023-03-14,,,No Promotion,,,0.0,No Store
+413,Charlotte,Trevino,110-715-4620,Charlotte.Trevino@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,913.0,61.17,2023-04-24,,,No Promotion,,,0.0,No Store
+414,Ahmed,Mcpherson,797-300-1323,Ahmed.Mcpherson@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,273.0,19.97,2022-05-28,,,No Promotion,,,0.0,No Store
+415,Christopher,Pollard,915-743-9764,Christopher.Pollard@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+417,Sufyaan,Gonzales,729-767-8923,Sufyaan.Gonzales@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+418,Kian,Stephens,820-881-5658,Kian.Stephens@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+419,Celine,Calderon,110-293-2276,Celine.Calderon@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,986.0,8.47,2023-08-21,,,No Promotion,,,0.0,No Store
+420,Pablo,Benton,918-474-3062,Pablo.Benton@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+421,Juliet,Gordon,647-601-9488,Juliet.Gordon@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,267.0,21.65,2023-01-09,,,No Promotion,,,0.0,No Store
+422,Ruby,Reid,877-977-4677,Ruby.Reid@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,460.0,8.96,2024-02-06,,,No Promotion,,,0.0,No Store
+423,Haaris,Blevins,790-597-2437,Haaris.Blevins@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+424,Carol,Bean,168-263-3805,Carol.Bean@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+425,Ines,Davis,238-215-9099,Ines.Davis@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,271.0,87.05,2024-04-14,,,No Promotion,,,0.0,No Store
+426,Bill,Chen,264-895-1912,Bill.Chen@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+428,Abi,Montgomery,904-933-1987,Abi.Montgomery@example.com,['Desktop'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+429,Mike,Hurst,488-247-6930,Mike.Hurst@example.com,"['Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,579.0,9.21,2024-01-06,74.0,Mike.Hurst@example.com,Dovee,Yes,,0.0,No Store
+431,Alannah,Vaughn,942-130-5841,Alannah.Vaughn@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,472.0,62.4,2022-05-21,,,No Promotion,,,0.0,No Store
+432,Camilla,Huff,943-976-4626,Camilla.Huff@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+433,Angelo,Manning,182-351-6749,Angelo.Manning@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+434,Enzo,Hess,359-874-3781,Enzo.Hess@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+435,Jorge,Hebert,301-526-9714,Jorge.Hebert@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,870.0,85.26,2022-01-31,,,No Promotion,,,0.0,No Store
+437,Harvey,Rios,439-940-5960,Harvey.Rios@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+438,Leslie,Harrington,170-517-1270,Leslie.Harrington@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+439,Leona,Daugherty,815-288-7354,Leona.Daugherty@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+440,Dean,Koch,510-682-8416,Dean.Koch@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,615.0,10.46,2022-09-10,,,No Promotion,,,0.0,No Store
+442,Lenny,Hardy,618-571-1851,Lenny.Hardy@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+443,Miguel,Guerrero,542-618-4471,Miguel.Guerrero@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,106.0,,KittyKat,No,,0.0,No Store
+444,Karina,Mata,428-919-4395,Karina.Mata@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,520.0,58.61,2024-02-28,,,No Promotion,,,0.0,No Store
+446,Julius,Marquez,189-235-8167,Julius.Marquez@example.com,"['Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+447,Lucy,Livingston,528-980-5732,Lucy.Livingston@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+449,Raja,Hull,209-644-4005,Raja.Hull@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+451,Amie,Lin,153-814-9880,Amie.Lin@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+452,Iqra,Kelly,319-337-5741,Iqra.Kelly@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,947.0,31.89,2022-06-09,,,No Promotion,,,0.0,No Store
+453,Kiran,Barr,755-593-9023,Kiran.Barr@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+454,Zuzanna,Moody,727-221-6352,Zuzanna.Moody@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,588.0,9.33,2022-03-18,,,No Promotion,,,0.0,No Store
+455,Margaret,Woods,693-338-9657,Margaret.Woods@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,749.0,28.53,2023-01-22,,,No Promotion,,,0.0,No Store
+456,Larry,Clay,151-494-2927,Larry.Clay@example.com,['Iphone'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+457,Ffion,Brandt,560-197-4771,Ffion.Brandt@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,421.0,52.87,2022-05-14,,,No Promotion,,,0.0,No Store
+458,Taha,Torres,685-146-7547,Taha.Torres@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+459,Hector,Lam,784-605-2200,Hector.Lam@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,489.0,36.37,2022-10-17,,,No Promotion,,,0.0,No Store
+460,Demi,Dennis,429-374-1894,Demi.Dennis@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+461,Leila,Hawkins,970-992-9362,Leila.Hawkins@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,934.0,5.31,2022-12-01,,,No Promotion,,,0.0,No Store
+462,Junior,Schwartz,543-252-9069,Junior.Schwartz@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+463,Tristan,Lambert,125-567-3504,Tristan.Lambert@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,903.0,52.03,2022-08-23,,,No Promotion,,,0.0,No Store
+464,Liliana,Carpenter,769-403-7834,Liliana.Carpenter@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+466,Charis,Cotton,598-771-1224,Charis.Cotton@example.com,['Desktop'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+467,Zubair,Sheppard,845-425-4523,Zubair.Sheppard@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,64.0,27.35,2023-05-29,,,No Promotion,,,0.0,No Store
+469,Zohaib,Preston,575-540-7871,Zohaib.Preston@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+470,Kyla,Brennan,440-863-6538,Kyla.Brennan@example.com,['Desktop'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+471,Amira,Mueller,445-867-4511,Amira.Mueller@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+472,Colby,Baxter,584-747-3867,Colby.Baxter@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,600.0,18.59,2022-11-29,,,No Promotion,,,0.0,No Store
+473,Hayden,Lucas,527-308-6637,Hayden.Lucas@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,287.0,30.01,2023-06-26,,,No Promotion,,,0.0,No Store
+476,Sabrina,Becker,895-364-8107,Sabrina.Becker@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+478,Alejandro,Ali,685-467-9906,Alejandro.Ali@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+479,Terence,Rosales,298-641-6696,Terence.Rosales@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+481,Sophia,Randolph,972-667-2372,Sophia.Randolph@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+482,Ahmad,Patrick,875-486-1626,Ahmad.Patrick@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+483,Christine,Davenport,168-853-2168,Christine.Davenport@example.com,['Iphone'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+484,Lowri,Brady,116-274-4785,Lowri.Brady@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+485,Ashley,Cain,679-244-6655,Ashley.Cain@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+487,Bernard,Moran,863-265-3242,Bernard.Moran@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,810.0,22.6,2024-04-27,,,No Promotion,,,0.0,No Store
+489,Khadija,Dunlap,752-472-1641,Khadija.Dunlap@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,404.0,12.18,2023-12-09,,,No Promotion,,,0.0,No Store
+490,Rhonda,Coffey,473-420-4500,Rhonda.Coffey@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,914.0,87.3,2022-08-25,,,No Promotion,,,0.0,No Store
+491,Ehsan,Anthony,364-687-4749,Ehsan.Anthony@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+492,Haider,Mcguire,719-649-9057,Haider.Mcguire@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+493,Jazmine,Harper,956-324-6086,Jazmine.Harper@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+494,Bryan,Caldwell,161-104-1451,Bryan.Caldwell@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,568.0,44.81,2022-06-08,,,No Promotion,,,0.0,No Store
+495,Sandra,Bowman,190-234-9749,Sandra.Bowman@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,139.0,,Dovee,Yes,,0.0,No Store
+496,Micheal,Maldonado,895-850-8289,Micheal.Maldonado@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+497,Arjun,Mccarthy,152-255-3479,Arjun.Mccarthy@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+498,Keisha,Norris,117-850-3045,Keisha.Norris@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+499,Harris,Mack,633-338-5745,Harris.Mack@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,375.0,39.65,2024-03-14,,,No Promotion,,,0.0,No Store
+501,Nannie,Carr,175-709-3929,Nannie.Carr@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+502,Imran,Page,203-209-8114,Imran.Page@example.com,"['Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+503,Jim,Moses,560-446-1279,Jim.Moses@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,173.0,17.54,2024-04-11,86.0,Jim.Moses@example.com,Popsi,Yes,,0.0,No Store
+504,Anjali,Peck,703-497-6452,Anjali.Peck@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+505,Bessie,Conley,128-912-7282,Bessie.Conley@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+506,Jude,Manning,705-992-3397,Jude.Manning@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+507,Bridget,Oneill,349-116-7728,Bridget.Oneill@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+508,Brooke,Barron,715-588-5341,Brooke.Barron@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,161.0,Brooke.Barron@example.com,Colgatex,No,,0.0,No Store
+509,Lukas,Howard,846-508-8212,Lukas.Howard@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+510,Kaya,Jacobson,870-909-4612,Kaya.Jacobson@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,141.0,,Dovee,Yes,,0.0,No Store
+511,Kitty,Carroll,305-617-1384,Kitty.Carroll@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,96.0,Kitty.Carroll@example.com,Coca-Splash,No,,0.0,No Store
+512,Khadijah,Little,258-211-4243,Khadijah.Little@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+513,Scarlett,Bradley,841-963-6257,Scarlett.Bradley@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+514,Willard,Odling,156-301-8459,Willard.Odling@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+515,Gerald,Carver,658-867-4112,Gerald.Carver@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+517,Danielle,Lester,427-342-5497,Danielle.Lester@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+520,Henry,Holloway,760-481-5035,Henry.Holloway@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+521,Khalid,Mclaughlin,140-879-1467,Khalid.Mclaughlin@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+522,Umar,Guerrero,207-890-3313,Umar.Guerrero@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+523,Ameera,Kirby,611-776-9890,Ameera.Kirby@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+524,Emre,Everett,986-281-7506,Emre.Everett@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,148.0,,KittyKat,No,,0.0,No Store
+525,Aidan,Mcmahon,896-647-2628,Aidan.Mcmahon@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+527,Layton,Cisneros,624-631-4459,Layton.Cisneros@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+529,Lawrence,Simon,305-708-6970,Lawrence.Simon@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+531,Jake,Salazar,250-705-1154,Jake.Salazar@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+532,Lawson,Levine,785-936-5286,Lawson.Levine@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,169.0,Lawson.Levine@example.com,GatorBoost,No,,0.0,No Store
+534,Ada,Walsh,391-963-8942,Ada.Walsh@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+535,Carolyn,Pittman,451-215-7038,Carolyn.Pittman@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,968.0,21.17,2022-09-14,,,No Promotion,,,0.0,No Store
+536,Orla,Monroe,200-722-3778,Orla.Monroe@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+537,Bronwyn,Hanna,763-469-4049,Bronwyn.Hanna@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,37.0,1.52,2023-01-05,,,No Promotion,,,0.0,No Store
+538,Tristan,Valdez,109-614-1639,Tristan.Valdez@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+539,Ruth,Stone,429-930-9178,Ruth.Stone@example.com,"['Android', 'Iphone']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+541,Elysia,Schaefer,264-321-9679,Elysia.Schaefer@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+542,Moses,O'Gallagher,303-406-9507,Moses.O'Gallagher@example.com,['Android'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+543,Esme,Krueger,173-138-2227,Esme.Krueger@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,369.0,10.87,2023-05-27,,,No Promotion,,,0.0,No Store
+544,Millie,Yates,673-424-3380,Millie.Yates@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,44.0,,GatorBoost,No,,0.0,No Store
+545,Valentina,Cross,142-486-2939,Valentina.Cross@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,920.0,82.09,2024-02-23,,,No Promotion,,,0.0,No Store
+546,Lenny,Patrick,109-247-6898,Lenny.Patrick@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,916.0,59.51,2023-09-10,,,No Promotion,,,0.0,No Store
+547,Ty,Serrano,901-570-7400,Ty.Serrano@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+548,Katherine,Whitehead,416-889-9840,Katherine.Whitehead@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+549,Danny,Tate,574-779-9113,Danny.Tate@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+550,Prince,Sharp,886-278-8764,Prince.Sharp@example.com,"['Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,25.0,,Popsi,No,,0.0,No Store
+551,Donovan,Evans,729-134-2962,Donovan.Evans@example.com,['Iphone'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+553,Rajan,Fletcher,443-159-6306,Rajan.Fletcher@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,165.0,64.96,2023-10-23,,,No Promotion,,,0.0,No Store
+555,Ammar,Floyd,960-107-6796,Ammar.Floyd@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+557,Wilbur,Valentine,718-283-9417,Wilbur.Valentine@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+558,Clementine,Sloan,480-906-3761,Clementine.Sloan@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+559,Cecilia,Edwards,941-963-8256,Cecilia.Edwards@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+560,Aled,Harris,924-132-3783,Aled.Harris@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+561,Miya,Warner,204-288-1980,Miya.Warner@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+562,Marjorie,Morrison,642-203-8931,Marjorie.Morrison@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,770.0,79.95,2022-10-08,,,No Promotion,,,0.0,No Store
+563,Safaa,Sharpe,648-955-3738,Safaa.Sharpe@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+565,Alice,Huber,190-538-3053,Alice.Huber@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+566,Cruz,Neal,732-513-2567,Cruz.Neal@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,984.0,56.83,2023-04-01,,,No Promotion,,,0.0,No Store
+567,Macy,King,475-826-7209,Macy.King@example.com,['Android'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+569,Magnus,Mcneil,125-993-7660,Magnus.Mcneil@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,196.0,,Dovee,No,,0.0,No Store
+570,Vinnie,Schwartz,790-948-7013,Vinnie.Schwartz@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,84.0,1.0,2022-02-09,,,No Promotion,,,0.0,No Store
+571,Keelan,Thompson,254-156-9308,Keelan.Thompson@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,737.0,44.68,2022-01-13,,,No Promotion,,,0.0,No Store
+572,Davina,O'Doherty,330-649-8079,Davina.O'Doherty@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+573,Arron,Herman,999-222-5375,Arron.Herman@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,773.0,1.0,2023-11-17,,,No Promotion,,,0.0,No Store
+575,Casper,Padilla,823-261-2968,Casper.Padilla@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+576,David,Mcconnell,967-585-7262,David.Mcconnell@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+578,Demi,Callahan,713-176-8275,Demi.Callahan@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,248.0,15.84,2023-12-29,,,No Promotion,,,0.0,No Store
+579,Sufyaan,Castillo,412-479-8766,Sufyaan.Castillo@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+581,Kamal,Gates,622-660-1036,Kamal.Gates@example.com,['Android'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+582,Yusra,Norman,945-940-4995,Yusra.Norman@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,521.0,7.4,2023-02-17,,,No Promotion,,,0.0,No Store
+583,Bryony,Stevens,537-447-5075,Bryony.Stevens@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,555.0,18.98,2023-03-19,,,No Promotion,,,0.0,No Store
+585,Sufyan,Guzman,125-583-6823,Sufyan.Guzman@example.com,"['Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+586,Casey,Finley,306-893-4689,Casey.Finley@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,171.0,Casey.Finley@example.com,RedCow,No,,0.0,No Store
+587,Alina,Odom,737-828-4041,Alina.Odom@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+588,Miranda,Cain,377-263-6278,Miranda.Cain@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+589,Omari,Gibbs,524-749-7401,Omari.Gibbs@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+590,Susannah,Kane,172-773-1455,Susannah.Kane@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,555.0,45.29,2023-08-20,,,No Promotion,,,0.0,No Store
+591,Annalise,Stephens,853-224-1381,Annalise.Stephens@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+592,Jamil,Shepherd,298-276-5058,Jamil.Shepherd@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,809.0,55.38,2023-08-26,,,No Promotion,,,0.0,No Store
+593,Danyal,Lang,629-875-4423,Danyal.Lang@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,923.0,116.46,2024-02-10,53.0,,GatorBoost,No,,0.0,No Store
+594,Barry,Reilly,117-863-9669,Barry.Reilly@example.com,['Desktop'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+595,Archie,Gregory,945-301-2904,Archie.Gregory@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+596,Hajra,Baxter,600-542-2254,Hajra.Baxter@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+597,Earl,Fowler,648-268-9331,Earl.Fowler@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+598,Monica,Bruce,302-368-5572,Monica.Bruce@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+599,Astrid,Delgado,641-317-3741,Astrid.Delgado@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,41.0,Astrid.Delgado@example.com,Popsi,No,,0.0,No Store
+600,Bill,Jacobs,279-704-9018,Bill.Jacobs@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+601,Rio,Pennington,473-123-1959,Rio.Pennington@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,216.0,3.43,2023-10-24,,,No Promotion,,,0.0,No Store
+603,Bilal,Shaffer,308-774-7278,Bilal.Shaffer@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+604,Elisha,Cobb,821-536-1739,Elisha.Cobb@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+605,Earl,Hobbs,916-866-7237,Earl.Hobbs@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+606,Bertha,Walsh,129-506-2067,Bertha.Walsh@example.com,"['Android', 'Iphone']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+607,Bibi,Roberts,631-796-8801,Bibi.Roberts@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+608,Rishi,Barron,331-128-4346,Rishi.Barron@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,31.0,Rishi.Barron@example.com,Oreoz,No,,0.0,No Store
+610,Keira,Herman,607-258-2059,Keira.Herman@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+611,Omari,Richmond,921-179-3270,Omari.Richmond@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+612,Rabia,Parsons,244-470-8381,Rabia.Parsons@example.com,['Android'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+613,Larissa,Perez,742-168-6071,Larissa.Perez@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,155.0,Larissa.Perez@example.com,Colgatex,No,,0.0,No Store
+616,Jerry,Whitney,990-444-7435,Jerry.Whitney@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+617,Beau,Duran,797-203-1866,Beau.Duran@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,607.0,22.93,2023-01-08,,,No Promotion,,,0.0,No Store
+618,Janet,Hughes,194-769-6265,Janet.Hughes@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,28.0,,KittyKat,No,,0.0,No Store
+619,Ria,Ponce,547-111-1151,Ria.Ponce@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+620,Neo,Lara,276-319-4768,Neo.Lara@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,108.0,23.77,2023-01-18,14.0,,Dovee,Yes,,0.0,No Store
+621,Kiana,Carter,219-142-7516,Kiana.Carter@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,241.0,43.63,2024-02-19,,,No Promotion,,,0.0,No Store
+622,Alexa,Baird,604-771-4056,Alexa.Baird@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+623,Ronald,Estes,328-873-2183,Ronald.Estes@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+625,Diane,Kelly,219-449-5089,Diane.Kelly@example.com,"['Android', 'Iphone']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,825.0,6.03,2023-12-20,,,No Promotion,,,0.0,No Store
+627,Everly,Key,152-557-5017,Everly.Key@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,24.0,Everly.Key@example.com,GatorBoost,No,,0.0,No Store
+629,Mae,Castro,714-485-2518,Mae.Castro@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,272.0,43.39,2022-07-02,,,No Promotion,,,0.0,No Store
+630,Harold,Sharpe,646-622-1082,Harold.Sharpe@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,756.0,94.64,2023-01-04,,,No Promotion,,,0.0,No Store
+631,Brooklyn,Fowler,933-501-9509,Brooklyn.Fowler@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,773.0,29.8,2023-06-21,,,No Promotion,,,0.0,No Store
+632,Enya,Chen,266-343-6530,Enya.Chen@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+633,Luisa,Fisher,510-167-1940,Luisa.Fisher@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+634,Elodie,Flores,565-243-9336,Elodie.Flores@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+635,Hazel,Yoder,839-203-3903,Hazel.Yoder@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+636,Amber,Gonzalez,884-628-1984,Amber.Gonzalez@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+637,Juliet,Buck,499-242-5191,Juliet.Buck@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+638,Jamie,Berg,397-515-6866,Jamie.Berg@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,674.0,30.12,2023-09-23,,,No Promotion,,,0.0,No Store
+640,Nadia,Wyatt,277-573-9871,Nadia.Wyatt@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,1000.0,8.46,2022-05-25,,,No Promotion,,,0.0,No Store
+641,Kacie,Morse,108-917-7237,Kacie.Morse@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,466.0,12.63,2023-02-20,,,No Promotion,,,0.0,No Store
+642,Seth,Walter,988-932-7592,Seth.Walter@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+643,Lauren,Ashley,564-133-8260,Lauren.Ashley@example.com,"['Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+644,Wilfred,Michael,632-902-2453,Wilfred.Michael@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+645,Gary,Richards,970-902-7934,Gary.Richards@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+646,Brittney,Ruiz,259-940-6592,Brittney.Ruiz@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,965.0,27.26,2023-05-17,,,No Promotion,,,0.0,No Store
+647,Jaxson,Moss,499-701-5813,Jaxson.Moss@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+648,Luna,Levy,855-484-1981,Luna.Levy@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+651,Jamil,Maldonado,424-799-2220,Jamil.Maldonado@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+652,Dillon,Johnston,732-904-7872,Dillon.Johnston@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+654,Dexter,Hartley,582-489-4208,Dexter.Hartley@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+655,Hari,Everett,487-669-8884,Hari.Everett@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+656,Tomos,Velez,233-661-3978,Tomos.Velez@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,493.0,4.7,2023-11-26,83.0,Tomos.Velez@example.com,RedCow,Yes,,0.0,No Store
+657,Abu,Delacruz,401-411-2184,Abu.Delacruz@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+658,Syeda,Calhoun,738-680-1717,Syeda.Calhoun@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+659,Oliwier,Gill,902-175-4864,Oliwier.Gill@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,778.0,36.03,2023-06-01,,,No Promotion,,,0.0,No Store
+660,Zayn,Kaufman,893-890-8415,Zayn.Kaufman@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,708.0,30.12,2022-11-09,,,No Promotion,,,0.0,No Store
+661,Vera,Walker,516-811-2158,Vera.Walker@example.com,"['Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+662,Anthony,Mccullough,330-176-2600,Anthony.Mccullough@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,423.0,5.7,2023-05-28,,,No Promotion,,,0.0,No Store
+663,Rowan,Acevedo,223-620-9032,Rowan.Acevedo@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,187.0,35.98,2022-10-14,,,No Promotion,,,0.0,No Store
+664,Zara,Oconnell,543-537-6044,Zara.Oconnell@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+665,Lucia,Cisneros,470-574-7167,Lucia.Cisneros@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+666,Julius,Donnelly,733-325-2658,Julius.Donnelly@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+668,Joshua,Bonner,550-710-1849,Joshua.Bonner@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+669,Abdirahman,Marsh,653-601-4374,Abdirahman.Marsh@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+670,Jacob,Patton,914-260-3945,Jacob.Patton@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+672,Kane,Huff,417-611-9319,Kane.Huff@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+673,Sapphire,Hatfield,564-357-3504,Sapphire.Hatfield@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+674,Mahir,Cooper,829-570-7880,Mahir.Cooper@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,885.0,12.32,2022-10-10,,,No Promotion,,,0.0,No Store
+675,Tom,Tapia,439-227-1780,Tom.Tapia@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+676,Oliwia,Harvey,143-701-8741,Oliwia.Harvey@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+677,Kelvin,Hendricks,767-726-4455,Kelvin.Hendricks@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+678,Mustafa,Mason,866-179-9539,Mustafa.Mason@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,400.0,1.35,2022-01-20,,,No Promotion,,,0.0,No Store
+679,Gabriela,Norton,138-968-6467,Gabriela.Norton@example.com,['Android'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,187.0,Gabriela.Norton@example.com,Dovee,No,,0.0,No Store
+680,Esha,Zuniga,807-517-9078,Esha.Zuniga@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+681,Lucas,Burke,321-512-2703,Lucas.Burke@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+682,Laura,Valdez,766-901-1157,Laura.Valdez@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,749.0,40.33,2023-07-29,,,No Promotion,,,0.0,No Store
+683,Irene,Kim,946-883-2145,Irene.Kim@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,830.0,51.35,2023-09-24,,,No Promotion,,,0.0,No Store
+684,Raheem,Ellis,491-961-7709,Raheem.Ellis@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,200.0,,Krafty Cheddar,No,,0.0,No Store
+685,Lisa,Mcclain,518-968-9659,Lisa.Mcclain@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,340.0,92.9,2023-05-17,,,No Promotion,,,0.0,No Store
+687,Thea,Suarez,647-211-7337,Thea.Suarez@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,262.0,57.67,2023-01-07,,,No Promotion,,,0.0,No Store
+688,Leighton,Crane,372-753-5586,Leighton.Crane@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+689,Kayla,Jones,579-756-1305,Kayla.Jones@example.com,"['Android', 'Iphone']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+690,Jessie,Noble,557-354-5286,Jessie.Noble@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+694,Richard,Pope,216-184-3684,Richard.Pope@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+695,Xander,Levine,790-969-1579,Xander.Levine@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,369.0,10.85,2023-04-08,,,No Promotion,,,0.0,No Store
+696,Anais,Pineda,609-304-3412,Anais.Pineda@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,879.0,66.3,2023-09-25,,,No Promotion,,,0.0,No Store
+698,Arjun,Dejesus,693-790-8692,Arjun.Dejesus@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,143.0,Arjun.Dejesus@example.com,Dovee,No,,0.0,No Store
+699,Jonathan,Klein,495-419-4637,Jonathan.Klein@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,931.0,39.03,2022-02-10,,,No Promotion,,,0.0,No Store
+700,Dante,Burgess,222-241-4261,Dante.Burgess@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+703,Wade,Hancock,245-455-9119,Wade.Hancock@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,51.0,Wade.Hancock@example.com,Popsi,No,,0.0,No Store
+704,Nicholas,Thomson,936-615-3052,Nicholas.Thomson@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+708,Enzo,Whitney,565-709-5636,Enzo.Whitney@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+709,Stacey,Daniel,246-819-8817,Stacey.Daniel@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+710,Candice,Moyer,964-229-5609,Candice.Moyer@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,595.0,8.35,2023-03-22,,,No Promotion,,,0.0,No Store
+711,Calvin,Tucker,338-784-4359,Calvin.Tucker@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,97.0,,Dovee,No,,0.0,No Store
+712,Bronte,Mendoza,323-783-6615,Bronte.Mendoza@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,248.0,10.43,2023-03-17,,,No Promotion,,,0.0,No Store
+713,Ameer,Orr,993-387-9130,Ameer.Orr@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,718.0,63.51,2022-10-31,,,No Promotion,,,0.0,No Store
+714,Isla,Barber,860-505-2643,Isla.Barber@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,214.0,13.48,2024-01-09,,,No Promotion,,,0.0,No Store
+716,Barnaby,Wagner,974-500-4168,Barnaby.Wagner@example.com,['Desktop'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+717,Barry,Taylor,999-341-2797,Barry.Taylor@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,361.0,31.77,2023-10-06,,,No Promotion,,,0.0,No Store
+718,Esme,Reeves,151-285-9583,Esme.Reeves@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,972.0,13.25,2023-05-15,,,No Promotion,,,0.0,No Store
+719,Marnie,White,267-434-1395,Marnie.White@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,113.0,67.37,2023-08-14,,,No Promotion,,,0.0,No Store
+720,Giovanni,Duncan,679-161-6360,Giovanni.Duncan@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+721,Hannah,Roman,331-750-4621,Hannah.Roman@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+722,Nannie,Hunt,290-190-1157,Nannie.Hunt@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,963.0,122.3,2023-01-06,,,No Promotion,,,0.0,No Store
+723,Yash,Mcleod,270-525-3291,Yash.Mcleod@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,163.0,,GatorBoost,Yes,,0.0,No Store
+724,Mae,Barry,501-577-5306,Mae.Barry@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+725,Dylan,York,832-799-7454,Dylan.York@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+726,Aya,Weeks,466-888-7144,Aya.Weeks@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+727,Dawn,Cisneros,375-337-2745,Dawn.Cisneros@example.com,['Desktop'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+728,Rohan,Figueroa,542-617-7442,Rohan.Figueroa@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+729,Abigail,Medina,857-602-1192,Abigail.Medina@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+730,Rhodri,Haley,574-869-4715,Rhodri.Haley@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,146.0,,GatorBoost,No,,0.0,No Store
+731,Denzel,Black,677-290-8939,Denzel.Black@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,296.0,4.09,2024-01-23,,,No Promotion,,,0.0,No Store
+732,Sienna,Howard,835-486-5256,Sienna.Howard@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+734,Harun,Clark,853-267-3048,Harun.Clark@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,986.0,8.99,2024-02-29,,,No Promotion,,,0.0,No Store
+737,Kiara,Bell,614-291-6530,Kiara.Bell@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+738,Gertrude,Mcgrath,364-150-1035,Gertrude.Mcgrath@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,874.0,71.33,2023-08-02,,,No Promotion,,,0.0,No Store
+739,Lewis,Brooks,737-205-4525,Lewis.Brooks@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,316.0,40.22,2023-01-26,,,No Promotion,,,0.0,No Store
+740,Khalid,Burke,973-766-4810,Khalid.Burke@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+743,Wendy,Mcclure,830-402-9784,Wendy.Mcclure@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,563.0,57.21,2024-01-13,,,No Promotion,,,0.0,No Store
+744,Haydn,Ramos,354-376-9233,Haydn.Ramos@example.com,"['Android', 'Iphone']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+745,Nettie,Bryan,274-274-8873,Nettie.Bryan@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+747,Tia,Ali,507-663-5326,Tia.Ali@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+748,Montgomery,Davila,267-999-7224,Montgomery.Davila@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,247.0,76.5,2022-10-03,,,No Promotion,,,0.0,No Store
+749,Tobias,Beltran,598-751-1029,Tobias.Beltran@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,438.0,23.49,2022-09-05,,,No Promotion,,,0.0,No Store
+750,Yusuf,Dickerson,502-896-9441,Yusuf.Dickerson@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+751,Holly,Dillon,662-944-2078,Holly.Dillon@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,915.0,22.27,2022-02-17,,,No Promotion,,,0.0,No Store
+753,Anais,Ball,802-416-6545,Anais.Ball@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+754,Adem,Kerr,219-873-6077,Adem.Kerr@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,108.0,2.89,2023-12-04,,,No Promotion,,,0.0,No Store
+755,Amie,Hood,659-426-4878,Amie.Hood@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,936.0,2.78,2022-11-08,,,No Promotion,,,0.0,No Store
+756,Herbie,Huber,562-925-1087,Herbie.Huber@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+757,Bill,Andersen,962-770-1270,Bill.Andersen@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+758,Halima,Maldonado,831-743-6220,Halima.Maldonado@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,835.0,29.08,2023-05-31,,,No Promotion,,,0.0,No Store
+760,Bertie,Cobb,171-373-6091,Bertie.Cobb@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+761,Gordon,Morales,973-462-1199,Gordon.Morales@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+762,Frederick,Everett,262-696-7077,Frederick.Everett@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+763,Huda,Crane,243-321-6881,Huda.Crane@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+764,Cecily,Escobar,840-532-1467,Cecily.Escobar@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,989.0,11.87,2023-06-19,,,No Promotion,,,0.0,No Store
+765,Amir,Blackwell,291-386-7567,Amir.Blackwell@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+766,Sasha,Berger,492-295-4570,Sasha.Berger@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+767,Lina,Trujillo,351-538-5203,Lina.Trujillo@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+768,Caleb,Obrien,223-387-1014,Caleb.Obrien@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,543.0,41.86,2023-10-04,8.0,Caleb.Obrien@example.com,Krafty Cheddar,Yes,,0.0,No Store
+769,Marilyn,Scott,360-359-2274,Marilyn.Scott@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,885.0,15.39,2023-01-25,,,No Promotion,,,0.0,No Store
+770,Jannat,Landry,754-634-9309,Jannat.Landry@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,602.0,4.46,2023-07-18,,,No Promotion,,,0.0,No Store
+771,Kristen,Curry,473-371-9332,Kristen.Curry@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+772,Rajan,Dickson,372-775-6929,Rajan.Dickson@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+773,Luqman,Larson,100-329-7363,Luqman.Larson@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,680.0,8.22,2024-03-01,,,No Promotion,,,0.0,No Store
+774,Bryan,Powell,235-538-4936,Bryan.Powell@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+775,Haider,Lynn,796-196-9713,Haider.Lynn@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+776,Jennie,Freeman,396-732-6980,Jennie.Freeman@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+777,Mohsin,Conley,979-201-3101,Mohsin.Conley@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+778,Willow,Buck,472-603-6198,Willow.Buck@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+779,Krish,Hutchinson,405-788-7051,Krish.Hutchinson@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,998.0,172.87,2024-02-27,,,No Promotion,,,0.0,No Store
+780,Madeline,Mann,441-188-5776,Madeline.Mann@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+781,Mari,Phillips,301-646-5827,Mari.Phillips@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,461.0,50.19,2022-05-29,,,No Promotion,,,0.0,No Store
+782,Paula,West,345-217-2266,Paula.West@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+783,Saira,Lewis,921-562-9790,Saira.Lewis@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,978.0,3.72,2023-11-07,,,No Promotion,,,0.0,No Store
+784,Tiana,Decker,255-136-3687,Tiana.Decker@example.com,"['Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+786,Earl,Vargas,821-464-7474,Earl.Vargas@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,408.0,19.72,2022-07-24,,,No Promotion,,,0.0,No Store
+787,Delilah,Wu,668-572-6520,Delilah.Wu@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+789,Lloyd,Wise,521-580-3829,Lloyd.Wise@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+790,Alex,Alexander,489-290-8290,Alex.Alexander@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+791,Aoife,Davidson,628-333-9139,Aoife.Davidson@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,129.0,Aoife.Davidson@example.com,RedCow,Yes,,0.0,No Store
+792,Emilie,Frye,193-516-9014,Emilie.Frye@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,925.0,18.76,2023-08-25,,,No Promotion,,,0.0,No Store
+793,Elif,Hopkins,953-491-9939,Elif.Hopkins@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+794,Hazel,Watson,349-725-3565,Hazel.Watson@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+795,Jonathan,David,815-636-7913,Jonathan.David@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+796,Robbie,Hardy,950-716-3630,Robbie.Hardy@example.com,['Android'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+797,Lilian,Strickland,925-438-1993,Lilian.Strickland@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+800,Olivier,Thornton,401-494-6634,Olivier.Thornton@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,923.0,42.19,2024-04-08,,,No Promotion,,,0.0,No Store
+801,Gabriel,Mccormick,903-845-9623,Gabriel.Mccormick@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,387.0,31.28,2024-02-13,,,No Promotion,,,0.0,No Store
+802,Eleni,Maxwell,449-237-4755,Eleni.Maxwell@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,947.0,59.94,2023-11-15,,,No Promotion,,,0.0,No Store
+803,Susan,Fowler,305-117-8580,Susan.Fowler@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+804,Amin,Petersen,680-177-1233,Amin.Petersen@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+805,Gareth,Sanford,161-842-7749,Gareth.Sanford@example.com,['Android'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,138.0,Gareth.Sanford@example.com,KittyKat,No,,0.0,No Store
+806,Miriam,Stuart,846-333-2100,Miriam.Stuart@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,825.0,5.77,2023-03-27,,,No Promotion,,,0.0,No Store
+807,Polly,Mendez,916-453-8696,Polly.Mendez@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,399.0,68.15,2023-01-13,,,No Promotion,,,0.0,No Store
+808,Omer,Kemp,857-531-3045,Omer.Kemp@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+809,Abdullahi,Carson,632-547-8327,Abdullahi.Carson@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+810,Syed,Mooney,348-929-4959,Syed.Mooney@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,206.0,17.94,2022-07-22,,,No Promotion,,,0.0,No Store
+811,Dante,Moon,285-551-6208,Dante.Moon@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,375.0,73.1,2023-04-04,,,No Promotion,,,0.0,No Store
+812,Saad,Ali,185-189-3978,Saad.Ali@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,67.0,,Krafty Cheddar,Yes,,0.0,No Store
+813,Arthur,Hebert,203-343-2956,Arthur.Hebert@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+814,Demi,Patel,703-829-8473,Demi.Patel@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,425.0,28.96,2022-02-22,,,No Promotion,,,0.0,No Store
+815,Aurora,Andrews,353-307-2005,Aurora.Andrews@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,925.0,26.48,2023-08-23,,,No Promotion,,,0.0,No Store
+817,Renee,Mullen,185-170-8307,Renee.Mullen@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,441.0,88.66,2023-11-26,,,No Promotion,,,0.0,No Store
+818,Alexander,Reid,842-314-3728,Alexander.Reid@example.com,"['Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,130.0,4.42,2024-02-20,,,No Promotion,,,0.0,No Store
+820,Wilbur,Hicks,979-216-9924,Wilbur.Hicks@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,719.0,89.06,2022-03-04,,,No Promotion,,,0.0,No Store
+821,Riley,Fletcher,522-750-5985,Riley.Fletcher@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+822,Marissa,Hayes,365-359-3043,Marissa.Hayes@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,158.0,Marissa.Hayes@example.com,Oreoz,No,,0.0,No Store
+823,Juliette,Gordon,424-534-2837,Juliette.Gordon@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+824,Dan,Bates,944-189-5693,Dan.Bates@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+825,Chiara,Ho,279-331-5254,Chiara.Ho@example.com,['Iphone'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+826,Sinead,Montes,711-829-6800,Sinead.Montes@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,171.0,38.38,2024-02-17,,,No Promotion,,,0.0,No Store
+827,Laurence,Graves,609-435-5709,Laurence.Graves@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,254.0,7.83,2022-06-13,,,No Promotion,,,0.0,No Store
+828,Nora,Donaldson,414-618-5713,Nora.Donaldson@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,11.0,Nora.Donaldson@example.com,Colgatex,Yes,,0.0,No Store
+829,Ismaeel,Schmidt,110-478-3409,Ismaeel.Schmidt@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,13.0,,Popsi,Yes,,0.0,No Store
+830,Adem,Mccoy,885-779-4082,Adem.Mccoy@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+831,Angel,Browning,768-205-1455,Angel.Browning@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+832,Mabel,Foley,417-857-9143,Mabel.Foley@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+833,Hayley,Montoya,672-566-6794,Hayley.Montoya@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,813.0,126.24,2022-06-05,,,No Promotion,,,0.0,No Store
+834,Arnold,Spencer,962-701-8237,Arnold.Spencer@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+835,Russell,Carlson,635-758-7564,Russell.Carlson@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,501.0,34.41,2023-07-10,,,No Promotion,,,0.0,No Store
+836,Sasha,Ponce,746-650-5343,Sasha.Ponce@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+837,Izaak,Welsh,280-473-9965,Izaak.Welsh@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+839,Keeley,Mills,123-972-2938,Keeley.Mills@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+840,Mason,Kelley,185-970-1196,Mason.Kelley@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,939.0,13.24,2023-10-25,,,No Promotion,,,0.0,No Store
+841,Khalid,Davies,191-582-9251,Khalid.Davies@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,765.0,39.2,2022-10-21,,,No Promotion,,,0.0,No Store
+842,Nancy,Blair,434-174-7916,Nancy.Blair@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,131.0,Nancy.Blair@example.com,GatorBoost,No,,0.0,No Store
+844,Marnie,Sheppard,576-261-4653,Marnie.Sheppard@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+845,Valerie,Bright,838-333-3237,Valerie.Bright@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+846,John,Mason,768-888-3211,John.Mason@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,908.0,49.61,2022-09-15,,,No Promotion,,,0.0,No Store
+847,Hamish,Khan,609-154-4773,Hamish.Khan@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+848,Charis,Bray,175-925-8526,Charis.Bray@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+849,Soraya,Bradford,951-513-3667,Soraya.Bradford@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+851,Eshal,Carpenter,918-191-3394,Eshal.Carpenter@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+852,Evelyn,Cross,312-643-8868,Evelyn.Cross@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,916.0,18.04,2022-03-06,,,No Promotion,,,0.0,No Store
+853,Chester,Bell,501-541-1518,Chester.Bell@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+856,Maisie,Cunningham,389-110-9784,Maisie.Cunningham@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,238.0,19.07,2022-08-22,,,No Promotion,,,0.0,No Store
+857,Clementine,Beck,607-793-6646,Clementine.Beck@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,603.0,46.99,2023-04-04,,,No Promotion,,,0.0,No Store
+859,Sameer,Watkins,982-313-9358,Sameer.Watkins@example.com,['Desktop'],"{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+860,Anton,Hartman,708-986-9234,Anton.Hartman@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+861,Deacon,Boone,950-335-6994,Deacon.Boone@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,937.0,64.74,2022-12-01,,,No Promotion,,,0.0,No Store
+863,Mya,Delgado,760-931-9269,Mya.Delgado@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+864,Asia,Holloway,512-876-7834,Asia.Holloway@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+865,Christina,Blanchard,420-887-3636,Christina.Blanchard@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,913.0,22.82,2023-11-16,,,No Promotion,,,0.0,No Store
+866,Emelia,Bridges,347-640-5509,Emelia.Bridges@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+867,Ioan,Harrington,803-120-2281,Ioan.Harrington@example.com,['Iphone'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+870,Stacey,Manning,981-952-6391,Stacey.Manning@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,828.0,3.6,2023-02-15,,,No Promotion,,,0.0,No Store
+871,Ronnie,Burch,184-620-1928,Ronnie.Burch@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,706.0,12.13,2022-02-13,,,No Promotion,,,0.0,No Store
+873,Luke,Graham,132-159-2485,Luke.Graham@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,960.0,18.45,2023-09-26,,,No Promotion,,,0.0,No Store
+874,Alasdair,Mckinney,608-300-8331,Alasdair.Mckinney@example.com,"['Android', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,439.0,27.29,2023-05-03,,,No Promotion,,,0.0,No Store
+875,Cayden,Walls,355-649-8007,Cayden.Walls@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,939.0,12.4,2023-02-07,,,No Promotion,,,0.0,No Store
+876,Serena,Lewis,730-187-7131,Serena.Lewis@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+878,Mateo,Francis,508-390-8347,Mateo.Francis@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,881.0,9.88,2022-06-07,73.0,Mateo.Francis@example.com,Dovee,Yes,,0.0,No Store
+879,Lucy,Fuentes,427-948-5524,Lucy.Fuentes@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,556.0,63.95,2022-11-17,,,No Promotion,,,0.0,No Store
+880,Pippa,Harding,419-183-4778,Pippa.Harding@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+881,Kathleen,Carter,210-798-9930,Kathleen.Carter@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,415.0,4.19,2023-01-30,,,No Promotion,,,0.0,No Store
+882,Josie,Holt,745-483-6160,Josie.Holt@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,472.0,79.59,2022-05-16,,,No Promotion,,,0.0,No Store
+883,Daniela,James,716-145-3987,Daniela.James@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+884,Randy,Sparks,339-468-1078,Randy.Sparks@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+885,Omar,Ashley,156-912-7263,Omar.Ashley@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,670.0,18.73,2022-09-01,,,No Promotion,,,0.0,No Store
+886,Zachary,Lawson,655-475-1852,Zachary.Lawson@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+887,Samson,Berger,815-817-9902,Samson.Berger@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+888,Liana,Baldwin,736-366-9050,Liana.Baldwin@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,436.0,1.92,2023-11-17,,,No Promotion,,,0.0,No Store
+889,Lucas,Mcdowell,841-580-6320,Lucas.Mcdowell@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+890,Ahmad,Landry,207-841-9893,Ahmad.Landry@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,948.0,57.48,2024-01-23,,,No Promotion,,,0.0,No Store
+891,Cordelia,Serrano,950-319-1013,Cordelia.Serrano@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+892,Sydney,Pratt,297-838-1084,Sydney.Pratt@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+893,Benjamin,Riddle,835-645-8652,Benjamin.Riddle@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,797.0,40.52,2023-04-18,,,No Promotion,,,0.0,No Store
+895,Kamil,Guzman,641-829-6099,Kamil.Guzman@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,311.0,68.82,2024-04-10,,,No Promotion,,,0.0,No Store
+896,Jordanne,Juarez,376-601-8743,Jordanne.Juarez@example.com,['Iphone'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+897,Zoe,Decker,197-454-9658,Zoe.Decker@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,981.0,78.71,2023-09-14,,,No Promotion,,,0.0,No Store
+899,Frankie,Jenkins,301-409-5419,Frankie.Jenkins@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,98.0,78.96,2022-02-08,,,No Promotion,,,0.0,No Store
+900,Zane,Oconnor,108-772-5524,Zane.Oconnor@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,314.0,96.19,2023-02-27,,,No Promotion,,,0.0,No Store
+901,Lily-May,Horne,564-761-8451,Lily-May.Horne@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,677.0,5.07,2023-06-08,,,No Promotion,,,0.0,No Store
+902,Mitchell,Murray,939-709-6815,Mitchell.Murray@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,939.0,13.01,2023-01-15,,,No Promotion,,,0.0,No Store
+903,Dominik,Velez,149-740-6115,Dominik.Velez@example.com,"['Android', 'Iphone']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,318.0,3.92,2023-12-03,,,No Promotion,,,0.0,No Store
+905,Cory,Case,406-161-3681,Cory.Case@example.com,['Android'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,160.0,,Colgatex,No,,0.0,No Store
+907,Samia,Bradley,363-816-6259,Samia.Bradley@example.com,"['Iphone', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,660.0,60.75,2023-06-26,,,No Promotion,,,0.0,No Store
+909,Tyler,Vasquez,899-668-7177,Tyler.Vasquez@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,43.0,,Colgatex,No,,0.0,No Store
+910,Everly,Chaney,184-294-5435,Everly.Chaney@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+911,Sapphire,Lane,847-138-8647,Sapphire.Lane@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+912,Junaid,Fletcher,677-571-4277,Junaid.Fletcher@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,888.0,31.92,2022-09-09,,,No Promotion,,,0.0,No Store
+913,Ricardo,Odling,218-272-9415,Ricardo.Odling@example.com,"['Android', 'Iphone']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+914,Nancy,Sharp,723-866-1140,Nancy.Sharp@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,260.0,85.96,2024-03-09,,,No Promotion,,,0.0,No Store
+915,Barry,Buck,667-391-6777,Barry.Buck@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,676.0,7.51,2022-02-25,7.0,,Flixnet,No,,0.0,No Store
+916,Mya,Ho,448-770-8204,Mya.Ho@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,960.0,39.94,2022-07-06,,,No Promotion,,,0.0,No Store
+917,Carol,Russo,192-156-9508,Carol.Russo@example.com,"['Android', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+918,William,Franco,196-468-3312,William.Franco@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,269.0,41.46,2023-07-12,,,No Promotion,,,0.0,No Store
+919,Ayesha,Underwood,687-284-9762,Ayesha.Underwood@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,538.0,23.74,2022-02-18,,,No Promotion,,,0.0,No Store
+920,Kamil,Bernard,400-528-1349,Kamil.Bernard@example.com,['Desktop'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+921,Hollie,Escobar,978-312-6279,Hollie.Escobar@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+923,Russell,Long,399-959-7203,Russell.Long@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+924,Kendra,Francis,680-603-3144,Kendra.Francis@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,915.0,56.23,2022-04-05,,,No Promotion,,,0.0,No Store
+925,Yasmine,Scott,300-321-6761,Yasmine.Scott@example.com,['Desktop'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,976.0,37.77,2023-01-18,,,No Promotion,,,0.0,No Store
+926,Ann,John,814-362-6094,Ann.John@example.com,"['Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,531.0,70.47,2022-01-07,104.0,Ann.John@example.com,RedCow,Yes,,0.0,No Store
+928,Hanna,Knight,249-198-1689,Hanna.Knight@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+929,Alannah,Perkins,705-521-6039,Alannah.Perkins@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,125.0,,RedCow,Yes,,0.0,No Store
+930,Christina,Mays,333-143-8841,Christina.Mays@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,933.0,11.02,2022-07-13,,,No Promotion,,,0.0,No Store
+931,Tori,Rowland,372-470-9101,Tori.Rowland@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,187.0,13.75,2022-02-20,,,No Promotion,,,0.0,No Store
+932,Ayden,Valentine,208-392-1702,Ayden.Valentine@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,676.0,70.99,2023-03-28,,,No Promotion,,,0.0,No Store
+933,Kaine,Blankenship,294-274-7917,Kaine.Blankenship@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,957.0,6.61,2023-10-01,75.0,Kaine.Blankenship@example.com,RedCow,Yes,,0.0,No Store
+934,Alessandro,French,216-516-1958,Alessandro.French@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,4.0,Alessandro.French@example.com,Popsi,Yes,,0.0,No Store
+936,Ted,Wiggins,153-176-3641,Ted.Wiggins@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,530.0,25.9,2022-07-30,,,No Promotion,,,0.0,No Store
+937,Nina,Mathews,863-385-2205,Nina.Mathews@example.com,['Iphone'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+939,Alyssa,Bradshaw,606-353-8050,Alyssa.Bradshaw@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,926.0,15.67,2023-04-07,,,No Promotion,,,0.0,No Store
+940,Marilyn,Hart,635-581-5074,Marilyn.Hart@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,388.0,69.61,2022-09-25,,,No Promotion,,,0.0,No Store
+941,Connor,Neal,189-827-7386,Connor.Neal@example.com,"['Android', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+942,Cai,Rowe,263-391-9368,Cai.Rowe@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+943,Delores,Carroll,778-532-2184,Delores.Carroll@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+945,Elisha,Owens,195-699-1871,Elisha.Owens@example.com,['Iphone'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,945.0,78.81,2022-08-19,,,No Promotion,,,0.0,No Store
+946,Lacie,Mayer,412-562-8215,Lacie.Mayer@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,433.0,20.12,2024-01-30,,,No Promotion,,,0.0,No Store
+947,Isra,Burgess,142-470-3907,Isra.Burgess@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,,0.0,,137.0,,Oreoz,Yes,,0.0,No Store
+948,Kobe,Knapp,911-288-9695,Kobe.Knapp@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+949,Sufyaan,Villanueva,882-282-1419,Sufyaan.Villanueva@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+950,Meredith,Reyes,680-737-7650,Meredith.Reyes@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,813.0,52.8,2022-11-19,,,No Promotion,,,0.0,No Store
+951,Chelsea,Proctor,256-560-3458,Chelsea.Proctor@example.com,['Desktop'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+952,Humaira,Quinn,623-887-1255,Humaira.Quinn@example.com,['Desktop'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,20.0,73.27,2024-03-10,,,No Promotion,,,0.0,No Store
+953,Zaynab,Davila,767-906-5124,Zaynab.Davila@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+954,Aston,Villegas,553-640-6714,Aston.Villegas@example.com,"['Android', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,647.0,51.72,2024-01-10,,,No Promotion,,,0.0,No Store
+955,Stuart,Clements,104-221-4124,Stuart.Clements@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+956,Zakariya,Stuart,192-776-4957,Zakariya.Stuart@example.com,['Desktop'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,936.0,34.9,2022-03-27,,,No Promotion,,,0.0,No Store
+958,Luna,Fowler,137-365-6816,Luna.Fowler@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,945.0,39.94,2022-01-17,89.0,,Dovee,Yes,,0.0,No Store
+959,Haydn,Contreras,694-921-2135,Haydn.Contreras@example.com,"['Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+960,Lewis,Mcmahon,682-426-4872,Lewis.Mcmahon@example.com,['Android'],"{'City': 'San Francisco', 'Country': 'USA'}",,,,,,973.0,35.81,2022-01-20,,,No Promotion,,,0.0,No Store
+961,Tobias,Schultz,995-854-2821,Tobias.Schultz@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,515.0,61.9,2022-08-25,,,No Promotion,,,0.0,No Store
+963,Billy,Norton,816-614-5153,Billy.Norton@example.com,['Android'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,850.0,1.0,2023-10-07,,,No Promotion,,,0.0,No Store
+964,Colby,Harding,584-554-7060,Colby.Harding@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,1000.0,32.3,2022-11-21,,,No Promotion,,,0.0,No Store
+965,Renee,Arroyo,706-663-4493,Renee.Arroyo@example.com,"['Iphone', 'Desktop']","{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,571.0,7.81,2022-01-17,,,No Promotion,,,0.0,No Store
+966,Marjorie,Munoz,385-637-4138,Marjorie.Munoz@example.com,['Android'],"{'City': 'Los Angeles', 'Country': 'USA'}",,,,,,827.0,14.89,2022-07-28,,,No Promotion,,,0.0,No Store
+967,Emilio,Stevenson,293-399-2353,Emilio.Stevenson@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+968,Roosevelt,Huff,348-716-1274,Roosevelt.Huff@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+969,Layla,Roth,812-207-8855,Layla.Roth@example.com,"['Android', 'Iphone']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+971,Kyran,Duncan,433-632-3326,Kyran.Duncan@example.com,"['Android', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+972,Rhiannon,Vaughan,206-626-6238,Rhiannon.Vaughan@example.com,"['Android', 'Iphone']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+973,Jean,Winters,526-938-2752,Jean.Winters@example.com,"['Android', 'Desktop']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,540.0,43.94,2022-11-08,54.0,Jean.Winters@example.com,KittyKat,Yes,,0.0,No Store
+974,Jared,Hamilton,642-707-7765,Jared.Hamilton@example.com,['Android'],"{'City': 'New York', 'Country': 'USA'}",,,,,,838.0,7.29,2023-09-30,,,No Promotion,,,0.0,No Store
+975,Zachary,Rubio,971-477-1542,Zachary.Rubio@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+976,Marnie,Mayo,725-331-2757,Marnie.Mayo@example.com,['Android'],"{'City': 'San Diego', 'Country': 'USA'}",,,,,,864.0,33.41,2022-12-01,,,No Promotion,,,0.0,No Store
+978,Zain,Haney,206-514-3761,Zain.Haney@example.com,['Desktop'],"{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+979,Myrtle,Bradford,960-593-3677,Myrtle.Bradford@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,830.0,45.17,2022-02-22,,,No Promotion,,,0.0,No Store
+980,Kacie,Lester,673-651-6332,Kacie.Lester@example.com,['Android'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,593.0,53.68,2023-10-24,101.0,Kacie.Lester@example.com,GatorBoost,Yes,,0.0,No Store
+981,Gwen,Norris,699-606-9952,Gwen.Norris@example.com,"['Android', 'Iphone']","{'City': 'San Diego', 'Country': 'USA'}",,,,,,366.0,12.47,2022-03-19,,,No Promotion,,,0.0,No Store
+982,Myles,Sharpe,420-682-4722,Myles.Sharpe@example.com,['Iphone'],"{'City': 'Toronto', 'Country': 'Canada'}",,,,,,9.0,28.56,2023-10-26,,,No Promotion,,,0.0,No Store
+983,Nicola,Davenport,335-679-5225,Nicola.Davenport@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,,0.0,,162.0,,Flixnet,No,,0.0,No Store
+984,Adrian,Joseph,808-456-6071,Adrian.Joseph@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,345.0,49.27,2022-12-15,,,No Promotion,,,0.0,No Store
+985,Lloyd,Robbins,603-494-3648,Lloyd.Robbins@example.com,"['Iphone', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+988,Cain,Robertson,375-525-5823,Cain.Robertson@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+989,Leyla,Finley,743-377-7767,Leyla.Finley@example.com,"['Iphone', 'Desktop']","{'City': 'New York', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+991,Marion,Webster,169-218-9165,Marion.Webster@example.com,"['Iphone', 'Desktop']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,380.0,51.59,2023-03-25,,,No Promotion,,,0.0,No Store
+992,Sebastian,Pierce,947-717-1440,Sebastian.Pierce@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,102.0,78.86,2022-12-06,,,No Promotion,,,0.0,No Store
+993,Jayson,Sutton,289-775-9088,Jayson.Sutton@example.com,"['Iphone', 'Desktop']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+994,Inaaya,Bruce,780-773-8755,Inaaya.Bruce@example.com,"['Android', 'Desktop']","{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+995,Raja,Reeves,990-569-7356,Raja.Reeves@example.com,"['Android', 'Iphone']","{'City': 'Montreal', 'Country': 'Canada'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+996,Maria,Stephens,798-578-4631,Maria.Stephens@example.com,"['Android', 'Iphone']","{'City': 'Toronto', 'Country': 'Canada'}",,,,,,318.0,12.77,2023-07-03,,,No Promotion,,,0.0,No Store
+997,Sam,Arias,415-467-1137,Sam.Arias@example.com,['Iphone'],"{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+998,Fatimah,Johns,520-433-7411,Fatimah.Johns@example.com,['Iphone'],"{'City': 'London', 'Country': 'United Kingdom'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+999,Ada,Reid,958-944-9616,Ada.Reid@example.com,"['Android', 'Iphone', 'Desktop']","{'City': 'Chicago', 'Country': 'USA'}",,,,,,,0.0,,,,No Promotion,,,0.0,No Store
+1000,Simeon,Mccall,135-125-7738,Simeon.Mccall@example.com,"['Android', 'Desktop']","{'City': 'San Francisco', 'Country': 'USA'}",,,,,,69.0,21.2,2023-02-23,,,No Promotion,,,0.0,No Store
+5,Beatrix,Everett,194-640-2758,Beatrix.Everett@example.com,,,1.0,0.0,0.0,"Paris, France",Beatrix Everett,,0.0,,,,No Promotion,,,0.0,No Store
+24,Isabelle,Lopez,981-878-3234,Isabelle.Lopez@example.com,,,1.0,0.0,1.0,"Paris, France",Isabelle Lopez,,0.0,,,,No Promotion,,,0.0,No Store
+26,Julius,Garrett,866-664-7969,Julius.Garrett@example.com,,,1.0,1.0,1.0,"Barcelona, Spain",Julius Garrett,,0.0,,,,No Promotion,,,0.0,No Store
+29,Dafydd,Preston,368-987-3267,Dafydd.Preston@example.com,,,1.0,1.0,1.0,"Barcelona, Spain",Dafydd Preston,,0.0,,,,No Promotion,,,0.0,No Store
+33,Louise,Daniel,917-348-4728,Louise.Daniel@example.com,,,1.0,0.0,1.0,"Barcelona, Spain",Louise Daniel,,0.0,,,,No Promotion,,,0.0,No Store
+39,Keyaan,Holland,845-797-2979,Keyaan.Holland@example.com,,,1.0,0.0,1.0,"Barcelona, Spain",Keyaan Holland,,0.0,,,,No Promotion,,,0.0,No Store
+68,Saif,Green,978-659-7286,Saif.Green@example.com,,,0.0,0.0,1.0,"Paris, France",Saif Green,899.0,75.99,2024-03-04,92.0,,Dovee,Yes,,0.0,No Store
+73,Kara,Stewart,794-314-2500,Kara.Stewart@example.com,,,1.0,0.0,1.0,"Paris, France",Kara Stewart,420.0,77.35,2024-02-04,,,No Promotion,,,0.0,No Store
+117,Priya,Moore,455-692-4736,Priya.Moore@example.com,,,0.0,1.0,0.0,"Paris, France",Priya Moore,,0.0,,,,No Promotion,,,0.0,No Store
+119,Arron,Peck,226-392-7970,Arron.Peck@example.com,,,1.0,0.0,1.0,"Paris, France",Arron Peck,,0.0,,,,No Promotion,,,0.0,No Store
+120,Justin,Rowland,665-725-2354,Justin.Rowland@example.com,,,1.0,0.0,1.0,"Paris, France",Justin Rowland,,0.0,,,,No Promotion,,,0.0,No Store
+125,Nora,Ball,921-528-9551,Nora.Ball@example.com,,,0.0,1.0,0.0,"Barcelona, Spain",Nora Ball,,0.0,,,,No Promotion,,,0.0,No Store
+142,Everly,Fuentes,398-369-8927,Everly.Fuentes@example.com,,,1.0,0.0,0.0,"Barcelona, Spain",Everly Fuentes,427.0,111.03,2024-04-14,,,No Promotion,,,0.0,No Store
+173,Enya,Hernandez,406-397-1498,Enya.Hernandez@example.com,,,0.0,0.0,1.0,"Barcelona, Spain",Enya Hernandez,38.0,106.3,2024-02-04,,,No Promotion,,,0.0,No Store
+218,Tony,Shepard,416-772-8288,Tony.Shepard@example.com,,,0.0,0.0,1.0,"Barcelona, Spain",Tony Shepard,,0.0,,168.0,,Oreoz,No,,0.0,No Store
+222,Sonia,Lowe,418-550-4001,Sonia.Lowe@example.com,,,1.0,0.0,0.0,"Paris, France",Sonia Lowe,,0.0,,,,No Promotion,,,0.0,No Store
+228,Ned,Rowland,400-103-9062,Ned.Rowland@example.com,,,0.0,0.0,1.0,"Paris, France",Ned Rowland,,0.0,,,,No Promotion,,,0.0,No Store
+261,Dulcie,Melendez,659-843-5422,Dulcie.Melendez@example.com,,,1.0,1.0,0.0,"Barcelona, Spain",Dulcie Melendez,,0.0,,,,No Promotion,,,0.0,No Store
+271,Princess,Schneider,683-604-6287,Princess.Schneider@example.com,,,1.0,1.0,0.0,"Paris, France",Princess Schneider,,0.0,,,,No Promotion,,,0.0,No Store
+281,Rosa,Stone,922-216-4141,Rosa.Stone@example.com,,,0.0,0.0,1.0,"Paris, France",Rosa Stone,,0.0,,,,No Promotion,,,0.0,No Store
+330,Abubakar,Shaffer,404-849-9394,Abubakar.Shaffer@example.com,,,1.0,0.0,0.0,"Barcelona, Spain",Abubakar Shaffer,,0.0,,,,No Promotion,,,0.0,No Store
+338,Patricia,John,338-345-6084,Patricia.John@example.com,,,0.0,1.0,0.0,"Barcelona, Spain",Patricia John,,0.0,,,,No Promotion,,,0.0,No Store
+344,Randy,Edwards,935-107-2953,Randy.Edwards@example.com,,,0.0,0.0,1.0,"Barcelona, Spain",Randy Edwards,,0.0,,,,No Promotion,,,0.0,No Store
+358,Sadie,Hammond,799-609-4421,Sadie.Hammond@example.com,,,1.0,0.0,1.0,"Barcelona, Spain",Sadie Hammond,389.0,58.16,2024-04-05,,,No Promotion,,,0.0,No Store
+360,Judy,Clayton,757-533-4647,Judy.Clayton@example.com,,,1.0,0.0,1.0,"Paris, France",Judy Clayton,184.0,25.4,2024-03-26,,,No Promotion,,,0.0,No Store
+379,Leanne,Cordova,514-225-7453,Leanne.Cordova@example.com,,,0.0,1.0,0.0,"Paris, France",Leanne Cordova,874.0,34.79,2024-03-15,,,No Promotion,,,0.0,No Store
+393,Timothy,Jacobs,105-356-5519,Timothy.Jacobs@example.com,,,1.0,1.0,0.0,"Barcelona, Spain",Timothy Jacobs,78.0,56.54,2024-02-18,,,No Promotion,,,0.0,No Store
+403,Tariq,Holman,734-647-8275,Tariq.Holman@example.com,,,0.0,1.0,1.0,"Paris, France",Tariq Holman,,0.0,,,,No Promotion,,,0.0,No Store
+412,Omar,Clements,998-234-1057,Omar.Clements@example.com,,,0.0,1.0,0.0,"Barcelona, Spain",Omar Clements,173.0,39.98,2024-01-05,,,No Promotion,,,0.0,No Store
+427,Lola,Vaughan,722-400-6707,Lola.Vaughan@example.com,,,0.0,1.0,0.0,"Paris, France",Lola Vaughan,,0.0,,,,No Promotion,,,0.0,No Store
+448,Amna,Garner,157-518-8037,Amna.Garner@example.com,,,1.0,1.0,1.0,"Paris, France",Amna Garner,,0.0,,,,No Promotion,,,0.0,No Store
+450,Rio,Suarez,304-182-8487,Rio.Suarez@example.com,,,0.0,1.0,1.0,"Paris, France",Rio Suarez,,0.0,,,,No Promotion,,,0.0,No Store
+465,Karen,Robles,144-367-7871,Karen.Robles@example.com,,,0.0,1.0,0.0,"Barcelona, Spain",Karen Robles,,0.0,,,,No Promotion,,,0.0,No Store
+468,Cassie,Gaines,496-692-2413,Cassie.Gaines@example.com,,,0.0,1.0,1.0,"Paris, France",Cassie Gaines,,0.0,,,,No Promotion,,,0.0,No Store
+474,Willard,Gray,894-914-4304,Willard.Gray@example.com,,,1.0,1.0,1.0,"Paris, France",Willard Gray,,0.0,,,,No Promotion,,,0.0,No Store
+475,Sophie,Lindsey,392-864-7558,Sophie.Lindsey@example.com,,,0.0,1.0,0.0,"Paris, France",Sophie Lindsey,,0.0,,,,No Promotion,,,0.0,No Store
+477,Dillon,Cisneros,304-384-6230,Dillon.Cisneros@example.com,,,1.0,1.0,1.0,"Paris, France",Dillon Cisneros,,0.0,,,,No Promotion,,,0.0,No Store
+488,Jenson,Carlson,282-249-3068,Jenson.Carlson@example.com,,,1.0,1.0,1.0,"Paris, France",Jenson Carlson,,0.0,,,,No Promotion,,,0.0,No Store
+500,Alexandra,Young,425-414-7823,Alexandra.Young@example.com,,,1.0,1.0,0.0,"Barcelona, Spain",Alexandra Young,,0.0,,,,No Promotion,,,0.0,No Store
+552,Daniel,Reid,753-936-1634,Daniel.Reid@example.com,,,1.0,0.0,0.0,"Paris, France",Daniel Reid,,0.0,,,,No Promotion,,,0.0,No Store
+574,Kevin,Sherman,185-617-6120,Kevin.Sherman@example.com,,,0.0,0.0,1.0,"Barcelona, Spain",Kevin Sherman,,0.0,,,,No Promotion,,,0.0,No Store
+580,Aayan,Donovan,476-401-9860,Aayan.Donovan@example.com,,,1.0,1.0,0.0,"Paris, France",Aayan Donovan,,0.0,,,,No Promotion,,,0.0,No Store
+609,Taylor,Leon,857-418-9149,Taylor.Leon@example.com,,,1.0,0.0,0.0,"Paris, France",Taylor Leon,5.0,137.71,2024-01-19,,,No Promotion,,,0.0,No Store
+614,Ibrahim,Robertson,603-299-3596,Ibrahim.Robertson@example.com,,,1.0,1.0,1.0,"Barcelona, Spain",Ibrahim Robertson,,0.0,,,,No Promotion,,,0.0,No Store
+628,Nancy,Stuart,301-686-1705,Nancy.Stuart@example.com,,,0.0,0.0,1.0,"Paris, France",Nancy Stuart,,0.0,,,,No Promotion,,,0.0,No Store
+649,Zaynah,Wong,597-835-8978,Zaynah.Wong@example.com,,,1.0,0.0,1.0,"Paris, France",Zaynah Wong,,0.0,,,,No Promotion,,,0.0,No Store
+650,Cormac,Greer,722-120-7628,Cormac.Greer@example.com,,,0.0,1.0,1.0,"Paris, France",Cormac Greer,,0.0,,,,No Promotion,,,0.0,No Store
+691,Brett,Landry,213-171-7560,Brett.Landry@example.com,,,0.0,0.0,1.0,"Barcelona, Spain",Brett Landry,,0.0,,,,No Promotion,,,0.0,No Store
+707,Muhammad,Henry,298-612-6847,Muhammad.Henry@example.com,,,1.0,1.0,1.0,"Paris, France",Muhammad Henry,,0.0,,,,No Promotion,,,0.0,No Store
+715,Oliver,Garner,937-976-2511,Oliver.Garner@example.com,,,0.0,1.0,1.0,"Paris, France",Oliver Garner,,0.0,,185.0,Oliver.Garner@example.com,Dovee,No,,0.0,No Store
+736,Chantelle,Holt,256-585-1002,Chantelle.Holt@example.com,,,1.0,1.0,0.0,"Paris, France",Chantelle Holt,,0.0,,,,No Promotion,,,0.0,No Store
+741,Millicent,Solomon,597-434-8108,Millicent.Solomon@example.com,,,0.0,1.0,1.0,"Paris, France",Millicent Solomon,,0.0,,,,No Promotion,,,0.0,No Store
+759,Martina,Steele,349-841-5113,Martina.Steele@example.com,,,0.0,1.0,0.0,"Paris, France",Martina Steele,,0.0,,,,No Promotion,,,0.0,No Store
+785,Kara,Shelton,837-651-6819,Kara.Shelton@example.com,,,1.0,1.0,1.0,"Paris, France",Kara Shelton,,0.0,,,,No Promotion,,,0.0,No Store
+788,Ted,Eaton,534-915-3617,Ted.Eaton@example.com,,,0.0,1.0,0.0,"Paris, France",Ted Eaton,,0.0,,,,No Promotion,,,0.0,No Store
+798,Brenda,Deleon,997-981-2043,Brenda.Deleon@example.com,,,0.0,0.0,1.0,"Paris, France",Brenda Deleon,,0.0,,40.0,Brenda.Deleon@example.com,Flixnet,No,,0.0,No Store
+816,Albie,Larson,252-910-3152,Albie.Larson@example.com,,,1.0,0.0,1.0,"Barcelona, Spain",Albie Larson,,0.0,,,,No Promotion,,,0.0,No Store
+843,Tiffany,Griffith,201-302-5165,Tiffany.Griffith@example.com,,,1.0,0.0,0.0,"Paris, France",Tiffany Griffith,,0.0,,,,No Promotion,,,0.0,No Store
+858,Simon,Santiago,471-290-4198,Simon.Santiago@example.com,,,1.0,1.0,0.0,"Paris, France",Simon Santiago,,0.0,,,,No Promotion,,,0.0,No Store
+869,Bibi,Weaver,956-787-2725,Bibi.Weaver@example.com,,,1.0,0.0,1.0,"Paris, France",Bibi Weaver,,0.0,,,,No Promotion,,,0.0,No Store
+872,Tomasz,Baker,778-642-7614,Tomasz.Baker@example.com,,,1.0,1.0,0.0,"Barcelona, Spain",Tomasz Baker,,0.0,,,,No Promotion,,,0.0,No Store
+898,Alana,Koch,576-828-7913,Alana.Koch@example.com,,,0.0,1.0,1.0,"Barcelona, Spain",Alana Koch,,0.0,,188.0,Alana.Koch@example.com,Coca-Splash,No,,0.0,No Store
+904,Martin,Perry,586-420-6418,Martin.Perry@example.com,,,1.0,0.0,1.0,"Paris, France",Martin Perry,,0.0,,199.0,Martin.Perry@example.com,GatorBoost,No,,0.0,No Store
+906,Astrid,Miles,473-411-8478,Astrid.Miles@example.com,,,0.0,1.0,1.0,"Paris, France",Astrid Miles,,0.0,,,,No Promotion,,,0.0,No Store
+922,Luisa,Haley,916-879-3164,Luisa.Haley@example.com,,,0.0,1.0,1.0,"Barcelona, Spain",Luisa Haley,869.0,99.2,2024-01-27,15.0,,GatorBoost,Yes,,0.0,No Store
+962,Isobella,Gilbert,717-961-9368,Isobella.Gilbert@example.com,,,1.0,1.0,0.0,"Barcelona, Spain",Isobella Gilbert,,0.0,,177.0,,RedCow,No,,0.0,No Store
+977,Anita,Skinner,885-134-1740,Anita.Skinner@example.com,,,1.0,0.0,1.0,"Barcelona, Spain",Anita Skinner,,0.0,,174.0,,RedCow,No,,0.0,No Store
+987,Caitlyn,Lawson,470-723-2187,Caitlyn.Lawson@example.com,,,0.0,1.0,1.0,"Paris, France",Caitlyn Lawson,,0.0,,,,No Promotion,,,0.0,No Store

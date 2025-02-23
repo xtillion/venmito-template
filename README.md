@@ -1,66 +1,110 @@
 # Venmito Data Engineering Project
 
+## Author
+**Sebastian Soto Vazquez**  
+**GitHub:** [soto2571](https://github.com/soto2571)  
+**Email:** sebastian.soto1649@gmail.com  
+
 ## Introduction
 
-Hello and welcome to this data engineering project for Venmito. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.
+Welcome to the Venmito Data Engineering project! This project is designed to process, clean, and analyze transaction and client data for Venmito, a payment company that enables users to transfer funds and make purchases in partner stores. The goal of this project is to extract meaningful insights from disparate data sources and present them in an accessible way for both technical and non-technical users.
 
-Venmito is a payment company that allows users to transfer funds to other users and pay in participant stores. The company has several data files in various formats. Our goal is to organize all of this information to gain insights about our clients and transactions. We believe that there is an immense value hidden in these data files, and we are looking for a solution that can help us extract and utilize this value.
+## Project Overview
 
-We have five files:
+The project involves working with five different data files in various formats:
+- `people.json` - Contains client information
+- `people.yml` - Another source of client data
+- `transfers.csv` - Transfer records between users
+- `transactions.xml` - Transaction records with item-level details
+- `promotions.csv` - Promotion offers and responses
 
-- `people.json`
-- `people.yml`
-- `transfers.csv`
-- `transactions.xml`
-- `promotions.csv`
+### **Objectives:**
+1. **Data Ingestion**: Load and standardize data from multiple formats (JSON, YAML, CSV, XML).
+2. **Data Matching and Conforming**: Merge and clean data into a unified dataset stored in an SQLite database.
+3. **Data Analysis**: Generate insights into promotions, store profitability, customer spending, and more.
+4. **Data Output**: Provide an API and a dashboard for data visualization.
+5. **Code Quality**: Ensure well-structured, documented, and maintainable code.
 
-Each of these files contains different pieces of information about our clients, their transactions, transfers and promotions.
+---
 
-Your task is to develop a solution that can read these files, match and conform the data, and provide a way to consume this data.
+## **Setup Instructions**
 
-## Requirements
+### **1. Clone the Repository**
+```sh
+ git clone https://github.com/soto2571/Venmito-soto2571
+ cd Venmito-soto2571/
+```
 
-1. **Data Ingestion**: Your solution should be able to read and load data from all the provided files. Take into account that these files are in different formats (JSON, YAML, CSV, XML).
+### **2. Create a Virtual Environment and Install Dependencies**
+```sh
+python3 -m venv env
+source env/bin/activate  # On Windows use `env\Scripts\activate`
+pip install -r requirements.txt
+```
 
-2. **Data Matching and Conforming**: Once the data is loaded, your solution should be capable of matching and conforming the data across these files. This includes identifying common entities, resolving inconsistencies, and organizing the data into a unified format. Furthermore, the consolidated data should not only be transient but also persistent. This persistence should be achieved using appropriate methods such as storing in a file, database, or other suitable data storage solutions, and not restricted to just a variable in memory. This way, the integrity and availability of the consolidated data are ensured for future use and analysis.
+### **3. Run the Project**
+```sh
+python app.py
+```
+The application will be accessible at `http://127.0.0.1:5000`.
 
-3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. Examples of things, but is not restricted to, we want to be able to see are:
-    - Which clients have what type of promotion?
-    - Give suggestions on how to turn "No" responses from clients in the promotions file.
-    - Insights on stores, like:
-        - What item is the best seller?
-        - What store has had the most profit?
-        - Etc.
-    - How can we use the data we got from the transfer file?
-  
-    These are only suggestions. Please don't limit yourself to only these examples and explore in your analysis any other suggestions could be beneficial for Venmito.
+---
 
-4. **Data Output**: The final output of your solution should enable us to consume the reorganized and analyzed data in a meaningful way. This could be, but is not restricted to, a command line interface (CLI), a database with structured schemas, a GUI featuring interactive visualizations, a Jupyter Notebook, or a RESTful API. We invite you to leverage other innovative methods that you believe would be beneficial for a company like Venmito. Please provide at least 2 data consumption methods, 1 for the non-technical team and 1 for the technical team.
+## **API Endpoints**
+The application provides a RESTful API to access analyzed data.
 
-5. **Code**: The code for your solution should be well-structured and comprehensible, with comments included where necessary. Remember, the quality and readability of the code will be a significant factor in the evaluation of the final deliverable.
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/clients/promotions` | GET | Get clients and their promotions |
+| `/stores/top` | GET | Get the top-performing stores |
+| `/stores/sales` | GET | Get monthly sales data |
+| `/clients/top-transfers` | GET | Get top clients by transfer amount |
+| `/earnings/avg-transaction` | GET | Get average transaction value |
+| `/earnings/data` | GET | Get financial data per store |
 
-Note: The examples provided in these requirements (such as GUI, RESTful API etc.) are purely illustrative. You are free to employ any solution or technology you deem fit for fulfilling these requirements
+---
 
-## Deliverables
+## **Data Analysis Features**
+The project extracts valuable insights from the provided data:
+- **Client Promotions Analysis:** Determines which clients participated in promotions and suggests improvements.
+- **Store Performance:** Identifies the most profitable stores and their revenue trends.
+- **Transaction Trends:** Displays financial metrics such as average transaction value, highest transactions, and top customers.
 
-1. Source code.
-2. A README file with your name, email, a description of your solution, your design decisions, and clear instructions on how to run your code.
-3. A method to consume the reorganized and analyzed data.
+---
 
-## Instructions for Submission
+## **Graphical Dashboard**
+A front-end dashboard provides a **visual representation** of financial and transactional insights. Features include:
+- **Sales Trends (Last 12 Months)**
+- **Top Store Revenues**
+- **Promotion Effectiveness**
+- **Customer Insights**
 
-1. Complete your project as described above in a branch within your fork.
-2. Write a detailed README file with your name, email, a description explaining your approach, the technologies you used, and provides clear instructions on how to run your code.
-3. Submit your project by creating a pull request to merge your branch to the main branch of your fork.
+### **How to Access the Dashboard?**
+Simply visit `http://127.0.0.1:5000` in your browser after running `app.py`.
 
-We look forward to seeing your solution!
+---
 
-Thank you,
+## **Technologies Used**
+- **Backend:** Flask, Pandas, SQLite
+- **Frontend:** HTML, CSS, JavaScript, Chart.js
+- **Data Processing:** Pandas for cleaning, merging, and analyzing data
+- **Database:** SQLite for data storage and querying
 
-Venmito
+---
 
-## DISCLAIMER:
+## **Data Persistence**
+The project stores the cleaned data in an SQLite database, allowing structured queries and efficient data retrieval. The database schema includes:
+- **Clients Table**: Stores client information.
 
-This project and its contents are the exclusive property of Xtillion, LLC and are intended solely for the evaluation of the individual to whom it was provided. Any distribution, reproduction, or unauthorized use is strictly prohibited. By accessing and using this project, you agree to abide by these conditions. Failure to comply with these terms may result in legal action.
 
-Please note that this project is provided "as is", without warranty of any kind, express or implied. Xtillion is not liable for any damages or claims that might arise from using or misusing this project.
+---
+
+## **Final Notes**
+This project successfully integrates multi-format data sources, cleans and processes data efficiently, and provides insightful analytics via an API and dashboard. It meets both technical and non-technical requirements, allowing seamless data exploration.
+
+For any questions or further improvements, feel free to reach out!
+
+---
+
+## **License**
+This project and its contents are the exclusive property of Xtillion, LLC and are intended solely for evaluation purposes. Unauthorized distribution, reproduction, or usage is strictly prohibited.

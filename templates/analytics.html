@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <title>Analytics</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar" id="topbar">
+            <div class="logo">
+                <h2>Venmito</h2>
+            </div>
+            <div class="search">
+                <input type="text" id="search" placeholder="Search Here">
+                <label for="search"><i class="fas fa-search"></i></label>
+            </div>
+            <i class="fas fa-bell"></i>
+            <div class="user">
+                <img src="static/img/user-icon.png" alt="user image">
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <ul>
+                <li><a href="{{ url_for('home') }}"><i class="fas fa-th-large"></i> <div>Dashboard</div></a></li>
+                <li><a href="{{ url_for('analytics') }}" class="active"><i class="fas fa-chart-bar"></i> <div>Analytics</div></a></li>
+                <li><a href="{{ url_for('earnings') }}"><i class="fas fa-dollar-sign"></i> <div>Financial Reports</div></a></li>
+                <li><a href="{{ url_for('transactions') }}"><i class="fas fa-exchange-alt"></i> <div>Transactions</div></a></li>
+                <li><a href="{{ url_for('customers') }}"><i class="fas fa-users"></i> <div>Customers</div></a></li>
+                <li><a href="{{ url_for('settings') }}"><i class="fas fa-cog"></i> <div>Settings</div></a></li>
+                <li><a href="{{ url_for('help') }}"><i class="fas fa-question-circle"></i> <div>Help</div></a></li>
+            </ul>
+        </div>
+
+        <!-- Main Analytics Section -->
+        <div class="main">
+            <h1>Sales Analytics</h1>
+
+            <!-- Charts -->
+            <div class="charts">
+                <div class="chart">
+                    <h2>Recent Revenue</h2>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="chart">
+                    <h2>Transaction Distribution</h2>
+                    <canvas id="transactionChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Top Customers Table -->
+            <div class="table-container">
+                <h2>Top Customers</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Transactions</th>
+                            <th>Total Spent</th>
+                            <th>Promotion</th> <!-- New column -->
+                        </tr>
+                    </thead>
+                    <tbody id="customer-data">
+                        <!-- Data will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- Promotions Analysis Table -->
+            <div class="table-container">
+                <h2>Promotion Analysis</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Promotion</th>
+                            <th>Count</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody id="promotion-analysis">
+                        <!-- Data will be dynamically loaded -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="static/analytics.js"></script>
+</body>
+</html>

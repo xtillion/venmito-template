@@ -1,0 +1,390 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.topbar{
+    position: fixed;
+    background: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.08);
+    width: 100%;
+    height: 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 2fr 10fr 0.4fr 1fr;
+    align-items: center;
+    z-index: 1;
+}
+
+h1 {
+    font-size: 24px;
+    color: #758bfd;
+    padding: 20px;
+    margin-left: 15px;
+}
+
+.logo h2 {
+    color: #ff8600;
+}
+
+.search{
+    position: relative;
+    width: 60%;
+    justify-self: center;
+}
+
+.search input{
+    width: 100%;
+    height: 40px;
+    padding: 0 40px;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background: #f5f5f5;
+}
+
+.search i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    cursor: pointer;
+}
+
+.user{
+    position: relative;
+    width: 50px;
+    height: 50px;
+}
+
+.user img{
+    position: absolute;
+    top:0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* side bar */
+
+.sidebar{
+    position: fixed;
+    top: 60px;
+    width: 260px;
+    height: calc(100% - 60px);
+    background-color: #27187e;
+    overflow-x: hidden;
+}
+
+.sidebar ul{
+    margin-top: 20px;
+
+}
+
+.sidebar ul li{
+    width: 100%;
+    list-style: none;
+}
+
+.sidebar ul li a {
+    width: 100%;
+    text-decoration: none;
+    color: #f5f5f5;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.sidebar ul li a i {
+    min-width: 60px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Hover effect for a 3D feel */
+.sidebar ul li a:hover {
+    background: rgba(255, 255, 255, 0.2); /* Light transparency effect */
+    transform: translateX(8px); /* Move slightly to the right */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+/* Active/Selected Item */
+.sidebar ul li a.active {
+    font-weight: bold;
+    transform: translateX(8px);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* main content */
+.main{
+    position: absolute;
+    top: 60px;
+    width: calc(100% - 260px);
+    left: 260px;
+    min-height: calc(100vh - 60px);
+    background: #f5f5f5; 
+}
+
+.cards{
+    width: 100%;
+    padding: 35px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.cards .card{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 7px rgb(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cards .card:hover {
+    cursor: pointer;
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.number{
+    font-size: 35px;
+    font-weight: 600px;
+    color: #758bfd;
+}
+
+.card-name {
+    color: #888;
+    font-weight: 700px;
+}
+
+.icon-box i{
+    font-size: 45px;
+    color: #aeb8fe;
+}
+
+/* Charts */
+.charts{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
+    padding: 20px;
+    padding-top: 0;
+}
+
+.chart{
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgb(0, 0, 0, 0.08);
+    width: 100%;
+}
+
+.chart h2{
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: #888;
+    text-align: center;
+}
+
+/* Table Styles */
+.table-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.table-container h2 {
+    text-align: center;
+    font-size: 22px;
+    color: #ff8600;
+    margin-bottom: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #27187e;
+    color: white;
+}
+
+thead tr {
+    height: 50px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+    background: #f5f5f5;
+}
+
+tbody tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+tr:hover {
+    background: rgba(41, 155, 99, 0.1);
+}
+
+/* Settings */
+/* Settings Page Styling */
+.settings-section {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.settings-section h2 {
+    color: #27187e;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.save-btn, .security-btn, .export-btn, .clear-cache-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    background: #758bfd;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.save-btn:hover, .security-btn:hover, .export-btn:hover, .clear-cache-btn:hover {
+    background: #27187e;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Help page */
+/* Help Page Styling */
+.help-section {
+    background: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+}
+
+.help-section h2 {
+    color: #27187e;
+    margin-bottom: 10px;
+}
+
+.faq details {
+    background: #f9f9f9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.faq summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.faq p {
+    margin-top: 5px;
+}
+
+.contact-btn {
+    padding: 10px 15px;
+    background: #758bfd;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.contact-btn:hover {
+    background: #27187e;
+}
+
+.help-section ul {
+    list-style: none;
+}
+
+.help-section ul li a {
+    color: #27187e;
+    text-decoration: none;
+}
+
+/* Download CSV */
+
+.download-container {
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+#downloadCsvBtn {
+    background-color: #ff8600;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 500px;
+    height: 50px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#downloadCsvBtn:hover {
+    background-color: #f1f2f6;
+    color: #ff8600;
+}
