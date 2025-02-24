@@ -111,10 +111,12 @@ After setting up your environment and installing dependencies, run:
 
 •	Insights:
 This project extracts actionable insights such as:
+
 	•	Which clients received which types of promotions and how they responded.
 	•	Best-selling items and store profitability.
 	•	Transfer trends between clients, including net transfers and monthly patterns.
 •	Future Work:
+
 	•	Real-time Data Processing: Integrate with tools like Apache Kafka or Spark Streaming for real-time analytics.
 	•	Enhanced Dashboards: Expand the interactive dashboard with additional filters and drill-down capabilities.
 	•	Further Analysis: Explore additional insights such as fraud detection and personalized recommendations.  
