@@ -73,9 +73,6 @@ This command will start:
     Open your browser and navigate to:
     http://127.0.0.1:8888/lab
 
-	3.	**Access the Interactive Dashboard (for Non-Technical Users):
-If you have a dashboard set up (e.g., using Streamlit), it will be available on the configured port (e.g., http://127.0.0.1:8501).
-
 ### Option B: Running Locally
 
 1.	Set up a Virtual Environment:
@@ -120,4 +117,18 @@ This project extracts actionable insights such as:
 •	Future Work:
 	•	Real-time Data Processing: Integrate with tools like Apache Kafka or Spark Streaming for real-time analytics.
 	•	Enhanced Dashboards: Expand the interactive dashboard with additional filters and drill-down capabilities.
-	•	Further Analysis: Explore additional insights such as fraud detection and personalized recommendations.    
+	•	Further Analysis: Explore additional insights such as fraud detection and personalized recommendations.  
+
+### Acknowledgements on Interactive Dashboard
+
+While the initial project plan included building an interactive dashboard using Streamlit to provide a user-friendly interface for non-technical users, time constraints prevented me from developing a fully polished dashboard. Instead, I have focused on creating comprehensive data analyses and visualizations within Jupyter Notebooks. This approach ensures that all key insights are accessible and well-documented.
+
+In future iterations, I plan to integrate a dedicated Streamlit dashboard that will:
+- Offer an intuitive and interactive user interface.
+- Provide real-time filtering and drill-down capabilities.
+- Enhance data presentation for non-technical stakeholders.
+
+For now, non-technical users can view the detailed analyses and interactive visualizations by accessing the Jupyter Notebook export (HTML or PDF), which has been carefully styled for clarity.
+
+Thank you for your understanding!
+ 
