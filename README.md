@@ -63,7 +63,8 @@ The Venmito Data Engineering Project aims to consolidate and analyze disparate d
 
 1. **Build and Run the Containers:**
 
-   docker-compose up --build
+   		docker-compose up --build
+   
 This command will start:
 	•	A PostgreSQL container (venmito_db) with the initialized schema.
 	•	A processing container (venmito_processing) that ingests and loads the data.
@@ -99,18 +100,22 @@ This command will start:
 
 
 4. Data Consumption Methods
+   
 	•	For Technical Users: Jupyter Notebooks
-Jupyter Notebooks provide in-depth analysis, SQL query capabilities, and detailed visualizations using Pandas and Plotly. Technical users can modify and run custom queries as needed.
+
+		Jupyter Notebooks provide in-depth analysis, SQL query capabilities, and detailed visualizations using Pandas and Plotly. Technical users can modify and run custom queries as needed.
 How to Access the Notebook:
 	•	Using Docker:
 Run:
 
    		docker-compose up --build
+     
 Then open your browser at:
     
     http://127.0.0.1:8888/lab
 
 •	Locally:
+
 After setting up your environment and installing dependencies, run:
     	
      jupyter notebook
@@ -134,6 +139,7 @@ If you prefer to run the notebook locally in VS Code, update the database connec
 
 '''python
 	# For local VS Code runs, change the connection string to:
+ 
 	DATABASE_URL = "postgresql://admin:admin_pass@localhost:5432/venmito_db"    
 
 ## 5. Final Remarks & Future Improvements
