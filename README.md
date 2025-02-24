@@ -66,6 +66,7 @@ The Venmito Data Engineering Project aims to consolidate and analyze disparate d
    		docker-compose up --build
    
 This command will start:
+
 	•	A PostgreSQL container (venmito_db) with the initialized schema.
 	•	A processing container (venmito_processing) that ingests and loads the data.
 	•	A UI container (venmito_ui) that runs a Jupyter Notebook server for analysis and (if configured) a Streamlit dashboard.
