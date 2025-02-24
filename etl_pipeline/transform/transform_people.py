@@ -49,16 +49,22 @@ class People:
             yaml_df['country'] = city_df[1].fillna('')
 
         # Handling device columns
-        device_columns = ["iphone", "android", "desktop"]
-        yaml_df['devices'] = yaml_df.apply(
-            lambda row: [device for device in device_columns if row.get(device, 0) == 1], axis=1
-        )
+        device_columns = ["Iphone", "Android", "Desktop"]
+
+        def extract_devices(row):
+            devices = []
+            for device in device_columns:
+                if row.get(device.lower(), 0) == 1:
+                    devices.append(device)
+            return devices
+
+        yaml_df['devices'] = yaml_df.apply(extract_devices, axis=1)
 
         # Renaming columns
         yaml_df.rename(columns={'phone': 'telephone'}, inplace=True)
 
         # Drop unnecessary columns safely
-        yaml_df.drop(columns=device_columns + ['name'], errors='ignore', inplace=True)
+        yaml_df.drop(columns=device_columns + ['name'] + [device.lower() for device in device_columns], errors='ignore', inplace=True)
 
         return yaml_df
 
@@ -76,5 +82,7 @@ class People:
         # Merge datasets
         combined_df = pd.concat([converted_json_df, converted_yaml_df], ignore_index=True)
         combined_df = combined_df.sort_values(by='id').drop_duplicates(subset='id')
+
+        combined_df.rename(columns={'id': 'person_id'}, inplace=True)
 
         return combined_df

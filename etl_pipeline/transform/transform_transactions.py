@@ -6,6 +6,19 @@ class Transaction:
         """Initializes the Transaction class and loads transaction data."""
         self.data = self.load_transactions(filepath)
 
+    def get_transactions_details(self):
+        return self.data
+
+    def convert_data_type_to_numeric(self, transactions_df):
+        # Ensure correct data types for top-level transaction fields
+        numeric_columns = ['transaction_id', 'amount']
+        for col in numeric_columns:
+            if col in transactions_df.columns:
+                transactions_df[col] = pd.to_numeric(transactions_df[col], errors='coerce').fillna(0)
+
+                # Convert to JSON-friendly types
+                transactions_df[col] = transactions_df[col].apply(lambda x: int(x) if x % 1 == 0 else float(x))
+
     def load_transactions(self, filepath):
         """Extracts transactions from XML, converts to a Pandas DataFrame, and ensures JSON serializability."""
         root = extract_xml(filepath)
@@ -50,13 +63,6 @@ class Transaction:
         if transactions_df.empty:
             return transactions_df  # Return an empty DataFrame if no data is found
 
-        # Ensure correct data types for top-level transaction fields
-        numeric_columns = ['transaction_id', 'amount']
-        for col in numeric_columns:
-            if col in transactions_df.columns:
-                transactions_df[col] = pd.to_numeric(transactions_df[col], errors='coerce').fillna(0)
-
-                # Convert to JSON-friendly types
-                transactions_df[col] = transactions_df[col].apply(lambda x: int(x) if x % 1 == 0 else float(x))
+        self.convert_data_type_to_numeric(transactions_df)
 
         return transactions_df
