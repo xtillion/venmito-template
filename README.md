@@ -1,66 +1,123 @@
 # Venmito Data Engineering Project
 
-## Introduction
+## Author Information
 
-Hello and welcome to this data engineering project for Venmito. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.
+- **Name:** José A. Megret Bonilla
+- **Email:** megretjose@gmail.com
+- **GitHub:** [JoseMegret](https://github.com/JoseMegret)
 
-Venmito is a payment company that allows users to transfer funds to other users and pay in participant stores. The company has several data files in various formats. Our goal is to organize all of this information to gain insights about our clients and transactions. We believe that there is an immense value hidden in these data files, and we are looking for a solution that can help us extract and utilize this value.
+---
 
-We have five files:
+## Project Overview
 
-- `people.json`
-- `people.yml`
-- `transfers.csv`
-- `transactions.xml`
-- `promotions.csv`
+The Venmito Data Engineering Project aims to consolidate and analyze disparate data files from Venmito—a payment company—to extract actionable insights about clients, transactions, transfers, and promotions. The solution involves:
 
-Each of these files contains different pieces of information about our clients, their transactions, transfers and promotions.
+- **Data Ingestion:** Reading data from multiple file formats (JSON, YAML, CSV, XML) and loading it into PostgreSQL.
+- **Data Matching & Conforming:** Merging data from various sources to form a unified dataset.
+- **Data Analysis & Visualization:** Aggregating and analyzing the data to understand:
+  - Which clients received what type of promotion and how they responded.
+  - Transaction trends, best-selling items, and store profitability.
+  - Transfer patterns among clients (money sent vs. received).
+- **Data Consumption Methods:**
+  - **Non-Technical Team:** An static dashboard built with screenshots that uses Jupyter Notebook for graphs.
+  - **Technical Team:** Jupyter Notebook with SQL queries and detailed data visualizations using Pandas and Plotly.
 
-Your task is to develop a solution that can read these files, match and conform the data, and provide a way to consume this data.
+---
 
-## Requirements
+## Design Decisions
 
-1. **Data Ingestion**: Your solution should be able to read and load data from all the provided files. Take into account that these files are in different formats (JSON, YAML, CSV, XML).
-
-2. **Data Matching and Conforming**: Once the data is loaded, your solution should be capable of matching and conforming the data across these files. This includes identifying common entities, resolving inconsistencies, and organizing the data into a unified format. Furthermore, the consolidated data should not only be transient but also persistent. This persistence should be achieved using appropriate methods such as storing in a file, database, or other suitable data storage solutions, and not restricted to just a variable in memory. This way, the integrity and availability of the consolidated data are ensured for future use and analysis.
-
-3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. Examples of things, but is not restricted to, we want to be able to see are:
-    - Which clients have what type of promotion?
-    - Give suggestions on how to turn "No" responses from clients in the promotions file.
-    - Insights on stores, like:
-        - What item is the best seller?
-        - What store has had the most profit?
-        - Etc.
-    - How can we use the data we got from the transfer file?
+- **Data Ingestion & Processing:**  
+  The solution uses Python with Pandas for its powerful data manipulation capabilities. We developed a modular script (`process_data.py`) that reads various file formats, transforms the data (e.g., converting device lists into boolean columns, flattening nested location data), and loads the consolidated data into a PostgreSQL database.
   
-    These are only suggestions. Please don't limit yourself to only these examples and explore in your analysis any other suggestions could be beneficial for Venmito.
+- **Database Choice:**  
+  PostgreSQL was chosen for its reliability and support for diverse data types. The schema was designed to normalize clients, transactions, transaction items, transfers, and promotions, ensuring referential integrity and easy querying.
 
-4. **Data Output**: The final output of your solution should enable us to consume the reorganized and analyzed data in a meaningful way. This could be, but is not restricted to, a command line interface (CLI), a database with structured schemas, a GUI featuring interactive visualizations, a Jupyter Notebook, or a RESTful API. We invite you to leverage other innovative methods that you believe would be beneficial for a company like Venmito. Please provide at least 2 data consumption methods, 1 for the non-technical team and 1 for the technical team.
+- **Visualization & Analysis:**  
+  Data insights are presented using Plotly within Jupyter Notebooks. This approach allows for interactive, high-quality visualizations that can be easily shared and modified by both technical and non-technical teams.
 
-5. **Code**: The code for your solution should be well-structured and comprehensible, with comments included where necessary. Remember, the quality and readability of the code will be a significant factor in the evaluation of the final deliverable.
+- **Deployment:**  
+  Docker and Docker Compose are used to containerize the solution, ensuring consistent environments for development, testing, and production. This setup simplifies dependency management and deployment.
 
-Note: The examples provided in these requirements (such as GUI, RESTful API etc.) are purely illustrative. You are free to employ any solution or technology you deem fit for fulfilling these requirements
+- **Consumption Methods:**  
+  - **For Non-Technical Users:** An  offers a user-friendly interface.
+  - **For Technical Users:** Jupyter Notebooks provide in-depth analysis and SQL query capabilities for further exploration.
 
-## Deliverables
+---
 
-1. Source code.
-2. A README file with your name, email, a description of your solution, your design decisions, and clear instructions on how to run your code.
-3. A method to consume the reorganized and analyzed data.
+## Installation & Running the Project
 
-## Instructions for Submission
+### Prerequisites
 
-1. Complete your project as described above in a branch within your fork.
-2. Write a detailed README file with your name, email, a description explaining your approach, the technologies you used, and provides clear instructions on how to run your code.
-3. Submit your project by creating a pull request to merge your branch to the main branch of your fork.
+- **Python 3.9+**
+- **Docker & Docker Compose** (if using containerized deployment)
+- **Git**
 
-We look forward to seeing your solution!
+### 1. Clone the Repository
 
-Thank you,
+git clone https://github.com/JoseMegret/Venmito-JoseMegret.git
+cd Venmito-JoseMegret
 
-Venmito
+## 2. Setting up the Environment
 
-## DISCLAIMER:
+### Option A: Using Docker
 
-This project and its contents are the exclusive property of Xtillion, LLC and are intended solely for the evaluation of the individual to whom it was provided. Any distribution, reproduction, or unauthorized use is strictly prohibited. By accessing and using this project, you agree to abide by these conditions. Failure to comply with these terms may result in legal action.
+1. **Build and Run the Containers:**
 
-Please note that this project is provided "as is", without warranty of any kind, express or implied. Xtillion is not liable for any damages or claims that might arise from using or misusing this project.
+   docker-compose up --build
+This command will start:
+	•	A PostgreSQL container (venmito_db) with the initialized schema.
+	•	A processing container (venmito_processing) that ingests and loads the data.
+	•	A UI container (venmito_ui) that runs a Jupyter Notebook server for analysis and (if configured) a Streamlit dashboard.
+
+2.	**Access the Jupyter Notebook:
+    Open your browser and navigate to:
+    http://127.0.0.1:8888/lab
+
+	3.	**Access the Interactive Dashboard (for Non-Technical Users):
+If you have a dashboard set up (e.g., using Streamlit), it will be available on the configured port (e.g., http://127.0.0.1:8501).
+
+### Option B: Running Locally
+
+1.	Set up a Virtual Environment:
+    python3 -m venv env
+    source env/bin/activate   # For Windows: env\Scripts\activate
+
+2.	Install Dependencies:
+    pip install -r requirements.txt
+
+3.	Configure PostgreSQL:
+    Ensure that PostgreSQL is running on your machine. Update the DATABASE_URL in the code if necessary.    
+
+4.	Run the Data Processing Script:
+    python processing/process_data.py
+
+5.	Start the Jupyter Notebook:
+    jupyter notebook
+    Then, open your notebook for data analysis.
+
+
+4. Data Consumption Methods
+	•	For Technical Users: Jupyter Notebooks
+Jupyter Notebooks provide in-depth analysis, SQL query capabilities, and detailed visualizations using Pandas and Plotly. Technical users can modify and run custom queries as needed.
+How to Access the Notebook:
+	•	Using Docker:
+Run:
+    docker-compose up --build
+Then open your browser at:
+    http://127.0.0.1:8888/lab
+
+•	Locally:
+After setting up your environment and installing dependencies, run:
+    jupyter notebook
+
+## 5. Final Remarks & Future Improvements
+
+•	Insights:
+This project extracts actionable insights such as:
+	•	Which clients received which types of promotions and how they responded.
+	•	Best-selling items and store profitability.
+	•	Transfer trends between clients, including net transfers and monthly patterns.
+•	Future Work:
+	•	Real-time Data Processing: Integrate with tools like Apache Kafka or Spark Streaming for real-time analytics.
+	•	Enhanced Dashboards: Expand the interactive dashboard with additional filters and drill-down capabilities.
+	•	Further Analysis: Explore additional insights such as fraud detection and personalized recommendations.    
