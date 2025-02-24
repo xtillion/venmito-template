@@ -119,7 +119,7 @@ This project extracts actionable insights such as:
 	•	Enhanced Dashboards: Expand the interactive dashboard with additional filters and drill-down capabilities.
 	•	Further Analysis: Explore additional insights such as fraud detection and personalized recommendations.  
 
-### Acknowledgements on Interactive Dashboard
+## Acknowledgements on Interactive Dashboard
 
 While the initial project plan included building an interactive dashboard using Streamlit to provide a user-friendly interface for non-technical users, time constraints prevented me from developing a fully polished dashboard. Instead, I have focused on creating comprehensive data analyses and visualizations within Jupyter Notebooks. This approach ensures that all key insights are accessible and well-documented.
 
