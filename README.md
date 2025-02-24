@@ -54,8 +54,8 @@ The Venmito Data Engineering Project aims to consolidate and analyze disparate d
 
 ### 1. Clone the Repository
 
-git clone https://github.com/JoseMegret/Venmito-JoseMegret.git
-cd Venmito-JoseMegret
+	git clone https://github.com/JoseMegret/Venmito-JoseMegret.git
+	cd Venmito-JoseMegret
 
 ## 2. Setting up the Environment
 
@@ -70,26 +70,31 @@ This command will start:
 	•	A UI container (venmito_ui) that runs a Jupyter Notebook server for analysis and (if configured) a Streamlit dashboard.
 
 2.	**Access the Jupyter Notebook:
-    Open your browser and navigate to:
-    http://127.0.0.1:8888/lab
+    	Open your browser and navigate to:
+
+  		http://127.0.0.1:8888/lab
 
 ### Option B: Running Locally
 
 1.	Set up a Virtual Environment:
-    python3 -m venv env
-    source env/bin/activate   # For Windows: env\Scripts\activate
 
-2.	Install Dependencies:
-    pip install -r requirements.txt
+  		python3 -m venv env
+   		source env/bin/activate   # For Windows: env\Scripts\activate
 
-3.	Configure PostgreSQL:
+3.	Install Dependencies:
+
+  		pip install -r requirements.txt
+
+5.	Configure PostgreSQL:
     Ensure that PostgreSQL is running on your machine. Update the DATABASE_URL in the code if necessary.    
 
-4.	Run the Data Processing Script:
-    python processing/process_data.py
+6.	Run the Data Processing Script:
 
-5.	Start the Jupyter Notebook:
-    jupyter notebook
+  		python processing/process_data.py
+
+8.	Start the Jupyter Notebook:
+
+  		jupyter notebook
     Then, open your notebook for data analysis.
 
 
@@ -99,13 +104,16 @@ Jupyter Notebooks provide in-depth analysis, SQL query capabilities, and detaile
 How to Access the Notebook:
 	•	Using Docker:
 Run:
-    docker-compose up --build
+
+   		docker-compose up --build
 Then open your browser at:
+    
     http://127.0.0.1:8888/lab
 
 •	Locally:
 After setting up your environment and installing dependencies, run:
-    jupyter notebook
+    	
+     jupyter notebook
 
 ### Running Jupyter Notebooks: Local VS Code vs. Docker Environment
 
