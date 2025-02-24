@@ -107,6 +107,27 @@ Then open your browser at:
 After setting up your environment and installing dependencies, run:
     jupyter notebook
 
+### Running Jupyter Notebooks: Local VS Code vs. Docker Environment
+
+**Note:**  
+The Jupyter Notebook in this project is configured to run in a Docker environment. In Docker, the database connection string uses the hostname `db` (which is automatically resolved via Docker Compose's internal networking) to connect to PostgreSQL.
+
+**Why It May Not Run Locally in VS Code:**
+
+- **Hostname Resolution:**  
+  When running the notebook locally in VS Code, the hostname `db` in the connection string (`postgresql://admin:admin_pass@db:5432/venmito_db`) is not recognized by your local system. Local systems generally use `localhost` or `127.0.0.1` for database connections, so the Docker-specific hostname causes connection errors.
+
+- **Environment Differences:**  
+  The Docker environment automatically mounts the necessary data and sets environment variables (e.g., `RUNNING_IN_DOCKER=true`) that configure the application correctly. Locally, you must manually adjust the settings (such as the `DATABASE_URL`) and ensure that PostgreSQL is running with the expected configuration.
+
+**How to Run Locally (if needed):**
+
+If you prefer to run the notebook locally in VS Code, update the database connection in the notebook by replacing the hostname `db` with `localhost` (assuming your PostgreSQL instance is running locally on port 5432):
+
+'''python
+	# For local VS Code runs, change the connection string to:
+	DATABASE_URL = "postgresql://admin:admin_pass@localhost:5432/venmito_db"    
+
 ## 5. Final Remarks & Future Improvements
 
 •	Insights:
