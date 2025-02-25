@@ -298,7 +298,7 @@ Technical users can **consume data programmatically** in the following ways:
 1. **Using the Public API**  
    - Developers and data engineers can interact directly with the backend's API endpoints.  
    - The API is publicly available at:  
-     [**Venmito API (Public URL)**](https://34.205.78.96/venmito-felixdasta)  
+     [**Venmito API (Public URL)**](https://venmito.ddns.net/venmito-felixdasta)  
    - Refer to the **API Endpoints** section to determine which endpoints to use.  
 
 2. **Running the Platform Locally**  
