@@ -72,7 +72,7 @@ This command will start:
 	•	A processing container (venmito_processing) that ingests and loads the data.
 	•	A UI container (venmito_ui) that runs a Jupyter Notebook server for analysis and (if configured) a Streamlit dashboard.
 
-2. **Access the Jupyter Notebook:
+2. **Access the Jupyter Notebook:**
    
 Once the containers are running, check the logs of the UI container.
 
@@ -105,7 +105,7 @@ If you ever lose the link, just check the Docker logs again or copy the token fr
 
 This approach ensures you have a running Jupyter environment with all the dependencies installed and configured automatically via Docker.
 
-3. **Stopping the Containers:
+3. **Stopping the Containers:**
 
 When you are finished, stop all containers by pressing Ctrl+C in your terminal or by running:
 
