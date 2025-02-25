@@ -19,28 +19,27 @@ The Venmito Data Engineering Project aims to consolidate and analyze disparate d
   - Transaction trends, best-selling items, and store profitability.
   - Transfer patterns among clients (money sent vs. received).
 - **Data Consumption Methods:**
-  - **Non-Technical Team:** An static dashboard built with screenshots that uses Jupyter Notebook for graphs.
-  - **Technical Team:** Jupyter Notebook with SQL queries and detailed data visualizations using Pandas and Plotly.
-
+  - **Non-Technical Team:** The initial plan included an interactive dashboard built with Streamlit to provide a user-friendly interface. Due to time constraints, the final deliverable presents comprehensive analysis and visualizations via Jupyter Notebooks (accompanied by high-quality screenshots) as an alternative.
+  - **Technical Team:** Jupyter Notebooks offer in-depth analysis, SQL query capabilities, and interactive visualizations using Pandas and Plotly.
 ---
 
 ## Design Decisions
 
 - **Data Ingestion & Processing:**  
-  The solution uses Python with Pandas for its powerful data manipulation capabilities. We developed a modular script (`process_data.py`) that reads various file formats, transforms the data (e.g., converting device lists into boolean columns, flattening nested location data), and loads the consolidated data into a PostgreSQL database.
+  The solution uses Python and Pandas for robust data manipulation. A modular script (processing/process_data.py) reads various file formats, transforms the data (e.g., converting device lists into boolean columns, flattening nested location data), and loads the consolidated data into a PostgreSQL database.
   
 - **Database Choice:**  
-  PostgreSQL was chosen for its reliability and support for diverse data types. The schema was designed to normalize clients, transactions, transaction items, transfers, and promotions, ensuring referential integrity and easy querying.
-
+  PostgreSQL was selected for its reliability and robust support for diverse data types. The schema was designed to normalize clients, transactions, transaction items, transfers, and promotions—ensuring referential integrity and simplifying queries.
+  
 - **Visualization & Analysis:**  
-  Data insights are presented using Plotly within Jupyter Notebooks. This approach allows for interactive, high-quality visualizations that can be easily shared and modified by both technical and non-technical teams.
+  Interactive visualizations are generated using Plotly within Jupyter Notebooks. This allows for high-quality, dynamic charts that can be tailored by technical users while still being accessible to non-technical stakeholders through static exports or screenshots.
 
 - **Deployment:**  
   Docker and Docker Compose are used to containerize the solution, ensuring consistent environments for development, testing, and production. This setup simplifies dependency management and deployment.
 
 - **Consumption Methods:**  
-  - **For Non-Technical Users:** An  offers a user-friendly interface.
-  - **For Technical Users:** Jupyter Notebooks provide in-depth analysis and SQL query capabilities for further exploration.
+  - **For Non-Technical Users:** Although a Streamlit dashboard was initially planned for an interactive user interface, time constraints led to delivering detailed analysis via Jupyter Notebooks along with visual exports. Future iterations may include a dedicated Streamlit dashboard.
+  - **For Technical Users:** Jupyter Notebooks provide the flexibility to modify queries, perform ad-hoc analysis, and interact with the data using SQL queries, Pandas, and Plotly.
 
 ---
 
@@ -49,21 +48,23 @@ The Venmito Data Engineering Project aims to consolidate and analyze disparate d
 ### Prerequisites
 
 - **Python 3.9+**
-- **Docker & Docker Compose** (if using containerized deployment)
+- **Docker & Docker Compose** (for containerized deployment)
 - **Git**
 
-### 1. Clone the Repository
+## 1. Clone the Repository
 
 	git clone https://github.com/JoseMegret/Venmito-JoseMegret.git
 	cd Venmito-JoseMegret
 
 ## 2. Setting up the Environment
 
-### Option A: Using Docker
+### Using Docker
 
 1. **Build and Run the Containers:**
 
-   		docker-compose up --build
+ Run:
+ 		
+   	docker-compose up --build
    
 This command will start:
 
@@ -71,79 +72,56 @@ This command will start:
 	•	A processing container (venmito_processing) that ingests and loads the data.
 	•	A UI container (venmito_ui) that runs a Jupyter Notebook server for analysis and (if configured) a Streamlit dashboard.
 
-2.	**Access the Jupyter Notebook:
-    	Open your browser and navigate to:
+2. **Access the Jupyter Notebook:
+   
+Once the containers are running, check the logs of the UI container.
 
-  		http://127.0.0.1:8888/lab
+Run:
+		
+  	docker logs venmito_ui
 
-### Option B: Running Locally
-
-1.	Set up a Virtual Environment:
-
-  		python3 -m venv env
-   		source env/bin/activate   # For Windows: env\Scripts\activate
-
-3.	Install Dependencies:
-
-  		pip install -r requirements.txt
-
-5.	Configure PostgreSQL:
-    Ensure that PostgreSQL is running on your machine. Update the DATABASE_URL in the code if necessary.    
-
-6.	Run the Data Processing Script:
-
-  		python processing/process_data.py
-
-8.	Start the Jupyter Notebook:
-
-  		jupyter notebook
-    Then, open your notebook for data analysis.
+You'll see output similar to:
 
 
-4. Data Consumption Methods
+		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp] Serving notebooks from local directory: /home/jovyan
+		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp] Jupyter Server 2.8.0 is running at:
+		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp] http://a464cc977bc0:8888/lab?token=4940e7bf...  👈
+		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp]  or http://127.0.0.1:8888/lab?token=4940e7bf... 👈
+		venmito_ui    | [I 2025-02-24 22:14:54.990 ServerApp] Use Control-C to stop this server and shut down all kernels...
+
+The important part is the URL (or token). You can open the notebook in your browser by navigating to one of the provided URLs (👈). 
+For example:
+
+	http://127.0.0.1:8888/lab?token=4940e7bf...
+     
+Steps to Access the Notebook:
+
+	1.	Wait for the UI container logs to show the Jupyter Server URLs.
+	2.	Copy the URL (which includes the token) from the logs.
+	3.	Open your web browser and paste the URL.
+	4.	You’ll be taken to the Jupyter Lab interface where you can explore the notebooks (e.g., analysis.ipynb).
+
+If you ever lose the link, just check the Docker logs again or copy the token from the terminal output. Pressing Ctrl+C will stop the containers.
+
+This approach ensures you have a running Jupyter environment with all the dependencies installed and configured automatically via Docker.
+
+3. **Stopping the Containers:
+
+When you are finished, stop all containers by pressing Ctrl+C in your terminal or by running:
+
+	docker-compose down
+
+## 3. Data Consumption Methods
    
 	•	For Technical Users: Jupyter Notebooks
 
 		Jupyter Notebooks provide in-depth analysis, SQL query capabilities, and detailed visualizations using Pandas and Plotly. Technical users can modify and run custom queries as needed.
-How to Access the Notebook:
-	•	Using Docker:
-Run:
 
-   		docker-compose up --build
-     
-Then open your browser at:
-    
-    http://127.0.0.1:8888/lab
+	•	For Non-Technical Users: Static Dashboard Exports
 
-•	Locally:
+	Although a fully interactive Streamlit dashboard was planned, due to time constraints, key insights are presented via Jupyter Notebook visualizations and exported screenshots. These static exports are available in the Charts folder and offer a user-friendly overview of the analysis.
 
-After setting up your environment and installing dependencies, run:
-    	
-     jupyter notebook
-
-### Running Jupyter Notebooks: Local VS Code vs. Docker Environment
-
-**Note:**  
-The Jupyter Notebook in this project is configured to run in a Docker environment. In Docker, the database connection string uses the hostname `db` (which is automatically resolved via Docker Compose's internal networking) to connect to PostgreSQL.
-
-**Why It May Not Run Locally in VS Code:**
-
-- **Hostname Resolution:**  
-  When running the notebook locally in VS Code, the hostname `db` in the connection string (`postgresql://admin:admin_pass@db:5432/venmito_db`) is not recognized by your local system. Local systems generally use `localhost` or `127.0.0.1` for database connections, so the Docker-specific hostname causes connection errors.
-
-- **Environment Differences:**  
-  The Docker environment automatically mounts the necessary data and sets environment variables (e.g., `RUNNING_IN_DOCKER=true`) that configure the application correctly. Locally, you must manually adjust the settings (such as the `DATABASE_URL`) and ensure that PostgreSQL is running with the expected configuration.
-
-**How to Run Locally (if needed):**
-
-If you prefer to run the notebook locally in VS Code, update the database connection in the notebook by replacing the hostname `db` with `localhost` (assuming your PostgreSQL instance is running locally on port 5432):
-
-'''python
-	# For local VS Code runs, change the connection string to:
- 
-	DATABASE_URL = "postgresql://admin:admin_pass@localhost:5432/venmito_db"    
-
-## 5. Final Remarks & Future Improvements
+## 4. Final Remarks & Future Improvements
 
 •	Insights:
 This project extracts actionable insights such as:
@@ -153,7 +131,6 @@ This project extracts actionable insights such as:
 	•	Transfer trends between clients, including net transfers and monthly patterns.
 •	Future Work:
 
-	•	Real-time Data Processing: Integrate with tools like Apache Kafka or Spark Streaming for real-time analytics.
 	•	Enhanced Dashboards: Expand the interactive dashboard with additional filters and drill-down capabilities.
 	•	Further Analysis: Explore additional insights such as fraud detection and personalized recommendations.  
 
@@ -166,7 +143,7 @@ In future iterations, I plan to integrate a dedicated Streamlit dashboard that w
 - Provide real-time filtering and drill-down capabilities.
 - Enhance data presentation for non-technical stakeholders.
 
-For now, non-technical users can view the detailed analyses and interactive visualizations by accessing the Jupyter Notebook export (HTML or PDF), which has been carefully styled for clarity.
+For now, non-technical users can view the detailed analyses and interactive visualizations by accessing the Charts folder where there are renditions of the Jupyter notebook's charts. 
 
-Thank you for your understanding!
+Thank you for Reviewing This Project!
  
