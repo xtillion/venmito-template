@@ -19,7 +19,7 @@ The Venmito Data Engineering Project aims to consolidate and analyze disparate d
   - Transaction trends, best-selling items, and store profitability.
   - Transfer patterns among clients (money sent vs. received).
 - **Data Consumption Methods:**
-  - **Non-Technical Team:** The initial plan included an interactive dashboard built with Streamlit to provide a user-friendly interface. Due to time constraints, the final deliverable presents comprehensive analysis and visualizations via Jupyter Notebooks (accompanied by high-quality screenshots) as an alternative.
+  - **Non-Technical Team:** An interactive dashboard built with Streamlit provides a user-friendly, real-time interface to explore key insights.
   - **Technical Team:** Jupyter Notebooks offer in-depth analysis, SQL query capabilities, and interactive visualizations using Pandas and Plotly.
 ---
 
@@ -32,13 +32,13 @@ The Venmito Data Engineering Project aims to consolidate and analyze disparate d
   PostgreSQL was selected for its reliability and robust support for diverse data types. The schema was designed to normalize clients, transactions, transaction items, transfers, and promotions—ensuring referential integrity and simplifying queries.
   
 - **Visualization & Analysis:**  
-  Interactive visualizations are generated using Plotly within Jupyter Notebooks. This allows for high-quality, dynamic charts that can be tailored by technical users while still being accessible to non-technical stakeholders through static exports or screenshots.
+  Data insights are presented using Plotly within Jupyter Notebooks and through an interactive dashboard built with Streamlit. This dual approach allows non-technical users to explore the data in a user-friendly interface while technical users can dive deeper using notebooks.
 
 - **Deployment:**  
   Docker and Docker Compose are used to containerize the solution, ensuring consistent environments for development, testing, and production. This setup simplifies dependency management and deployment.
 
 - **Consumption Methods:**  
-  - **For Non-Technical Users:** Although a Streamlit dashboard was initially planned for an interactive user interface, time constraints led to delivering detailed analysis via Jupyter Notebooks along with visual exports. Future iterations may include a dedicated Streamlit dashboard.
+  - **For Non-Technical Users:** The interactive Streamlit dashboard (accessible via a web browser) provides real-time filtering, drill-down capabilities, and a polished look.
   - **For Technical Users:** Jupyter Notebooks provide the flexibility to modify queries, perform ad-hoc analysis, and interact with the data using SQL queries, Pandas, and Plotly.
 
 ---
@@ -83,7 +83,6 @@ Run:
 You'll see output similar to:
 
 
-		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp] Serving notebooks from local directory: /home/jovyan
 		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp] Jupyter Server 2.8.0 is running at:
 		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp] http://a464cc977bc0:8888/lab?token=4940e7bf...  👈
 		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp]  or http://127.0.0.1:8888/lab?token=4940e7bf... 👈
@@ -105,7 +104,31 @@ If you ever lose the link, just check the Docker logs again or copy the token fr
 
 This approach ensures you have a running Jupyter environment with all the dependencies installed and configured automatically via Docker.
 
-3. **Stopping the Containers:**
+3. **Access the Interactive Dashboard:**
+
+Once the containers are running, check the logs of the dashboard container.
+
+Open your browser and navigate to:
+
+	http://localhost:8501
+
+### Or
+
+Run:
+		
+  	docker logs venmito_dashboard
+
+Where you'll see output similar to:
+
+	You can now view your Streamlit app in your browser.
+
+	  Local URL: http://localhost:8501         👈
+	  Network URL: http://172.20.0.3:8501
+	  External URL: http://70.45.176.121:8501
+
+And Copy and Paste the "Local URL" in your web browser 
+
+4. **Stopping the Containers:**
 
 When you are finished, stop all containers by pressing Ctrl+C in your terminal or by running:
 
@@ -113,13 +136,13 @@ When you are finished, stop all containers by pressing Ctrl+C in your terminal o
 
 ## 3. Data Consumption Methods
    
-	•	For Technical Users: Jupyter Notebooks
-
-		Jupyter Notebooks provide in-depth analysis, SQL query capabilities, and detailed visualizations using Pandas and Plotly. Technical users can modify and run custom queries as needed.
-
-	•	For Non-Technical Users: Static Dashboard Exports
-
-	Although a fully interactive Streamlit dashboard was planned, due to time constraints, key insights are presented via Jupyter Notebook visualizations and exported screenshots. These static exports are available in the Charts folder and offer a user-friendly overview of the analysis.
+•	For Non-Technical Users:
+		
+  	The interactive dashboard built with Streamlit provides a user-friendly interface with real-time, drill-down visualizations. Simply navigate 	to http://localhost:8501 in your browser to interact with the dashboard.
+	
+ •	For Technical Users:
+	
+ 	Jupyter Notebooks offer comprehensive analysis, detailed visualizations, and SQL query capabilities. Access the notebooks using the URL provided by the UI container logs.
 
 ## 4. Final Remarks & Future Improvements
 
@@ -129,21 +152,18 @@ This project extracts actionable insights such as:
 	•	Which clients received which types of promotions and how they responded.
 	•	Best-selling items and store profitability.
 	•	Transfer trends between clients, including net transfers and monthly patterns.
-•	Future Work:
 
-	•	Enhanced Dashboards: Expand the interactive dashboard with additional filters and drill-down capabilities.
-	•	Further Analysis: Explore additional insights such as fraud detection and personalized recommendations.  
+## Acknowledgements
 
-## Acknowledgements on Interactive Dashboard
+This project showcases two complementary approaches for data consumption and analysis:
 
-While the initial project plan included building an interactive dashboard using Streamlit to provide a user-friendly interface for non-technical users, time constraints prevented me from developing a fully polished dashboard. Instead, I have focused on creating comprehensive data analyses and visualizations within Jupyter Notebooks. This approach ensures that all key insights are accessible and well-documented.
+- **Jupyter Notebooks:**  
+  In-depth analyses, SQL query capabilities, and interactive visualizations were developed in Jupyter Notebooks. This approach allows technical users to explore and modify the analysis in detail.
 
-In future iterations, I plan to integrate a dedicated Streamlit dashboard that will:
-- Offer an intuitive and interactive user interface.
-- Provide real-time filtering and drill-down capabilities.
-- Enhance data presentation for non-technical stakeholders.
+- **Streamlit Dashboard:**  
+  An interactive dashboard built with Streamlit was also implemented to provide non-technical users with a user-friendly, real-time interface to explore key insights. This dashboard features dynamic filtering, drill-down capabilities, and visually appealing charts.
 
-For now, non-technical users can view the detailed analyses and interactive visualizations by accessing the Charts folder where there are renditions of the Jupyter notebook's charts. 
+Both solutions were integrated into the project to ensure that stakeholders with different technical backgrounds can access and benefit from the insights derived from the data.
 
 Thank you for Reviewing This Project!
  
