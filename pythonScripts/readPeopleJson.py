@@ -22,11 +22,11 @@ with open('people.json', 'r') as file:
     for user in data:
         # Define the SQL query to insert data
         insert_query = """
-INSERT INTO user_data (id, origin_id, first_name, last_name, telephone, email, enabled, user_devices,  location_city, location_country, create_date, delete_date, is_deleted)
-VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s, null, %s)"""
+INSERT INTO user_data (id, origin_id, first_name, last_name, telephone, email, enabled, user_devices,  location_city, location_country, create_date, delete_date, is_deleted, origin)
+VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s, null, %s, %s)"""
 
         # Define the data to be inserted
-        arr = (str(uuid.uuid4()),user["id"],user["first_name"],user["last_name"],user["telephone"],user["email"],1,','.join(user["devices"]),user["location"]["City"],user["location"]["Country"],str(datetime.now()),0)
+        arr = (str(uuid.uuid4()),user["id"],user["first_name"],user["last_name"],user["telephone"],user["email"],1,','.join(user["devices"]),user["location"]["City"],user["location"]["Country"],str(datetime.now()),0,"JSON")
 
 
         print(insert_query %arr)

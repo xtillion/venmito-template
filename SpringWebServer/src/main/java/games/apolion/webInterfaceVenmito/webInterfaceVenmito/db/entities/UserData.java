@@ -15,11 +15,12 @@ public class UserData {
     private String firstName;
     private String lastName;
 
+    private String origin;
 
-    @Column(unique=true,nullable = false)
+    @Column(nullable = false)
     private String telephone;
 
-    @Column(unique=true,nullable = false)
+    @Column(nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -37,6 +38,14 @@ public class UserData {
     private ZonedDateTime deleteDate;
 
     private boolean isDeleted;
+
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
 
     public String getFirstName() {
         return firstName;
