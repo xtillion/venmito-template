@@ -1,0 +1,4 @@
+package games.apolion.webInterfaceVenmito.webInterfaceVenmito.db.entities;
+
+public class MyEInteger {
+}

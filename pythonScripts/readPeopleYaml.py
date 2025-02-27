@@ -41,7 +41,7 @@ VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s, null, %s, %s)"""
         if devices[-1] == ',':
             devices = devices[0:-1]
         # Define the data to be inserted
-        arr = (str(uuid.uuid4()),user["id"],first_name,last_name,user["phone"],user["email"],1,devices,city,country,str(datetime.now()),0,"YML")
+        arr = (str(uuid.uuid4()),str(int(user["id"])),first_name,last_name,user["phone"],user["email"],1,devices,city,country,str(datetime.now()),0,"YML")
 
 
         print("YAML"+(insert_query %arr))

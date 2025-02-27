@@ -26,7 +26,7 @@ INSERT INTO user_data (id, origin_id, first_name, last_name, telephone, email, e
 VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s, null, %s, %s)"""
 
         # Define the data to be inserted
-        arr = (str(uuid.uuid4()),user["id"],user["first_name"],user["last_name"],user["telephone"],user["email"],1,','.join(user["devices"]),user["location"]["City"],user["location"]["Country"],str(datetime.now()),0,"JSON")
+        arr = (str(uuid.uuid4()),str(int(user["id"])),user["first_name"],user["last_name"],user["telephone"],user["email"],1,','.join(user["devices"]),user["location"]["City"],user["location"]["Country"],str(datetime.now()),0,"JSON")
 
 
         print(insert_query %arr)
