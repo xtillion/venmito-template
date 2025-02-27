@@ -1,0 +1,5 @@
+docker pull mysql:latest
+docker run --name some-mysql -p 8083:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -v mysql:/var/lib/mysql -d mysql:latest
+mysqlsh
+\connect root@localhost:8083;
+CREATE DATABASE mydatabase

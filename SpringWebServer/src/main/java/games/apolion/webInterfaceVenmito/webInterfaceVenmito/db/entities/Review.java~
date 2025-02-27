@@ -1,0 +1,100 @@
+package games.apolion.mentorsconnect.profileService.db.entities;
+
+import games.apolion.mentorsconnect.profileService.utils.TimeZoneConverter;
+import jakarta.persistence.*;
+
+import java.time.ZonedDateTime;
+
+@Entity
+public class Review {
+    @Id
+    @GeneratedValue(strategy= GenerationType.UUID)
+    private String id;
+
+    private int score;
+
+    private String review;
+
+    @ManyToOne
+    private User usrName;;
+
+    @ManyToOne
+    private User mentorID;
+
+    @Column(nullable = false)
+    private ZonedDateTime createDate;
+    private ZonedDateTime deleteDate;
+
+    private boolean isDeleted;
+
+    public ZonedDateTime getDeleteDate() {
+        return deleteDate;
+    }
+
+    public void setDeleteDate(ZonedDateTime deleteDate) {
+        this.deleteDate = deleteDate;
+    }
+    public ZonedDateTime getDeleteDate(String timeZone) {
+        TimeZoneConverter converter = new TimeZoneConverter();
+        ZonedDateTime localDateTime = converter.convertFromUTC(deleteDate,timeZone);
+        return localDateTime;
+    }
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+    public ZonedDateTime getCreateDate() {
+        return createDate;
+    }
+    public ZonedDateTime getCreateDate(String timeZone) {
+        TimeZoneConverter converter = new TimeZoneConverter();
+        ZonedDateTime localDateTime = converter.convertFromUTC(createDate,timeZone);
+        return localDateTime;
+    }
+    public void setCreateDate(ZonedDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getReview() {
+        return review;
+    }
+
+    public void setReview(String review) {
+        this.review = review;
+    }
+
+    public User getUsrName() {
+        return usrName;
+    }
+
+    public void setUsrName(User usrName) {
+        this.usrName = usrName;
+    }
+
+    public User getMentorID() {
+        return mentorID;
+    }
+
+    public void setMentorID(User mentorID) {
+        this.mentorID = mentorID;
+    }
+}

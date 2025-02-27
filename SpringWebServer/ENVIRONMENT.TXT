@@ -1,0 +1,6 @@
+export DATABASE_URL=jdbc:mysql://localhost:8083/mydatabase?createDatabaseIfNotExist=true
+export DATABASE_USER=root
+export DATABASE_PASSWORD=my-secret-pw
+export SERVER_USER=admin
+export SERVER_PASSWORD=password
+export JWT_SECRET=c12661eaffafdbdbb564313a02fc0c3ebca3a0d7ce2f37b63f8a1582c150b17b

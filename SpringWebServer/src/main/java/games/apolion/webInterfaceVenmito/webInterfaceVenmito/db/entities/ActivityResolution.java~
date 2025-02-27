@@ -1,0 +1,62 @@
+package games.apolion.mentorsconnect.profileService.db.entities;
+
+import games.apolion.mentorsconnect.profileService.utils.TimeZoneConverter;
+import jakarta.persistence.*;
+
+import java.time.ZonedDateTime;
+
+@Entity
+public class ActivityResolution {
+    @Id
+    @GeneratedValue(strategy= GenerationType.UUID)
+    private String id;
+    @OneToOne
+    private Activity activity;
+    private String resolutionNotes;
+    private String response;
+    private ZonedDateTime createDate;
+
+    public ZonedDateTime getCreateDate() {
+        return createDate;
+    }
+    public ZonedDateTime getCreateDate(String timeZone) {
+        TimeZoneConverter converter = new TimeZoneConverter();
+        ZonedDateTime localDateTime = converter.convertFromUTC(createDate,timeZone);
+        return localDateTime;
+    }
+    public void setCreateDate(ZonedDateTime createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+    public String getResolutionNotes() {
+        return resolutionNotes;
+    }
+
+    public void setResolutionNotes(String resolutionNotes) {
+        this.resolutionNotes = resolutionNotes;
+    }
+
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+}
