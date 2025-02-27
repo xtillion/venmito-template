@@ -35,7 +35,6 @@ public class UserDTO {
         if(user == null) return;
         this.id = user.getId();
         this.name = user.getName();
-        this.nmbrMentees = user.getNmbrMentees();
         this.profilePicture = user.getProfilePicture();
         this.accessModifier = user.getAccessModifier();
         this.profileInfo = new ProfileDTO(user.getProfileInfo());

@@ -7,37 +7,30 @@ import java.time.ZonedDateTime;
 import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class UserData {
     @Id
     @GeneratedValue(strategy=GenerationType.UUID)
     private String id;
 
-    private String name;
+    private String firstName;
+    private String lastName;
 
 
-    private String profilePicture;
-
-    private String accessModifier;
-
-    @OneToOne
-    private Profile profileInfo;
-
-    private String usrType;
+    @Column(unique=true,nullable = false)
+    private String telephone;
 
     @Column(unique=true,nullable = false)
     private String email;
 
     @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String salt;
-    @Column(nullable = false)
     private boolean enabled;
 
-    @Column(nullable = false)
-    @OneToMany(fetch = FetchType.EAGER)
-    private List<Authorities> authority;
+    private String[] userDevices;
+
+    private String originId;
+
+    private String locationCity;
+    private String locationCountry;
 
     @Column(nullable = false)
     private ZonedDateTime createDate;
@@ -45,6 +38,69 @@ public class User {
 
     private boolean isDeleted;
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String[] getUserDevcices() {
+        return userDevices;
+    }
+
+    public void setUserDevcices(String[] userDevcices) {
+        this.userDevices = userDevcices;
+    }
+
+    public String[] getUserDevices() {
+        return userDevices;
+    }
+
+    public void setUserDevices(String[] userDevices) {
+        this.userDevices = userDevices;
+    }
+
+    public String getLocationCity() {
+        return locationCity;
+    }
+
+    public void setLocationCity(String locationCity) {
+        this.locationCity = locationCity;
+    }
+
+    public String getLocationCountry() {
+        return locationCountry;
+    }
+
+    public void setLocationCountry(String locationCountry) {
+        this.locationCountry = locationCountry;
+    }
+
+    public String getOriginId() {
+        return originId;
+    }
+
+    public void setOriginId(String originId) {
+        this.originId = originId;
+    }
 
     public ZonedDateTime getDeleteDate() {
         return deleteDate;
@@ -77,58 +133,11 @@ public class User {
         this.createDate = createDate;
     }
 
-    public List<Authorities> getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(List<Authorities> authority) {
-        this.authority = authority;
-    }
 
     public String getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public String getProfilePicture() {
-        return profilePicture;
-    }
-
-    public void setProfilePicture(String profilePicture) {
-        this.profilePicture = profilePicture;
-    }
-
-    public String getAccessModifier() {
-        return accessModifier;
-    }
-
-    public void setAccessModifier(String accessModifier) {
-        this.accessModifier = accessModifier;
-    }
-
-    public Profile getProfileInfo() {
-        return profileInfo;
-    }
-
-    public void setProfileInfo(Profile profileInfo) {
-        this.profileInfo = profileInfo;
-    }
-
-    public String getUsrType() {
-        return usrType;
-    }
-
-    public void setUsrType(String usrType) {
-        this.usrType = usrType;
-    }
 
     public String getEmail() {
         return email;
@@ -138,22 +147,6 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getSalt() {
-
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
 
     public void setId(String id) {
         this.id = id;

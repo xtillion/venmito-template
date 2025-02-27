@@ -21,6 +21,11 @@ public class ProfileDTO {
     public ProfileDTO(Profile profile) {
         if(profile == null) return;
         this.aboutMe = profile.getAboutMe();
+        this.hobbies = profile.getHobbies();
+        this.skills = profile.getSkills();
+        this.desiredSkills = profile.getDesiredSkills();
+        this.avgReviewScore = profile.getAvgReviewScore();
+        this.mentoringClasses = profile.getMentoringClasses();
     }
 
     public String getAboutMe() {

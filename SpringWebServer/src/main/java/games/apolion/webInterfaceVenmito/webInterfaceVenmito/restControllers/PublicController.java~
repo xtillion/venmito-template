@@ -118,6 +118,7 @@ public class PublicController {
         n.setSalt(regiterUserDTO.getSalt());
         n.setUsrType(userType);
         n.setEmail(regiterUserDTO.getEmail());
+        n.setNmbrMentees(0);
         n.setEnabled(true);
         n.setCreateDate(ZonedDateTime.now());
         return n;

@@ -5,3 +5,7 @@ single transfers table with ID for each transfer, sender_id,recipient_id,amount,
 Single users table with IDm firstname, lastname, telephone(NON Nullable), email(non nullable), User Devices, locationCity,locationcountry, originid (id in the original file)
 promotions table with id, email, telephone, promotionname, responded
 
+steps to run:
+ source ./myenv/Scripts/activate
+ pip install mysql-connector-python
+
