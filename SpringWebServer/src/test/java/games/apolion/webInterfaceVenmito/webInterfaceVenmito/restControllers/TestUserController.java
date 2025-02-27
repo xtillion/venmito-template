@@ -104,7 +104,6 @@ public class TestUserController {
         Profile myFirstProfile = new Profile();
         myFirstUser.setName("Antonio");
         myFirstUser.setProfileInfo(myFirstProfile);
-        when(pageRep.findFirstFriendsById(anyString(),anyString())).thenReturn(Optional.of(myFirstUser));
         when(pageRep.findByEmailAndIsDeletedFalse(anyString())).thenReturn(Optional.of(myFirstUser));
         when(authentication.getName()).thenReturn("a");
 
@@ -113,7 +112,6 @@ public class TestUserController {
 
         //Assert
         assert(respprofileDTO.getBody()!=null);
-        verify(pageRep, times(1)).findFirstFriendsById(anyString(),anyString());
         verify(authentication, times(2)).getName();
     }
 

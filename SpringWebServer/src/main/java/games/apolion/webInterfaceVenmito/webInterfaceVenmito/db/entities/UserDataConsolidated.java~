@@ -12,8 +12,7 @@ public class UserDataConsolidated {
     @GeneratedValue(strategy=GenerationType.UUID)
     private String id;
 
-    @Column(nullable = false)
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
     private EOriginId[] origin_ids;
     private String[] firstNames;
     private String[] lastNames;

@@ -6,8 +6,8 @@ Single users table with ID firstname, lastname, telephone(NON Nullable), email(n
 promotions table with id, email, telephone, promotionname, responded
 
 steps to run:
- source ./myenv/Scripts/activate
- pip install mysql-connector-python
- pip install pyyaml
+- source ./myenv/Scripts/activate
+- pip install mysql-connector-python
+- pip install pyyaml
 
 
