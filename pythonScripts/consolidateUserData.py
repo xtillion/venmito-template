@@ -3,24 +3,6 @@ import uuid
 from datetime import datetime
 import yaml
 
-# Establish the connection
-conn = mysql.connector.connect(
-    host="localhost",  # e.g., "localhost"
-    user="root",
-    password="my-secret-pw",
-    database="testdb",
-    port=8083
-)
-
-# Create a cursor object
-cursor = conn.cursor()
-
-cursor.execute(f"SELECT id, origin_id, first_name, last_name, telephone, email, enabled, user_devices,  location_city, location_country, create_date, delete_date, is_deleted, origin"
-               f" FROM user_data"
-               f" WHERE origin=\'JSON\'")
-data = cursor.fetchall()
-
-
 def InsertNewRecord(row):
     #############################################
     eorigin_id = str(uuid.uuid4())
@@ -59,8 +41,8 @@ def InsertNewRecord(row):
     conn.commit()
 
 
-def UpdateRecord(row):
-    pass
+def UpdateRecord(row,consolidated_record):
+    print(consolidated_record)
 
 
 def InsertOrUpdateRecord(row):
@@ -77,12 +59,32 @@ ON udc.id = ids.user_data_consolidated_id
         InsertNewRecord(row)
     else:
         print("Found record" + str(int(row[1])))
-        UpdateRecord(row)
+        UpdateRecord(row, consolidated_record)
 
+# Establish the connection
+conn = mysql.connector.connect(
+    host="localhost",  # e.g., "localhost"
+    user="root",
+    password="my-secret-pw",
+    database="testdb",
+    port=8083
+)
 
-# Process the data
-for row in data:
-    InsertOrUpdateRecord(row)
+# Create a cursor object
+cursor = conn.cursor()
+
+targetSources = ["YML","JSON"]
+
+for target in targetSources:
+
+    cursor.execute(f"SELECT id, origin_id, first_name, last_name, telephone, email, enabled, user_devices,  location_city, location_country, create_date, delete_date, is_deleted, origin"
+                   f" FROM user_data"
+                   f" WHERE origin=\'{target}\'")
+    data = cursor.fetchall()
+
+    # Process the data
+    for row in data:
+        InsertOrUpdateRecord(row)
 # Close the cursor and connection
 cursor.close()
 conn.close()
