@@ -10,7 +10,7 @@ public class Promotions {
     @Id
     @GeneratedValue(strategy=GenerationType.UUID)
     private String id;
-    private String originId;
+
     private String telephoneGivenAtTheTimeOfRegistration;
     private String promotionName;
     private boolean responded;
@@ -22,13 +22,6 @@ public class Promotions {
 
     private boolean isDeleted;
 
-    public String getOriginId() {
-        return originId;
-    }
-
-    public void setOriginId(String originId) {
-        this.originId = originId;
-    }
 
     public ZonedDateTime getDeleteDate() {
         return deleteDate;

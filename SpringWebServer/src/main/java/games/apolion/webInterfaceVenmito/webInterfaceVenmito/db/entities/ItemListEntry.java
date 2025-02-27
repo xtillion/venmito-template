@@ -12,6 +12,24 @@ public class ItemListEntry {
     private String id;
     private float valueAtPurchase;
     private SaleItem item;
+    private int quantity;
+    private double totalValue;
+
+    public double getTotalValue() {
+        return totalValue;
+    }
+
+    public void setTotalValue(double totalValue) {
+        this.totalValue = totalValue;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String getId() {
         return id;

@@ -13,20 +13,25 @@ conn = mysql.connector.connect(
 # Create a cursor object
 cursor = conn.cursor()
 
-
-import json
+import csv
 
 # Open the JSON file
-with open('people.json', 'r') as file:
-    data = json.load(file)
-    for user in data:
+with open('promotions.csv', 'r') as file:
+    csv_reader = csv.reader(file)
+
+    # Read the header (first row)
+    header = next(csv_reader)
+    print(f'Header: {header}')
+
+    # Iterate over the remaining rows
+    for row in csv_reader:
         # Define the SQL query to insert data
         insert_query = """
-INSERT INTO user_data (id, origin_id, first_name, last_name, telephone, email, enabled, user_devices,  location_city, location_country, create_date, delete_date, is_deleted, origin)
-VALUES (%s, %s, %s,%s, %s, %s,%s, %s, %s,%s, %s, null, %s, %s)"""
+INSERT INTO promotions (id,create_date,delete_date,email,is_deleted,promotion_name,responded,telephone_given_at_the_time_of_registration,origin_id)
+VALUES (%s, %s, null,%s, %s, %s,%s, %s, %s)"""
 
         # Define the data to be inserted
-        arr = (str(uuid.uuid4()),str(int(user["id"])),user["first_name"],user["last_name"],user["telephone"],user["email"],1,','.join(user["devices"]),user["location"]["City"],user["location"]["Country"],str(datetime.now()),0,"JSON")
+        arr = (str(uuid.uuid4()),str(datetime.now()),row[1],0,row[3],row[4].lower()=="yes", row[2], row[0])
 
 
         print(insert_query %arr)
