@@ -70,7 +70,7 @@ psql -U user -h localhost -d postgres
 
 In SQL:
 
-```bash
+```SQL
 CREATE DATABASE venmito;
 ```
 
