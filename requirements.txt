@@ -1,0 +1,6 @@
+pandas
+pyyaml
+xmltodict
+fastapi
+uvicorn
+jupyter
