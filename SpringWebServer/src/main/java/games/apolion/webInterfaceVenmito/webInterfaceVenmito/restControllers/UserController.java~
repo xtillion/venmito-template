@@ -40,7 +40,7 @@ public class UserController {
         Optional<User> optUser = userRepository.findByEmailAndIsDeletedFalse(authentication.getName());
         return new UserDTO(optUser.orElse(null));
     }
-
+    
 
 
 }

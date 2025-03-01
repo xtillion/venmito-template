@@ -35,7 +35,7 @@ public class WebSecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .authorizeRequests(authorize -> authorize
 //                    .requestMatchers("/app/v1/**").hasAnyAuthority("ROLE_ADMIN","ROLE_MENTEE")
-                    .requestMatchers("/public/app/v1/**","/error","/app/v1/login","/index.html").permitAll()
+                    .requestMatchers("/error","/index.html","/").permitAll()
                     .requestMatchers("/app/v1/**","/**").hasAnyAuthority("ADMIN","USER")
                 )
                 .httpBasic(
