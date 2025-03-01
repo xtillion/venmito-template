@@ -37,7 +37,7 @@ cleanup_yml()
 #Tested and they're good to go
 
 
-### Performing Concat (psuedo merge, performing outer inner join wasn't needed) ###
+### Performing Concat for people information (psuedo merge, performing outer inner join wasn't needed) ###
 full_ppl = pd.concat([ppl_json, ppl_yml], ignore_index=True).drop_duplicates()
 full_ppl.to_csv("data/people.csv", index=False)
 
@@ -50,11 +50,8 @@ promo_csv[['client_email','telephone']] = promo_csv.apply(lambda x: pd.Series(cl
 
 ### Cleaning up transaction.xml ###
 transaction = data_parser("data/transactions.xml") # we need to fix items
-
-
 tree = ET.parse('data/transactions.xml')
 root = tree.getroot()
-
 items = []
 for child in root:
     for next in child:
@@ -73,8 +70,14 @@ for child in root:
                         item_info['quantity'] = i.text
                 transaction_items.append(item_info)
             items.append(transaction_items)
-items_df = pd.Series(items)
-transaction['items'] = items_df
+transaction['items'] = pd.Series(items)
 #transaction now ready to be used for analysis
 
-# transfer_csv = data_parser("data/transfers.csv")
+
+### Cleaning up transfers.csv ###
+transfer = data_parser("data/transfers.csv")
+# print(transfer.isna().sum()) #reveals that there are no missing values
+
+
+def data_to_use():
+    return full_ppl, promo_csv, transaction, transfer
