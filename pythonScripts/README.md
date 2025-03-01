@@ -8,10 +8,14 @@ These scripts were created in order to import the different type text data into 
 
 #### Running the Scripts
 To run the scripts just execute the two following commands 
-- source ./myenv/Scripts/activate
-- install dependencies  
+1. source ./myenv/Scripts/activate
+2. install dependencies  
     - you only need to run this step once  
-- python "scriptname"
+3. Input the database information that you wish to upload the text data to. To do this modify the following lines of code in the given script you wish to run:
+   - ![alt text](db.png "database config")
+4. Input the file information that you wish to upload the text data from. To do this modify the following lines of code in the given script you wish to run:
+   - ![alt text](file.png "file config")
+5. python "scriptname"
 
 #### Future work:
 These scripts can be reworked into a tool that automatically loads data from the data base and reconciles the differences in the data.

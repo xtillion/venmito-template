@@ -60,7 +60,11 @@ To run the scripts just execute the two following commands:
     - pip install mysql-connector-python
     - pip install pyyaml
     - you only need to run this step once  
-5. Run the following command inputing the script name `python "scriptname"`
+5. Input the database information that you wish to upload the text data to. To do this modify the following lines of code in the given script you wish to run:
+   - ![alt text](pythonScripts/db.png "database config")
+6. Input the file information that you wish to upload the text data from. To do this modify the following lines of code in the given script you wish to run:
+   - ![alt text](powerbiData/file.png "file config")
+7. Run the following command inputing the script name `python "scriptname"`
 
 ## Future Work:
 - Implementing the backend to automatically load new files into the database
