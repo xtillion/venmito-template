@@ -24,6 +24,13 @@ public class JWTTokenValidatorFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String jwt = request.getHeader(ApplicationConstants.JWT_HEADER);
+        if((jwt == null || jwt.isEmpty() ) && (request.getHeader("Cookie") != null&&!request.getHeader("Cookie").isEmpty())
+                &&request.getHeader("Cookie").contains("Authorization=")){
+
+            jwt = request.getHeader("Cookie").split("Authorization=")[1];
+            if(jwt.contains(";"))
+                jwt = jwt.split(";")[0];
+        }
         if(null!=jwt){
             try{
                 Environment environment = getEnvironment();

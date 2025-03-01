@@ -33,7 +33,7 @@ public class ProfileServiceUserDetailsService implements UserDetailsService {
 //                        authority.getName())
 //                ).collect(Collectors.toList());
         List<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("USER"));
+        authorities.add(new SimpleGrantedAuthority("User"));
         User user = new User();
         if(username==null||username.isEmpty())
             username="anon";

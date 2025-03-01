@@ -7,7 +7,6 @@ import java.io.IOException;
 
 
 public class AuthoritiesLoggingAfterFilter implements Filter {
-
     /**
      * @param request  The request to process
      * @param response The response associated with the request
@@ -20,8 +19,8 @@ public class AuthoritiesLoggingAfterFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(null != authentication) {
-            System.out.println("User " + authentication.getName() + " is successfully authenticated and "
-                    + "has the authorities " + authentication.getAuthorities().toString());
+//            log.info("User " + authentication.getName() + " is successfully authenticated and "
+//                    + "has the authorities " + authentication.getAuthorities().toString());
         }
         chain.doFilter(request,response);
     }

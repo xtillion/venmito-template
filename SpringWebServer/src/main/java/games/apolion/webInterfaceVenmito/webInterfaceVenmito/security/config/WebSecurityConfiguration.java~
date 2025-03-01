@@ -36,7 +36,7 @@ public class WebSecurityConfiguration {
                 .authorizeRequests(authorize -> authorize
 //                    .requestMatchers("/app/v1/**").hasAnyAuthority("ROLE_ADMIN","ROLE_MENTEE")
                     .requestMatchers("/public/app/v1/**","/error","/app/v1/login","/index.html").permitAll()
-                    .requestMatchers("/app/v1/**","/**").hasAnyAuthority("ADMIN","USER")
+                    .requestMatchers("/app/v1/**","/**").hasAnyRole("ADMIN","USER", "/dashboard.html")
                 )
                 .httpBasic(
                         hbc->

@@ -7,7 +7,7 @@
         <div id="LoginForm" style="position: absolute;background-color: aqua;left:33%;right: 33%;top: 33%;bottom: 33%;">
             <form style="margin-left: 20%;margin-top: 20%;" >
                 <label>Username</label><input id="username" type="text"/><br/>
-                <label>Password</label><input id="password" type="password"/><br/>
+                <label>Password</label><input id="password" type="password" /><br/>
                 <input type="submit">
             </form>
         </div>
@@ -15,39 +15,41 @@
                 function setCookie(name, value, hours) {
                 let date = new Date();
                 date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
-                let expires = "expires=" + date.toUTCString();
-                document.cookie = name + "=" + value + ";" + expires + ";path=/";
+                let expires = "Expires=" + date.toUTCString();
+                document.cookie = name + "=" + value + "; " + expires + "; Path=/";
             }
-
-            // Usage example: Save a cookie named "user" with value "John Doe" that lasts for 3 hours
-            // setCookie("user", "John Doe", 3);
 
 
             // your function
             var my_func = function(event) {
                 event.preventDefault();
-                document.getElementById('username').value
-                document.getElementById('password').value
                 // Define your username and password
                 const username = document.getElementById('username').value;
                 const password = document.getElementById('password').value;
-
+                if(username.length==0){
+                    alert("Username must not be blank")
+                    return 
+                }
                 // Combine them into a single string with a colon separator
                 const credentials = `${username}:${password}`;
 
                 // Encode the combined string in Base64
                 const encodedCredentials = btoa(credentials);
-
+                
                 // Create the Authorization header
                 const authorizationHeader = `Basic ${encodedCredentials}`;
-                fetch("/app/v1/login",
-                {
-                    method: "POST",
+
+                axios.post('/app/v1/login', {}, {
                     headers: {
-                    "Authorization": authorizationHeader,
-                    },
+                        'Authorization': authorizationHeader
+                    }
                 })
-                .then((response) => console.log(response));
+                .then((response) => 
+                {   
+                    setCookie("Authorization",response.headers["authorization"],3)
+                    window.location.replace("/dashboard.html");
+                }
+            );
             };
 
             // your form
