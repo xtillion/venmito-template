@@ -45,8 +45,8 @@ My solution for this project included multiple parts among them a java spring we
     * DATABASE_URL: url of the the given database
     * DATABASE_USER: username of the database user
     * JWT_SECRET: secret used to generate JWT tokens
-3. Navigate to the root folder(/SpringWebServer) of the Spring app and then run the gradle command "gradlew bootRun"
-4. Enter and navigate to the url localhost:8090/ on your browser 
+3. Navigate to the root folder(/SpringWebServer) of the Spring app and then run the gradle command `gradlew bootRun`
+4. Enter and navigate to the url `http://localhost:8090/` on your browser 
 5. Enter the username and password to login
 
 
