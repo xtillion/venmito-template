@@ -1,5 +1,6 @@
 package games.apolion.webInterfaceVenmito.webInterfaceVenmito.db.entities;
 
+import games.apolion.webInterfaceVenmito.webInterfaceVenmito.security.config.StringArrayConverter;
 import games.apolion.webInterfaceVenmito.webInterfaceVenmito.utils.TimeZoneConverter;
 import jakarta.persistence.*;
 
@@ -13,23 +14,28 @@ public class UserDataConsolidated {
     private String id;
 
     @Column(nullable = false)
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     private EOriginId[] origin_ids;
+    @Convert(converter = StringArrayConverter.class)
     private String[] firstNames;
+    @Convert(converter = StringArrayConverter.class)
     private String[] lastNames;
 
     @Column(nullable = false)
+    @Convert(converter = StringArrayConverter.class)
     private String[] telephones;
 
     @Column(nullable = false)
+    @Convert(converter = StringArrayConverter.class)
     private String[] emails;
 
     @Column(nullable = false)
     private boolean enabled;
-
+    @Convert(converter = StringArrayConverter.class)
     private String[] userDevices;
-
+    @Convert(converter = StringArrayConverter.class)
     private String[] locationCity;
+    @Convert(converter = StringArrayConverter.class)
     private String[] locationCountry;
 
     @Column(nullable = false)
@@ -160,5 +166,23 @@ public class UserDataConsolidated {
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
-    
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", origin_ids=" + origin_ids +
+                ", firstNames=" + firstNames +
+                ", lastNames=" + lastNames +
+                ", telephones=" + telephones +
+                ", emails=" + emails +
+                ", enabled=" + enabled +
+                ", userDevices=" + userDevices +
+                ", locationCity=" + locationCity +
+                ", locationCountry=" + locationCountry +
+                ", createDate=" + createDate +
+                ", deleteDate=" + deleteDate +
+                ", isDeleted=" + isDeleted +
+                "}";
+    }
 }

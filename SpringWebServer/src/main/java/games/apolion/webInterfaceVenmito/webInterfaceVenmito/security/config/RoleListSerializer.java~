@@ -1,0 +1,25 @@
+package games.apolion.webInterfaceVenmito.webInterfaceVenmito.security.config;
+
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.ser.std.StdSerializer;
+
+import java.io.IOException;
+import java.util.List;
+
+
+public class RoleListSerializer extends StdSerializer<String[]> {
+    public RoleListSerializer() {
+        super((Class<String[]>) null);
+    }
+
+    @Override
+    public void serialize(String[] roles, JsonGenerator gen, SerializerProvider serializerProvider) throws IOException {
+        gen.writeStartArray();
+        for (String role : roles) {
+            gen.writeString(role);
+            System.out.println(role);
+        }
+        gen.writeEndArray();
+    }
+}
