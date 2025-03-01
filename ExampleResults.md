@@ -10,11 +10,14 @@ NOTE: can be ['Android', 'Iphone']
 'name': 'Jamie Bright',  *NEW*
 'phone': '533-849-3913', *NEW*
 'email': 'Jamie.Bright@example.com', 
-'devices': ['Android'], 
+'devices': ['Android'], *DELETED*
+'Android': '1',                
+'Desktop': '0',                 
+'Iphone': '0',
 'city' : Montreal  *NEW*
 'country' : Canada *NEW*
-'location': {'City': 'Montreal', 
-             'Country': 'Canada'}}
+'location': {'City': 'Montreal', 'Country': 'Canada'}} *DELETED*
+
 ```
 
 ## People YAML

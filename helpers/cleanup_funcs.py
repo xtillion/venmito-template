@@ -5,8 +5,14 @@
 def split_location(location:str):
     return [location['City'], location['Country']]
 
+def split_location_str(location:str):
+    return location.split(", ")
+
 def full_name(first_name:str, last_name:str):
     return first_name + " " + last_name
+
+def split_name(name:str):
+    return name.split(" ")
 
 # ['Android', 'Iphone']
 def device_list(devices: list):
@@ -20,4 +26,6 @@ def device_list(devices: list):
             iphone += 1
         elif device == 'Desktop':
             desktop += 1
+        else:
+            print("Unknown Device")
     return [android, desktop, iphone]
