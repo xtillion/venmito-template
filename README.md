@@ -3,6 +3,9 @@
 Name: Antonio Ahmed Tapia Maldonado
 Email: antonio.tapia@upr.edu    
 
+## App running
+![alt text](dashboard.png "dashboard")
+
 ## Summary
 My solution for this project included multiple parts among them a java spring web application, Python 3 scripts and sql queries together with Power BI to generate reports. The web application presents the latest report and analytics created by business in Power BI. The python 3 scripts upload the contents of the data files to a database. Power BI reads the values from the database queries and makes it simple to create visualizations of the data.
 
@@ -36,7 +39,7 @@ My solution for this project included multiple parts among them a java spring we
 3. Enter a valid user/password combination
 
 #### To run the Spring Webpage:
-0. Create a database and have it running on port 8083
+0. Create a mysql database and have it running on port 8083
 1. Create the environment variable velow with the appropriate data:
     * DATABASE_PASSWORD: password login into the database
     * DATABASE_URL: url of the the given database
