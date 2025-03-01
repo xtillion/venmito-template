@@ -3,14 +3,13 @@ import pandas as pd
 from helpers.data_parser import data_parser
 import helpers.cleanup_funcs as cleanup
 
-#Pre Cleanup  Discoveries
+### Pre Cleanup  Discoveries ###
 
 # print(ppl_json['id'].isin(ppl_yml['id'])) #reveals discrepancies in the ids
 # ppl_json.isna().sum() = results show that there are no missing values
 
-ppl_json = data_parser("data/people.json")
-# Cleaning Up People Json
-
+### Cleaning Up People Json and People Yml ###
+ppl_json = data_parser("data/people/people.json")
 def cleanup_json():
     ppl_json[['city', 'country']] = ppl_json['location'].apply(lambda x: pd.Series(cleanup.split_location(x)))
     ppl_json[['Android', 'Desktop','Iphone']] = ppl_json['devices'].apply(lambda x: pd.Series(cleanup.device_list(x)))
@@ -19,21 +18,24 @@ def cleanup_json():
     ppl_json.drop(['devices','location'], axis=1, inplace=True) ##not dropping first and last name to see if families shop at same place
     ppl_json['id'] =  ppl_json.apply(lambda x: int(str(x['id']).lstrip("0")), axis=1)
     ppl_json.rename(columns={'telephone': 'phone'}, inplace=True)
-
 cleanup_json()
     
-ppl_yml = data_parser("data/people.yml")
-
+ppl_yml = data_parser("data/people/people.yml")
 def cleanup_yml():
     ppl_yml[['first_name', 'last_name']] = ppl_yml['name'].apply(lambda x: pd.Series(cleanup.split_name(x)))
     ppl_yml[['city', 'country']] = ppl_yml['city'].apply(lambda x: pd.Series(cleanup.split_location_str(x)))
-
 cleanup_yml()
 
-print(pd.merge(ppl_json, ppl_yml, on='id', how='cross'))
+### check datatypes  ###
 
-##### check datatypes before merging as well as removing duplicates  ####
+# print(ppl_json.dtypes)
+# print('-------------------')
+# print(ppl_yml.dtypes)
+#Tested and they're good to go
 
+### append (psuedo merge) ###
+full_ppl = pd.concat([ppl_json, ppl_yml], ignore_index=True).drop_duplicates()
+full_ppl.to_csv("data/people.csv", index=False)
 
 # promo_csv = data_parser("data/promotions.csv")
 # transaction_csv = data_parser("data/transactions.xml")
