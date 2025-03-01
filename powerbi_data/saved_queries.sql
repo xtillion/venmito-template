@@ -158,3 +158,47 @@ join (
 	   or (t1 .email = udc.emails and t1 .telephone_given_at_the_time_of_registration = udc.telephones)
 	group BY ei.my_id_value, t1.max_number_of_promos
 ) t5 on ei.my_id_value = t5.my_id_value
+
+
+#Most Sold Item
+SELECT  count(*)
+from sale_item si
+group by si.id
+
+#Most Sold Item
+select count(si.name),si.name
+from `transaction` t 
+join transaction_entries te 
+on te.transaction_id = t.id
+join item_list_entry ile 
+on ile.id = te.entries_id
+JOIN sale_item si 
+on si.id = ile.item
+group by si.name
+order by count(si.name) DESC
+
+#Most sold item by store 
+select count(si.name),CONCAT(si.name,' at ',t.store_name) as item_store_name
+from `transaction` t 
+join transaction_entries te 
+on te.transaction_id = t.id
+join item_list_entry ile 
+on ile.id = te.entries_id
+JOIN sale_item si 
+on si.id = ile.item
+group by t.store_name ,si.name
+order by count(si.name) DESC
+
+#Average Item value when bougth
+select AVG(ile.value_at_purchase),si.name
+from `transaction` t 
+join transaction_entries te 
+on te.transaction_id = t.id
+join item_list_entry ile 
+on ile.id = te.entries_id
+JOIN sale_item si 
+on si.id = ile.item
+group by si.name
+order by AVG(ile.value_at_purchase)  DESC
+
+

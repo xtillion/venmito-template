@@ -4,7 +4,7 @@
     <option name="MAIN_CLASS_NAME" value="" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="directory" />
-    <dir value="$PROJECT_DIR$/src/test/java/games/apolion/mentorsconnect/profileService" />
+    <dir value="$PROJECT_DIR$/../../../kubernetes/profileService/src/test/java/games/apolion/mentorsconnect/profileService/restControllers" />
     <method v="2">
       <option name="Make" enabled="true" />
     </method>

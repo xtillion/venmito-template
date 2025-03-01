@@ -30,60 +30,8 @@ public class TestPublicController {
     private AuthoritiesRepository authoritiesRepository;
     private PublicController publicController;
 
-    @Test
-    void test_addNewUser_HappyPath(){
-        //Prepare
-        resetVariablesPublicController();
-        RegisterUserDTO registerUserDTO = new RegisterUserDTO();
-        registerUserDTO.setEmail("a@apolion.games");
-        registerUserDTO.setPasswordHash("password");
-        when(passwordEncoder.encode(anyString())).thenReturn("hashedpassword");
-        User user = new User();
-        user.setId("1");
-        when(userRep.save(any())).thenReturn(user);
-        Authorities auth = new Authorities();
-        when(authoritiesRepository.save(any())).thenReturn(auth);
 
-        //Execute
-        ResponseEntity<OperationResultDTO> responseEntity = publicController.addNewUser(registerUserDTO);
 
-        //Assert
-        assert (responseEntity.getStatusCode()==HttpStatus.CREATED);
-        verify(passwordEncoder, times(1)).encode(anyString());
-        verify(authoritiesRepository, times(1)).save(any());
-        verify(userRep, times(2)).save(any());
-    }
-
-    @Test
-    void test_addMentor_HappyPath(){
-        //Prepare
-        resetVariablesPublicController();
-        RegisterUserDTO registerUserDTO = new RegisterUserDTO();
-        registerUserDTO.setEmail("a@apolion.games");
-        registerUserDTO.setPasswordHash("password");
-        when(passwordEncoder.encode(anyString())).thenReturn("hashedpassword");
-        Authorities auth = new Authorities();
-        when(authoritiesRepository.save(any())).thenReturn(auth);
-        when(userRep.save(any(User.class))).thenAnswer(new Answer<User>() {
-            @Override
-            public User answer(InvocationOnMock invocationOnMock) throws Throwable {
-                assert (invocationOnMock.getArgument(0) instanceof User);
-                User user= (User) invocationOnMock.getArgument(0);
-                assert(user.getEmail().equals(registerUserDTO.getEmail()));
-                assert(user.getPassword().equals("hashedpassword"));
-                user.setId("1");
-                return user;
-            }
-        });
-        //Execute
-        ResponseEntity<OperationResultDTO> responseEntity = publicController.addMentor(registerUserDTO);
-
-        //Assert
-        assert (responseEntity.getStatusCode()==HttpStatus.CREATED);
-        verify(passwordEncoder, times(1)).encode(anyString());
-        verify(authoritiesRepository, times(1)).save(any());
-        verify(userRep, times(2)).save(any());
-    }
 
     @Test
     void test_getUserSalt_HappyPath(){
