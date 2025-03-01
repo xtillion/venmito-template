@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from helpers.data_parser import data_parser
 import helpers.cleanup_funcs as cleanup
+import xml.etree.ElementTree as ET
 
 ### Pre Cleanup  Discoveries ###
 
@@ -41,10 +42,39 @@ full_ppl = pd.concat([ppl_json, ppl_yml], ignore_index=True).drop_duplicates()
 full_ppl.to_csv("data/people.csv", index=False)
 
 
-### Cleaning up promo.csv
+### Cleaning up Promo CSV ###
 promo_csv = data_parser("data/promotions.csv")
 promo_csv[['client_email','telephone']] = promo_csv.apply(lambda x: pd.Series(cleanup.fill_blank_email_or_num(x,full_ppl)),axis = 1)
 # print(promo_csv.isna().sum()) #reveals that there are no missing values
 
-# transaction_csv = data_parser("data/transactions.xml")
+
+### Cleaning up transaction.xml ###
+transaction = data_parser("data/transactions.xml") # we need to fix items
+
+
+tree = ET.parse('data/transactions.xml')
+root = tree.getroot()
+
+items = []
+for child in root:
+    for next in child:
+        if next.tag == 'items':
+            transaction_items = []
+            for item in next:
+                item_info = {}
+                for i in item:
+                    if i.tag == 'item':
+                        item_info['name'] = i.text
+                    elif i.tag == 'price':
+                        item_info['price'] = i.text
+                    elif i.tag == 'price_per_item':
+                        item_info['price_per_item'] = i.text
+                    elif i.tag == 'quantity':
+                        item_info['quantity'] = i.text
+                transaction_items.append(item_info)
+            items.append(transaction_items)
+items_df = pd.Series(items)
+transaction['items'] = items_df
+#transaction now ready to be used for analysis
+
 # transfer_csv = data_parser("data/transfers.csv")
