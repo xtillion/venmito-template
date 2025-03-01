@@ -45,21 +45,21 @@ My solution for this project included multiple parts among them a java spring we
     * DATABASE_URL: url of the the given database
     * DATABASE_USER: username of the database user
     * JWT_SECRET: secret used to generate JWT tokens
-2. Navigate to the root folder of the Spring app and then run the gradle command "gradlew bootRun"
+2. Navigate to the root folder(/SpringWebServer) of the Spring app and then run the gradle command "gradlew bootRun"
 3. Enter and navigate to the url localhost:8090/ on your browser 
 4. Enter the username and password to login
 
 
 #### Running the Python Scripts
 To run the scripts just execute the two following commands 
-- create a venv
-- source ./myenv/Scripts/activate
-- pip install the following dependencies
+0. Navigate to the pythonScripts folder
+1. create a venv 
+2. source ./myenv/Scripts/activate
+3. pip install the following dependencies
     - pip install mysql-connector-python
     - pip install pyyaml
     - you only need to run this step once  
-- python "scriptname" 
-
+4. Run the following command inputing the script name `python "scriptname"`
 
 ## Future Work:
 - Implementing the backend to automatically load new files into the database
