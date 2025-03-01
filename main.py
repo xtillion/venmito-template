@@ -13,10 +13,19 @@ def data_parser (file_path):
                 data = yaml.safe_load(file)
                 return pd.DataFrame(data)
         case "csv":
-            pd.read_csv(file_path)
+            return pd.read_csv(file_path)
         case "xml":
-            pd.read_xml(file_path)
+            return pd.read_xml(file_path)
         case _:
             return "File type not supported (supported types: json, yml, csv, xml)"
 
-print(data_parser('data/people.json'))
+ppl_json = data_parser("data/people.json")
+
+# Cleaning Up People Json
+
+# ppl_json.isna().sum() = results show that there are no missing values
+# ppl_yml = data_parser("data/people.yml")
+# promo_csv = data_parser("data/promotions.csv")
+# transaction_csv = data_parser("data/transactions.xml")
+# transfer_csv = data_parser("data/transfers.csv")
+
