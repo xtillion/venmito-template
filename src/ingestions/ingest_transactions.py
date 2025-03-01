@@ -1,57 +1,55 @@
+import os
 import sqlite3
+from io import StringIO
 
 import pandas as pd
-import xmltodict
+from lxml import etree
 
 # File Paths
-xml_file = "transactions.xml"
-db_file = "venmito.db"
+# Get the base directory (two levels up from the script)
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+
+# Construct the correct paths
+xml_file = os.path.join(BASE_DIR, "data", "transactions.xml")
+db_file = os.path.join(BASE_DIR, "src/database", "venmito.db")
 
 def load_transactions(filepath):
-    """Load transactions.xml and extract transaction & item data."""
-    with open(filepath, "r") as file:
-        data = xmltodict.parse(file.read())
+    """Load transactions.xml using lxml and pandas."""
+    tree = etree.parse(filepath)
+    root = tree.getroot()
     
     transactions_list = []
-    transaction_items_list = []
+    items_list = []
     
-    for transaction in data["transactions"]["transaction"]:
-        transaction_id = int(transaction["@id"])
-        phone = transaction["phone"]
-        store = transaction["store"]
-        
-        # Store transaction-level data
+    for transaction in root.findall("transaction"):
+        transaction_id = int(transaction.get("id"))
+        phone = transaction.find("phone").text
+        store = transaction.find("store").text
         transactions_list.append((transaction_id, phone, store))
         
-        # Extract item details
-        for item in transaction["items"]["item"]:
-            item_name = item["item"]
-            quantity = int(item["quantity"])
-            price_per_item = float(item["price_per_item"])
-            total_price = float(item["price"])
-            transaction_items_list.append((transaction_id, item_name, quantity, price_per_item, total_price))
+        for item in transaction.find("items").findall("item"):
+            item_name = item.find("item").text
+            quantity = int(item.find("quantity").text)
+            price_per_item = float(item.find("price_per_item").text)
+            total_price = float(item.find("price").text)
+            items_list.append((transaction_id, item_name, quantity, price_per_item, total_price))
     
-    return transactions_list, transaction_items_list
+    transactions_df = pd.DataFrame(transactions_list, columns=["transaction_id", "phone", "store"])
+    transaction_items_df = pd.DataFrame(items_list, columns=["transaction_id", "item_name", "quantity", "price_per_item", "total_price"])
+    
+    return transactions_df, transaction_items_df
 
 def insert_into_db(transactions, transaction_items, db_file):
     """Insert cleaned transactions and items into SQLite"""
     conn = sqlite3.connect(db_file)
-    cursor = conn.cursor()
     
-    # Insert transactions
-    cursor.executemany("""
-        INSERT INTO transactions (transaction_id, phone, store)
-        VALUES (?, ?, ?)""", transactions)
-    
-    # Insert transaction items
-    cursor.executemany("""
-        INSERT INTO transaction_items (transaction_id, item_name, quantity, price_per_item, total_price)
-        VALUES (?, ?, ?, ?, ?)""", transaction_items)
+    transactions.to_sql("transactions", conn, if_exists="append", index=False)
+    transaction_items.to_sql("transaction_items", conn, if_exists="append", index=False)
     
     conn.commit()
     conn.close()
     print("Transactions data inserted successfully!")
 
 if __name__ == "__main__":
-    transactions, transaction_items = load_transactions(xml_file)
-    insert_into_db(transactions, transaction_items, db_file)
+    transactions_df, transaction_items_df = load_transactions(xml_file)
+    insert_into_db(transactions_df, transaction_items_df, db_file)

@@ -1,6 +1,6 @@
 pandas
 pyyaml
-xmltodict
+lxml
 fastapi
 uvicorn
 jupyter

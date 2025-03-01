@@ -1,21 +1,31 @@
+import os
 import sqlite3
 
 import pandas as pd
 
 # File Paths
-csv_file = "promotions.csv"
-db_file = "venmito.db"
+# Get the base directory (two levels up from the script)
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+
+# Construct the correct paths
+csv_file = os.path.join(BASE_DIR, "data", "promotions.csv")
+db_file = os.path.join(BASE_DIR, "src/database", "venmito.db")
+
 
 def load_promotions(filepath):
     """Load promotions.csv into a DataFrame and clean data."""
     df = pd.read_csv(filepath)
+
+# Debugging: Print column names to see what exists
+    print("Columns in CSV:", df.columns)
+
     
     # Standardize column names
     df.rename(columns={
         "id": "promotion_id",
-        "user_email": "email",
-        "type": "promotion_type",
-        "response": "accepted"
+        "client_email": "email",
+        "promotion": "promotion_type",
+        "responded": "accepted"
     }, inplace=True)
     
     # Normalize accepted values (ensure 'Yes' or 'No')
