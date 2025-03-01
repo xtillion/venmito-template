@@ -1,31 +1,28 @@
 import numpy as np
 import pandas as pd
-import json
-import yaml
-
-def data_parser (file_path):
-    file_type = str(file_path.split('.')[-1])
-    match file_type:
-        case "json":
-            return pd.read_json(file_path)
-        case "yml":
-            with open(file_path, 'r') as file:
-                data = yaml.safe_load(file)
-                return pd.DataFrame(data)
-        case "csv":
-            return pd.read_csv(file_path)
-        case "xml":
-            return pd.read_xml(file_path)
-        case _:
-            return "File type not supported (supported types: json, yml, csv, xml)"
+from helpers.data_parser import data_parser
+import helpers.cleanup_funcs as cleanup
 
 ppl_json = data_parser("data/people.json")
-
 # Cleaning Up People Json
 
 # ppl_json.isna().sum() = results show that there are no missing values
-# ppl_yml = data_parser("data/people.yml")
+ppl_json[['city', 'country']] = ppl_json['location'].apply(lambda x: pd.Series(cleanup.split_location(x)))
+ppl_json.drop(['location'], axis=1, inplace=True) ##not dropping first and last name to see if families shop at same place
+ppl_json['name'] = ppl_json.apply(lambda x: cleanup.full_name(x['first_name'], x['last_name']), axis=1)
+ppl_json['id'] =  ppl_json.apply(lambda x: int(str(x['id']).lstrip("0")), axis=1)
+ppl_json.rename(columns={'telephone': 'phone'}, inplace=True)
+
+
+# print(ppl_json['id'].isin(ppl_yml['id'])) #reveals discrepancies in the ids
+
+ppl_yml = data_parser("data/people.yml")
+# Making yml uniform with json
+
+
+
+
+
 # promo_csv = data_parser("data/promotions.csv")
 # transaction_csv = data_parser("data/transactions.xml")
 # transfer_csv = data_parser("data/transfers.csv")
-
