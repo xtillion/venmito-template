@@ -11,45 +11,32 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
 csv_file = os.path.join(BASE_DIR, "data", "promotions.csv")
 db_file = os.path.join(BASE_DIR, "src/database", "venmito.db")
 
-
-def load_promotions(filepath):
-    """Load promotions.csv into a DataFrame and clean data."""
-    df = pd.read_csv(filepath)
-
-# Debugging: Print column names to see what exists
-    print("Columns in CSV:", df.columns)
-
+def clean_csv(file_path):
+    """Load CSV, normalize data, and ensure missing fields are replaced with empty strings."""
+    df = pd.read_csv(file_path, dtype=str, keep_default_na=False)  # Keep all data
     
-    # Standardize column names
-    df.rename(columns={
-        "id": "promotion_id",
-        "client_email": "email",
-        "promotion": "promotion_type",
-        "responded": "accepted"
-    }, inplace=True)
+    # Ensure proper column structure
+    expected_columns = ["id", "client_email","telephone", "promotion", "responded"]
     
-    # Normalize accepted values (ensure 'Yes' or 'No')
-    df["accepted"] = df["accepted"].str.strip().str.capitalize()
-    df["accepted"] = df["accepted"].apply(lambda x: "No" if x not in ["Yes", "No"] else x)
+    # Handle extra columns if they exist
+    if len(df.columns) > len(expected_columns):
+        df = df.iloc[:, :len(expected_columns)]
+    
+    # Assign correct column names
+    df.columns = expected_columns
+    
+    # Strip whitespace and normalize data
+    df = df.applymap(lambda x: x.strip() if isinstance(x, str) else "")
     
     return df
 
-def insert_into_db(df, db_file):
-    """Insert cleaned promotions data into SQLite."""
-    conn = sqlite3.connect(db_file)
-    cursor = conn.cursor()
-    
-    # Ensure emails exist in people table before inserting
-    cursor.execute("SELECT email FROM people")
-    valid_emails = set(row[0] for row in cursor.fetchall())
-    
-    df = df[df["email"].isin(valid_emails)]  # Filter out promotions for non-existent users
-    
-    df.to_sql("promotions", conn, if_exists="append", index=False)
-    conn.commit()
+def insert_into_db(df, db_path):
+    """Insert cleaned data into SQLite database without dropping any rows."""
+    conn = sqlite3.connect(db_path)
+    df.to_sql("promotions", conn, if_exists="replace", index=False)
     conn.close()
-    print("Promotions data inserted successfully!")
 
 if __name__ == "__main__":
-    df = load_promotions(csv_file)
-    insert_into_db(df, db_file)
+    df_cleaned = clean_csv(csv_file)
+    insert_into_db(df_cleaned, db_file)
+    print(f"✅ Promotions data cleaned ({len(df_cleaned)} rows inserted)!")

@@ -23,10 +23,11 @@ def create_database():
 
     # Transactions Table
     cursor.execute('''
-    CREATE TABLE IF NOT EXISTS transactions (
+    CREATE TABLE IF NOT EXISTS transactions (n
         transaction_id INTEGER PRIMARY KEY,
         phone TEXT,
         store TEXT,
+        total_price REAL,
         FOREIGN KEY (phone) REFERENCES people(telephone)
     )
     ''')
@@ -34,6 +35,7 @@ def create_database():
     # Transaction Items Table
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS transaction_items (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
         transaction_id INTEGER,
         item_name TEXT,
         quantity INTEGER,
@@ -43,26 +45,28 @@ def create_database():
     )
     ''')
 
+
     # Transfers Table
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS transfers (
-        transfer_id INTEGER PRIMARY KEY,
-        from_phone TEXT,
-        to_phone TEXT,
-        amount REAL,
-        date TEXT,
-        FOREIGN KEY (from_phone) REFERENCES people(telephone),
-        FOREIGN KEY (to_phone) REFERENCES people(telephone)
+        transfer_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        sender_id INTEGER,
+        recipient_id INTEGER,
+        amount REAL NOT NULL,
+        date TEXT NOT NULL,
+        FOREIGN KEY (sender_id) REFERENCES people(id),
+        FOREIGN KEY (recipient_id) REFERENCES people(id)
     )
-    ''')
+''')
 
     # Promotions Table
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS promotions (
         promotion_id INTEGER PRIMARY KEY,
         email TEXT,
-        promotion_type TEXT,
-        accepted TEXT,
+        telephone TEXT,           
+        promotion TEXT,
+        responded TEXT,
         FOREIGN KEY (email) REFERENCES people(email)
     )
     ''')
