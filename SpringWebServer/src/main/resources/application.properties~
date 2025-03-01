@@ -1,0 +1,12 @@
+spring.application.name=webInterfaceVenmito
+logging.pattern.console = ${LOGPATTERN_CONSOLE:%green(%d{HH:mm:ss.SSS}) %blue(%-5level) %red([%thread]) %yellow(%logger{15}) - %msg%n}
+server.port=${PROFILE_SERV_PORT:8090}
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.url=${DATABASE_URL}
+spring.datasource.username=${DATABASE_USER}
+spring.datasource.password=${DATABASE_PASSWORD}
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.jpa.show-sql: false
+spring.devtools.restart.pollInterval=10s
+server.servlet.session.timeout=20m
+spring.thymeleaf.enabled=false

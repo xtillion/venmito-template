@@ -24,6 +24,8 @@ your design decisions:
 3. To use pure html, css, and javascript for developing the webpage. Because it is the fastest way to develop a simple interface.
 4. To use power bi, to create charts of the data. Power BI is a easy tool to use that requires minimum training. Also it can be used be technical and non technical people. It can also be embeded into existing applications.
 5. To use Azure to host the web site. Because it has a student program with a cheap vm to host the website.
+6. When creating the report of data I decided to divide the graphs into 
+
 
 clear instructions on how to run your code:
 
