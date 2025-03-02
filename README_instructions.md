@@ -26,12 +26,22 @@ Your task is to develop a solution that can read these files, match and conform 
 
 3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. Examples of things, but is not restricted to, we want to be able to see are:
     - Which clients have what type of promotion?
-    - Give suggestions on how to turn "No" responses from clients in the promotions file.
+    - Give suggestions on how to turn "No" responses from clients in the promotions file.??
     - Insights on stores, like:
         - What item is the best seller?
+
         - What store has had the most profit?
         - Etc.
     - How can we use the data we got from the transfer file?
+        - see the total amount of money transferred between clients.
+
+        -the list of the sender_id with the max and min money transferred along return from person table all the information for the sender_id.
+        -the list of the receiver_id with the max and min money transferred along return from person table all the information for the receiver_id.
+
+
+        this also returns a timeline of transactions sent and received by a specific client.
+
+
   
     These are only suggestions. Please don't limit yourself to only these examples and explore in your analysis any other suggestions could be beneficial for Venmito.
 

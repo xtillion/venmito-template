@@ -6,7 +6,12 @@ class Promotion:
         self.client_email = client_email if client_email else None
         self.telephone = telephone if telephone else None
         self.promotion = promotion
-        self.responded = bool(responded)
+        if responded == 'Yes':
+            self.responded = True
+        elif responded == 'No':
+            self.responded = False
+        else:
+            self.responded = None
 
     def __repr__(self):
         return (f"Promotion(id={self.id}, client_email={self.client_email}, telephone={self.telephone}, "
