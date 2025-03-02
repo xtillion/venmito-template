@@ -72,28 +72,36 @@ python main.py
 
 ---
 
-## 🌐 API Documentation
+## API Endpoints
+### People API (`/people`)
+- `GET /people` - Retrieve a list of people (filterable by email, phone, city, country, with a limit parameter).
+- `GET /people/device_counts` - Get the total count of each device type used.
+- `GET /people/{id}` - Fetch details of a specific person.
+- `POST /people` - Create a new person entry (requires either email or phone).
 
-### **Base URL**
-- If running locally: `http://127.0.0.1:8000`
-- If deployed, replace with the server address.
+### Promotions API (`/promotions`)
+- `GET /promotions` - Retrieve promotions data (filterable by email, type, response status, with a limit parameter).
+- `GET /promotions/most_popular` - Retrieve all promotions sorted by popularity, highlighting the top 5.
+- `GET /promotions/{promotion_id}` - Fetch details of a specific promotion.
+- `POST /promotions` - Create a new promotion entry.
 
-### **Available API Endpoints**
-| Method | Endpoint | Description |
-|--------|---------|-------------|
-| `GET` | `/people` | Retrieve people data |
-| `GET` | `/people/{id}` | Get a specific person by ID |
-| `GET` | `/people/device_counts` | Returns the total count of each device type in descending order |
-| `POST` | `/people/` | Add a new person |
-| `GET` | `/transactions` | Retrieve transactions data |
-| `GET` | `/transactions/{id}` | Get a specific transaction by ID |
-| `GET` | `/promotions` | Get all promotions |
-| `GET` | `/transfers` | Get all transfers |
+### Transactions API (`/transactions`)
+- `GET /transactions` - Retrieve transaction data, including items (filterable by phone, store, with a limit parameter).
+- `GET /transactions/items_summary` - Show total quantity sold and revenue per item.
+- `GET /transactions/{transaction_id}` - Fetch a specific transaction with its associated items.
+- `POST /transactions` - Create a new transaction, optionally including items.
 
-Full API documentation is available via **Swagger UI**:
-```bash
-http://127.0.0.1:8000/docs
-```
+### Transfers API (`/transfers`)
+- `GET /transfers` - Retrieve all transfers (optional limit parameter).
+- `GET /transfers/{id}` - Fetch all transfers related to a specific user (as sender or recipient).
+- `POST /transfers` - Create a new transfer record.
+
+## How to Access the API
+- The FastAPI Swagger UI can be accessed at:
+  ```
+  http://127.0.0.1:8000/docs
+  ```
+- You can test API requests using **cURL**, **Postman**, or directly through the Swagger UI.
 
 ---
 
@@ -110,7 +118,7 @@ To analyze data:
    - **Transaction insights**
    - **Promotion effectiveness**
 
-**There is a working exmaple in the root folder, simply open Data_Analysis.html
+**There is a working example in the root folder, simply open Data_Analysis.html
 
 ---
 
