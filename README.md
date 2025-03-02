@@ -2,65 +2,87 @@
 
 ## Introduction
 
-Hello and welcome to this data engineering project for Venmito. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.
+This project is designed to process and analyze data from various sources for Venmito, a payment company. The project involves setting up a database, importing data from multiple file formats, and providing insights into the data.
 
-Venmito is a payment company that allows users to transfer funds to other users and pay in participant stores. The company has several data files in various formats. Our goal is to organize all of this information to gain insights about our clients and transactions. We believe that there is an immense value hidden in these data files, and we are looking for a solution that can help us extract and utilize this value.
+## Prerequisites
 
-We have five files:
+Before you begin, ensure you have met the following requirements:
 
-- `people.json`
-- `people.yml`
-- `transfers.csv`
-- `transactions.xml`
-- `promotions.csv`
+- Python 3.6 or later installed on your machine.
+- PostgreSQL installed and running.
+- Access to the database with the necessary permissions to create tables.
 
-Each of these files contains different pieces of information about our clients, their transactions, transfers and promotions.
+## Installation
 
-Your task is to develop a solution that can read these files, match and conform the data, and provide a way to consume this data.
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd Venmito-piter-24
+   ```
 
-## Requirements
+2. **Set Up a Virtual Environment**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
 
-1. **Data Ingestion**: Your solution should be able to read and load data from all the provided files. Take into account that these files are in different formats (JSON, YAML, CSV, XML).
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-2. **Data Matching and Conforming**: Once the data is loaded, your solution should be capable of matching and conforming the data across these files. This includes identifying common entities, resolving inconsistencies, and organizing the data into a unified format. Furthermore, the consolidated data should not only be transient but also persistent. This persistence should be achieved using appropriate methods such as storing in a file, database, or other suitable data storage solutions, and not restricted to just a variable in memory. This way, the integrity and availability of the consolidated data are ensured for future use and analysis.
+## Database Setup
 
-3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. Examples of things, but is not restricted to, we want to be able to see are:
-    - Which clients have what type of promotion?
-    - Give suggestions on how to turn "No" responses from clients in the promotions file.
-    - Insights on stores, like:
-        - What item is the best seller?
-        - What store has had the most profit?
-        - Etc.
-    - How can we use the data we got from the transfer file?
-  
-    These are only suggestions. Please don't limit yourself to only these examples and explore in your analysis any other suggestions could be beneficial for Venmito.
+To set up the database, you need to run the `init_db.py` script. This script will create the necessary tables in your PostgreSQL database.
 
-4. **Data Output**: The final output of your solution should enable us to consume the reorganized and analyzed data in a meaningful way. This could be, but is not restricted to, a command line interface (CLI), a database with structured schemas, a GUI featuring interactive visualizations, a Jupyter Notebook, or a RESTful API. We invite you to leverage other innovative methods that you believe would be beneficial for a company like Venmito. Please provide at least 2 data consumption methods, 1 for the non-technical team and 1 for the technical team.
+### Running `init_db.py`
 
-5. **Code**: The code for your solution should be well-structured and comprehensible, with comments included where necessary. Remember, the quality and readability of the code will be a significant factor in the evaluation of the final deliverable.
+1. **Ensure PostgreSQL is Running**: Make sure your PostgreSQL server is running and you have access to it.
 
-Note: The examples provided in these requirements (such as GUI, RESTful API etc.) are purely illustrative. You are free to employ any solution or technology you deem fit for fulfilling these requirements
+2. **Run the Script**:
+   ```bash
+   python init_db.py --user <db_user> --password <db_password> --host <db_host> --port <db_port> --db <db_name>
+   ```
 
-## Deliverables
+   Replace `<db_user>`, `<db_password>`, `<db_host>`, `<db_port>`, and `<db_name>` with your actual database credentials.
 
-1. Source code.
-2. A README file with your name, email, a description of your solution, your design decisions, and clear instructions on how to run your code.
-3. A method to consume the reorganized and analyzed data.
+3. **Expected Output**: The script will print messages indicating whether each table was created successfully or already exists.
 
-## Instructions for Submission
+## Data Import
 
-1. Complete your project as described above in a branch within your fork.
-2. Write a detailed README file with your name, email, a description explaining your approach, the technologies you used, and provides clear instructions on how to run your code.
-3. Submit your project by creating a pull request to merge your branch to the main branch of your fork.
+The `data_importer.py` script is used to import data from various file formats into the database. It processes files such as JSON, YAML, CSV, and XML, and inserts the data into the corresponding tables.
 
-We look forward to seeing your solution!
+### What `data_importer.py` Does
 
-Thank you,
+- **Reads Data**: The script reads data from the following files:
+  - `people.json` and `people.yml` for client information.
+  - `transfers.csv` for fund transfer records.
+  - `transactions.xml` for transaction details.
+  - `promotions.csv` for promotional data.
 
-Venmito
+- **Parses and Inserts Data**: It parses the data from these files and inserts it into the respective tables in the database:
+  - `Person` table for client data.
+  - `Transfer` table for transfer records.
+  - `Transaction` and `Item` tables for transaction details and associated items.
+  - `Promotion` table for promotional data.
 
-## DISCLAIMER:
+- **Error Handling**: The script includes error handling to manage issues during data import, such as missing files or database connection errors.
 
-This project and its contents are the exclusive property of Xtillion, LLC and are intended solely for the evaluation of the individual to whom it was provided. Any distribution, reproduction, or unauthorized use is strictly prohibited. By accessing and using this project, you agree to abide by these conditions. Failure to comply with these terms may result in legal action.
+- **File Management**: After processing, the script moves each file to a `data/processed` directory to prevent re-importing.
 
-Please note that this project is provided "as is", without warranty of any kind, express or implied. Xtillion is not liable for any damages or claims that might arise from using or misusing this project.
+### Running `data_importer.py`
+
+1. **Run the Script**:
+   ```bash
+   python data_importer.py <directory> --user <db_user> --password <db_password> --host <db_host> --port <db_port> --db <db_name>
+   ```
+
+   Replace `<directory>` with the path to the directory containing your data files.
+
+## License
+
+This project is licensed under the terms specified in the LICENSE file.
+
+## Contact
+
+For any questions or issues, please contact [Your Name] at [Your Email].
