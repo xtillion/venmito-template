@@ -62,7 +62,7 @@ for child in root:
                     if i.tag == 'item':
                         item_info['name'] = i.text
                     elif i.tag == 'price':
-                        item_info['price'] = i.text
+                        item_info['total'] = i.text
                     elif i.tag == 'price_per_item':
                         item_info['price_per_item'] = i.text
                     elif i.tag == 'quantity':

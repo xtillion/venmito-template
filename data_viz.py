@@ -24,7 +24,6 @@ plt.title('User Distribution by Country')
 plt.xlabel('Country')
 plt.ylabel('Count')
 plt.savefig('figures/Country_Distribution.png')  # Save figure
-# plt.show()  # Display plot
 
 # promo_data['responded'].replace({'Yes': 1, 'No': 0},inplace=True)
 responses = promo_data['responded'].value_counts().reset_index()
@@ -35,7 +34,6 @@ plt.title('Responses to Promotions')
 plt.xlabel('Response ')
 plt.ylabel('Total')
 plt.savefig('figures/ResponsePlot.png')  # Save figure
-# plt.show()  # Display plot
 
 transfer_years = transfer_data['year'].value_counts().reset_index()
 transfer_years.columns = ['year', 'total']  # Rename columns
@@ -46,16 +44,68 @@ plt.plot(transfer_years['year'], transfer_years['total'], marker='o')
 plt.title('Transfer Sales by Year')
 plt.xlabel('Year')
 plt.ylabel('Total Transfer Sales')
-plt.savefig('figures/TransferSales.png')  # Save figure
-# plt.show()
+plt.savefig('figures/TransferSalesYearly.png')  # Save figure
 
 sender_countries = transfer_data.merge(people_data[['id','country','city']], left_on='sender_id',right_on='id', how='inner')
 sender_countries = sender_countries['country'].value_counts().reset_index()
 plt.figure(figsize=(12, 6))  # Create new figure
 sns.barplot(x='country', y='count', hue='country', data=sender_countries)
-plt.show()
+plt.title('Transfer Sales by Country')
+plt.xlabel('Country')
+plt.ylabel('Total Transfer Sales')
+plt.savefig('figures/TransferSalesCountry.png')  # Save figure
+
+sender_cities = transfer_data.merge(people_data[['id','country','city']], left_on='sender_id',right_on='id', how='inner')
+sender_cities = sender_cities['city'].value_counts().reset_index()
+plt.figure(figsize=(12, 6))  # Create new figure
+sns.barplot(x='city', y='count', hue='city', data=sender_cities)
+plt.title('Transfer Sales by City')
+plt.xlabel('City')
+plt.ylabel('Total Transfer Sales')
+plt.savefig('figures/TransferSalesCity.png')  # Save figure
 
 # print(promo_data.head())
 # print(people_data.head())
-# print(transaction_data.head())
+# items = transaction_data['items'].reset_index()
+# print(items)
 # print(transfer_data.head())
+
+# print(transaction_data['store'].value_counts()) #TODO: make barplot of this 
+
+total_sales = {}
+for item in transaction_data['items']:
+    name = item[0]['name']
+    total = int(item[0]['total'])
+    if name in total_sales.keys():
+        total_sales[name] += total
+    else:
+        total_sales[name] = 0
+item_sales = pd.DataFrame(total_sales,index=['total']).T.reset_index().sort_values(by='total',ascending=False)
+item_sales.columns = ['Item','Total Sales']
+
+promo_p_item = promo_data['promotion'].value_counts().reset_index().sort_values(by='count',ascending=False)
+promo_p_item.columns = ['Item','Total Promotions']
+
+item_sales_promo = item_sales.merge(promo_p_item, on='Item', how='inner')
+
+ax = sns.lmplot(x='Total Sales', # Horizontal axis
+                y='Total Promotions', # Vertical axis
+                data=item_sales_promo, # Data source
+                fit_reg=False, # Don't fix a regression line
+                aspect=2) # size and dimension
+
+plt.title('Sales vs Promotions per Item')
+plt.xlabel('Total Sales')
+plt.ylabel('Total Promotions')
+
+def label_point(x, y, val, ax):
+    a = pd.concat({'x': x, 'y': y, 'val': val}, axis=1)
+    for i, point in a.iterrows():
+        ax.text(point['x']+.02, point['y'], str(point['val']))
+
+label_point(item_sales_promo['Total Sales'], item_sales_promo['Total Promotions'], item_sales_promo['Item'], plt.gca()) 
+plt.show()
+# print(item_sales_promo)
+# plt.figure(figsize=(12, 6))  # Create new figure
+# plt.scatter(item_sales_promo['Total Sales'], item_sales_promo['Total Sales'], s=item_sales_promo['Item']*10, alpha=0.5)
+# plt.show()
