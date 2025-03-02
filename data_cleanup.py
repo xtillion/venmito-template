@@ -75,6 +75,8 @@ transaction['items'] = pd.Series(items)
 
 ### Cleaning up transfers.csv ###
 transfer = data_parser("data/transfers.csv")
+transfer[['year','month','day']] = transfer['date'].apply(lambda x: pd.Series(x.split('-')))
+transfer['date'] = pd.to_datetime(transfer['date'])
 # print(transfer.isna().sum()) #reveals that there are no missing values
 
 

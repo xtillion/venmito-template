@@ -7,18 +7,15 @@ import matplotlib.pyplot as plt
 people_data, promo_data, transaction_data, transfer_data = data.data_to_use()
 pd.DataFrame.rename(people_data, columns={'Iphone': 'iPhone'}, inplace=True)
 
-# Creating a DataFrame for plotting
+# Pie Chart for Devices (in percentage)
 device_counts_df = people_data[['Android', 'iPhone', 'Desktop']].sum().reset_index()
 device_counts_df.columns = ['Device', 'Count']
-plt.figure(figsize=(10, 6))
-sns.barplot(x='Device', y='Count', hue='Device', data=device_counts_df)
-plt.title('Device Usage Counts')
-plt.xlabel('Device')
-plt.ylabel('Count')
+plt.figure(figsize=(6,6))
+plt.pie(device_counts_df['Count'], labels=device_counts_df['Device'], autopct='%1.1f%%', startangle=90, counterclock=False)
+plt.title('Device Count Distribution')
 plt.savefig('figures/Device_Usage_Counts.png')  # Save figure
-# plt.show()  # Display plot
 
-
+# Bar Plot for Country Distribution
 country = people_data['country'].value_counts().reset_index()
 country.columns = ['Country', 'Count']  # Rename columns
 plt.figure(figsize=(12, 6))  # Create new figure
@@ -33,9 +30,32 @@ plt.savefig('figures/Country_Distribution.png')  # Save figure
 responses = promo_data['responded'].value_counts().reset_index()
 responses.columns = ['Responses', 'Count']  # Rename columns
 plt.figure(figsize=(12, 6))  # Create new figure
-sns.barplot(x='Responses', y='Total', hue='Responses', data=responses)
+sns.barplot(x='Responses', y='Count', hue='Responses', data=responses)
 plt.title('Responses to Promotions')
 plt.xlabel('Response ')
 plt.ylabel('Total')
 plt.savefig('figures/ResponsePlot.png')  # Save figure
-plt.show()  # Display plot
+# plt.show()  # Display plot
+
+transfer_years = transfer_data['year'].value_counts().reset_index()
+transfer_years.columns = ['year', 'total']  # Rename columns
+transfer_years = transfer_years.sort_values(by='year')
+
+plt.figure(figsize=(12, 6))  # Create new figure
+plt.plot(transfer_years['year'], transfer_years['total'], marker='o')
+plt.title('Transfer Sales by Year')
+plt.xlabel('Year')
+plt.ylabel('Total Transfer Sales')
+plt.savefig('figures/TransferSales.png')  # Save figure
+# plt.show()
+
+sender_countries = transfer_data.merge(people_data[['id','country','city']], left_on='sender_id',right_on='id', how='inner')
+sender_countries = sender_countries['country'].value_counts().reset_index()
+plt.figure(figsize=(12, 6))  # Create new figure
+sns.barplot(x='country', y='count', hue='country', data=sender_countries)
+plt.show()
+
+# print(promo_data.head())
+# print(people_data.head())
+# print(transaction_data.head())
+# print(transfer_data.head())
