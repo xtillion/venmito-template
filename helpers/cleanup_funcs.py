@@ -34,27 +34,21 @@ def device_list(devices: list):
             print("Unknown Device")
     return [android, desktop, iphone]
 
-## should detect if missing phone or email and fill the other values 
-def fill_blank_email_or_num(row,all_people):
-    email = row['client_email']
-    telephone = row['telephone']
-    first_name = ''
-    last_name = ''
-    #if email missing but phone is present
-    if pd.isna(email) and not pd.isna(telephone):
-        email = all_people.loc[all_people['phone'] == telephone, 'email'].dropna().tolist()[0]
-        first_name = all_people.loc[all_people['phone'] == telephone, 'first_name'].dropna().tolist()[0]
-        last_name = all_people.loc[all_people['phone'] == telephone, 'last_name'].dropna().tolist()[0]
-    elif pd.isna(telephone) and not pd.isna(email):
-        ## if phone missing but email is present
-        telephone = all_people.loc[all_people['email'] == email, 'phone'].dropna().tolist()[0]
-        first_name = all_people.loc[all_people['email'] == email, 'first_name'].dropna().tolist()[0]
-        last_name = all_people.loc[all_people['email'] == email, 'last_name'].dropna().tolist()[0]
-    elif pd.isna(email) and pd.isna(telephone):
-        #both missing, print a message 
-        print(f'Both email and phone are missing for this row {row['id']}')
-    else:
-        # both present, dont do anything
-        first_name = all_people.loc[all_people['email'] == email, 'first_name'].dropna().tolist()[0]
-        last_name = all_people.loc[all_people['email'] == email, 'last_name'].dropna().tolist()[0]
-    return [first_name,last_name, email, telephone]
+## should detect if missing phone or email and fill the other values
+def find_person(item_col,item_value,all_people,specific_item):
+    person = all_people.loc[all_people[item_col] == item_value].dropna()
+    if specific_item != None:
+        return person.iloc[0][specific_item]
+    return all_people.loc[all_people[item_col] == item_value].dropna()
+ 
+def fill_blank_email_or_num(row, all_people):
+    email, phone = row['client_email'], row['telephone']
+    if pd.isna(email) and pd.isna(phone):
+        print(f"Both email and phone are missing for row {row['id']}")
+        return None  
+    key, value = ('phone', phone) if pd.isna(email) else ('email', email)
+    person_info = find_person(key, value, all_people,None)
+    if person_info.empty:
+        return None  
+    first_name, last_name, email, phone = person_info.iloc[0][['first_name', 'last_name', 'email', 'phone']]
+    return [first_name, last_name, email, phone]
