@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
+    <title>City and Country Population Chart</title>
+</head>
+<body>
+    <div id="gdCity"></div>
+    <div id="gdCountry"></div>
+
+    <script>
+        // Fetch the city data from the server
+        fetch('/citycount')
+            .then(response => response.json())
+            .then(data => {
+                // Create the Plotly chart for city population counts
+                Plotly.newPlot("gdCity", [{
+                    x: data.x,   // City names
+                    y: data.y,   // City counts
+                    type: 'bar'   // Bar chart
+                }], {
+                    width: 600,
+                    height: 400,
+                    title: 'City Population Counts',
+                    xaxis: {
+                        title: 'City'
+                    },
+                    yaxis: {
+                        title: 'Count'
+                    }
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching city data:', error);
+            });
+
+        // Fetch the country data from the server
+        fetch('/countrycount')
+        .then(response => response.json())
+        .then(data => {
+            // Create the Plotly chart for country population counts
+            Plotly.newPlot("gdCountry", [{
+                x: data.x,   // Country names
+                y: data.y,   // Country counts
+                type: 'bar'   // Bar chart
+            }], {
+                width: 600,
+                height: 400,
+                title: 'Country Population Counts',
+                xaxis: {
+                    title: 'Country'
+                },
+                yaxis: {
+                    title: 'Count'
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching country data:', error);
+        });
+    </script>
+</body>
+</html>
