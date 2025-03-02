@@ -3,6 +3,8 @@ import pandas as pd
 import data_cleanup as data
 import seaborn as sns
 import matplotlib.pyplot as plt
+from adjustText import adjust_text
+
 
 people_data, promo_data, transaction_data, transfer_data = data.data_to_use()
 pd.DataFrame.rename(people_data, columns={'Iphone': 'iPhone'}, inplace=True)
@@ -86,26 +88,33 @@ item_sales.columns = ['Item','Total Sales']
 promo_p_item = promo_data['promotion'].value_counts().reset_index().sort_values(by='count',ascending=False)
 promo_p_item.columns = ['Item','Total Promotions']
 
+
+plt.figure(figsize=(12, 6))  # Create new figure
+
 item_sales_promo = item_sales.merge(promo_p_item, on='Item', how='inner')
 
-ax = sns.lmplot(x='Total Sales', # Horizontal axis
-                y='Total Promotions', # Vertical axis
-                data=item_sales_promo, # Data source
-                fit_reg=False, # Don't fix a regression line
-                aspect=2) # size and dimension
+# Creating scatter plot
+ax = sns.lmplot(x='Total Sales',
+                y='Total Promotions',
+                data=item_sales_promo,
+                fit_reg=False, 
+                aspect=2)
 
 plt.title('Sales vs Promotions per Item')
 plt.xlabel('Total Sales')
 plt.ylabel('Total Promotions')
 
 def label_point(x, y, val, ax):
-    a = pd.concat({'x': x, 'y': y, 'val': val}, axis=1)
-    for i, point in a.iterrows():
-        ax.text(point['x']+.02, point['y'], str(point['val']))
+    a = pd.DataFrame({'x': x, 'y': y, 'val': val})
+    texts = []
+    
+    for _, point in a.iterrows():
+        texts.append(plt.text(point['x'] + np.random.uniform(-1.2, 1.2),
+                              point['y'] + np.random.uniform(-1.2, 1.2),
+                              str(point['val'])))
+    
+    # Adjust labels to prevent overlapping
+    adjust_text(texts, ax=plt.gca(), expand_points=(1.2, 1.5))
 
-label_point(item_sales_promo['Total Sales'], item_sales_promo['Total Promotions'], item_sales_promo['Item'], plt.gca()) 
+label_point(item_sales_promo['Total Sales'], item_sales_promo['Total Promotions'], item_sales_promo['Item'], plt.gca())
 plt.show()
-# print(item_sales_promo)
-# plt.figure(figsize=(12, 6))  # Create new figure
-# plt.scatter(item_sales_promo['Total Sales'], item_sales_promo['Total Sales'], s=item_sales_promo['Item']*10, alpha=0.5)
-# plt.show()
