@@ -79,10 +79,3 @@ The `data_importer.py` script is used to import data from various file formats i
 
    Replace `<directory>` with the path to the directory containing your data files.
 
-## License
-
-This project is licensed under the terms specified in the LICENSE file.
-
-## Contact
-
-For any questions or issues, please contact [Your Name] at [Your Email].
