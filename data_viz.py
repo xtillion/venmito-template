@@ -5,6 +5,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from adjustText import adjust_text
 import helpers.cleanup_funcs as cleanup
+import helpers.data_viz_funcs as viz_help
+
 
 people_data, promo_data, transaction_data, transfer_data = data.data_to_use()
 pd.DataFrame.rename(people_data, columns={'Iphone': 'iPhone'}, inplace=True)
@@ -19,13 +21,23 @@ plt.savefig('figures/Device_Usage_Counts.png')  # Save figure
 
 ### CREATING VISUALIZATION FOR USER DISTRIBUTION BY COUNTRY
 country = people_data['country'].value_counts().reset_index()
-country.columns = ['Country', 'Count']  # Rename columns
-plt.figure(figsize=(12, 6))  # Create new figure
-sns.barplot(x='Country', y='Count', hue='Country', data=country)
-plt.title('User Distribution by Country')
+country.columns = ['Country', 'Count']
+country = country.sort_values(by='Count', ascending=False) 
+sns.set_theme(style='whitegrid')  
+plt.figure(figsize=(14, 7))
+ax = sns.barplot(x='Country', y='Count', data=country, palette='viridis')
+for p in ax.patches:
+    ax.annotate(f'{int(p.get_height())}', (p.get_x() + p.get_width() / 2., p.get_height()),
+                ha='center', va='bottom', fontsize=10, color='black')
+plt.title('User Distribution by Country', fontsize=14, weight='bold')
 plt.xlabel('Country')
 plt.ylabel('Count')
-plt.savefig('figures/Country_Distribution.png')  # Save figure
+plt.xticks(rotation=45)  
+# Grid and layout
+plt.grid(axis='y', linestyle='--', alpha=0.6)
+plt.tight_layout() 
+plt.savefig('figures/Country_Distribution.png', dpi=300)
+
 
 ### CREATING VISUALIZATION FOR RESPONSES TO PROMOTIONS
 responses = promo_data['responded'].value_counts().reset_index()
@@ -117,3 +129,12 @@ def label_point(x, y, val, ax):
     # Adjust labels to prevent overlapping
     adjust_text(texts, ax=plt.gca(), expand_points=(1.2, 1.5))
 label_point(item_sales_promo['Total Sales'], item_sales_promo['Total Promotions'], item_sales_promo['Item'], plt.gca())
+
+send_id_location = transfer_data.merge(people_data[['id','country','city']], left_on='sender_id',right_on='id', how='inner')
+send_id_location.rename(columns={'country':'sender_country','city':'sender_city'},inplace=True)
+send_id_location = send_id_location.merge(people_data[['id','country','city']], left_on='recipient_id',right_on='id', how='inner')
+send_id_location.rename(columns={'country':'reciepient_country','city':'recipient_city'},inplace=True)
+send_id_location['international'] = send_id_location.apply(lambda x: viz_help.check_if_international(x),axis = 1)
+print(send_id_location['international'].value_counts())
+# send_recieve = transfer_data.merge(people_data[['id','country','city']], left_on='recipient_id',right_on='id', how='inner')
+# send_recieve = send_recieve['city'].value_counts().reset_index()

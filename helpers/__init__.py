@@ -1,4 +1,5 @@
-__all__ = ["module1", "module2"]
+__all__ = ["data_parser", "cleanup_funcs", "data_viz_funcs"]
 
 # Import the submodules
 from . import data_parser
+from . import cleanup_funcs
