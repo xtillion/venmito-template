@@ -84,30 +84,22 @@ for item in transaction_data['items']:
         total_sales[name] = 0
 item_sales = pd.DataFrame(total_sales,index=['total']).T.reset_index().sort_values(by='total',ascending=False)
 item_sales.columns = ['Item','Total Sales']
-
 promo_p_item = promo_data['promotion'].value_counts().reset_index().sort_values(by='count',ascending=False)
 promo_p_item.columns = ['Item','Total Promotions']
-
-
 plt.figure(figsize=(12, 6))  # Create new figure
 
 item_sales_promo = item_sales.merge(promo_p_item, on='Item', how='inner')
-
-# Creating scatter plot
 ax = sns.lmplot(x='Total Sales',
                 y='Total Promotions',
                 data=item_sales_promo,
                 fit_reg=False, 
                 aspect=2)
-
 plt.title('Sales vs Promotions per Item')
 plt.xlabel('Total Sales')
 plt.ylabel('Total Promotions')
-
 def label_point(x, y, val, ax):
     a = pd.DataFrame({'x': x, 'y': y, 'val': val})
     texts = []
-    
     for _, point in a.iterrows():
         texts.append(plt.text(point['x'] + np.random.uniform(-1.2, 1.2),
                               point['y'] + np.random.uniform(-1.2, 1.2),
@@ -115,6 +107,6 @@ def label_point(x, y, val, ax):
     
     # Adjust labels to prevent overlapping
     adjust_text(texts, ax=plt.gca(), expand_points=(1.2, 1.5))
-
 label_point(item_sales_promo['Total Sales'], item_sales_promo['Total Promotions'], item_sales_promo['Item'], plt.gca())
-plt.show()
+
+print(promo_data.head())
