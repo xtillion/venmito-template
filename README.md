@@ -30,6 +30,8 @@ cd Venmito--ChrisGuzman94-
 ```
 
 ### **2️⃣ Create a Virtual Environment**
+
+*Mininum Python Version Required - Python 3.3
 ```bash
 python -m venv venv
 source venv/bin/activate  # macOS/Linux
