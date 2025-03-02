@@ -46,7 +46,6 @@ full_ppl.to_csv("data/people.csv", index=False)
 promo_csv = data_parser("data/promotions.csv")
 promo_csv[['first_name','last_name','client_email','telephone']] = promo_csv.apply(lambda x: pd.Series(cleanup.fill_blank_email_or_num(x,full_ppl)),axis = 1)
 # print(promo_csv.isna().sum()) #reveals that there are no missing values
-print('promo_csv head',promo_csv.head())
 
 ### Cleaning up transaction.xml ###
 transaction = data_parser("data/transactions.xml") # we need to fix items
