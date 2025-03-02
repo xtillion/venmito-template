@@ -38,6 +38,36 @@ plt.grid(axis='y', linestyle='--', alpha=0.6)
 plt.tight_layout() 
 plt.savefig('figures/Country_Distribution.png', dpi=300)
 
+### CREATING VISUALIZATION FOR USER DISTRIBUTION BY City
+city = people_data['city'].value_counts().reset_index()
+city.columns = ['City', 'Count']
+city = city.sort_values(by='Count', ascending=False) 
+plt.figure(figsize=(20,10))
+ax = plt.subplot(111, polar=True)
+plt.axis('off')
+upperLimit = 100
+lowerLimit = 30
+max_value = city['Count'].max()
+slope = (max_value - lowerLimit) / max_value
+heights = slope * city['Count'] + lowerLimit
+width = 2 * np.pi / len(city.index)
+indexes = list(range(1, len(city.index) + 1))
+angles = [element * width for element in indexes]
+bars = ax.bar(x=angles, height=heights, width=width, bottom=lowerLimit, linewidth=2, edgecolor="white", color=plt.cm.tab20.colors)
+labelPadding = 4
+for bar, angle, height, label in zip(bars, angles, heights, city["City"]):
+    rotation = np.rad2deg(angle)
+    alignment = "right" if angle >= np.pi / 2 and angle < 3 * np.pi / 2 else "left"
+    if alignment == "right":
+        rotation = rotation + 180
+    ax.text(x=angle, 
+            y=lowerLimit + bar.get_height() + labelPadding, 
+            s=label, 
+            ha=alignment, 
+            va='center', 
+            rotation=rotation, 
+            rotation_mode="anchor")
+plt.savefig('figures/City_Distribution.png')
 
 ### CREATING VISUALIZATION FOR RESPONSES TO PROMOTIONS
 responses = promo_data['responded'].value_counts().reset_index()
@@ -79,7 +109,7 @@ plt.figure(figsize=(12, 6))  # Create new figure
 sns.barplot(x='city', y='count', hue='city', data=sender_cities)
 plt.title('Transfer Sales by City')
 plt.xlabel('City')
-plt.ylabel('Total Transfer Sales')
+plt.ylabel('Total Amount of Transfers')
 plt.savefig('figures/TransferSalesCity.png')  # Save figure
 
 sender_cities = transfer_data.merge(people_data[['id','country','city']], left_on='sender_id',right_on='id', how='inner')
@@ -115,7 +145,7 @@ ax = sns.lmplot(x='Total Sales',
                 data=item_sales_promo,
                 fit_reg=False, 
                 aspect=2)
-plt.title('Sales vs Promotions per Item')
+plt.title('Sales vs Promotions per Item', pad=-5)
 plt.xlabel('Total Sales')
 plt.ylabel('Total Promotions')
 def label_point(x, y, val, ax):
@@ -129,7 +159,7 @@ def label_point(x, y, val, ax):
     # Adjust labels to prevent overlapping
     adjust_text(texts, ax=plt.gca(), expand_points=(1.2, 1.5))
 label_point(item_sales_promo['Total Sales'], item_sales_promo['Total Promotions'], item_sales_promo['Item'], plt.gca())
-
+plt.savefig('figures/SalesPromoItem.png')
 ###CREATING VISUALIZATION FOR TRANSFER INTERNATIONAL VS DOMESTIC
 send_id_location = transfer_data.merge(people_data[['id','country','city']], left_on='sender_id',right_on='id', how='inner')
 send_id_location.rename(columns={'country':'sender_country','city':'sender_city'},inplace=True)
@@ -157,4 +187,5 @@ plt.title('Promotions vs Actual Purchase')
 plt.xlabel('Bought What Was Promoted')
 plt.ylabel('Count')
 plt.savefig('figures/PromotionBought.png')  # Save figure
+
 

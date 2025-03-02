@@ -1,0 +1,151 @@
+id,items,phone,store
+1000,"[{'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}, {'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Oreoz', 'total': '8', 'price_per_item': '4', 'quantity': '2'}]",233-159-4158,Trader Tales
+1001,"[{'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",725-427-2794,PetPals Mart
+1002,"[{'name': 'Colgatex', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Dovee', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Flixnet', 'total': '11', 'price_per_item': '11', 'quantity': '1'}]",659-190-9378,Trader Tales
+1003,"[{'name': 'Krafty Cheddar', 'total': '8', 'price_per_item': '4', 'quantity': '2'}, {'name': 'RedCow', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Dovee', 'total': '2', 'price_per_item': '1', 'quantity': '2'}]",334-436-6254,Urban Outfitters Loft
+1004,"[{'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}]",615-102-4849,PetPals Mart
+1005,"[{'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'KittyKat', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",294-365-8364,Urban Outfitters Loft
+1006,"[{'name': 'Flixnet', 'total': '11', 'price_per_item': '11', 'quantity': '1'}, {'name': 'Colgatex', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",634-813-9351,BestChoice Buy
+1007,"[{'name': 'KittyKat', 'total': '8', 'price_per_item': '4', 'quantity': '2'}, {'name': 'RedCow', 'total': '5', 'price_per_item': '5', 'quantity': '1'}, {'name': 'Dovee', 'total': '9', 'price_per_item': '3', 'quantity': '3'}]",273-616-5739,SparkMart
+1008,"[{'name': 'Colgatex', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'RedCow', 'total': '5', 'price_per_item': '5', 'quantity': '1'}, {'name': 'KittyKat', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",839-124-9420,SparkMart
+1009,"[{'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}]",645-829-7495,Trader Tales
+1010,"[{'name': 'Flixnet', 'total': '11', 'price_per_item': '11', 'quantity': '1'}, {'name': 'RedCow', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",444-295-8051,Trader Tales
+1011,"[{'name': 'Colgatex', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Flixnet', 'total': '11', 'price_per_item': '11', 'quantity': '1'}]",520-305-7264,Trader Tales
+1012,"[{'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Flixnet', 'total': '30', 'price_per_item': '10', 'quantity': '3'}]",891-887-3513,PetPals Mart
+1013,"[{'name': 'RedCow', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Colgatex', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Dovee', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",114-507-5478,BestChoice Buy
+1014,"[{'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}]",558-608-9550,BestChoice Buy
+1015,"[{'name': 'Colgatex', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Krafty Cheddar', 'total': '10', 'price_per_item': '5', 'quantity': '2'}, {'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",372-218-6551,BestChoice Buy
+1016,"[{'name': 'Popsi', 'total': '9', 'price_per_item': '3', 'quantity': '3'}, {'name': 'Dovee', 'total': '3', 'price_per_item': '1', 'quantity': '3'}, {'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}]",441-847-1955,Urban Outfitters Loft
+1017,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",924-146-4189,PetPals Mart
+1018,"[{'name': 'Dovee', 'total': '2', 'price_per_item': '1', 'quantity': '2'}]",512-600-6692,Urban Outfitters Loft
+1019,"[{'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Colgatex', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",362-464-9875,Trader Tales
+1020,"[{'name': 'Flixnet', 'total': '12', 'price_per_item': '12', 'quantity': '1'}, {'name': 'Popsi', 'total': '10', 'price_per_item': '5', 'quantity': '2'}]",101-165-2021,SparkMart
+1021,"[{'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",563-494-9026,Urban Outfitters Loft
+1022,"[{'name': 'RedCow', 'total': '8', 'price_per_item': '4', 'quantity': '2'}, {'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}]",918-588-9531,Trader Tales
+1023,"[{'name': 'KittyKat', 'total': '6', 'price_per_item': '2', 'quantity': '3'}, {'name': 'Popsi', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",315-892-7127,PetPals Mart
+1024,"[{'name': 'Flixnet', 'total': '22', 'price_per_item': '11', 'quantity': '2'}, {'name': 'RedCow', 'total': '12', 'price_per_item': '4', 'quantity': '3'}]",640-390-3390,Trader Tales
+1025,"[{'name': 'RedCow', 'total': '10', 'price_per_item': '5', 'quantity': '2'}]",626-458-8110,Targeted Treasures
+1026,"[{'name': 'Colgatex', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'RedCow', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",993-541-7464,BestChoice Buy
+1027,"[{'name': 'Popsi', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Dovee', 'total': '2', 'price_per_item': '1', 'quantity': '2'}, {'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",116-866-3838,Urban Outfitters Loft
+1028,"[{'name': 'Dovee', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",776-243-3725,Trader Tales
+1029,"[{'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'RedCow', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}]",553-407-1049,PetPals Mart
+1030,"[{'name': 'Oreoz', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",782-806-6417,Urban Outfitters Loft
+1031,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",271-963-2123,Urban Outfitters Loft
+1032,"[{'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",915-320-3214,Urban Outfitters Loft
+1033,"[{'name': 'Coca-Splash', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Popsi', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",953-386-1321,PetPals Mart
+1034,"[{'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",731-730-2543,Urban Outfitters Loft
+1035,"[{'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",544-944-1609,PetPals Mart
+1036,"[{'name': 'RedCow', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",891-887-3513,PetPals Mart
+1037,"[{'name': 'Dovee', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Colgatex', 'total': '9', 'price_per_item': '3', 'quantity': '3'}]",478-814-3941,Trader Tales
+1038,"[{'name': 'Flixnet', 'total': '30', 'price_per_item': '10', 'quantity': '3'}, {'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'GatorBoost', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",742-395-8995,Urban Outfitters Loft
+1039,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}, {'name': 'Oreoz', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",849-570-8792,PetPals Mart
+1040,"[{'name': 'Krafty Cheddar', 'total': '10', 'price_per_item': '5', 'quantity': '2'}]",220-102-3684,BestChoice Buy
+1041,"[{'name': 'GatorBoost', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",805-146-4773,Urban Outfitters Loft
+1042,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}, {'name': 'Oreoz', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",159-573-6793,Urban Outfitters Loft
+1043,"[{'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",549-750-2047,Urban Outfitters Loft
+1044,"[{'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Dovee', 'total': '3', 'price_per_item': '1', 'quantity': '3'}]",326-267-7811,Urban Outfitters Loft
+1045,"[{'name': 'Oreoz', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",247-523-1403,PetPals Mart
+1046,"[{'name': 'Oreoz', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",950-639-9777,PetPals Mart
+1047,"[{'name': 'Colgatex', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Popsi', 'total': '8', 'price_per_item': '4', 'quantity': '2'}]",727-709-3351,BestChoice Buy
+1048,"[{'name': 'RedCow', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Krafty Cheddar', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",883-481-7339,Urban Outfitters Loft
+1049,"[{'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",936-522-1085,Urban Outfitters Loft
+1050,"[{'name': 'Krafty Cheddar', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Dovee', 'total': '2', 'price_per_item': '1', 'quantity': '2'}]",424-390-3432,PetPals Mart
+1051,"[{'name': 'KittyKat', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Flixnet', 'total': '11', 'price_per_item': '11', 'quantity': '1'}]",336-283-3896,Trader Tales
+1052,"[{'name': 'Flixnet', 'total': '20', 'price_per_item': '10', 'quantity': '2'}, {'name': 'RedCow', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",738-911-3567,Urban Outfitters Loft
+1053,"[{'name': 'Oreoz', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Colgatex', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",561-761-7547,Trader Tales
+1054,"[{'name': 'Flixnet', 'total': '12', 'price_per_item': '12', 'quantity': '1'}]",227-737-8739,SparkMart
+1055,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",515-268-3667,PetPals Mart
+1056,"[{'name': 'Dovee', 'total': '6', 'price_per_item': '2', 'quantity': '3'}, {'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}]",392-468-4297,Trader Tales
+1057,"[{'name': 'Colgatex', 'total': '8', 'price_per_item': '4', 'quantity': '2'}, {'name': 'Flixnet', 'total': '24', 'price_per_item': '12', 'quantity': '2'}]",645-829-7495,SparkMart
+1058,"[{'name': 'Krafty Cheddar', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",520-550-1148,Urban Outfitters Loft
+1059,"[{'name': 'Dovee', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",516-779-4464,Trader Tales
+1060,"[{'name': 'Dovee', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",558-608-9550,Trader Tales
+1061,"[{'name': 'KittyKat', 'total': '8', 'price_per_item': '4', 'quantity': '2'}, {'name': 'Flixnet', 'total': '12', 'price_per_item': '12', 'quantity': '1'}]",752-347-2146,SparkMart
+1062,"[{'name': 'Dovee', 'total': '3', 'price_per_item': '1', 'quantity': '3'}, {'name': 'Popsi', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Colgatex', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",139-396-1336,PetPals Mart
+1063,"[{'name': 'RedCow', 'total': '9', 'price_per_item': '3', 'quantity': '3'}, {'name': 'KittyKat', 'total': '6', 'price_per_item': '2', 'quantity': '3'}]",553-407-1049,Urban Outfitters Loft
+1064,"[{'name': 'Flixnet', 'total': '11', 'price_per_item': '11', 'quantity': '1'}]",811-806-5304,Trader Tales
+1065,"[{'name': 'Flixnet', 'total': '11', 'price_per_item': '11', 'quantity': '1'}, {'name': 'RedCow', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",558-134-7531,Trader Tales
+1066,"[{'name': 'Flixnet', 'total': '20', 'price_per_item': '10', 'quantity': '2'}, {'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",402-586-5192,Urban Outfitters Loft
+1067,"[{'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}, {'name': 'Dovee', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",878-870-9506,Trader Tales
+1068,"[{'name': 'RedCow', 'total': '5', 'price_per_item': '5', 'quantity': '1'}, {'name': 'Dovee', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",313-206-2033,Targeted Treasures
+1069,"[{'name': 'RedCow', 'total': '12', 'price_per_item': '4', 'quantity': '3'}, {'name': 'Krafty Cheddar', 'total': '10', 'price_per_item': '5', 'quantity': '2'}]",194-235-2353,Trader Tales
+1070,"[{'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",111-862-3502,PetPals Mart
+1071,"[{'name': 'Oreoz', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Dovee', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",723-357-7363,Trader Tales
+1072,"[{'name': 'Colgatex', 'total': '12', 'price_per_item': '4', 'quantity': '3'}, {'name': 'Dovee', 'total': '9', 'price_per_item': '3', 'quantity': '3'}]",124-533-2523,SparkMart
+1073,"[{'name': 'KittyKat', 'total': '9', 'price_per_item': '3', 'quantity': '3'}]",583-114-3994,BestChoice Buy
+1074,"[{'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",429-916-1662,PetPals Mart
+1075,"[{'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",946-447-2454,PetPals Mart
+1076,"[{'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Flixnet', 'total': '20', 'price_per_item': '10', 'quantity': '2'}, {'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",254-627-7406,Urban Outfitters Loft
+1077,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}, {'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}, {'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",958-724-3846,PetPals Mart
+1078,"[{'name': 'Colgatex', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",743-908-5464,SparkMart
+1079,"[{'name': 'GatorBoost', 'total': '5', 'price_per_item': '5', 'quantity': '1'}, {'name': 'Krafty Cheddar', 'total': '6', 'price_per_item': '6', 'quantity': '1'}, {'name': 'Popsi', 'total': '15', 'price_per_item': '5', 'quantity': '3'}]",549-515-6738,SparkMart
+1080,"[{'name': 'KittyKat', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'RedCow', 'total': '12', 'price_per_item': '4', 'quantity': '3'}, {'name': 'Colgatex', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",480-560-1876,Trader Tales
+1081,"[{'name': 'Dovee', 'total': '6', 'price_per_item': '2', 'quantity': '3'}, {'name': 'KittyKat', 'total': '9', 'price_per_item': '3', 'quantity': '3'}, {'name': 'Popsi', 'total': '8', 'price_per_item': '4', 'quantity': '2'}]",390-911-6534,BestChoice Buy
+1082,"[{'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",782-806-6417,PetPals Mart
+1083,"[{'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}, {'name': 'Oreoz', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",617-226-9486,PetPals Mart
+1084,"[{'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",530-539-9474,Urban Outfitters Loft
+1085,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}, {'name': 'GatorBoost', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",507-766-7432,Urban Outfitters Loft
+1086,"[{'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",743-908-5464,PetPals Mart
+1087,"[{'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}, {'name': 'Dovee', 'total': '4', 'price_per_item': '2', 'quantity': '2'}, {'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",573-696-6671,Trader Tales
+1088,"[{'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",173-881-1582,Trader Tales
+1089,"[{'name': 'Popsi', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",228-202-6360,Urban Outfitters Loft
+1090,"[{'name': 'GatorBoost', 'total': '8', 'price_per_item': '4', 'quantity': '2'}, {'name': 'Colgatex', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",202-632-2346,Trader Tales
+1091,"[{'name': 'GatorBoost', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",742-395-8995,Trader Tales
+1092,"[{'name': 'KittyKat', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",137-491-6519,BestChoice Buy
+1093,"[{'name': 'Oreoz', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Dovee', 'total': '2', 'price_per_item': '1', 'quantity': '2'}, {'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",663-149-3581,Urban Outfitters Loft
+1094,"[{'name': 'Dovee', 'total': '4', 'price_per_item': '2', 'quantity': '2'}, {'name': 'Oreoz', 'total': '12', 'price_per_item': '4', 'quantity': '3'}]",237-295-4490,Trader Tales
+1095,"[{'name': 'Dovee', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",441-847-1955,BestChoice Buy
+1096,"[{'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}]",507-883-4629,Urban Outfitters Loft
+1097,"[{'name': 'Dovee', 'total': '4', 'price_per_item': '2', 'quantity': '2'}, {'name': 'RedCow', 'total': '8', 'price_per_item': '4', 'quantity': '2'}]",553-482-8315,BestChoice Buy
+1098,"[{'name': 'Oreoz', 'total': '5', 'price_per_item': '5', 'quantity': '1'}, {'name': 'GatorBoost', 'total': '5', 'price_per_item': '5', 'quantity': '1'}]",145-501-4975,SparkMart
+1099,"[{'name': 'Oreoz', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",344-278-2013,Urban Outfitters Loft
+1100,"[{'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}]",531-380-1711,PetPals Mart
+1101,"[{'name': 'GatorBoost', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Dovee', 'total': '2', 'price_per_item': '1', 'quantity': '2'}]",551-867-4367,Urban Outfitters Loft
+1102,"[{'name': 'GatorBoost', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",245-506-5389,PetPals Mart
+1103,"[{'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Krafty Cheddar', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",323-234-9528,Urban Outfitters Loft
+1104,"[{'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'KittyKat', 'total': '4', 'price_per_item': '2', 'quantity': '2'}, {'name': 'Dovee', 'total': '3', 'price_per_item': '1', 'quantity': '3'}]",795-682-8733,Urban Outfitters Loft
+1105,"[{'name': 'Oreoz', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}]",805-146-4773,BestChoice Buy
+1106,"[{'name': 'Oreoz', 'total': '8', 'price_per_item': '4', 'quantity': '2'}, {'name': 'Dovee', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Colgatex', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",531-709-2553,Trader Tales
+1107,"[{'name': 'Popsi', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",866-155-1011,PetPals Mart
+1108,"[{'name': 'RedCow', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}, {'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",652-272-9539,Urban Outfitters Loft
+1109,"[{'name': 'RedCow', 'total': '9', 'price_per_item': '3', 'quantity': '3'}]",368-154-2650,Urban Outfitters Loft
+1110,"[{'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",504-112-5228,Urban Outfitters Loft
+1111,"[{'name': 'Colgatex', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Flixnet', 'total': '11', 'price_per_item': '11', 'quantity': '1'}, {'name': 'Coca-Splash', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",481-405-7265,Trader Tales
+1112,"[{'name': 'Dovee', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",500-251-7080,Trader Tales
+1113,"[{'name': 'KittyKat', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",964-448-9785,Urban Outfitters Loft
+1114,"[{'name': 'Popsi', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}]",705-890-7715,PetPals Mart
+1115,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",791-853-6464,PetPals Mart
+1116,"[{'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}, {'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",796-816-9963,Urban Outfitters Loft
+1117,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}, {'name': 'Oreoz', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",629-807-5687,PetPals Mart
+1118,"[{'name': 'Dovee', 'total': '2', 'price_per_item': '1', 'quantity': '2'}]",107-156-5064,PetPals Mart
+1119,"[{'name': 'Krafty Cheddar', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Colgatex', 'total': '4', 'price_per_item': '2', 'quantity': '2'}, {'name': 'Popsi', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",505-476-1251,PetPals Mart
+1120,"[{'name': 'Flixnet', 'total': '33', 'price_per_item': '11', 'quantity': '3'}, {'name': 'KittyKat', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",728-796-4352,BestChoice Buy
+1121,"[{'name': 'KittyKat', 'total': '6', 'price_per_item': '2', 'quantity': '3'}, {'name': 'GatorBoost', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",271-604-3446,Urban Outfitters Loft
+1122,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}, {'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Oreoz', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",782-806-6417,PetPals Mart
+1123,"[{'name': 'Popsi', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",312-891-9587,Urban Outfitters Loft
+1124,"[{'name': 'Colgatex', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'Popsi', 'total': '10', 'price_per_item': '5', 'quantity': '2'}, {'name': 'RedCow', 'total': '10', 'price_per_item': '5', 'quantity': '2'}]",247-523-1403,SparkMart
+1125,"[{'name': 'Oreoz', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'RedCow', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Flixnet', 'total': '30', 'price_per_item': '10', 'quantity': '3'}]",626-458-8110,Urban Outfitters Loft
+1126,"[{'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}, {'name': 'Popsi', 'total': '6', 'price_per_item': '3', 'quantity': '2'}]",724-444-3001,Urban Outfitters Loft
+1127,"[{'name': 'Dovee', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Colgatex', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",598-173-8153,Trader Tales
+1128,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",852-236-4050,Urban Outfitters Loft
+1129,"[{'name': 'RedCow', 'total': '5', 'price_per_item': '5', 'quantity': '1'}, {'name': 'Krafty Cheddar', 'total': '12', 'price_per_item': '6', 'quantity': '2'}]",196-551-2162,SparkMart
+1130,"[{'name': 'KittyKat', 'total': '6', 'price_per_item': '3', 'quantity': '2'}, {'name': 'Colgatex', 'total': '9', 'price_per_item': '3', 'quantity': '3'}, {'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}]",530-539-9474,BestChoice Buy
+1131,"[{'name': 'RedCow', 'total': '8', 'price_per_item': '4', 'quantity': '2'}, {'name': 'Popsi', 'total': '4', 'price_per_item': '4', 'quantity': '1'}]",778-172-1502,Trader Tales
+1132,"[{'name': 'Krafty Cheddar', 'total': '10', 'price_per_item': '5', 'quantity': '2'}, {'name': 'GatorBoost', 'total': '8', 'price_per_item': '4', 'quantity': '2'}]",545-458-1679,Trader Tales
+1133,"[{'name': 'Dovee', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",699-966-4749,BestChoice Buy
+1134,"[{'name': 'RedCow', 'total': '8', 'price_per_item': '4', 'quantity': '2'}]",919-925-5280,BestChoice Buy
+1135,"[{'name': 'Flixnet', 'total': '20', 'price_per_item': '10', 'quantity': '2'}, {'name': 'GatorBoost', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",148-739-3707,PetPals Mart
+1136,"[{'name': 'Krafty Cheddar', 'total': '8', 'price_per_item': '4', 'quantity': '2'}, {'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}, {'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",270-914-6681,PetPals Mart
+1137,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}, {'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",264-319-7312,Urban Outfitters Loft
+1138,"[{'name': 'Flixnet', 'total': '22', 'price_per_item': '11', 'quantity': '2'}, {'name': 'RedCow', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'KittyKat', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",659-190-9378,Trader Tales
+1139,"[{'name': 'Dovee', 'total': '3', 'price_per_item': '1', 'quantity': '3'}, {'name': 'Flixnet', 'total': '10', 'price_per_item': '10', 'quantity': '1'}, {'name': 'Colgatex', 'total': '4', 'price_per_item': '2', 'quantity': '2'}]",582-574-4299,PetPals Mart
+1140,"[{'name': 'Dovee', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Oreoz', 'total': '5', 'price_per_item': '5', 'quantity': '1'}]",821-675-4190,SparkMart
+1141,"[{'name': 'RedCow', 'total': '4', 'price_per_item': '4', 'quantity': '1'}, {'name': 'KittyKat', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",313-206-2033,BestChoice Buy
+1142,"[{'name': 'Colgatex', 'total': '9', 'price_per_item': '3', 'quantity': '3'}]",547-388-2503,Trader Tales
+1143,"[{'name': 'RedCow', 'total': '3', 'price_per_item': '3', 'quantity': '1'}]",489-241-7631,PetPals Mart
+1144,"[{'name': 'Dovee', 'total': '6', 'price_per_item': '2', 'quantity': '3'}]",312-891-9587,Trader Tales
+1145,"[{'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'GatorBoost', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Dovee', 'total': '2', 'price_per_item': '1', 'quantity': '2'}]",416-776-3422,Urban Outfitters Loft
+1146,"[{'name': 'Dovee', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Popsi', 'total': '10', 'price_per_item': '5', 'quantity': '2'}]",627-954-8991,Targeted Treasures
+1147,"[{'name': 'Flixnet', 'total': '20', 'price_per_item': '10', 'quantity': '2'}, {'name': 'KittyKat', 'total': '2', 'price_per_item': '2', 'quantity': '1'}, {'name': 'Colgatex', 'total': '2', 'price_per_item': '2', 'quantity': '1'}]",934-954-3387,Urban Outfitters Loft
+1148,"[{'name': 'Colgatex', 'total': '3', 'price_per_item': '3', 'quantity': '1'}, {'name': 'Krafty Cheddar', 'total': '5', 'price_per_item': '5', 'quantity': '1'}]",778-566-2709,Trader Tales
+1149,"[{'name': 'Dovee', 'total': '1', 'price_per_item': '1', 'quantity': '1'}]",220-296-3772,PetPals Mart

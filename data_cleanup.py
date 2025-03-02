@@ -68,6 +68,7 @@ promo_csv = data_parser("data/promotions.csv") #promotions.csv
 
 transaction = data_parser("data/transactions.xml") #transactions.xml
 cleanup_items_xml('data/transactions.xml')
+transaction.to_csv("data/transactions.csv", index=False)
 
 transfer = data_parser("data/transfers.csv") #transfers.csv
 
