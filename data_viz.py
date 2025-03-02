@@ -16,7 +16,7 @@ plt.title('Device Usage Counts')
 plt.xlabel('Device')
 plt.ylabel('Count')
 plt.savefig('figures/Device_Usage_Counts.png')  # Save figure
-plt.show()  # Display plot
+# plt.show()  # Display plot
 
 
 country = people_data['country'].value_counts().reset_index()
@@ -27,4 +27,15 @@ plt.title('User Distribution by Country')
 plt.xlabel('Country')
 plt.ylabel('Count')
 plt.savefig('figures/Country_Distribution.png')  # Save figure
+# plt.show()  # Display plot
+
+# promo_data['responded'].replace({'Yes': 1, 'No': 0},inplace=True)
+responses = promo_data['responded'].value_counts().reset_index()
+responses.columns = ['Responses', 'Count']  # Rename columns
+plt.figure(figsize=(12, 6))  # Create new figure
+sns.barplot(x='Responses', y='Total', hue='Responses', data=responses)
+plt.title('Responses to Promotions')
+plt.xlabel('Response ')
+plt.ylabel('Total')
+plt.savefig('figures/ResponsePlot.png')  # Save figure
 plt.show()  # Display plot
