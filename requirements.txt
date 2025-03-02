@@ -4,3 +4,5 @@ lxml
 fastapi
 uvicorn
 jupyter
+matplotlib
+notebook

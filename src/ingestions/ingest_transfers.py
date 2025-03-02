@@ -33,7 +33,7 @@ def insert_into_db(df, db_file):
     
     conn.commit()
     conn.close()
-    print("Transfers data inserted successfully!")
+    print("✅ Transfers data inserted successfully!")
 
 if __name__ == "__main__":
     df = load_transfers(csv_file)

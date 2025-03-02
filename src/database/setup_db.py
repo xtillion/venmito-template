@@ -1,8 +1,13 @@
+import os
 import sqlite3
+
+# Creating consistent path for DB file
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+DB_PATH = os.path.join(BASE_DIR, "src/database/venmito.db")
 
 
 def create_database():
-    conn = sqlite3.connect("venmito.db")
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
     # People Table
@@ -23,41 +28,36 @@ def create_database():
 
     # Transactions Table
     cursor.execute('''
-    CREATE TABLE IF NOT EXISTS transactions (n
+    CREATE TABLE IF NOT EXISTS transactions (
         transaction_id INTEGER PRIMARY KEY,
         phone TEXT,
         store TEXT,
-        total_price REAL,
-        FOREIGN KEY (phone) REFERENCES people(telephone)
+        total_price REAL
     )
     ''')
 
-    # Transaction Items Table
+    # Transactions Table
+    cursor.execute('''
+CREATE TABLE IF NOT EXISTS transactions (
+    transaction_id INTEGER PRIMARY KEY,
+    phone TEXT,
+    store TEXT,
+    total_price REAL
+    )
+    ''')
+
+# Transaction Items Table
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS transaction_items (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        transaction_id INTEGER,
-        item_name TEXT,
-        quantity INTEGER,
-        price_per_item REAL,
-        total_price REAL,
-        FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id)
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    transaction_id INTEGER,
+    item_name TEXT,
+    quantity INTEGER,
+    price_per_item REAL,
+    total_price REAL,
+    FOREIGN KEY (transaction_id) REFERENCES transactions(transaction_id)
     )
     ''')
-
-
-    # Transfers Table
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS transfers (
-        transfer_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        sender_id INTEGER,
-        recipient_id INTEGER,
-        amount REAL NOT NULL,
-        date TEXT NOT NULL,
-        FOREIGN KEY (sender_id) REFERENCES people(id),
-        FOREIGN KEY (recipient_id) REFERENCES people(id)
-    )
-''')
 
     # Promotions Table
     cursor.execute('''

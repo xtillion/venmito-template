@@ -34,9 +34,9 @@ def insert_into_db(df, db_path):
     """Insert cleaned data into SQLite database without dropping any rows."""
     conn = sqlite3.connect(db_path)
     df.to_sql("promotions", conn, if_exists="replace", index=False)
+    print("✅ Promotions data inserted successfully!")
     conn.close()
 
 if __name__ == "__main__":
     df_cleaned = clean_csv(csv_file)
     insert_into_db(df_cleaned, db_file)
-    print(f"✅ Promotions data cleaned ({len(df_cleaned)} rows inserted)!")

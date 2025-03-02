@@ -50,10 +50,8 @@ def insert_into_db(df, db_file):
     conn = sqlite3.connect(db_file)
     df.to_sql("people", conn, if_exists="append", index=False)
     conn.commit()
-    print("People Data Preview:\n", df.head())
-    print("Number of People Records Loaded:", len(df))
     conn.close()
-    print("People data inserted successfully!")
+    print("✅ People data inserted successfully!")
 
 if __name__ == "__main__":
     json_df = load_json(json_file)

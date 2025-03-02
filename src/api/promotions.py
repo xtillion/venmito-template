@@ -39,14 +39,6 @@ def get_promotions(client_email: str = Query(None), promotion_type: str = Query(
         params.append(limit)
     return query_db(query, tuple(params))
 
-@router.get("/{id}")
-def get_promotion_by_id(id: int):
-    """Fetch a single promotion by its ID."""
-    result = query_db("SELECT * FROM promotions WHERE id = ?", (id,))
-    if not result:
-        raise HTTPException(status_code=404, detail="Promotion not found")
-    return result[0]
-
 @router.get("/most_popular")
 def get_most_popular_promotions():
     """Fetch all promotions in ascending order and highlight the top 5 most popular."""
@@ -54,7 +46,7 @@ def get_most_popular_promotions():
         SELECT promotion, COUNT(*) as count
         FROM promotions
         GROUP BY promotion
-        ORDER BY count ASC;
+        ORDER BY count DESC;
     """
     results = query_db(query)
     if not results:
@@ -65,6 +57,23 @@ def get_most_popular_promotions():
         results[i]["top"] = True
     
     return results
+
+@router.get("/{promotion_id}")
+def get_promotion_by_id(promotion_id: int):
+    """Fetch a single promotion by its ID."""
+    result = query_db("SELECT * FROM promotions WHERE promotion_id = ?", (promotion_id,))
+    if not result:
+        raise HTTPException(status_code=404, detail="Promotion not found")
+    return result[0]
+
+
+@router.get("/{id}")
+def get_promotion_by_id(id: int):
+    """Fetch a single promotion by its ID."""
+    result = query_db("SELECT * FROM promotions WHERE id = ?", (id,))
+    if not result:
+        raise HTTPException(status_code=404, detail="Promotion not found")
+    return result[0]
 
 @router.post("/")
 def create_promotion(client_email: str, promotion: str, responded: str):
