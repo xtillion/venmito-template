@@ -2,7 +2,6 @@
 
 ## People JSON
 ```json
-NOTE: can be ['Android', 'Iphone']
 
 {'id': '1', *NEW* 
 'first_name': 'Jamie', 
@@ -22,9 +21,6 @@ NOTE: can be ['Android', 'Iphone']
 
 ## People YAML
 ```json
-Check if devices, email, id, and name matches with people.json
-Check is City matches with Location
-Maybe rename phone to telephone to match with people.json
 {'Android': '1',                
 'Desktop': 1,                 
 'Iphone': '1',                  
@@ -37,8 +33,6 @@ Maybe rename phone to telephone to match with people.json
 
 ## Transfers CSV
 ```json
-Check if matches with id in people.json
-Check if matches with id in people.json
 {
 sender_id  
 recipient_id  
@@ -49,12 +43,6 @@ date
 
 ## EX PROMOTIONS.CSV
 ```json
-Check if matches with id in people.json
-Might match email in people yaml and json
-Check if telephone in people yaml and/or json
-Promotion is store name
-Responded not in bool format
-
 {
 id            
 client_email  

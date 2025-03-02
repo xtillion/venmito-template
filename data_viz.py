@@ -18,4 +18,3 @@ plt.title('Device Usage Counts')
 plt.xlabel('Device')
 plt.ylabel('Count')
 plt.savefig('figures/Device Usage Counts.png')
-

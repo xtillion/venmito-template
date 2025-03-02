@@ -38,14 +38,23 @@ def device_list(devices: list):
 def fill_blank_email_or_num(row,all_people):
     email = row['client_email']
     telephone = row['telephone']
+    first_name = ''
+    last_name = ''
     #if email missing but phone is present
     if pd.isna(email) and not pd.isna(telephone):
-        email_found = all_people.loc[all_people['phone'] == telephone, 'email'].dropna().tolist()[0]
-        return [email_found, telephone]
+        email = all_people.loc[all_people['phone'] == telephone, 'email'].dropna().tolist()[0]
+        first_name = all_people.loc[all_people['phone'] == telephone, 'first_name'].dropna().tolist()[0]
+        last_name = all_people.loc[all_people['phone'] == telephone, 'last_name'].dropna().tolist()[0]
     elif pd.isna(telephone) and not pd.isna(email):
-        phone_found = all_people.loc[all_people['email'] == email, 'phone'].dropna().tolist()[0]
-        return [email, phone_found]
+        ## if phone missing but email is present
+        telephone = all_people.loc[all_people['email'] == email, 'phone'].dropna().tolist()[0]
+        first_name = all_people.loc[all_people['email'] == email, 'first_name'].dropna().tolist()[0]
+        last_name = all_people.loc[all_people['email'] == email, 'last_name'].dropna().tolist()[0]
     elif pd.isna(email) and pd.isna(telephone):
+        #both missing, print a message 
         print(f'Both email and phone are missing for this row {row['id']}')
-    # both present, dont do anything
-    return [email, telephone]
+    else:
+        # both present, dont do anything
+        first_name = all_people.loc[all_people['email'] == email, 'first_name'].dropna().tolist()[0]
+        last_name = all_people.loc[all_people['email'] == email, 'last_name'].dropna().tolist()[0]
+    return [first_name,last_name, email, telephone]
