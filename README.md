@@ -118,7 +118,7 @@ To analyze data:
    - **Transaction insights**
    - **Promotion effectiveness**
 
-**There is a working exmaple in the root folder, simply open Data_Analysis.html
+**There is a working example in the root folder, simply open Data_Analysis.html
 
 ---
 
