@@ -230,7 +230,7 @@ fetch('/api/countrycount')
               plugins: {
                 title: {
                     display: true,
-                    text: 'Domestic vs International Transfers',
+                    text: 'Promotion Responses',
                     font: {
                         size: 18, 
                         weight: 'bold',  
