@@ -1,8 +1,29 @@
 # Venmito Data Engineering Project
 
-## Introduction
+## Author Information
 
-This project is designed to process and analyze data from various sources for Venmito, a payment company. The project involves setting up a database, importing data from multiple file formats, and providing insights into the data through a RESTful API.
+- **Name**: Piero Teran
+- **Email**: pieroteran@outlook.com
+
+## Project Description
+
+This project is a comprehensive data engineering solution developed in Python. It is designed to import data from multiple sources, process it, and store it in a PostgreSQL database. The solution includes a Flask-based web API and a Dash dashboard for visualizing data insights. The project aims to provide a robust framework for data analysis and visualization, enabling users to interact with and explore data efficiently.
+
+### Key Features
+
+- **Data Importer**: A flexible tool to import data from various formats such as JSON, CSV, XML, and YAML into a PostgreSQL database.
+- **Flask API**: A RESTful API that provides endpoints for querying and analyzing data.
+- **Dash Dashboard**: An interactive dashboard for visualizing data insights, built using Dash and Plotly.
+
+## Technologies Used
+
+- **Python**: The core programming language used for developing the solution.
+- **Flask**: A lightweight WSGI web application framework used to build the API.
+- **Dash**: A Python framework for building analytical web applications.
+- **Plotly**: A graphing library used for creating interactive plots.
+- **PostgreSQL**: A powerful, open-source object-relational database system.
+- **SQLAlchemy**: An SQL toolkit and Object-Relational Mapping (ORM) library for Python.
+- **Bootstrap**: A front-end framework used for styling the dashboard.
 
 ## Prerequisites
 
