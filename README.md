@@ -124,13 +124,6 @@ This document provides an overview of the API endpoints available in the Venmito
   - Description: Retrieves the total amount transferred by device type.
   - Response: Total amounts transferred via Android, Desktop, and iPhone devices.
 
-## Setup and Installation
-
-{{ Add any setup and installation instructions here... }}
-
-## Usage
-
-{{ Add any usage instructions here... }}
 
 ## Running the API
 
