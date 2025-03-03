@@ -1,66 +1,187 @@
 # Venmito Data Engineering Project
 
-## Introduction
+## Author Information
 
-Hello and welcome to this data engineering project for Venmito. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.
+- **Name**: Piero Teran
+- **Email**: pieroteran@outlook.com
 
-Venmito is a payment company that allows users to transfer funds to other users and pay in participant stores. The company has several data files in various formats. Our goal is to organize all of this information to gain insights about our clients and transactions. We believe that there is an immense value hidden in these data files, and we are looking for a solution that can help us extract and utilize this value.
+## Project Description
 
-We have five files:
+This project is a comprehensive data engineering solution developed in Python. It is designed to import data from multiple sources, process it, and store it in a PostgreSQL database. The solution includes a Flask-based web API and a Dash dashboard for visualizing data insights. The project aims to provide a robust framework for data analysis and visualization, enabling users to interact with and explore data efficiently.
 
-- `people.json`
-- `people.yml`
-- `transfers.csv`
-- `transactions.xml`
-- `promotions.csv`
+### Key Features
 
-Each of these files contains different pieces of information about our clients, their transactions, transfers and promotions.
+- **Data Importer**: A flexible tool to import data from various formats such as JSON, CSV, XML, and YAML into a PostgreSQL database.
+- **Flask API**: A RESTful API that provides endpoints for querying and analyzing data.
+- **Dash Dashboard**: An interactive dashboard for visualizing data insights, built using Dash and Plotly.
 
-Your task is to develop a solution that can read these files, match and conform the data, and provide a way to consume this data.
+## Technologies Used
 
-## Requirements
+- **Python**: The core programming language used for developing the solution.
+- **Flask**: A lightweight WSGI web application framework used to build the API.
+- **Dash**: A Python framework for building analytical web applications.
+- **Plotly**: A graphing library used for creating interactive plots.
+- **PostgreSQL**: A powerful, open-source object-relational database system.
+- **SQLAlchemy**: An SQL toolkit and Object-Relational Mapping (ORM) library for Python.
+- **Bootstrap**: A front-end framework used for styling the dashboard.
 
-1. **Data Ingestion**: Your solution should be able to read and load data from all the provided files. Take into account that these files are in different formats (JSON, YAML, CSV, XML).
+## Prerequisites
 
-2. **Data Matching and Conforming**: Once the data is loaded, your solution should be capable of matching and conforming the data across these files. This includes identifying common entities, resolving inconsistencies, and organizing the data into a unified format. Furthermore, the consolidated data should not only be transient but also persistent. This persistence should be achieved using appropriate methods such as storing in a file, database, or other suitable data storage solutions, and not restricted to just a variable in memory. This way, the integrity and availability of the consolidated data are ensured for future use and analysis.
+Before you begin, ensure you have met the following requirements:
 
-3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. Examples of things, but is not restricted to, we want to be able to see are:
-    - Which clients have what type of promotion?
-    - Give suggestions on how to turn "No" responses from clients in the promotions file.
-    - Insights on stores, like:
-        - What item is the best seller?
-        - What store has had the most profit?
-        - Etc.
-    - How can we use the data we got from the transfer file?
-  
-    These are only suggestions. Please don't limit yourself to only these examples and explore in your analysis any other suggestions could be beneficial for Venmito.
+- Python 3.6 or later installed on your machine.
+- PostgreSQL installed and running.
+- Access to the database with the necessary permissions to create tables.
 
-4. **Data Output**: The final output of your solution should enable us to consume the reorganized and analyzed data in a meaningful way. This could be, but is not restricted to, a command line interface (CLI), a database with structured schemas, a GUI featuring interactive visualizations, a Jupyter Notebook, or a RESTful API. We invite you to leverage other innovative methods that you believe would be beneficial for a company like Venmito. Please provide at least 2 data consumption methods, 1 for the non-technical team and 1 for the technical team.
+## Installation
 
-5. **Code**: The code for your solution should be well-structured and comprehensible, with comments included where necessary. Remember, the quality and readability of the code will be a significant factor in the evaluation of the final deliverable.
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository-url>
+   cd Venmito-piter-24
+   ```
 
-Note: The examples provided in these requirements (such as GUI, RESTful API etc.) are purely illustrative. You are free to employ any solution or technology you deem fit for fulfilling these requirements
+2. **Set Up a Virtual Environment**:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
 
-## Deliverables
+3. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-1. Source code.
-2. A README file with your name, email, a description of your solution, your design decisions, and clear instructions on how to run your code.
-3. A method to consume the reorganized and analyzed data.
+## Database Setup
 
-## Instructions for Submission
+To set up the database, you need to run the `init_db.py` script. This script will create the necessary tables in your PostgreSQL database.
 
-1. Complete your project as described above in a branch within your fork.
-2. Write a detailed README file with your name, email, a description explaining your approach, the technologies you used, and provides clear instructions on how to run your code.
-3. Submit your project by creating a pull request to merge your branch to the main branch of your fork.
+### Running `init_db.py`
 
-We look forward to seeing your solution!
+1. **Ensure PostgreSQL is Running**: Make sure your PostgreSQL server is running and you have access to it.
 
-Thank you,
+2. **Run the Script**:
+   ```bash
+   python init_db.py --user <db_user> --password <db_password> --host <db_host> --port <db_port> --db <db_name>
+   ```
 
-Venmito
+   Replace `<db_user>`, `<db_password>`, `<db_host>`, `<db_port>`, and `<db_name>` with your actual database credentials.
 
-## DISCLAIMER:
+3. **Expected Output**: The script will print messages indicating whether each table was created successfully or already exists.
 
-This project and its contents are the exclusive property of Xtillion, LLC and are intended solely for the evaluation of the individual to whom it was provided. Any distribution, reproduction, or unauthorized use is strictly prohibited. By accessing and using this project, you agree to abide by these conditions. Failure to comply with these terms may result in legal action.
+## Data Import
 
-Please note that this project is provided "as is", without warranty of any kind, express or implied. Xtillion is not liable for any damages or claims that might arise from using or misusing this project.
+The `data_importer.py` script is used to import data from various file formats into the database. It processes files such as JSON, YAML, CSV, and XML, and inserts the data into the corresponding tables.
+
+### Running `data_importer.py`
+
+1. **Run the Script**:
+   ```bash
+   python data_importer.py <directory> --user <db_user> --password <db_password> --host <db_host> --port <db_port> --db <db_name>
+   ```
+
+   Replace `<directory>` with the path to the directory containing your data files.
+
+
+# Venmito API
+
+## Overview
+
+This document provides an overview of the API endpoints available in the Venmito application. Each endpoint is designed to perform specific operations related to clients, promotions, items, stores, and transfers.
+
+## API Endpoints
+
+### Clients
+
+- **GET /clients/promotions**
+  - Description: Fetches all client promotions.
+  - Response: A list of promotions associated with clients.
+
+### Promotions
+
+- **GET /promotions/responded/max_min**
+  - Description: Retrieves the maximum and minimum responded promotions.
+  - Response: Details of the promotions with the highest and lowest responses.
+
+- **GET /promotions/responded/city/max_min**
+  - Description: Retrieves the city with the maximum and minimum responded promotions.
+  - Response: Details of the cities with the highest and lowest responses.
+
+- **GET /promotions/responded/device/max_min**
+  - Description: Retrieves the device type with the maximum and minimum responded promotions.
+  - Response: Details of the devices with the highest and lowest responses.
+
+### Items
+
+- **GET /items/summary**
+  - Description: Provides a summary of items, including total quantities and prices.
+  - Response: A summary of all items.
+
+### Stores
+
+- **GET /stores/profit**
+  - Description: Retrieves the store with the most and least profit.
+  - Response: Details of the stores with the highest and lowest profits.
+
+- **GET /stores/profit/list**
+  - Description: Lists all stores with their total profits.
+  - Response: A list of stores and their profits.
+
+- **GET /stores/quantity/max_min**
+  - Description: Retrieves the store with the maximum and minimum quantity of items sold.
+  - Response: Details of the stores with the highest and lowest quantities sold.
+
+### Transfers
+
+- **GET /transfers/total**
+  - Description: Retrieves the total amount transferred.
+  - Response: The total amount of all transfers.
+
+- **GET /transfers/max_min**
+  - Description: Retrieves the person with the maximum and minimum amount transferred.
+  - Response: Details of the persons with the highest and lowest amounts transferred.
+
+- **GET /transfers/device/total**
+  - Description: Retrieves the total amount transferred by device type.
+  - Response: Total amounts transferred via Android, Desktop, and iPhone devices.
+
+
+## Running the API
+
+To run the API, execute the following command:
+
+```bash
+python venmito_api.py --user <db_user> --password <db_password> --host <db_host> --port <db_port> --db <db_name>
+```
+
+Replace `<db_user>`, `<db_password>`, `<db_host>`, `<db_port>`, and `<db_name>` with your actual database credentials.
+
+## Running the Dashboard
+
+The Venmito Dashboard provides a visual interface to interact with the data processed by the API. Follow these steps to run the dashboard:
+
+1. **Ensure the API is Running**: Before starting the dashboard, make sure the Venmito API is running. You can start the API using the following command:
+
+   ```bash
+   python venmito_api.py --user <db_user> --password <db_password> --host <db_host> --port <db_port> --db <db_name>
+   ```
+
+   Replace `<db_user>`, `<db_password>`, `<db_host>`, `<db_port>`, and `<db_name>` with your actual database credentials.
+
+2. **Start the Dashboard**: Once the API is running, you can start the dashboard by executing the following command:
+
+   ```bash
+   python dashboard.py
+   ```
+
+3. **Access the Dashboard**: Open a web browser and navigate to `http://127.0.0.1:8050` to view the dashboard. The dashboard will automatically load data and display various graphs and insights.
+
+![Venmito Dashboard](images/venmito_dashboard.png)
+
+
+4. **Explore the Dashboard**: Use the dashboard to explore different data visualizations and insights provided by the API. The dashboard is designed to update automatically with the latest data.
+
+## Conclusion
+
+This project provides a comprehensive setup for processing, analyzing, and interacting with data for Venmito. The API endpoints and dashboard offer a flexible way to query and visualize data insights.
+
