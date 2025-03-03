@@ -28,12 +28,6 @@ Description:
    Again, the python portion was already performed, and is accounted for in the presentation. The Website part is the one that requires user interaction. 
 
 
-1. Complete your project as described above in a branch within your fork.
-2. Submit your project by creating a pull request to merge your branch to the main branch of your fork.
-
-We look forward to seeing your solution!
-
 Thank you,
 
-Venmito
-
+Marcelo

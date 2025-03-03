@@ -3,50 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js" charset="utf-8"></script>
-    <title>City and Country Population Chart</title>
+    <title>Venmito Dashboard</title>
 </head>
 <body>
     <h1>Welcome to Venmito's Dashboard</h1>
     <div id="gdCity"></div>
     <div id="gdCountry"></div>
+    
+    <div class="chart">
+        <canvas id="myChart"></canvas>
+    </div>
+    
+    <div class="chart">
+        <canvas id="myChartTwo"></canvas>
+    </div>
 
-    <script>
-        // Fetch the city data from the server
-        fetch('/citycount')
-            .then(response => response.json())
-            .then(data => {
-                Plotly.newPlot("gdCity", [{
-                    x: data.x,  
-                    y: data.y,  
-                    type: 'bar'  
-                }], {
-                    title: 'City Population Counts',  // Fixed placement
-                    width: 600,
-                    height: 400,
-                    xaxis: { title: 'City' },
-                    yaxis: { title: 'Count' }
-                });
-            })
-            .catch(error => console.error('❌ Error fetching city data:', error));
-
-        // Fetch the country data from the server
-        fetch('/countrycount')
-            .then(response => response.json())
-            .then(data => {
-                Plotly.newPlot("gdCountry", [{
-                    x: data.x,  
-                    y: data.y,  
-                    type: 'bar'  
-                }], {
-                    title: 'Country Population Counts',  // Fixed placement
-                    width: 600,
-                    height: 400,
-                    xaxis: { title: 'Country' },
-                    yaxis: { title: 'Count' }
-                });
-            })
-            .catch(error => console.error('❌ Error fetching country data:', error));
-    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/script.js"></script>
 </body>
 </html>
