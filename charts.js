@@ -100,8 +100,6 @@ const chartRoutes = (app) => {
             if (person['Iphone'] === '1') sums.iPhone += 1;
             if (person['Desktop'] === '1') sums.Desktop += 1;
         });
-
-        console.log(sums)
         // Return the result in the desired format
         return res.status(200).json(sums);
         } catch (error) {

@@ -8,7 +8,7 @@ body{
     font-family: sans-serif;
     min-height: 100vh;
     color: #555;
-    background-color: #fff;
+    background-color: gray;
 }
 
 .chart{
@@ -28,15 +28,15 @@ body{
 }
 
 h1 {
-    font-family: 'Arial', sans-serif; /* Change this to any font you like */
-    font-size: 3rem; /* Adjust the size of the title */
+    font-family: 'Arial', sans-serif; 
+    font-size: 3rem; 
     font-weight: bold;
-    color: #fff; /* White color for the text */
-    background: linear-gradient(45deg, #ff6a00, #ff4b2b); /* Gradient background color */
-    background-clip: text; /* Makes the gradient apply to the text */
-    -webkit-background-clip: text; /* For Safari compatibility */
+    color: #fff;
+    background: linear-gradient(45deg, #ff6a00, #ff4b2b);
+    background-clip: text; 
+    -webkit-background-clip: text;
     text-align: center;
-    letter-spacing: 2px; /* Space between letters */
+    letter-spacing: 2px; 
     text-transform: uppercase; /* Uppercase letters */
     padding: 20px 0;
     text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for text */
@@ -64,5 +64,9 @@ h1 {
     max-width: 48%; /* Ensure each canvas doesn't take up more than 48% of the width */
     height: 300px; /* Set a fixed height for the charts */
     box-sizing: border-box; /* Includes padding and borders in the element's total width and height */
+    background-color: #fff; /* White background for charts */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
   }
   
