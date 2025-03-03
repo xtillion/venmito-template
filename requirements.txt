@@ -1,0 +1,8 @@
+pandas
+pyyaml
+lxml
+fastapi
+uvicorn
+jupyter
+matplotlib
+notebook

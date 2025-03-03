@@ -1,66 +1,135 @@
 # Venmito Data Engineering Project
 
-## Introduction
+## 📌 Project Overview
+Venmito is a **payment processing company** that allows users to **transfer funds, make purchases at partner stores, and receive promotions**. This project is a **data engineering solution** that:
 
-Hello and welcome to this data engineering project for Venmito. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.
+- **Ingests** multiple data sources (JSON, YAML, CSV, XML)
+- **Cleans and standardizes** data into a structured **SQLite database**
+- **Exposes an API** (FastAPI) for developers to query the data
+- **Provides reporting & analysis** via Jupyter Notebooks
+- **Runs everything automatically** when executing `main.py` (NOTE:If you ctrl + c to kill server and want to run again, delete database file and re-run main.py)
 
-Venmito is a payment company that allows users to transfer funds to other users and pay in participant stores. The company has several data files in various formats. Our goal is to organize all of this information to gain insights about our clients and transactions. We believe that there is an immense value hidden in these data files, and we are looking for a solution that can help us extract and utilize this value.
+---
 
-We have five files:
+## 🛠️ Technologies Used
+- **Python** (Primary programming language)
+- **FastAPI** (API development)
+- **SQLite** (Database storage)
+- **Pandas** (Data processing & ingestion)
+- **Jupyter Notebook** (Data analysis & visualization)
+- **Uvicorn** (FastAPI server)
 
-- `people.json`
-- `people.yml`
-- `transfers.csv`
-- `transactions.xml`
-- `promotions.csv`
+---
 
-Each of these files contains different pieces of information about our clients, their transactions, transfers and promotions.
+## 📥 Installation & Setup
 
-Your task is to develop a solution that can read these files, match and conform the data, and provide a way to consume this data.
+### **1️⃣ Clone the Repository**
+```bash
+git clone <repo_url>
+cd Venmito--ChrisGuzman94-
+```
 
-## Requirements
+### **2️⃣ Create a Virtual Environment**
 
-1. **Data Ingestion**: Your solution should be able to read and load data from all the provided files. Take into account that these files are in different formats (JSON, YAML, CSV, XML).
+*Mininum Python Version Required - Python 3.3
+```bash
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate  # Windows
+```
 
-2. **Data Matching and Conforming**: Once the data is loaded, your solution should be capable of matching and conforming the data across these files. This includes identifying common entities, resolving inconsistencies, and organizing the data into a unified format. Furthermore, the consolidated data should not only be transient but also persistent. This persistence should be achieved using appropriate methods such as storing in a file, database, or other suitable data storage solutions, and not restricted to just a variable in memory. This way, the integrity and availability of the consolidated data are ensured for future use and analysis.
+### **3️⃣ Install Dependencies**
+```bash
+pip install -r requirements.txt
+```
 
-3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. Examples of things, but is not restricted to, we want to be able to see are:
-    - Which clients have what type of promotion?
-    - Give suggestions on how to turn "No" responses from clients in the promotions file.
-    - Insights on stores, like:
-        - What item is the best seller?
-        - What store has had the most profit?
-        - Etc.
-    - How can we use the data we got from the transfer file?
-  
-    These are only suggestions. Please don't limit yourself to only these examples and explore in your analysis any other suggestions could be beneficial for Venmito.
+### **4️⃣ Run the Project**
+Simply execute **`main.py`**, which will:
+1. **Set up the database** (runs `setup_db.py`)
+2. **Run ingestion scripts** (populates SQLite with data)
+3. **Start the FastAPI server**
+4. **Launch the Jupyter Notebook server**
 
-4. **Data Output**: The final output of your solution should enable us to consume the reorganized and analyzed data in a meaningful way. This could be, but is not restricted to, a command line interface (CLI), a database with structured schemas, a GUI featuring interactive visualizations, a Jupyter Notebook, or a RESTful API. We invite you to leverage other innovative methods that you believe would be beneficial for a company like Venmito. Please provide at least 2 data consumption methods, 1 for the non-technical team and 1 for the technical team.
+```bash
+python main.py
+```
 
-5. **Code**: The code for your solution should be well-structured and comprehensible, with comments included where necessary. Remember, the quality and readability of the code will be a significant factor in the evaluation of the final deliverable.
+---
 
-Note: The examples provided in these requirements (such as GUI, RESTful API etc.) are purely illustrative. You are free to employ any solution or technology you deem fit for fulfilling these requirements
+## 📁 Project Structure
+```bash
+📦 Venmito
+├── 📂 data              # Raw data files
+├── 📂 notebooks         # Jupyter Notebooks for analysis
+├── 📂 src
+│   ├── 📂 api          # API endpoints
+│   ├── 📂 database     # Database setup & schema
+│   ├── 📂 ingestions   # Data ingestion scripts
+├── 📂 venv             # Virtual environment
+├── main.py             # Main execution script
+├── requirements.txt    # Python dependencies
+├── server.py           # API server runner
+├── README.md           # Documentation
+```
 
-## Deliverables
+---
 
-1. Source code.
-2. A README file with your name, email, a description of your solution, your design decisions, and clear instructions on how to run your code.
-3. A method to consume the reorganized and analyzed data.
+## API Endpoints
+### People API (`/people`)
+- `GET /people` - Retrieve a list of people (filterable by email, phone, city, country, with a limit parameter).
+- `GET /people/device_counts` - Get the total count of each device type used.
+- `GET /people/{id}` - Fetch details of a specific person.
+- `POST /people` - Create a new person entry (requires either email or phone).
 
-## Instructions for Submission
+### Promotions API (`/promotions`)
+- `GET /promotions` - Retrieve promotions data (filterable by email, type, response status, with a limit parameter).
+- `GET /promotions/most_popular` - Retrieve all promotions sorted by popularity, highlighting the top 5.
+- `GET /promotions/{promotion_id}` - Fetch details of a specific promotion.
+- `POST /promotions` - Create a new promotion entry.
 
-1. Complete your project as described above in a branch within your fork.
-2. Write a detailed README file with your name, email, a description explaining your approach, the technologies you used, and provides clear instructions on how to run your code.
-3. Submit your project by creating a pull request to merge your branch to the main branch of your fork.
+### Transactions API (`/transactions`)
+- `GET /transactions` - Retrieve transaction data, including items (filterable by phone, store, with a limit parameter).
+- `GET /transactions/items_summary` - Show total quantity sold and revenue per item.
+- `GET /transactions/{transaction_id}` - Fetch a specific transaction with its associated items.
+- `POST /transactions` - Create a new transaction, optionally including items.
 
-We look forward to seeing your solution!
+### Transfers API (`/transfers`)
+- `GET /transfers` - Retrieve all transfers (optional limit parameter).
+- `GET /transfers/{id}` - Fetch all transfers related to a specific user (as sender or recipient).
+- `POST /transfers` - Create a new transfer record.
 
-Thank you,
+## How to Access the API
+- The FastAPI Swagger UI can be accessed at:
+  ```
+  http://127.0.0.1:8000/docs
+  ```
+- You can test API requests using **cURL**, **Postman**, or directly through the Swagger UI.
 
-Venmito
+---
 
-## DISCLAIMER:
+## 📊 Data Analysis (Jupyter Notebooks)
+To analyze data:
+1. Run `main.py` (Jupyter starts automatically)
+2. Open your browser and go to:
+   ```bash
+   http://localhost:8888
+   ```
+3. Open `Data_Analysis.ipynb` and explore:
+   - **Device type distribution**
+   - **Top-selling items**
+   - **Transaction insights**
+   - **Promotion effectiveness**
 
-This project and its contents are the exclusive property of Xtillion, LLC and are intended solely for the evaluation of the individual to whom it was provided. Any distribution, reproduction, or unauthorized use is strictly prohibited. By accessing and using this project, you agree to abide by these conditions. Failure to comply with these terms may result in legal action.
+**There is a working example in the root folder, simply open Data_Analysis.html
 
-Please note that this project is provided "as is", without warranty of any kind, express or implied. Xtillion is not liable for any damages or claims that might arise from using or misusing this project.
+---
+
+## 👥 Contributors
+- **Christopher J Guzman Laracuente**  
+- **Email:** cj.guzman98@gmail.com  
+
+---
+
+## 📌 Notes
+- Future improvements include **deploying the API**, **adding authentication**, and **automating data ingestion scheduling**.
+
