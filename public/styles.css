@@ -26,3 +26,43 @@ body{
 .chart .chart_types button{
     padding: 10px 25px;
 }
+
+h1 {
+    font-family: 'Arial', sans-serif; /* Change this to any font you like */
+    font-size: 3rem; /* Adjust the size of the title */
+    font-weight: bold;
+    color: #fff; /* White color for the text */
+    background: linear-gradient(45deg, #ff6a00, #ff4b2b); /* Gradient background color */
+    background-clip: text; /* Makes the gradient apply to the text */
+    -webkit-background-clip: text; /* For Safari compatibility */
+    text-align: center;
+    letter-spacing: 2px; /* Space between letters */
+    text-transform: uppercase; /* Uppercase letters */
+    padding: 20px 0;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for text */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  /* Hover effect */
+  h1:hover {
+    color: #ff4b2b; /* Changes text color on hover */
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4); /* Adds more intense shadow on hover */
+    transform: scale(1.1); /* Slightly enlarge the title on hover */
+  }
+  
+  .charts-container {
+    display: flex; /* Use flexbox to align elements side by side */
+    justify-content: space-between; /* Add space between the charts */
+    gap: 20px; /* Space between the charts */
+    flex-wrap: wrap; /* Ensures charts wrap to new rows if needed */
+    max-width: 100%; /* Make sure the container doesn’t expand beyond the available width */
+    padding-bottom: 60px;
+  }
+  
+  canvas {
+    flex: 1; /* Ensures both charts will have equal space */
+    max-width: 48%; /* Ensure each canvas doesn't take up more than 48% of the width */
+    height: 300px; /* Set a fixed height for the charts */
+    box-sizing: border-box; /* Includes padding and borders in the element's total width and height */
+  }
+  
