@@ -20,12 +20,13 @@ Description:
     How to run it:
         1. Install Docker[https://www.docker.com/get-started/]
         2. Open the repository locally
-        3. Then run docker-compose build
-        4. Finally, run docker-compose up to start the local web server.
+        3. Then run 'docker-compose build'
+        4. Finally, run 'docker-compose up' to start the local web server.
            1. You can hit this endpoint[http://localhost:3000/]
-        5. When youre done, you can exit out with Ctrl+c and run docker-compose down
+        5. When youre done, you can exit out with Ctrl+c
+        6. Run docker-compose down
    
-   Again, the python portion was already performed, and is accounted for in the presentation. The Website part is the one that requires user interaction. 
+   Again, the python portion was already performed, and is accounted for in the presentation. The Website part is the one that requires user interaction. ChatGPT was leveraged for this project, but any doubt in whether I could've done the code could be demonstrated in live performance. I used it primarily due to time constraints. Chart.JS[https://www.chartjs.org/docs/latest/] was also used for the charts. 
 
 
 Thank you,
