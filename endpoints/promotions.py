@@ -2,68 +2,7 @@ from flask import jsonify, request
 from sqlalchemy import text
 
 def register_promotions_endpoints(app, engine):
-    @app.route('/promotions/search', methods=['GET'])
-    def search_promotions():
-        try:
-            query_params = request.args
-            conditions = []
-            parameters = {}
-
-            for key in ['id', 'client_email', 'telephone', 'promotion', 'responded']:
-                if key in query_params:
-                    conditions.append(f"{key} = :{key}")
-                    parameters[key] = query_params[key]
-
-            if not conditions:
-                return jsonify({'error': 'At least one search parameter is required'}), 400
-
-            with engine.connect() as connection:
-                query = f"SELECT * FROM promotion WHERE {' AND '.join(conditions)}"
-                result = connection.execute(text(query), parameters)
-                promotions = [dict(row) for row in result]
-                return jsonify(promotions)
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
-
-    @app.route('/promotions/search/person', methods=['GET'])
-    def search_promotions_by_person():
-        try:
-            query_params = request.args
-            conditions = []
-            parameters = {}
-
-            for key in ['id', 'first_name', 'last_name', 'telephone', 'email', 'android', 'desktop', 'iphone', 'city', 'country']:
-                if key in query_params:
-                    conditions.append(f"p.{key} = :{key}")
-                    parameters[key] = query_params[key]
-
-            if not conditions:
-                return jsonify({'error': 'At least one person attribute is required'}), 400
-
-            with engine.connect() as connection:
-                base_query = """
-                    SELECT p.*, pr.promotion, pr.responded
-                    FROM person p
-                    JOIN promotion pr ON p.email = pr.client_email OR p.telephone = pr.telephone
-                """
-
-                if conditions:
-                    base_query += " WHERE " + " AND ".join(conditions)
-
-                result = connection.execute(text(base_query), parameters).mappings().all()
-
-                responded_promotions = [dict(row) for row in result if row['responded']]
-                not_responded_promotions = [dict(row) for row in result if not row['responded']]
-
-                response = {
-                    'total_promotions': len(result),
-                    'responded_promotions': responded_promotions,
-                    'not_responded_promotions': not_responded_promotions
-                }
-
-                return jsonify(response)
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
+    
 
     @app.route('/promotions/responded/max_min', methods=['GET'])
     def promotions_responded_max_min():
@@ -212,29 +151,5 @@ def register_promotions_endpoints(app, engine):
         except Exception as e:
             return jsonify({'error': str(e)}), 500
 
-    @app.route('/promotions/count', methods=['GET'])
-    def count_promotions():
-        try:
-            query_params = request.args
-            query = "SELECT COUNT(*) FROM promotion WHERE "
-            conditions = []
-            parameters = {}
-
-            for key, value in query_params.items():
-                if key in ['id', 'client_email', 'telephone', 'promotion', 'responded']:
-                    conditions.append(f"{key} = :{key}")
-                    parameters[key] = value
-
-            if conditions:
-                query += " AND ".join(conditions)
-            else:
-                query = "SELECT COUNT(*) FROM promotion"
-
-            with engine.connect() as connection:
-                result = connection.execute(text(query), parameters)
-                count = result.scalar()
-                return jsonify({'count': count})
-        except Exception as e:
-            return jsonify({'error': str(e)}), 500
-
+    
     # Add other promotions-related endpoints here 

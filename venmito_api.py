@@ -4,7 +4,6 @@ from models.database import get_engine
 import argparse
 from endpoints.clients import register_clients_endpoints
 from endpoints.promotions import register_promotions_endpoints
-from endpoints.transactions import register_transactions_endpoints
 from endpoints.transfers import register_transfers_endpoints
 from endpoints.items import register_items_endpoints
 from endpoints.stores import register_stores_endpoints
@@ -27,7 +26,6 @@ def create_app():
     # Register endpoints
     register_clients_endpoints(app, engine)
     register_promotions_endpoints(app, engine)
-    register_transactions_endpoints(app, engine)
     register_transfers_endpoints(app, engine)
     register_items_endpoints(app, engine)
     register_stores_endpoints(app, engine)
