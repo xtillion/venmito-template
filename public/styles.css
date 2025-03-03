@@ -67,6 +67,18 @@ h1 {
     background-color: #fff; /* White background for charts */
     border-radius: 8px;
     transition: all 0.3s ease;
-
   }
   
+  /* Styling for subtitle */
+.subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;  /* Light gray color */
+  margin-top: 10px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  max-width: 800px; /* Limit the width for better readability */
+  margin-left: auto;
+  margin-right: auto;
+}
