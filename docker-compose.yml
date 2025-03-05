@@ -1,0 +1,56 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: venmito_db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin_pass
+      POSTGRES_DB: venmito_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql  # Auto-run schema.sql
+
+  processing:
+    build: ./processing
+    container_name: venmito_processing
+    depends_on:
+      - db
+    volumes:
+      - ./data:/app/data  # Mount data folder
+    environment:
+      DATABASE_URL: postgresql://admin:admin_pass@db:5432/venmito_db
+    command: ["python", "process_data.py"]
+
+  ui:
+    build:
+      context: .
+      dockerfile: Dockerfile.ui
+    container_name: venmito_ui
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./data:/app/data
+    depends_on:
+      - db
+      
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile.streamlit
+    container_name: venmito_dashboard
+    ports:
+      - "8501:8501"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql://admin:admin_pass@db:5432/venmito_db
+    volumes:
+      - ./dashboard/.streamlit:/app/.streamlit  
+      - ./data:/app/data      
+
+volumes:
+  postgres_data:

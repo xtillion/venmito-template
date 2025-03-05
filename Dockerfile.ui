@@ -1,0 +1,7 @@
+FROM jupyter/scipy-notebook:latest
+
+# Copy the UI requirements file and install packages
+COPY requirements_ui.txt /tmp/requirements_ui.txt
+RUN pip install --no-cache-dir -r /tmp/requirements_ui.txt
+
+# The image already starts Jupyter Lab by default

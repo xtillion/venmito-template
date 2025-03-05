@@ -1,66 +1,169 @@
 # Venmito Data Engineering Project
 
-## Introduction
+## Author Information
 
-Hello and welcome to this data engineering project for Venmito. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.
+- **Name:** José A. Megret Bonilla
+- **Email:** megretjose@gmail.com
+- **GitHub:** [JoseMegret](https://github.com/JoseMegret)
 
-Venmito is a payment company that allows users to transfer funds to other users and pay in participant stores. The company has several data files in various formats. Our goal is to organize all of this information to gain insights about our clients and transactions. We believe that there is an immense value hidden in these data files, and we are looking for a solution that can help us extract and utilize this value.
+---
 
-We have five files:
+## Project Overview
 
-- `people.json`
-- `people.yml`
-- `transfers.csv`
-- `transactions.xml`
-- `promotions.csv`
+The Venmito Data Engineering Project aims to consolidate and analyze disparate data files from Venmito—a payment company—to extract actionable insights about clients, transactions, transfers, and promotions. The solution involves:
 
-Each of these files contains different pieces of information about our clients, their transactions, transfers and promotions.
+- **Data Ingestion:** Reading data from multiple file formats (JSON, YAML, CSV, XML) and loading it into PostgreSQL.
+- **Data Matching & Conforming:** Merging data from various sources to form a unified dataset.
+- **Data Analysis & Visualization:** Aggregating and analyzing the data to understand:
+  - Which clients received what type of promotion and how they responded.
+  - Transaction trends, best-selling items, and store profitability.
+  - Transfer patterns among clients (money sent vs. received).
+- **Data Consumption Methods:**
+  - **Non-Technical Team:** An interactive dashboard built with Streamlit provides a user-friendly, real-time interface to explore key insights.
+  - **Technical Team:** Jupyter Notebooks offer in-depth analysis, SQL query capabilities, and interactive visualizations using Pandas and Plotly.
+---
 
-Your task is to develop a solution that can read these files, match and conform the data, and provide a way to consume this data.
+## Design Decisions
 
-## Requirements
-
-1. **Data Ingestion**: Your solution should be able to read and load data from all the provided files. Take into account that these files are in different formats (JSON, YAML, CSV, XML).
-
-2. **Data Matching and Conforming**: Once the data is loaded, your solution should be capable of matching and conforming the data across these files. This includes identifying common entities, resolving inconsistencies, and organizing the data into a unified format. Furthermore, the consolidated data should not only be transient but also persistent. This persistence should be achieved using appropriate methods such as storing in a file, database, or other suitable data storage solutions, and not restricted to just a variable in memory. This way, the integrity and availability of the consolidated data are ensured for future use and analysis.
-
-3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. Examples of things, but is not restricted to, we want to be able to see are:
-    - Which clients have what type of promotion?
-    - Give suggestions on how to turn "No" responses from clients in the promotions file.
-    - Insights on stores, like:
-        - What item is the best seller?
-        - What store has had the most profit?
-        - Etc.
-    - How can we use the data we got from the transfer file?
+- **Data Ingestion & Processing:**  
+  The solution uses Python and Pandas for robust data manipulation. A modular script (processing/process_data.py) reads various file formats, transforms the data (e.g., converting device lists into boolean columns, flattening nested location data), and loads the consolidated data into a PostgreSQL database.
   
-    These are only suggestions. Please don't limit yourself to only these examples and explore in your analysis any other suggestions could be beneficial for Venmito.
+- **Database Choice:**  
+  PostgreSQL was selected for its reliability and robust support for diverse data types. The schema was designed to normalize clients, transactions, transaction items, transfers, and promotions—ensuring referential integrity and simplifying queries.
+  
+- **Visualization & Analysis:**  
+  Data insights are presented using Plotly within Jupyter Notebooks and through an interactive dashboard built with Streamlit. This dual approach allows non-technical users to explore the data in a user-friendly interface while technical users can dive deeper using notebooks.
 
-4. **Data Output**: The final output of your solution should enable us to consume the reorganized and analyzed data in a meaningful way. This could be, but is not restricted to, a command line interface (CLI), a database with structured schemas, a GUI featuring interactive visualizations, a Jupyter Notebook, or a RESTful API. We invite you to leverage other innovative methods that you believe would be beneficial for a company like Venmito. Please provide at least 2 data consumption methods, 1 for the non-technical team and 1 for the technical team.
+- **Deployment:**  
+  Docker and Docker Compose are used to containerize the solution, ensuring consistent environments for development, testing, and production. This setup simplifies dependency management and deployment.
 
-5. **Code**: The code for your solution should be well-structured and comprehensible, with comments included where necessary. Remember, the quality and readability of the code will be a significant factor in the evaluation of the final deliverable.
+- **Consumption Methods:**  
+  - **For Non-Technical Users:** The interactive Streamlit dashboard (accessible via a web browser) provides real-time filtering, drill-down capabilities, and a polished look.
+  - **For Technical Users:** Jupyter Notebooks provide the flexibility to modify queries, perform ad-hoc analysis, and interact with the data using SQL queries, Pandas, and Plotly.
 
-Note: The examples provided in these requirements (such as GUI, RESTful API etc.) are purely illustrative. You are free to employ any solution or technology you deem fit for fulfilling these requirements
+---
 
-## Deliverables
+## Installation & Running the Project
 
-1. Source code.
-2. A README file with your name, email, a description of your solution, your design decisions, and clear instructions on how to run your code.
-3. A method to consume the reorganized and analyzed data.
+### Prerequisites
 
-## Instructions for Submission
+- **Python 3.9+**
+- **Docker & Docker Compose** (for containerized deployment)
+- **Git**
 
-1. Complete your project as described above in a branch within your fork.
-2. Write a detailed README file with your name, email, a description explaining your approach, the technologies you used, and provides clear instructions on how to run your code.
-3. Submit your project by creating a pull request to merge your branch to the main branch of your fork.
+## 1. Clone the Repository
 
-We look forward to seeing your solution!
+	git clone https://github.com/JoseMegret/Venmito-JoseMegret.git
+	cd Venmito-JoseMegret
 
-Thank you,
+## 2. Setting up the Environment
 
-Venmito
+### Using Docker
 
-## DISCLAIMER:
+1. **Build and Run the Containers:**
 
-This project and its contents are the exclusive property of Xtillion, LLC and are intended solely for the evaluation of the individual to whom it was provided. Any distribution, reproduction, or unauthorized use is strictly prohibited. By accessing and using this project, you agree to abide by these conditions. Failure to comply with these terms may result in legal action.
+ Run:
+ 		
+   	docker-compose up --build
+   
+This command will start:
 
-Please note that this project is provided "as is", without warranty of any kind, express or implied. Xtillion is not liable for any damages or claims that might arise from using or misusing this project.
+	•	A PostgreSQL container (venmito_db) with the initialized schema.
+	•	A processing container (venmito_processing) that ingests and loads the data.
+	•	A UI container (venmito_ui) that runs a Jupyter Notebook server for analysis and (if configured) a Streamlit dashboard.
+
+2. **Access the Jupyter Notebook:**
+   
+Once the containers are running, check the logs of the UI container.
+
+Run:
+		
+  	docker logs venmito_ui
+
+You'll see output similar to:
+
+
+		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp] Jupyter Server 2.8.0 is running at:
+		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp] http://a464cc977bc0:8888/lab?token=4940e7bf...  👈
+		venmito_ui    | [I 2025-02-24 22:14:54.989 ServerApp]  or http://127.0.0.1:8888/lab?token=4940e7bf... 👈
+		venmito_ui    | [I 2025-02-24 22:14:54.990 ServerApp] Use Control-C to stop this server and shut down all kernels...
+
+The important part is the URL (or token). You can open the notebook in your browser by navigating to one of the provided URLs (👈). 
+For example:
+
+	http://127.0.0.1:8888/lab?token=4940e7bf...
+     
+Steps to Access the Notebook:
+
+	1.	Wait for the UI container logs to show the Jupyter Server URLs.
+	2.	Copy the URL (which includes the token) from the logs.
+	3.	Open your web browser and paste the URL.
+	4.	You’ll be taken to the Jupyter Lab interface where you can explore the notebooks (e.g., analysis.ipynb).
+
+If you ever lose the link, just check the Docker logs again or copy the token from the terminal output. Pressing Ctrl+C will stop the containers.
+
+This approach ensures you have a running Jupyter environment with all the dependencies installed and configured automatically via Docker.
+
+3. **Access the Interactive Dashboard:**
+
+Once the containers are running, check the logs of the dashboard container.
+
+Open your browser and navigate to:
+
+	http://localhost:8501
+
+### Or
+
+Run:
+		
+  	docker logs venmito_dashboard
+
+Where you'll see output similar to:
+
+	You can now view your Streamlit app in your browser.
+
+	  Local URL: http://localhost:8501         👈
+	  Network URL: http://172.20.0.3:8501
+	  External URL: http://70.45.176.121:8501
+
+And Copy and Paste the "Local URL" in your web browser 
+
+4. **Stopping the Containers:**
+
+When you are finished, stop all containers by pressing Ctrl+C in your terminal or by running:
+
+	docker-compose down
+
+## 3. Data Consumption Methods
+   
+•	For Non-Technical Users:
+		
+  	The interactive dashboard built with Streamlit provides a user-friendly interface with real-time, drill-down visualizations. Simply navigate 	to http://localhost:8501 in your browser to interact with the dashboard.
+	
+ •	For Technical Users:
+	
+ 	Jupyter Notebooks offer comprehensive analysis, detailed visualizations, and SQL query capabilities. Access the notebooks using the URL provided by the UI container logs.
+
+## 4. Final Remarks & Future Improvements
+
+•	Insights:
+This project extracts actionable insights such as:
+
+	•	Which clients received which types of promotions and how they responded.
+	•	Best-selling items and store profitability.
+	•	Transfer trends between clients, including net transfers and monthly patterns.
+
+## Acknowledgements
+
+This project showcases two complementary approaches for data consumption and analysis:
+
+- **Jupyter Notebooks:**  
+  In-depth analyses, SQL query capabilities, and interactive visualizations were developed in Jupyter Notebooks. This approach allows technical users to explore and modify the analysis in detail.
+
+- **Streamlit Dashboard:**  
+  An interactive dashboard built with Streamlit was also implemented to provide non-technical users with a user-friendly, real-time interface to explore key insights. This dashboard features dynamic filtering, drill-down capabilities, and visually appealing charts.
+
+Both solutions were integrated into the project to ensure that stakeholders with different technical backgrounds can access and benefit from the insights derived from the data.
+
+Thank you for Reviewing This Project!
+ 
