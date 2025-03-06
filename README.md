@@ -51,7 +51,7 @@ Note: The examples provided in these requirements (such as GUI, RESTful API etc.
 
 1. Complete your project as described above in a branch within your fork.
 2. Write a detailed README file with your name, email, a description explaining your approach, the technologies you used, and provides clear instructions on how to run your code.
-3. Submit your project by creating a pull request to merge your branch to the main branch of your fork.
+3. Submit your project by uploading a zip file to the provided URL.
 
 We look forward to seeing your solution!
 
