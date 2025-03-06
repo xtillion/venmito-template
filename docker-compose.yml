@@ -1,0 +1,8 @@
+services:
+  express-app:
+    build: .  # This tells Docker to use the Dockerfile in the current directory
+    ports:
+      - "3000:3000"
+    environment:
+      - SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxteHRod2tvcGFoaHF6eGxobmNnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA5NDA5NjcsImV4cCI6MjA1NjUxNjk2N30.3N4RtXBJDBKVzWcUUYEv9AsTtbEz45culOubu6YnDvE
+    restart: unless-stopped  # Ensures the container restarts on failure

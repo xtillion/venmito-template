@@ -1,0 +1,84 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: sans-serif;
+    min-height: 100vh;
+    color: #555;
+    background-color: gray;
+}
+
+.chart{
+    max-width: 900px;
+    height: 450px;
+    padding: 50px;
+    margin: 0 auto;
+}
+
+.chart .chart_types{
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.chart .chart_types button{
+    padding: 10px 25px;
+}
+
+h1 {
+    font-family: 'Arial', sans-serif; 
+    font-size: 3rem; 
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(45deg, #ff6a00, #ff4b2b);
+    background-clip: text; 
+    -webkit-background-clip: text;
+    text-align: center;
+    letter-spacing: 2px; 
+    text-transform: uppercase; /* Uppercase letters */
+    padding: 20px 0;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2); /* Soft shadow for text */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  /* Hover effect */
+  h1:hover {
+    color: #ff4b2b; /* Changes text color on hover */
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4); /* Adds more intense shadow on hover */
+    transform: scale(1.1); /* Slightly enlarge the title on hover */
+  }
+  
+  .charts-container {
+    display: flex; /* Use flexbox to align elements side by side */
+    justify-content: space-between; /* Add space between the charts */
+    gap: 20px; /* Space between the charts */
+    flex-wrap: wrap; /* Ensures charts wrap to new rows if needed */
+    max-width: 100%; /* Make sure the container doesn’t expand beyond the available width */
+    padding-bottom: 60px;
+  }
+  
+  canvas {
+    flex: 1; /* Ensures both charts will have equal space */
+    max-width: 48%; /* Ensure each canvas doesn't take up more than 48% of the width */
+    height: 300px; /* Set a fixed height for the charts */
+    box-sizing: border-box; /* Includes padding and borders in the element's total width and height */
+    background-color: #fff; /* White background for charts */
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Styling for subtitle */
+.subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  color: white;  /* Light gray color */
+  margin-top: 10px;
+  font-weight: normal;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  max-width: 800px; /* Limit the width for better readability */
+  margin-left: auto;
+  margin-right: auto;
+}
