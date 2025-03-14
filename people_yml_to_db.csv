@@ -1,0 +1,297 @@
+email,id,name,phone_number,city,country,android,iphone,desktop
+Jamie.Bright@example.com,0001,Jamie Bright,533-849-3913,Montreal,Canada,Yes,No,No
+Yusra.Fletcher@example.com,0003,Yusra Fletcher,385-702-8874,Toronto,Canada,Yes,Yes,Yes
+Beatrix.Everett@example.com,0005,Beatrix Everett,194-640-2758,Paris,France,Yes,No,No
+Asa.Vazquez@example.com,0009,Asa Vazquez,504-421-4485,Toronto,Canada,Yes,No,No
+Carmen.Burton@example.com,0019,Carmen Burton,527-368-7429,Toronto,Canada,Yes,No,Yes
+Donald.Stone@example.com,0020,Donald Stone,730-260-4630,London,United Kingdom,Yes,No,Yes
+Isabelle.Lopez@example.com,0024,Isabelle Lopez,981-878-3234,Paris,France,Yes,Yes,No
+Julius.Garrett@example.com,0026,Julius Garrett,866-664-7969,Barcelona,Spain,Yes,Yes,Yes
+Dafydd.Preston@example.com,0029,Dafydd Preston,368-987-3267,Barcelona,Spain,Yes,Yes,Yes
+Stephanie.Rice@example.com,0030,Stephanie Rice,830-901-9870,Montreal,Canada,Yes,No,No
+Bradley.Butler@example.com,0031,Bradley Butler,937-172-2269,Montreal,Canada,No,Yes,No
+Louise.Daniel@example.com,0033,Louise Daniel,917-348-4728,Barcelona,Spain,Yes,Yes,No
+Livia.Howe@example.com,0034,Livia Howe,868-828-4315,Toronto,Canada,No,Yes,No
+Lili.Schroeder@example.com,0037,Lili Schroeder,640-348-2128,Toronto,Canada,Yes,Yes,No
+Jeremiah.Martin@example.com,0038,Jeremiah Martin,277-350-5557,London,United Kingdom,Yes,No,No
+Keyaan.Holland@example.com,0039,Keyaan Holland,845-797-2979,Barcelona,Spain,Yes,Yes,No
+Cody.Riley@example.com,0041,Cody Riley,872-906-9681,London,United Kingdom,Yes,Yes,Yes
+Tomas.Griffith@example.com,0042,Tomas Griffith,492-337-4468,London,United Kingdom,No,Yes,No
+Amaan.Rangel@example.com,0052,Amaan Rangel,837-435-2302,Montreal,Canada,Yes,Yes,No
+Billie.Price@example.com,0057,Billie Price,917-866-8131,London,United Kingdom,No,No,Yes
+Phoebe.Weiss@example.com,0059,Phoebe Weiss,299-560-9666,London,United Kingdom,Yes,No,Yes
+Aled.Silva@example.com,0065,Aled Silva,612-360-5367,Toronto,Canada,No,Yes,No
+Saif.Green@example.com,0068,Saif Green,978-659-7286,Paris,France,No,Yes,No
+Valerie.Oneal@example.com,0070,Valerie Oneal,651-335-6190,Toronto,Canada,Yes,Yes,Yes
+Ilyas.Dunlap@example.com,0071,Ilyas Dunlap,491-981-1293,London,United Kingdom,No,Yes,No
+Kara.Stewart@example.com,0073,Kara Stewart,794-314-2500,Paris,France,Yes,Yes,No
+Myrtle.Doyle@example.com,0074,Myrtle Doyle,525-796-7991,Toronto,Canada,Yes,Yes,Yes
+Angela.Mcmillan@example.com,0078,Angela Mcmillan,868-463-1850,London,United Kingdom,Yes,No,No
+Amir.Clark@example.com,0091,Amir Clark,924-287-4068,London,United Kingdom,Yes,Yes,Yes
+Usman.Swanson@example.com,0100,Usman Swanson,431-103-9132,London,United Kingdom,Yes,Yes,Yes
+Caspar.Hudson@example.com,0103,Caspar Hudson,830-584-4874,Toronto,Canada,No,Yes,No
+Mohsin.Tucker@example.com,0108,Mohsin Tucker,174-389-8757,Toronto,Canada,No,No,Yes
+Laurie.Melendez@example.com,0114,Laurie Melendez,488-382-1416,Toronto,Canada,No,Yes,Yes
+Tanya.Watson@example.com,0115,Tanya Watson,432-515-4933,Montreal,Canada,Yes,Yes,No
+Priya.Moore@example.com,0117,Priya Moore,455-692-4736,Paris,France,No,No,Yes
+Arron.Peck@example.com,0119,Arron Peck,226-392-7970,Paris,France,Yes,Yes,No
+Justin.Rowland@example.com,0120,Justin Rowland,665-725-2354,Paris,France,Yes,Yes,No
+Jasper.Brandt@example.com,0121,Jasper Brandt,527-756-7352,London,United Kingdom,No,No,Yes
+Teresa.Mccarty@example.com,0122,Teresa Mccarty,223-114-4003,Toronto,Canada,No,Yes,Yes
+Finnian.Fisher@example.com,0123,Finnian Fisher,382-879-9946,Toronto,Canada,Yes,Yes,No
+Nora.Ball@example.com,0125,Nora Ball,921-528-9551,Barcelona,Spain,No,No,Yes
+Zoya.Giles@example.com,0127,Zoya Giles,301-750-7631,Toronto,Canada,Yes,Yes,No
+Alejandro.Duncan@example.com,0129,Alejandro Duncan,487-150-9471,London,United Kingdom,No,No,Yes
+Zohaib.Hartman@example.com,0130,Zohaib Hartman,928-400-6426,Montreal,Canada,No,No,Yes
+Bertie.Ward@example.com,0135,Bertie Ward,971-922-8663,Montreal,Canada,Yes,No,Yes
+Kamran.Wilcox@example.com,0139,Kamran Wilcox,476-365-7838,London,United Kingdom,Yes,No,Yes
+Adriana.Stafford@example.com,0141,Adriana Stafford,473-741-6496,Montreal,Canada,No,Yes,No
+Everly.Fuentes@example.com,0142,Everly Fuentes,398-369-8927,Barcelona,Spain,Yes,No,No
+Eleanor.Mcintosh@example.com,0147,Eleanor Mcintosh,153-538-3431,Toronto,Canada,Yes,No,No
+Abdirahman.Mullen@example.com,0149,Abdirahman Mullen,669-442-8257,Toronto,Canada,Yes,Yes,Yes
+Matteo.Moon@example.com,0152,Matteo Moon,830-546-5378,London,United Kingdom,Yes,Yes,No
+Blaine.Boyer@example.com,0153,Blaine Boyer,411-997-1636,London,United Kingdom,No,No,Yes
+Alia.Brooks@example.com,0156,Alia Brooks,327-292-8469,Montreal,Canada,Yes,No,Yes
+Kurtis.Marks@example.com,0167,Kurtis Marks,690-396-3965,Montreal,Canada,No,No,Yes
+Enya.Hernandez@example.com,0173,Enya Hernandez,406-397-1498,Barcelona,Spain,No,Yes,No
+Melvin.Flores@example.com,0176,Melvin Flores,708-692-8746,London,United Kingdom,No,Yes,Yes
+Dhruv.Villarreal@example.com,0180,Dhruv Villarreal,931-559-3083,London,United Kingdom,Yes,No,Yes
+Ridwan.Houston@example.com,0188,Ridwan Houston,530-308-5425,London,United Kingdom,No,No,Yes
+Fynn.Graham@example.com,0194,Fynn Graham,763-842-3292,Toronto,Canada,Yes,Yes,No
+Zakir.Russell@example.com,0198,Zakir Russell,599-588-9264,Toronto,Canada,No,Yes,Yes
+Asa.Haines@example.com,0199,Asa Haines,327-464-5734,London,United Kingdom,Yes,Yes,No
+Eesa.Buchanan@example.com,0200,Eesa Buchanan,533-397-5445,London,United Kingdom,Yes,Yes,No
+Lili.Patel@example.com,0203,Lili Patel,823-509-3052,Montreal,Canada,Yes,No,Yes
+Philippa.Webster@example.com,0204,Philippa Webster,407-892-7705,Toronto,Canada,Yes,No,No
+Jessie.Greer@example.com,0208,Jessie Greer,950-317-1709,London,United Kingdom,Yes,Yes,Yes
+Kyran.Wyatt@example.com,0213,Kyran Wyatt,778-841-9881,Montreal,Canada,Yes,Yes,No
+Eugene.Taylor@example.com,0214,Eugene Taylor,712-926-3402,Toronto,Canada,No,Yes,No
+Tony.Shepard@example.com,0218,Tony Shepard,416-772-8288,Barcelona,Spain,No,Yes,No
+Sinead.Horne@example.com,0219,Sinead Horne,340-355-9098,Toronto,Canada,Yes,No,Yes
+Sonia.Lowe@example.com,0222,Sonia Lowe,418-550-4001,Paris,France,Yes,No,No
+Morgan.Hardy@example.com,0226,Morgan Hardy,974-761-7628,London,United Kingdom,No,Yes,Yes
+Ned.Rowland@example.com,0228,Ned Rowland,400-103-9062,Paris,France,No,Yes,No
+Kate.Cline@example.com,0229,Kate Cline,927-741-2027,Toronto,Canada,Yes,No,Yes
+Darcy.Wall@example.com,0231,Darcy Wall,109-398-3560,Montreal,Canada,No,No,Yes
+Aisha.Winters@example.com,0232,Aisha Winters,280-831-1664,Toronto,Canada,No,No,Yes
+Edward.Ayala@example.com,0239,Edward Ayala,416-337-3343,Montreal,Canada,Yes,No,Yes
+Brogan.Fitzgerald@example.com,0243,Brogan Fitzgerald,955-732-8107,Montreal,Canada,Yes,Yes,No
+Taylor.Ramos@example.com,0244,Taylor Ramos,833-282-1248,Toronto,Canada,Yes,No,Yes
+Elsie.Cuevas@example.com,0245,Elsie Cuevas,186-536-6820,Montreal,Canada,No,Yes,No
+Zara.Washington@example.com,0246,Zara Washington,679-367-1926,London,United Kingdom,No,Yes,Yes
+Bethan.Franco@example.com,0248,Bethan Franco,317-895-5803,Toronto,Canada,Yes,No,No
+Oskar.Mccarty@example.com,0253,Oskar Mccarty,582-269-7396,London,United Kingdom,No,Yes,Yes
+Darcey.Robles@example.com,0260,Darcey Robles,790-759-5249,London,United Kingdom,No,Yes,No
+Dulcie.Melendez@example.com,0261,Dulcie Melendez,659-843-5422,Barcelona,Spain,Yes,No,Yes
+Everly.Cortez@example.com,0262,Everly Cortez,954-995-1806,Toronto,Canada,Yes,No,No
+Tommy.Farmer@example.com,0263,Tommy Farmer,999-431-4584,Toronto,Canada,Yes,No,No
+Maximillian.Atkins@example.com,0264,Maximillian Atkins,421-834-8740,Toronto,Canada,Yes,Yes,No
+Yusuf.Salazar@example.com,0269,Yusuf Salazar,311-351-7403,Toronto,Canada,Yes,No,No
+Princess.Schneider@example.com,0271,Princess Schneider,683-604-6287,Paris,France,Yes,No,Yes
+Bronte.Riley@example.com,0274,Bronte Riley,786-291-8203,Toronto,Canada,No,Yes,No
+Fay.Lucas@example.com,0277,Fay Lucas,436-818-1915,Montreal,Canada,Yes,Yes,No
+Rosa.Stone@example.com,0281,Rosa Stone,922-216-4141,Paris,France,No,Yes,No
+Lorna.Levy@example.com,0285,Lorna Levy,809-114-1988,Toronto,Canada,No,Yes,No
+Jan.Daniels@example.com,0287,Jan Daniels,305-449-8274,Montreal,Canada,Yes,No,Yes
+Brenda.Ingram@example.com,0290,Brenda Ingram,919-358-6885,Montreal,Canada,Yes,Yes,Yes
+Anya.Bray@example.com,0292,Anya Bray,396-900-5179,Toronto,Canada,No,Yes,No
+Nikita.Marquez@example.com,0303,Nikita Marquez,492-815-1793,Montreal,Canada,Yes,No,No
+Barnaby.Payne@example.com,0309,Barnaby Payne,140-296-7511,London,United Kingdom,Yes,No,No
+Bessie.Cuevas@example.com,0317,Bessie Cuevas,629-379-6872,Toronto,Canada,Yes,Yes,No
+Mario.Luna@example.com,0318,Mario Luna,547-624-3479,Toronto,Canada,Yes,Yes,Yes
+Seren.Rocha@example.com,0323,Seren Rocha,880-236-4632,Toronto,Canada,No,Yes,No
+Thea.Hamilton@example.com,0324,Thea Hamilton,868-547-6826,Montreal,Canada,Yes,Yes,Yes
+Matilda.Griffin@example.com,0325,Matilda Griffin,176-758-4552,Toronto,Canada,Yes,Yes,No
+Oliver.Sanford@example.com,0327,Oliver Sanford,628-646-1375,Toronto,Canada,Yes,Yes,No
+Abubakar.Shaffer@example.com,0330,Abubakar Shaffer,404-849-9394,Barcelona,Spain,Yes,No,No
+Elisabeth.Tran@example.com,0334,Elisabeth Tran,363-441-2226,London,United Kingdom,Yes,No,Yes
+Katrina.Foster@example.com,0336,Katrina Foster,497-544-5065,London,United Kingdom,Yes,Yes,No
+Patricia.John@example.com,0338,Patricia John,338-345-6084,Barcelona,Spain,No,No,Yes
+Sahil.Lyons@example.com,0339,Sahil Lyons,494-702-9881,Montreal,Canada,Yes,No,Yes
+Randy.Edwards@example.com,0344,Randy Edwards,935-107-2953,Barcelona,Spain,No,Yes,No
+Caiden.Kaufman@example.com,0346,Caiden Kaufman,805-349-3127,Montreal,Canada,No,No,Yes
+Jennie.Monroe@example.com,0353,Jennie Monroe,613-385-2077,Montreal,Canada,No,No,Yes
+Dawid.Lozano@example.com,0355,Dawid Lozano,410-788-9917,Toronto,Canada,No,Yes,No
+Romeo.Martin@example.com,0356,Romeo Martin,834-460-4855,Toronto,Canada,No,Yes,Yes
+Sadie.Hammond@example.com,0358,Sadie Hammond,799-609-4421,Barcelona,Spain,Yes,Yes,No
+Judy.Clayton@example.com,0360,Judy Clayton,757-533-4647,Paris,France,Yes,Yes,No
+Martina.Moran@example.com,0365,Martina Moran,641-323-9929,Toronto,Canada,No,No,Yes
+Reggie.Strong@example.com,0369,Reggie Strong,459-645-8476,Toronto,Canada,Yes,Yes,Yes
+Leanne.Cordova@example.com,0379,Leanne Cordova,514-225-7453,Paris,France,No,No,Yes
+James.Warner@example.com,0380,James Warner,839-312-5829,Toronto,Canada,No,Yes,No
+Zachery.Snow@example.com,0382,Zachery Snow,354-295-2894,Toronto,Canada,No,Yes,No
+Owen.Michael@example.com,0383,Owen Michael,178-910-8863,Toronto,Canada,No,Yes,No
+Levi.Hoffman@example.com,0389,Levi Hoffman,442-352-9243,London,United Kingdom,Yes,Yes,No
+Camilla.Wells@example.com,0390,Camilla Wells,149-482-9546,London,United Kingdom,Yes,No,Yes
+Kyle.Joseph@example.com,0392,Kyle Joseph,499-600-6164,Toronto,Canada,Yes,No,Yes
+Timothy.Jacobs@example.com,0393,Timothy Jacobs,105-356-5519,Barcelona,Spain,Yes,No,Yes
+Penny.Hanson@example.com,0396,Penny Hanson,853-297-6593,Toronto,Canada,No,No,Yes
+Myrtle.Lewis@example.com,0398,Myrtle Lewis,727-289-2785,London,United Kingdom,Yes,Yes,Yes
+Tariq.Holman@example.com,0403,Tariq Holman,734-647-8275,Paris,France,No,Yes,Yes
+Cecily.Blaese@example.com,0405,Cecily Blaese,234-446-2115,Toronto,Canada,No,Yes,Yes
+Gideon.Perez@example.com,0406,Gideon Perez,135-944-5781,Toronto,Canada,Yes,Yes,Yes
+Trinity.Mora@example.com,0407,Trinity Mora,406-645-2610,Toronto,Canada,Yes,No,No
+Candice.Hooper@example.com,0411,Candice Hooper,382-506-1338,Toronto,Canada,Yes,Yes,Yes
+Omar.Clements@example.com,0412,Omar Clements,998-234-1057,Barcelona,Spain,No,No,Yes
+Pablo.Benton@example.com,0420,Pablo Benton,918-474-3062,London,United Kingdom,Yes,No,No
+Bill.Chen@example.com,0426,Bill Chen,264-895-1912,Toronto,Canada,Yes,Yes,Yes
+Lola.Vaughan@example.com,0427,Lola Vaughan,722-400-6707,Paris,France,No,No,Yes
+Abi.Montgomery@example.com,0428,Abi Montgomery,904-933-1987,Montreal,Canada,No,No,Yes
+Mike.Hurst@example.com,0429,Mike Hurst,488-247-6930,Montreal,Canada,No,Yes,Yes
+Angelo.Manning@example.com,0433,Angelo Manning,182-351-6749,Toronto,Canada,Yes,No,No
+Leona.Daugherty@example.com,0439,Leona Daugherty,815-288-7354,Montreal,Canada,Yes,Yes,Yes
+Lenny.Hardy@example.com,0442,Lenny Hardy,618-571-1851,Toronto,Canada,No,Yes,Yes
+Julius.Marquez@example.com,0446,Julius Marquez,189-235-8167,Montreal,Canada,No,Yes,Yes
+Amna.Garner@example.com,0448,Amna Garner,157-518-8037,Paris,France,Yes,Yes,Yes
+Raja.Hull@example.com,0449,Raja Hull,209-644-4005,Toronto,Canada,Yes,No,Yes
+Rio.Suarez@example.com,0450,Rio Suarez,304-182-8487,Paris,France,No,Yes,Yes
+Larry.Clay@example.com,0456,Larry Clay,151-494-2927,Montreal,Canada,No,Yes,No
+Karen.Robles@example.com,0465,Karen Robles,144-367-7871,Barcelona,Spain,No,No,Yes
+Charis.Cotton@example.com,0466,Charis Cotton,598-771-1224,Toronto,Canada,No,No,Yes
+Cassie.Gaines@example.com,0468,Cassie Gaines,496-692-2413,Paris,France,No,Yes,Yes
+Kyla.Brennan@example.com,0470,Kyla Brennan,440-863-6538,Toronto,Canada,No,No,Yes
+Hayden.Lucas@example.com,0473,Hayden Lucas,527-308-6637,Montreal,Canada,Yes,No,Yes
+Willard.Gray@example.com,0474,Willard Gray,894-914-4304,Paris,France,Yes,Yes,Yes
+Sophie.Lindsey@example.com,0475,Sophie Lindsey,392-864-7558,Paris,France,No,No,Yes
+Sabrina.Becker@example.com,0476,Sabrina Becker,895-364-8107,Toronto,Canada,Yes,No,No
+Dillon.Cisneros@example.com,0477,Dillon Cisneros,304-384-6230,Paris,France,Yes,Yes,Yes
+Terence.Rosales@example.com,0479,Terence Rosales,298-641-6696,Toronto,Canada,No,Yes,Yes
+Ahmad.Patrick@example.com,0482,Ahmad Patrick,875-486-1626,Toronto,Canada,Yes,Yes,No
+Christine.Davenport@example.com,0483,Christine Davenport,168-853-2168,Montreal,Canada,No,Yes,No
+Lowri.Brady@example.com,0484,Lowri Brady,116-274-4785,Toronto,Canada,Yes,Yes,No
+Ashley.Cain@example.com,0485,Ashley Cain,679-244-6655,London,United Kingdom,No,No,Yes
+Jenson.Carlson@example.com,0488,Jenson Carlson,282-249-3068,Paris,France,Yes,Yes,Yes
+Micheal.Maldonado@example.com,0496,Micheal Maldonado,895-850-8289,London,United Kingdom,No,No,Yes
+Alexandra.Young@example.com,0500,Alexandra Young,425-414-7823,Barcelona,Spain,Yes,No,Yes
+Imran.Page@example.com,0502,Imran Page,203-209-8114,Montreal,Canada,No,Yes,Yes
+Jim.Moses@example.com,0503,Jim Moses,560-446-1279,London,United Kingdom,No,Yes,No
+Bessie.Conley@example.com,0505,Bessie Conley,128-912-7282,London,United Kingdom,No,Yes,No
+Ameera.Kirby@example.com,0523,Ameera Kirby,611-776-9890,London,United Kingdom,Yes,No,Yes
+Orla.Monroe@example.com,0536,Orla Monroe,200-722-3778,Toronto,Canada,No,Yes,Yes
+Bronwyn.Hanna@example.com,0537,Bronwyn Hanna,763-469-4049,Toronto,Canada,Yes,No,No
+Ruth.Stone@example.com,0539,Ruth Stone,429-930-9178,Montreal,Canada,Yes,Yes,No
+Elysia.Schaefer@example.com,0541,Elysia Schaefer,264-321-9679,Montreal,Canada,Yes,No,Yes
+Esme.Krueger@example.com,0543,Esme Krueger,173-138-2227,Toronto,Canada,Yes,Yes,No
+Prince.Sharp@example.com,0550,Prince Sharp,886-278-8764,Montreal,Canada,No,Yes,Yes
+Donovan.Evans@example.com,0551,Donovan Evans,729-134-2962,Montreal,Canada,No,Yes,No
+Daniel.Reid@example.com,0552,Daniel Reid,753-936-1634,Paris,France,Yes,No,No
+Cecilia.Edwards@example.com,0559,Cecilia Edwards,941-963-8256,London,United Kingdom,Yes,Yes,Yes
+Macy.King@example.com,0567,Macy King,475-826-7209,Montreal,Canada,Yes,No,No
+Kevin.Sherman@example.com,0574,Kevin Sherman,185-617-6120,Barcelona,Spain,No,Yes,No
+Demi.Callahan@example.com,0578,Demi Callahan,713-176-8275,Toronto,Canada,Yes,No,No
+Sufyaan.Castillo@example.com,0579,Sufyaan Castillo,412-479-8766,Montreal,Canada,Yes,No,Yes
+Aayan.Donovan@example.com,0580,Aayan Donovan,476-401-9860,Paris,France,Yes,No,Yes
+Sufyan.Guzman@example.com,0585,Sufyan Guzman,125-583-6823,Montreal,Canada,No,Yes,Yes
+Casey.Finley@example.com,0586,Casey Finley,306-893-4689,London,United Kingdom,Yes,Yes,Yes
+Annalise.Stephens@example.com,0591,Annalise Stephens,853-224-1381,Toronto,Canada,No,Yes,Yes
+Jamil.Shepherd@example.com,0592,Jamil Shepherd,298-276-5058,Toronto,Canada,Yes,Yes,Yes
+Danyal.Lang@example.com,0593,Danyal Lang,629-875-4423,Toronto,Canada,No,Yes,Yes
+Barry.Reilly@example.com,0594,Barry Reilly,117-863-9669,Montreal,Canada,No,No,Yes
+Astrid.Delgado@example.com,0599,Astrid Delgado,641-317-3741,London,United Kingdom,Yes,Yes,Yes
+Bertha.Walsh@example.com,0606,Bertha Walsh,129-506-2067,London,United Kingdom,Yes,Yes,No
+Rishi.Barron@example.com,0608,Rishi Barron,331-128-4346,Montreal,Canada,Yes,Yes,Yes
+Taylor.Leon@example.com,0609,Taylor Leon,857-418-9149,Paris,France,Yes,No,No
+Rabia.Parsons@example.com,0612,Rabia Parsons,244-470-8381,Montreal,Canada,Yes,No,No
+Larissa.Perez@example.com,0613,Larissa Perez,742-168-6071,London,United Kingdom,Yes,No,Yes
+Ibrahim.Robertson@example.com,0614,Ibrahim Robertson,603-299-3596,Barcelona,Spain,Yes,Yes,Yes
+Neo.Lara@example.com,0620,Neo Lara,276-319-4768,Toronto,Canada,Yes,Yes,No
+Diane.Kelly@example.com,0625,Diane Kelly,219-449-5089,Montreal,Canada,Yes,Yes,No
+Nancy.Stuart@example.com,0628,Nancy Stuart,301-686-1705,Paris,France,No,Yes,No
+Hazel.Yoder@example.com,0635,Hazel Yoder,839-203-3903,London,United Kingdom,Yes,No,No
+Amber.Gonzalez@example.com,0636,Amber Gonzalez,884-628-1984,London,United Kingdom,No,No,Yes
+Kacie.Morse@example.com,0641,Kacie Morse,108-917-7237,Toronto,Canada,Yes,Yes,Yes
+Seth.Walter@example.com,0642,Seth Walter,988-932-7592,London,United Kingdom,No,Yes,No
+Lauren.Ashley@example.com,0643,Lauren Ashley,564-133-8260,London,United Kingdom,No,Yes,Yes
+Gary.Richards@example.com,0645,Gary Richards,970-902-7934,Toronto,Canada,Yes,Yes,No
+Zaynah.Wong@example.com,0649,Zaynah Wong,597-835-8978,Paris,France,Yes,Yes,No
+Cormac.Greer@example.com,0650,Cormac Greer,722-120-7628,Paris,France,No,Yes,Yes
+Vera.Walker@example.com,0661,Vera Walker,516-811-2158,London,United Kingdom,No,Yes,Yes
+Zara.Oconnell@example.com,0664,Zara Oconnell,543-537-6044,Toronto,Canada,Yes,No,No
+Abdirahman.Marsh@example.com,0669,Abdirahman Marsh,653-601-4374,Toronto,Canada,No,Yes,No
+Lucas.Burke@example.com,0681,Lucas Burke,321-512-2703,Toronto,Canada,No,Yes,Yes
+Thea.Suarez@example.com,0687,Thea Suarez,647-211-7337,Toronto,Canada,Yes,Yes,Yes
+Kayla.Jones@example.com,0689,Kayla Jones,579-756-1305,London,United Kingdom,Yes,Yes,No
+Brett.Landry@example.com,0691,Brett Landry,213-171-7560,Barcelona,Spain,No,Yes,No
+Xander.Levine@example.com,0695,Xander Levine,790-969-1579,Toronto,Canada,No,Yes,Yes
+Wade.Hancock@example.com,0703,Wade Hancock,245-455-9119,London,United Kingdom,Yes,Yes,Yes
+Nicholas.Thomson@example.com,0704,Nicholas Thomson,936-615-3052,Toronto,Canada,No,Yes,No
+Muhammad.Henry@example.com,0707,Muhammad Henry,298-612-6847,Paris,France,Yes,Yes,Yes
+Bronte.Mendoza@example.com,0712,Bronte Mendoza,323-783-6615,Toronto,Canada,Yes,Yes,No
+Isla.Barber@example.com,0714,Isla Barber,860-505-2643,Toronto,Canada,No,Yes,No
+Oliver.Garner@example.com,0715,Oliver Garner,937-976-2511,Paris,France,No,Yes,Yes
+Barnaby.Wagner@example.com,0716,Barnaby Wagner,974-500-4168,Montreal,Canada,No,No,Yes
+Hannah.Roman@example.com,0721,Hannah Roman,331-750-4621,London,United Kingdom,No,Yes,No
+Yash.Mcleod@example.com,0723,Yash Mcleod,270-525-3291,London,United Kingdom,Yes,No,No
+Mae.Barry@example.com,0724,Mae Barry,501-577-5306,London,United Kingdom,No,Yes,No
+Aya.Weeks@example.com,0726,Aya Weeks,466-888-7144,Toronto,Canada,Yes,Yes,No
+Dawn.Cisneros@example.com,0727,Dawn Cisneros,375-337-2745,Toronto,Canada,No,No,Yes
+Abigail.Medina@example.com,0729,Abigail Medina,857-602-1192,London,United Kingdom,Yes,No,Yes
+Rhodri.Haley@example.com,0730,Rhodri Haley,574-869-4715,London,United Kingdom,No,Yes,No
+Chantelle.Holt@example.com,0736,Chantelle Holt,256-585-1002,Paris,France,Yes,No,Yes
+Gertrude.Mcgrath@example.com,0738,Gertrude Mcgrath,364-150-1035,Toronto,Canada,Yes,Yes,No
+Millicent.Solomon@example.com,0741,Millicent Solomon,597-434-8108,Paris,France,No,Yes,Yes
+Adem.Kerr@example.com,0754,Adem Kerr,219-873-6077,Toronto,Canada,No,Yes,No
+Bill.Andersen@example.com,0757,Bill Andersen,962-770-1270,Toronto,Canada,Yes,Yes,No
+Martina.Steele@example.com,0759,Martina Steele,349-841-5113,Paris,France,No,No,Yes
+Huda.Crane@example.com,0763,Huda Crane,243-321-6881,Toronto,Canada,Yes,No,Yes
+Sasha.Berger@example.com,0766,Sasha Berger,492-295-4570,London,United Kingdom,Yes,No,No
+Caleb.Obrien@example.com,0768,Caleb Obrien,223-387-1014,Toronto,Canada,Yes,Yes,No
+Krish.Hutchinson@example.com,0779,Krish Hutchinson,405-788-7051,London,United Kingdom,Yes,Yes,Yes
+Paula.West@example.com,0782,Paula West,345-217-2266,London,United Kingdom,No,Yes,No
+Tiana.Decker@example.com,0784,Tiana Decker,255-136-3687,London,United Kingdom,No,Yes,Yes
+Kara.Shelton@example.com,0785,Kara Shelton,837-651-6819,Paris,France,Yes,Yes,Yes
+Ted.Eaton@example.com,0788,Ted Eaton,534-915-3617,Paris,France,No,No,Yes
+Aoife.Davidson@example.com,0791,Aoife Davidson,628-333-9139,London,United Kingdom,Yes,No,No
+Lilian.Strickland@example.com,0797,Lilian Strickland,925-438-1993,Toronto,Canada,Yes,No,Yes
+Brenda.Deleon@example.com,0798,Brenda Deleon,997-981-2043,Paris,France,No,Yes,No
+Olivier.Thornton@example.com,0800,Olivier Thornton,401-494-6634,Montreal,Canada,Yes,Yes,Yes
+Amin.Petersen@example.com,0804,Amin Petersen,680-177-1233,London,United Kingdom,No,No,Yes
+Miriam.Stuart@example.com,0806,Miriam Stuart,846-333-2100,Montreal,Canada,Yes,Yes,Yes
+Abdullahi.Carson@example.com,0809,Abdullahi Carson,632-547-8327,Toronto,Canada,Yes,Yes,Yes
+Albie.Larson@example.com,0816,Albie Larson,252-910-3152,Barcelona,Spain,Yes,Yes,No
+Alexander.Reid@example.com,0818,Alexander Reid,842-314-3728,Montreal,Canada,No,Yes,Yes
+Riley.Fletcher@example.com,0821,Riley Fletcher,522-750-5985,London,United Kingdom,Yes,No,No
+Chiara.Ho@example.com,0825,Chiara Ho,279-331-5254,Montreal,Canada,No,Yes,No
+Nancy.Blair@example.com,0842,Nancy Blair,434-174-7916,Toronto,Canada,No,Yes,Yes
+Tiffany.Griffith@example.com,0843,Tiffany Griffith,201-302-5165,Paris,France,Yes,No,No
+Simon.Santiago@example.com,0858,Simon Santiago,471-290-4198,Paris,France,Yes,No,Yes
+Sameer.Watkins@example.com,0859,Sameer Watkins,982-313-9358,Montreal,Canada,No,No,Yes
+Anton.Hartman@example.com,0860,Anton Hartman,708-986-9234,London,United Kingdom,Yes,Yes,Yes
+Mya.Delgado@example.com,0863,Mya Delgado,760-931-9269,London,United Kingdom,No,Yes,No
+Bibi.Weaver@example.com,0869,Bibi Weaver,956-787-2725,Paris,France,Yes,Yes,No
+Tomasz.Baker@example.com,0872,Tomasz Baker,778-642-7614,Barcelona,Spain,Yes,No,Yes
+Alasdair.Mckinney@example.com,0874,Alasdair Mckinney,608-300-8331,Montreal,Canada,Yes,No,Yes
+Serena.Lewis@example.com,0876,Serena Lewis,730-187-7131,Montreal,Canada,Yes,Yes,Yes
+Cordelia.Serrano@example.com,0891,Cordelia Serrano,950-319-1013,London,United Kingdom,Yes,No,Yes
+Sydney.Pratt@example.com,0892,Sydney Pratt,297-838-1084,Toronto,Canada,No,Yes,Yes
+Benjamin.Riddle@example.com,0893,Benjamin Riddle,835-645-8652,Toronto,Canada,Yes,No,Yes
+Alana.Koch@example.com,0898,Alana Koch,576-828-7913,Barcelona,Spain,No,Yes,Yes
+Martin.Perry@example.com,0904,Martin Perry,586-420-6418,Paris,France,Yes,Yes,No
+Cory.Case@example.com,0905,Cory Case,406-161-3681,London,United Kingdom,Yes,No,No
+Astrid.Miles@example.com,0906,Astrid Miles,473-411-8478,Paris,France,No,Yes,Yes
+Tyler.Vasquez@example.com,0909,Tyler Vasquez,899-668-7177,London,United Kingdom,No,Yes,No
+Carol.Russo@example.com,0917,Carol Russo,192-156-9508,Toronto,Canada,Yes,No,Yes
+William.Franco@example.com,0918,William Franco,196-468-3312,Toronto,Canada,Yes,Yes,No
+Hollie.Escobar@example.com,0921,Hollie Escobar,978-312-6279,London,United Kingdom,Yes,Yes,Yes
+Luisa.Haley@example.com,0922,Luisa Haley,916-879-3164,Barcelona,Spain,No,Yes,Yes
+Russell.Long@example.com,0923,Russell Long,399-959-7203,Montreal,Canada,Yes,Yes,Yes
+Lacie.Mayer@example.com,0946,Lacie Mayer,412-562-8215,Toronto,Canada,Yes,Yes,No
+Sufyaan.Villanueva@example.com,0949,Sufyaan Villanueva,882-282-1419,Toronto,Canada,Yes,No,No
+Humaira.Quinn@example.com,0952,Humaira Quinn,623-887-1255,London,United Kingdom,No,No,Yes
+Zaynab.Davila@example.com,0953,Zaynab Davila,767-906-5124,Toronto,Canada,No,Yes,No
+Isobella.Gilbert@example.com,0962,Isobella Gilbert,717-961-9368,Barcelona,Spain,Yes,No,Yes
+Emilio.Stevenson@example.com,0967,Emilio Stevenson,293-399-2353,Toronto,Canada,Yes,No,No
+Layla.Roth@example.com,0969,Layla Roth,812-207-8855,Montreal,Canada,Yes,Yes,No
+Zachary.Rubio@example.com,0975,Zachary Rubio,971-477-1542,Montreal,Canada,Yes,Yes,Yes
+Anita.Skinner@example.com,0977,Anita Skinner,885-134-1740,Barcelona,Spain,Yes,Yes,No
+Kacie.Lester@example.com,0980,Kacie Lester,673-651-6332,Toronto,Canada,Yes,No,No
+Myles.Sharpe@example.com,0982,Myles Sharpe,420-682-4722,Toronto,Canada,No,Yes,No
+Nicola.Davenport@example.com,0983,Nicola Davenport,335-679-5225,Toronto,Canada,No,Yes,Yes
+Lloyd.Robbins@example.com,0985,Lloyd Robbins,603-494-3648,London,United Kingdom,No,Yes,Yes
+Caitlyn.Lawson@example.com,0987,Caitlyn Lawson,470-723-2187,Paris,France,No,Yes,Yes
+Marion.Webster@example.com,0991,Marion Webster,169-218-9165,Toronto,Canada,No,Yes,Yes
+Jayson.Sutton@example.com,0993,Jayson Sutton,289-775-9088,Montreal,Canada,No,Yes,Yes
+Inaaya.Bruce@example.com,0994,Inaaya Bruce,780-773-8755,London,United Kingdom,Yes,No,Yes
+Raja.Reeves@example.com,0995,Raja Reeves,990-569-7356,Montreal,Canada,Yes,Yes,No
+Maria.Stephens@example.com,0996,Maria Stephens,798-578-4631,Toronto,Canada,Yes,Yes,No
+Fatimah.Johns@example.com,0998,Fatimah Johns,520-433-7411,London,United Kingdom,No,Yes,No
