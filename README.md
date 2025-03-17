@@ -2,21 +2,23 @@
 
 ## Introduction
 
-Hello and welcome to this data engineering project for Venmito. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.
+*Welcome to Xtillion's Data Engineering Project. For this exercise, we will simulate a client interaction where you are an engineering consultant for Venmito, your client. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.* 
 
-Venmito is a payment company that allows users to transfer funds to other users and pay in participant stores. The company has several data files in various formats. Our goal is to organize all of this information to gain insights about our clients and transactions. We believe that there is an immense value hidden in these data files, and we are looking for a solution that can help us extract and utilize this value.
+We are Venmito, a modest payments startup focused on making it easy for our customers to transfer funds, shop at participating local stores, and enjoy personalized promotions tailored just for them. As our popularity has steadily grown, so has the volume and complexity of our data. Unfortunately, this sustained growth has overwhelmed our original data systems, and we now find ourselves with a setup that's no longer sustainable.
 
-We have five files:
+**That's where you come in**. Your mission is to unravel and consolidate our fragmented data into a scalable, insightful, and consumable solution. We're counting on your technical skills, creativity, and resourcefulness to guide us from data chaos to clarity, enabling smarter decisions and continued growth.
 
-- `people.json`
-- `people.yml`
-- `transfers.csv`
-- `transactions.xml`
-- `promotions.csv`
+We have five data files available:
 
-Each of these files contains different pieces of information about our clients, their transactions, transfers and promotions.
+- people.json
+- people.yml
+- transfers.csv
+- transactions.xml
+- promotions.csv
 
-Your task is to develop a solution that can read these files, match and conform the data, and provide a way to consume this data.
+These files contain information about our customers, transactions, transfers, or promotions.
+
+Your task is to develop a solution that reads, unifies, and structures our data into a consumable format. Additionally, we would like you to analyze this data and provide clear, actionable insights based solely on your findings. These insights should help us better understand our customers, improve our processes, and make informed, data-driven decisions going forward.
 
 ## Requirements
 
@@ -24,7 +26,7 @@ Your task is to develop a solution that can read these files, match and conform 
 
 2. **Data Matching and Conforming**: Once the data is loaded, your solution should be capable of matching and conforming the data across these files. This includes identifying common entities, resolving inconsistencies, and organizing the data into a unified format. Furthermore, the consolidated data should not only be transient but also persistent. This persistence should be achieved using appropriate methods such as storing in a file, database, or other suitable data storage solutions, and not restricted to just a variable in memory. This way, the integrity and availability of the consolidated data are ensured for future use and analysis.
 
-3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. Examples of things, but is not restricted to, we want to be able to see are:
+3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. **Here are just a few ideas to get you started—don't limit yourself to just these examples, think outside the box and come up with your own metrics as you work through the project**! For example, you might look into:
     - Which clients have what type of promotion?
     - Give suggestions on how to turn "No" responses from clients in the promotions file.
     - Insights on stores, like:
@@ -32,10 +34,9 @@ Your task is to develop a solution that can read these files, match and conform 
         - What store has had the most profit?
         - Etc.
     - How can we use the data we got from the transfer file?
-  
-    These are only suggestions. Please don't limit yourself to only these examples and explore in your analysis any other suggestions could be beneficial for Venmito.
 
-4. **Data Output**: The final output of your solution should enable us to consume the reorganized and analyzed data in a meaningful way. This could be, but is not restricted to, a command line interface (CLI), a database with structured schemas, a GUI featuring interactive visualizations, a Jupyter Notebook, or a RESTful API. We invite you to leverage other innovative methods that you believe would be beneficial for a company like Venmito. Please provide at least 2 data consumption methods, 1 for the non-technical team and 1 for the technical team.
+4. **Data Output**: The final output of your solution should enable us to consume the reorganized and analyzed data in a meaningful way. This could be, but is not restricted to, a command line interface (CLI), a GUI featuring interactive visualizations, a Jupyter Notebook, or a RESTful API. We invite you to leverage other innovative methods that you believe would be beneficial for a company like Venmito. Please provide at least 2 data consumption methods, 1 for the non-technical team and 1 for the technical team.
+
 
 5. **Code**: The code for your solution should be well-structured and comprehensible, with comments included where necessary. Remember, the quality and readability of the code will be a significant factor in the evaluation of the final deliverable.
 
