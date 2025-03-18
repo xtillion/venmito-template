@@ -1,3 +1,4 @@
+<?xml version='1.0' encoding='utf-8'?>
 <transactions>
     <transaction id="1000">
         <items>
@@ -22,6 +23,7 @@
         </items>
         <phone>233-159-4158</phone>
         <store>Trader Tales</store>
+        <date>2022-09-10</date>
     </transaction>
     <transaction id="1001">
         <items>
@@ -34,6 +36,7 @@
         </items>
         <phone>725-427-2794</phone>
         <store>PetPals Mart</store>
+        <date>2023-03-15</date>
     </transaction>
     <transaction id="1002">
         <items>
@@ -58,6 +61,7 @@
         </items>
         <phone>659-190-9378</phone>
         <store>Trader Tales</store>
+        <date>2023-05-28</date>
     </transaction>
     <transaction id="1003">
         <items>
@@ -82,6 +86,7 @@
         </items>
         <phone>334-436-6254</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-03-12</date>
     </transaction>
     <transaction id="1004">
         <items>
@@ -100,6 +105,7 @@
         </items>
         <phone>615-102-4849</phone>
         <store>PetPals Mart</store>
+        <date>2022-06-04</date>
     </transaction>
     <transaction id="1005">
         <items>
@@ -118,6 +124,7 @@
         </items>
         <phone>294-365-8364</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2024-01-08</date>
     </transaction>
     <transaction id="1006">
         <items>
@@ -133,9 +140,16 @@
                 <price_per_item>3</price_per_item>
                 <quantity>2</quantity>
             </item>
+            <item>
+                <item>Oreoz</item>
+                <price>2</price>
+                <price_per_item>2</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>634-813-9351</phone>
         <store>BestChoice Buy</store>
+        <date>2022-10-23</date>
     </transaction>
     <transaction id="1007">
         <items>
@@ -160,6 +174,7 @@
         </items>
         <phone>273-616-5739</phone>
         <store>SparkMart</store>
+        <date>2022-04-15</date>
     </transaction>
     <transaction id="1008">
         <items>
@@ -184,6 +199,7 @@
         </items>
         <phone>839-124-9420</phone>
         <store>SparkMart</store>
+        <date>2022-02-23</date>
     </transaction>
     <transaction id="1009">
         <items>
@@ -196,6 +212,7 @@
         </items>
         <phone>645-829-7495</phone>
         <store>Trader Tales</store>
+        <date>2022-09-04</date>
     </transaction>
     <transaction id="1010">
         <items>
@@ -220,6 +237,7 @@
         </items>
         <phone>444-295-8051</phone>
         <store>Trader Tales</store>
+        <date>2023-06-26</date>
     </transaction>
     <transaction id="1011">
         <items>
@@ -244,6 +262,7 @@
         </items>
         <phone>520-305-7264</phone>
         <store>Trader Tales</store>
+        <date>2023-03-08</date>
     </transaction>
     <transaction id="1012">
         <items>
@@ -262,6 +281,7 @@
         </items>
         <phone>891-887-3513</phone>
         <store>PetPals Mart</store>
+        <date>2023-12-28</date>
     </transaction>
     <transaction id="1013">
         <items>
@@ -286,6 +306,7 @@
         </items>
         <phone>114-507-5478</phone>
         <store>BestChoice Buy</store>
+        <date>2023-01-26</date>
     </transaction>
     <transaction id="1014">
         <items>
@@ -298,6 +319,7 @@
         </items>
         <phone>558-608-9550</phone>
         <store>BestChoice Buy</store>
+        <date>2023-04-24</date>
     </transaction>
     <transaction id="1015">
         <items>
@@ -322,6 +344,7 @@
         </items>
         <phone>372-218-6551</phone>
         <store>BestChoice Buy</store>
+        <date>2024-02-14</date>
     </transaction>
     <transaction id="1016">
         <items>
@@ -346,6 +369,7 @@
         </items>
         <phone>441-847-1955</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-04-06</date>
     </transaction>
     <transaction id="1017">
         <items>
@@ -358,6 +382,7 @@
         </items>
         <phone>924-146-4189</phone>
         <store>PetPals Mart</store>
+        <date>2023-08-27</date>
     </transaction>
     <transaction id="1018">
         <items>
@@ -370,6 +395,7 @@
         </items>
         <phone>512-600-6692</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-04-17</date>
     </transaction>
     <transaction id="1019">
         <items>
@@ -388,6 +414,7 @@
         </items>
         <phone>362-464-9875</phone>
         <store>Trader Tales</store>
+        <date>2023-06-11</date>
     </transaction>
     <transaction id="1020">
         <items>
@@ -406,6 +433,7 @@
         </items>
         <phone>101-165-2021</phone>
         <store>SparkMart</store>
+        <date>2022-05-26</date>
     </transaction>
     <transaction id="1021">
         <items>
@@ -418,6 +446,7 @@
         </items>
         <phone>563-494-9026</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-10-24</date>
     </transaction>
     <transaction id="1022">
         <items>
@@ -436,6 +465,7 @@
         </items>
         <phone>918-588-9531</phone>
         <store>Trader Tales</store>
+        <date>2024-04-28</date>
     </transaction>
     <transaction id="1023">
         <items>
@@ -460,6 +490,7 @@
         </items>
         <phone>315-892-7127</phone>
         <store>PetPals Mart</store>
+        <date>2023-02-17</date>
     </transaction>
     <transaction id="1024">
         <items>
@@ -478,6 +509,7 @@
         </items>
         <phone>640-390-3390</phone>
         <store>Trader Tales</store>
+        <date>2022-03-27</date>
     </transaction>
     <transaction id="1025">
         <items>
@@ -490,6 +522,7 @@
         </items>
         <phone>626-458-8110</phone>
         <store>Targeted Treasures</store>
+        <date>2023-09-08</date>
     </transaction>
     <transaction id="1026">
         <items>
@@ -508,6 +541,7 @@
         </items>
         <phone>993-541-7464</phone>
         <store>BestChoice Buy</store>
+        <date>2023-08-14</date>
     </transaction>
     <transaction id="1027">
         <items>
@@ -532,6 +566,7 @@
         </items>
         <phone>116-866-3838</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-03-14</date>
     </transaction>
     <transaction id="1028">
         <items>
@@ -544,6 +579,7 @@
         </items>
         <phone>776-243-3725</phone>
         <store>Trader Tales</store>
+        <date>2023-03-31</date>
     </transaction>
     <transaction id="1029">
         <items>
@@ -568,6 +604,7 @@
         </items>
         <phone>553-407-1049</phone>
         <store>PetPals Mart</store>
+        <date>2023-11-19</date>
     </transaction>
     <transaction id="1030">
         <items>
@@ -580,6 +617,7 @@
         </items>
         <phone>782-806-6417</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-05-23</date>
     </transaction>
     <transaction id="1031">
         <items>
@@ -592,6 +630,7 @@
         </items>
         <phone>271-963-2123</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-09-09</date>
     </transaction>
     <transaction id="1032">
         <items>
@@ -604,6 +643,7 @@
         </items>
         <phone>915-320-3214</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-11-04</date>
     </transaction>
     <transaction id="1033">
         <items>
@@ -628,6 +668,7 @@
         </items>
         <phone>953-386-1321</phone>
         <store>PetPals Mart</store>
+        <date>2022-10-04</date>
     </transaction>
     <transaction id="1034">
         <items>
@@ -640,6 +681,7 @@
         </items>
         <phone>731-730-2543</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-11-28</date>
     </transaction>
     <transaction id="1035">
         <items>
@@ -652,6 +694,7 @@
         </items>
         <phone>544-944-1609</phone>
         <store>PetPals Mart</store>
+        <date>2024-04-09</date>
     </transaction>
     <transaction id="1036">
         <items>
@@ -661,9 +704,16 @@
                 <price_per_item>3</price_per_item>
                 <quantity>1</quantity>
             </item>
+            <item>
+                <item>Oreoz</item>
+                <price>2</price>
+                <price_per_item>2</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>891-887-3513</phone>
         <store>PetPals Mart</store>
+        <date>2023-02-16</date>
     </transaction>
     <transaction id="1037">
         <items>
@@ -682,6 +732,7 @@
         </items>
         <phone>478-814-3941</phone>
         <store>Trader Tales</store>
+        <date>2023-12-28</date>
     </transaction>
     <transaction id="1038">
         <items>
@@ -703,9 +754,16 @@
                 <price_per_item>3</price_per_item>
                 <quantity>1</quantity>
             </item>
+            <item>
+                <item>Flixnet</item>
+                <price>5</price>
+                <price_per_item>5</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>742-395-8995</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2024-02-02</date>
     </transaction>
     <transaction id="1039">
         <items>
@@ -730,6 +788,7 @@
         </items>
         <phone>849-570-8792</phone>
         <store>PetPals Mart</store>
+        <date>2022-12-10</date>
     </transaction>
     <transaction id="1040">
         <items>
@@ -742,6 +801,7 @@
         </items>
         <phone>220-102-3684</phone>
         <store>BestChoice Buy</store>
+        <date>2022-12-01</date>
     </transaction>
     <transaction id="1041">
         <items>
@@ -760,6 +820,7 @@
         </items>
         <phone>805-146-4773</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-04-18</date>
     </transaction>
     <transaction id="1042">
         <items>
@@ -778,6 +839,7 @@
         </items>
         <phone>159-573-6793</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-10-15</date>
     </transaction>
     <transaction id="1043">
         <items>
@@ -790,6 +852,7 @@
         </items>
         <phone>549-750-2047</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-09-06</date>
     </transaction>
     <transaction id="1044">
         <items>
@@ -808,6 +871,7 @@
         </items>
         <phone>326-267-7811</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-03-27</date>
     </transaction>
     <transaction id="1045">
         <items>
@@ -820,6 +884,7 @@
         </items>
         <phone>247-523-1403</phone>
         <store>PetPals Mart</store>
+        <date>2022-08-05</date>
     </transaction>
     <transaction id="1046">
         <items>
@@ -838,6 +903,7 @@
         </items>
         <phone>950-639-9777</phone>
         <store>PetPals Mart</store>
+        <date>2022-05-29</date>
     </transaction>
     <transaction id="1047">
         <items>
@@ -856,6 +922,7 @@
         </items>
         <phone>727-709-3351</phone>
         <store>BestChoice Buy</store>
+        <date>2024-03-18</date>
     </transaction>
     <transaction id="1048">
         <items>
@@ -874,6 +941,7 @@
         </items>
         <phone>883-481-7339</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2024-03-08</date>
     </transaction>
     <transaction id="1049">
         <items>
@@ -898,6 +966,7 @@
         </items>
         <phone>936-522-1085</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-08-31</date>
     </transaction>
     <transaction id="1050">
         <items>
@@ -916,6 +985,7 @@
         </items>
         <phone>424-390-3432</phone>
         <store>PetPals Mart</store>
+        <date>2022-05-01</date>
     </transaction>
     <transaction id="1051">
         <items>
@@ -934,6 +1004,7 @@
         </items>
         <phone>336-283-3896</phone>
         <store>Trader Tales</store>
+        <date>2022-06-18</date>
     </transaction>
     <transaction id="1052">
         <items>
@@ -952,6 +1023,7 @@
         </items>
         <phone>738-911-3567</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-04-28</date>
     </transaction>
     <transaction id="1053">
         <items>
@@ -970,6 +1042,7 @@
         </items>
         <phone>561-761-7547</phone>
         <store>Trader Tales</store>
+        <date>2022-06-27</date>
     </transaction>
     <transaction id="1054">
         <items>
@@ -982,6 +1055,7 @@
         </items>
         <phone>227-737-8739</phone>
         <store>SparkMart</store>
+        <date>2023-04-15</date>
     </transaction>
     <transaction id="1055">
         <items>
@@ -994,6 +1068,7 @@
         </items>
         <phone>515-268-3667</phone>
         <store>PetPals Mart</store>
+        <date>2023-05-02</date>
     </transaction>
     <transaction id="1056">
         <items>
@@ -1012,6 +1087,7 @@
         </items>
         <phone>392-468-4297</phone>
         <store>Trader Tales</store>
+        <date>2022-11-27</date>
     </transaction>
     <transaction id="1057">
         <items>
@@ -1030,6 +1106,7 @@
         </items>
         <phone>645-829-7495</phone>
         <store>SparkMart</store>
+        <date>2023-03-02</date>
     </transaction>
     <transaction id="1058">
         <items>
@@ -1048,6 +1125,7 @@
         </items>
         <phone>520-550-1148</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-05-13</date>
     </transaction>
     <transaction id="1059">
         <items>
@@ -1060,6 +1138,7 @@
         </items>
         <phone>516-779-4464</phone>
         <store>Trader Tales</store>
+        <date>2023-07-12</date>
     </transaction>
     <transaction id="1060">
         <items>
@@ -1072,6 +1151,7 @@
         </items>
         <phone>558-608-9550</phone>
         <store>Trader Tales</store>
+        <date>2023-01-11</date>
     </transaction>
     <transaction id="1061">
         <items>
@@ -1090,6 +1170,7 @@
         </items>
         <phone>752-347-2146</phone>
         <store>SparkMart</store>
+        <date>2024-03-08</date>
     </transaction>
     <transaction id="1062">
         <items>
@@ -1114,6 +1195,7 @@
         </items>
         <phone>139-396-1336</phone>
         <store>PetPals Mart</store>
+        <date>2022-08-10</date>
     </transaction>
     <transaction id="1063">
         <items>
@@ -1132,6 +1214,7 @@
         </items>
         <phone>553-407-1049</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-04-17</date>
     </transaction>
     <transaction id="1064">
         <items>
@@ -1144,6 +1227,7 @@
         </items>
         <phone>811-806-5304</phone>
         <store>Trader Tales</store>
+        <date>2022-11-21</date>
     </transaction>
     <transaction id="1065">
         <items>
@@ -1162,6 +1246,7 @@
         </items>
         <phone>558-134-7531</phone>
         <store>Trader Tales</store>
+        <date>2023-04-29</date>
     </transaction>
     <transaction id="1066">
         <items>
@@ -1180,6 +1265,7 @@
         </items>
         <phone>402-586-5192</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-10-08</date>
     </transaction>
     <transaction id="1067">
         <items>
@@ -1198,6 +1284,7 @@
         </items>
         <phone>878-870-9506</phone>
         <store>Trader Tales</store>
+        <date>2022-05-12</date>
     </transaction>
     <transaction id="1068">
         <items>
@@ -1216,6 +1303,7 @@
         </items>
         <phone>313-206-2033</phone>
         <store>Targeted Treasures</store>
+        <date>2022-04-12</date>
     </transaction>
     <transaction id="1069">
         <items>
@@ -1234,6 +1322,7 @@
         </items>
         <phone>194-235-2353</phone>
         <store>Trader Tales</store>
+        <date>2022-06-20</date>
     </transaction>
     <transaction id="1070">
         <items>
@@ -1243,9 +1332,28 @@
                 <price_per_item>3</price_per_item>
                 <quantity>2</quantity>
             </item>
+            <item>
+                <item>KittyKat</item>
+                <price>1</price>
+                <price_per_item>1</price_per_item>
+                <quantity>1</quantity>
+            </item>
+            <item>
+                <item>Flixnet</item>
+                <price>5</price>
+                <price_per_item>5</price_per_item>
+                <quantity>1</quantity>
+            </item>
+            <item>
+                <item>Colgatex</item>
+                <price>1</price>
+                <price_per_item>1</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>111-862-3502</phone>
         <store>PetPals Mart</store>
+        <date>2024-04-15</date>
     </transaction>
     <transaction id="1071">
         <items>
@@ -1264,6 +1372,7 @@
         </items>
         <phone>723-357-7363</phone>
         <store>Trader Tales</store>
+        <date>2023-12-13</date>
     </transaction>
     <transaction id="1072">
         <items>
@@ -1282,6 +1391,7 @@
         </items>
         <phone>124-533-2523</phone>
         <store>SparkMart</store>
+        <date>2022-11-17</date>
     </transaction>
     <transaction id="1073">
         <items>
@@ -1294,6 +1404,7 @@
         </items>
         <phone>583-114-3994</phone>
         <store>BestChoice Buy</store>
+        <date>2024-01-01</date>
     </transaction>
     <transaction id="1074">
         <items>
@@ -1306,6 +1417,7 @@
         </items>
         <phone>429-916-1662</phone>
         <store>PetPals Mart</store>
+        <date>2023-12-24</date>
     </transaction>
     <transaction id="1075">
         <items>
@@ -1324,6 +1436,7 @@
         </items>
         <phone>946-447-2454</phone>
         <store>PetPals Mart</store>
+        <date>2023-09-19</date>
     </transaction>
     <transaction id="1076">
         <items>
@@ -1348,6 +1461,7 @@
         </items>
         <phone>254-627-7406</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-02-20</date>
     </transaction>
     <transaction id="1077">
         <items>
@@ -1372,6 +1486,7 @@
         </items>
         <phone>958-724-3846</phone>
         <store>PetPals Mart</store>
+        <date>2022-08-18</date>
     </transaction>
     <transaction id="1078">
         <items>
@@ -1384,6 +1499,7 @@
         </items>
         <phone>743-908-5464</phone>
         <store>SparkMart</store>
+        <date>2022-12-11</date>
     </transaction>
     <transaction id="1079">
         <items>
@@ -1405,9 +1521,16 @@
                 <price_per_item>5</price_per_item>
                 <quantity>3</quantity>
             </item>
+            <item>
+                <item>Oreoz</item>
+                <price>2</price>
+                <price_per_item>2</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>549-515-6738</phone>
         <store>SparkMart</store>
+        <date>2022-06-10</date>
     </transaction>
     <transaction id="1080">
         <items>
@@ -1432,6 +1555,7 @@
         </items>
         <phone>480-560-1876</phone>
         <store>Trader Tales</store>
+        <date>2022-04-13</date>
     </transaction>
     <transaction id="1081">
         <items>
@@ -1453,9 +1577,16 @@
                 <price_per_item>4</price_per_item>
                 <quantity>2</quantity>
             </item>
+            <item>
+                <item>KittyKat</item>
+                <price>1</price>
+                <price_per_item>1</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>390-911-6534</phone>
         <store>BestChoice Buy</store>
+        <date>2024-01-08</date>
     </transaction>
     <transaction id="1082">
         <items>
@@ -1474,6 +1605,7 @@
         </items>
         <phone>782-806-6417</phone>
         <store>PetPals Mart</store>
+        <date>2022-09-21</date>
     </transaction>
     <transaction id="1083">
         <items>
@@ -1498,6 +1630,7 @@
         </items>
         <phone>617-226-9486</phone>
         <store>PetPals Mart</store>
+        <date>2023-01-09</date>
     </transaction>
     <transaction id="1084">
         <items>
@@ -1513,9 +1646,22 @@
                 <price_per_item>2</price_per_item>
                 <quantity>1</quantity>
             </item>
+            <item>
+                <item>Flixnet</item>
+                <price>5</price>
+                <price_per_item>5</price_per_item>
+                <quantity>1</quantity>
+            </item>
+            <item>
+                <item>GatorBoost</item>
+                <price>2</price>
+                <price_per_item>2</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>530-539-9474</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-02-19</date>
     </transaction>
     <transaction id="1085">
         <items>
@@ -1534,6 +1680,7 @@
         </items>
         <phone>507-766-7432</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-06-19</date>
     </transaction>
     <transaction id="1086">
         <items>
@@ -1546,6 +1693,7 @@
         </items>
         <phone>743-908-5464</phone>
         <store>PetPals Mart</store>
+        <date>2022-03-01</date>
     </transaction>
     <transaction id="1087">
         <items>
@@ -1570,6 +1718,7 @@
         </items>
         <phone>573-696-6671</phone>
         <store>Trader Tales</store>
+        <date>2023-12-04</date>
     </transaction>
     <transaction id="1088">
         <items>
@@ -1582,6 +1731,7 @@
         </items>
         <phone>173-881-1582</phone>
         <store>Trader Tales</store>
+        <date>2022-11-12</date>
     </transaction>
     <transaction id="1089">
         <items>
@@ -1597,9 +1747,16 @@
                 <price_per_item>1</price_per_item>
                 <quantity>1</quantity>
             </item>
+            <item>
+                <item>Flixnet</item>
+                <price>5</price>
+                <price_per_item>5</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>228-202-6360</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-10-03</date>
     </transaction>
     <transaction id="1090">
         <items>
@@ -1618,6 +1775,7 @@
         </items>
         <phone>202-632-2346</phone>
         <store>Trader Tales</store>
+        <date>2024-04-28</date>
     </transaction>
     <transaction id="1091">
         <items>
@@ -1630,6 +1788,7 @@
         </items>
         <phone>742-395-8995</phone>
         <store>Trader Tales</store>
+        <date>2022-07-07</date>
     </transaction>
     <transaction id="1092">
         <items>
@@ -1642,6 +1801,7 @@
         </items>
         <phone>137-491-6519</phone>
         <store>BestChoice Buy</store>
+        <date>2022-02-10</date>
     </transaction>
     <transaction id="1093">
         <items>
@@ -1666,6 +1826,7 @@
         </items>
         <phone>663-149-3581</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-02-28</date>
     </transaction>
     <transaction id="1094">
         <items>
@@ -1684,6 +1845,7 @@
         </items>
         <phone>237-295-4490</phone>
         <store>Trader Tales</store>
+        <date>2023-04-18</date>
     </transaction>
     <transaction id="1095">
         <items>
@@ -1693,9 +1855,16 @@
                 <price_per_item>2</price_per_item>
                 <quantity>2</quantity>
             </item>
+            <item>
+                <item>Oreoz</item>
+                <price>2</price>
+                <price_per_item>2</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>441-847-1955</phone>
         <store>BestChoice Buy</store>
+        <date>2023-08-02</date>
     </transaction>
     <transaction id="1096">
         <items>
@@ -1708,6 +1877,7 @@
         </items>
         <phone>507-883-4629</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2024-02-15</date>
     </transaction>
     <transaction id="1097">
         <items>
@@ -1726,6 +1896,7 @@
         </items>
         <phone>553-482-8315</phone>
         <store>BestChoice Buy</store>
+        <date>2023-07-27</date>
     </transaction>
     <transaction id="1098">
         <items>
@@ -1744,6 +1915,7 @@
         </items>
         <phone>145-501-4975</phone>
         <store>SparkMart</store>
+        <date>2022-09-22</date>
     </transaction>
     <transaction id="1099">
         <items>
@@ -1756,6 +1928,7 @@
         </items>
         <phone>344-278-2013</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-04-16</date>
     </transaction>
     <transaction id="1100">
         <items>
@@ -1774,6 +1947,7 @@
         </items>
         <phone>531-380-1711</phone>
         <store>PetPals Mart</store>
+        <date>2023-04-28</date>
     </transaction>
     <transaction id="1101">
         <items>
@@ -1798,6 +1972,7 @@
         </items>
         <phone>551-867-4367</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-04-24</date>
     </transaction>
     <transaction id="1102">
         <items>
@@ -1810,6 +1985,7 @@
         </items>
         <phone>245-506-5389</phone>
         <store>PetPals Mart</store>
+        <date>2024-04-12</date>
     </transaction>
     <transaction id="1103">
         <items>
@@ -1834,6 +2010,7 @@
         </items>
         <phone>323-234-9528</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2024-04-01</date>
     </transaction>
     <transaction id="1104">
         <items>
@@ -1858,6 +2035,7 @@
         </items>
         <phone>795-682-8733</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-06-02</date>
     </transaction>
     <transaction id="1105">
         <items>
@@ -1882,6 +2060,7 @@
         </items>
         <phone>805-146-4773</phone>
         <store>BestChoice Buy</store>
+        <date>2022-05-14</date>
     </transaction>
     <transaction id="1106">
         <items>
@@ -1906,6 +2085,7 @@
         </items>
         <phone>531-709-2553</phone>
         <store>Trader Tales</store>
+        <date>2022-01-22</date>
     </transaction>
     <transaction id="1107">
         <items>
@@ -1924,6 +2104,7 @@
         </items>
         <phone>866-155-1011</phone>
         <store>PetPals Mart</store>
+        <date>2022-03-14</date>
     </transaction>
     <transaction id="1108">
         <items>
@@ -1948,6 +2129,7 @@
         </items>
         <phone>652-272-9539</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2024-03-19</date>
     </transaction>
     <transaction id="1109">
         <items>
@@ -1960,6 +2142,7 @@
         </items>
         <phone>368-154-2650</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-08-25</date>
     </transaction>
     <transaction id="1110">
         <items>
@@ -1972,6 +2155,7 @@
         </items>
         <phone>504-112-5228</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-05-23</date>
     </transaction>
     <transaction id="1111">
         <items>
@@ -1996,6 +2180,7 @@
         </items>
         <phone>481-405-7265</phone>
         <store>Trader Tales</store>
+        <date>2022-07-31</date>
     </transaction>
     <transaction id="1112">
         <items>
@@ -2008,6 +2193,7 @@
         </items>
         <phone>500-251-7080</phone>
         <store>Trader Tales</store>
+        <date>2023-02-24</date>
     </transaction>
     <transaction id="1113">
         <items>
@@ -2020,6 +2206,7 @@
         </items>
         <phone>964-448-9785</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-01-26</date>
     </transaction>
     <transaction id="1114">
         <items>
@@ -2038,6 +2225,7 @@
         </items>
         <phone>705-890-7715</phone>
         <store>PetPals Mart</store>
+        <date>2023-12-13</date>
     </transaction>
     <transaction id="1115">
         <items>
@@ -2050,6 +2238,7 @@
         </items>
         <phone>791-853-6464</phone>
         <store>PetPals Mart</store>
+        <date>2023-10-17</date>
     </transaction>
     <transaction id="1116">
         <items>
@@ -2068,6 +2257,7 @@
         </items>
         <phone>796-816-9963</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-11-01</date>
     </transaction>
     <transaction id="1117">
         <items>
@@ -2086,6 +2276,7 @@
         </items>
         <phone>629-807-5687</phone>
         <store>PetPals Mart</store>
+        <date>2022-04-06</date>
     </transaction>
     <transaction id="1118">
         <items>
@@ -2098,6 +2289,7 @@
         </items>
         <phone>107-156-5064</phone>
         <store>PetPals Mart</store>
+        <date>2023-08-29</date>
     </transaction>
     <transaction id="1119">
         <items>
@@ -2122,6 +2314,7 @@
         </items>
         <phone>505-476-1251</phone>
         <store>PetPals Mart</store>
+        <date>2023-09-02</date>
     </transaction>
     <transaction id="1120">
         <items>
@@ -2137,9 +2330,16 @@
                 <price_per_item>3</price_per_item>
                 <quantity>1</quantity>
             </item>
+            <item>
+                <item>Colgatex</item>
+                <price>1</price>
+                <price_per_item>1</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>728-796-4352</phone>
         <store>BestChoice Buy</store>
+        <date>2022-10-02</date>
     </transaction>
     <transaction id="1121">
         <items>
@@ -2158,6 +2358,7 @@
         </items>
         <phone>271-604-3446</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2024-04-21</date>
     </transaction>
     <transaction id="1122">
         <items>
@@ -2182,6 +2383,7 @@
         </items>
         <phone>782-806-6417</phone>
         <store>PetPals Mart</store>
+        <date>2022-03-27</date>
     </transaction>
     <transaction id="1123">
         <items>
@@ -2194,6 +2396,7 @@
         </items>
         <phone>312-891-9587</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-02-01</date>
     </transaction>
     <transaction id="1124">
         <items>
@@ -2218,6 +2421,7 @@
         </items>
         <phone>247-523-1403</phone>
         <store>SparkMart</store>
+        <date>2022-03-17</date>
     </transaction>
     <transaction id="1125">
         <items>
@@ -2242,6 +2446,7 @@
         </items>
         <phone>626-458-8110</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-07-31</date>
     </transaction>
     <transaction id="1126">
         <items>
@@ -2260,6 +2465,7 @@
         </items>
         <phone>724-444-3001</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-11-02</date>
     </transaction>
     <transaction id="1127">
         <items>
@@ -2284,6 +2490,7 @@
         </items>
         <phone>598-173-8153</phone>
         <store>Trader Tales</store>
+        <date>2023-04-09</date>
     </transaction>
     <transaction id="1128">
         <items>
@@ -2296,6 +2503,7 @@
         </items>
         <phone>852-236-4050</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2024-04-17</date>
     </transaction>
     <transaction id="1129">
         <items>
@@ -2314,6 +2522,7 @@
         </items>
         <phone>196-551-2162</phone>
         <store>SparkMart</store>
+        <date>2022-05-21</date>
     </transaction>
     <transaction id="1130">
         <items>
@@ -2335,9 +2544,16 @@
                 <price_per_item>5</price_per_item>
                 <quantity>1</quantity>
             </item>
+            <item>
+                <item>GatorBoost</item>
+                <price>2</price>
+                <price_per_item>2</price_per_item>
+                <quantity>1</quantity>
+            </item>
         </items>
         <phone>530-539-9474</phone>
         <store>BestChoice Buy</store>
+        <date>2022-04-14</date>
     </transaction>
     <transaction id="1131">
         <items>
@@ -2356,6 +2572,7 @@
         </items>
         <phone>778-172-1502</phone>
         <store>Trader Tales</store>
+        <date>2024-04-17</date>
     </transaction>
     <transaction id="1132">
         <items>
@@ -2374,6 +2591,7 @@
         </items>
         <phone>545-458-1679</phone>
         <store>Trader Tales</store>
+        <date>2022-12-15</date>
     </transaction>
     <transaction id="1133">
         <items>
@@ -2386,6 +2604,7 @@
         </items>
         <phone>699-966-4749</phone>
         <store>BestChoice Buy</store>
+        <date>2022-05-15</date>
     </transaction>
     <transaction id="1134">
         <items>
@@ -2398,6 +2617,7 @@
         </items>
         <phone>919-925-5280</phone>
         <store>BestChoice Buy</store>
+        <date>2022-02-22</date>
     </transaction>
     <transaction id="1135">
         <items>
@@ -2416,6 +2636,7 @@
         </items>
         <phone>148-739-3707</phone>
         <store>PetPals Mart</store>
+        <date>2023-04-27</date>
     </transaction>
     <transaction id="1136">
         <items>
@@ -2440,6 +2661,7 @@
         </items>
         <phone>270-914-6681</phone>
         <store>PetPals Mart</store>
+        <date>2022-03-02</date>
     </transaction>
     <transaction id="1137">
         <items>
@@ -2458,6 +2680,7 @@
         </items>
         <phone>264-319-7312</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2022-07-01</date>
     </transaction>
     <transaction id="1138">
         <items>
@@ -2482,6 +2705,7 @@
         </items>
         <phone>659-190-9378</phone>
         <store>Trader Tales</store>
+        <date>2023-08-20</date>
     </transaction>
     <transaction id="1139">
         <items>
@@ -2506,6 +2730,7 @@
         </items>
         <phone>582-574-4299</phone>
         <store>PetPals Mart</store>
+        <date>2023-03-29</date>
     </transaction>
     <transaction id="1140">
         <items>
@@ -2524,6 +2749,7 @@
         </items>
         <phone>821-675-4190</phone>
         <store>SparkMart</store>
+        <date>2024-04-30</date>
     </transaction>
     <transaction id="1141">
         <items>
@@ -2542,6 +2768,7 @@
         </items>
         <phone>313-206-2033</phone>
         <store>BestChoice Buy</store>
+        <date>2024-01-21</date>
     </transaction>
     <transaction id="1142">
         <items>
@@ -2554,6 +2781,7 @@
         </items>
         <phone>547-388-2503</phone>
         <store>Trader Tales</store>
+        <date>2023-02-18</date>
     </transaction>
     <transaction id="1143">
         <items>
@@ -2566,6 +2794,7 @@
         </items>
         <phone>489-241-7631</phone>
         <store>PetPals Mart</store>
+        <date>2023-06-02</date>
     </transaction>
     <transaction id="1144">
         <items>
@@ -2578,6 +2807,7 @@
         </items>
         <phone>312-891-9587</phone>
         <store>Trader Tales</store>
+        <date>2022-02-09</date>
     </transaction>
     <transaction id="1145">
         <items>
@@ -2602,6 +2832,7 @@
         </items>
         <phone>416-776-3422</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-02-05</date>
     </transaction>
     <transaction id="1146">
         <items>
@@ -2620,6 +2851,7 @@
         </items>
         <phone>627-954-8991</phone>
         <store>Targeted Treasures</store>
+        <date>2023-12-10</date>
     </transaction>
     <transaction id="1147">
         <items>
@@ -2644,6 +2876,7 @@
         </items>
         <phone>934-954-3387</phone>
         <store>Urban Outfitters Loft</store>
+        <date>2023-03-22</date>
     </transaction>
     <transaction id="1148">
         <items>
@@ -2662,6 +2895,7 @@
         </items>
         <phone>778-566-2709</phone>
         <store>Trader Tales</store>
+        <date>2022-07-05</date>
     </transaction>
     <transaction id="1149">
         <items>
@@ -2674,5 +2908,6 @@
         </items>
         <phone>220-296-3772</phone>
         <store>PetPals Mart</store>
+        <date>2023-01-07</date>
     </transaction>
 </transactions>
