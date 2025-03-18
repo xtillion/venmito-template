@@ -2662,3 +2662,12 @@
   name: Fatimah Johns
   phone: 520-433-7411
   dob: March 01, 1987
+- Android: 1
+  Desktop: 1
+  Iphone: 1
+  city: "Santa Claus, USA"
+  email: "fey.kuser@example.com"
+  id: 1002
+  name: "Fey Kuser"
+  phone: "999-999-1111"
+  dob: "01/01/1970"
