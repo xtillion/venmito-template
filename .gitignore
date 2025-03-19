@@ -34,3 +34,5 @@ ENV/
 
 # Processed data
 data/processed/
+
+.fake
