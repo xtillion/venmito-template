@@ -1,14 +1,14 @@
 """
-Data merging module for Venmito project.
+Data validation module for Venmito project.
 
-This module provides classes for merging data from various sources
-into coherent datasets for analytics.
+This module provides classes for validating data structure and content
+of DataFrames loaded from various sources.
 """
 
 import logging
-import os
+import re
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any, Optional, Union, Tuple
+from typing import List, Dict, Any, Optional, Union, Callable
 
 import pandas as pd
 import numpy as np
@@ -21,706 +21,442 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-class MergeError(Exception):
-    """Exception raised for data merging errors."""
+class ValidationError(Exception):
+    """Exception raised for data validation errors."""
     pass
 
 
-class DataMerger(ABC):
-    """Abstract base class for data mergers."""
+class DataValidator(ABC):
+    """Abstract base class for data validators."""
     
-    def __init__(self):
-        """Initialize the merger."""
-        self.merge_errors = []
-        logger.info("Initialized data merger")
+    def __init__(self, df: pd.DataFrame):
+        """
+        Initialize the validator with a DataFrame.
+        
+        Args:
+            df (pd.DataFrame): DataFrame to validate
+        """
+        self.df = df
+        self.validation_errors = []
+        logger.info(f"Initialized validator for DataFrame with shape {df.shape}")
     
     @abstractmethod
-    def merge(self) -> Dict[str, pd.DataFrame]:
+    def validate(self) -> bool:
         """
-        Merge data from different sources.
+        Validate the DataFrame.
         
         Returns:
-            Dict[str, pd.DataFrame]: Dictionary of merged DataFrames
+            bool: True if validation passed, False otherwise
         """
         pass
     
     def get_errors(self) -> List[str]:
         """
-        Get all merging errors.
+        Get all validation errors.
         
         Returns:
-            List[str]: List of merging error messages
+            List[str]: List of validation error messages
         """
-        return self.merge_errors
+        return self.validation_errors
     
     def _add_error(self, message: str) -> None:
         """
-        Add an error message to the list of merging errors.
+        Add an error message to the list of validation errors.
         
         Args:
             message (str): Error message
         """
-        self.merge_errors.append(message)
-        logger.warning(f"Merging error: {message}")
+        self.validation_errors.append(message)
+        logger.warning(f"Validation error: {message}")
     
-    def _save_dataframe(self, df: pd.DataFrame, name: str, output_dir: str) -> None:
+    def _validate_required_columns(self, required_columns: List[str]) -> bool:
         """
-        Save a DataFrame to CSV.
+        Validate that all required columns are present in the DataFrame.
         
         Args:
-            df (pd.DataFrame): DataFrame to save
-            name (str): Name to use for the file
-            output_dir (str): Directory to save to
+            required_columns (List[str]): List of required column names
+        
+        Returns:
+            bool: True if all required columns are present, False otherwise
         """
-        try:
-            # Ensure output directory exists
-            os.makedirs(output_dir, exist_ok=True)
-            
-            # Save the DataFrame
-            output_path = os.path.join(output_dir, f"{name}.csv")
-            df.to_csv(output_path, index=False)
-            logger.info(f"Saved {name} to {output_path}")
-        except Exception as e:
-            self._add_error(f"Failed to save {name}: {str(e)}")
-
-
-class PeopleMerger(DataMerger):
-    """Merger for people data from different sources."""
+        missing_columns = [col for col in required_columns if col not in self.df.columns]
+        
+        if missing_columns:
+            self._add_error(f"Missing required columns: {', '.join(missing_columns)}")
+            return False
+        
+        return True
     
-    def __init__(self, people_json_df: pd.DataFrame, people_yml_df: pd.DataFrame):
+    def _validate_no_duplicates(self, columns: List[str]) -> bool:
         """
-        Initialize the merger with people data from JSON and YAML sources.
+        Validate that there are no duplicate values in the specified columns.
         
         Args:
-            people_json_df (pd.DataFrame): People data from JSON
-            people_yml_df (pd.DataFrame): People data from YAML
-        """
-        super().__init__()
-        self.people_json_df = people_json_df
-        self.people_yml_df = people_yml_df
-    
-    def merge(self) -> Dict[str, pd.DataFrame]:
-        """
-        Merge people data from JSON and YAML sources.
+            columns (List[str]): Columns to check for duplicates
         
         Returns:
-            Dict[str, pd.DataFrame]: Dictionary with the merged people DataFrame
+            bool: True if no duplicates found, False otherwise
         """
-        try:
-            logger.info("Merging people data...")
-            
-            # Check for overlapping users
-            json_ids = set(self.people_json_df['user_id']) if 'user_id' in self.people_json_df.columns else set()
-            yml_ids = set(self.people_yml_df['user_id']) if 'user_id' in self.people_yml_df.columns else set()
-            
-            overlap = json_ids.intersection(yml_ids)
-            if overlap:
-                logger.info(f"Found {len(overlap)} overlapping users in JSON and YAML data")
-            
-            # Columns that should be in both dataframes for a proper merge
-            common_columns = [
-                'user_id', 'first_name', 'last_name', 'email', 'phone', 
-                'city', 'country', 'devices'
-            ]
-            
-            # Ensure all common columns exist in both dataframes
-            for df, source in [(self.people_json_df, 'JSON'), (self.people_yml_df, 'YAML')]:
-                missing_columns = [col for col in common_columns if col not in df.columns]
-                if missing_columns:
-                    logger.warning(f"Missing columns in {source} data: {missing_columns}")
-                    for col in missing_columns:
-                        df[col] = None
-            
-            # Merge dataframes, preferring JSON data for overlapping users
-            # Using outer join to keep all users from both sources
-            merged_df = pd.merge(
-                self.people_json_df, 
-                self.people_yml_df,
-                on=common_columns,
-                how='outer',
-                suffixes=('_json', '_yml')
-            )
-            
-            logger.info(f"Merged people data with shape {merged_df.shape}")
-            
-            return {'people': merged_df}
-            
-        except Exception as e:
-            error_msg = f"Unexpected error in people data merging: {str(e)}"
-            logger.error(error_msg)
-            self._add_error(error_msg)
-            return {'people': pd.DataFrame()}
-
-
-class UserReferencesMerger(DataMerger):
-    """Merger for adding user_id references to promotions and transactions."""
+        if not all(col in self.df.columns for col in columns):
+            self._add_error(f"Cannot check for duplicates, some columns do not exist: {columns}")
+            return False
+        
+        duplicates = self.df.duplicated(subset=columns, keep='first')
+        
+        if duplicates.any():
+            duplicate_indices = self.df[duplicates].index.tolist()
+            self._add_error(f"Found {len(duplicate_indices)} duplicate entries based on columns {columns}")
+            return False
+        
+        return True
     
-    def __init__(self, people_df: pd.DataFrame, promotions_df: pd.DataFrame, 
-                transactions_df: Optional[pd.DataFrame] = None):
+    def _validate_no_missing_values(self, columns: List[str]) -> bool:
         """
-        Initialize the merger with people, promotions, and transactions data.
+        Validate that there are no missing values in the specified columns.
         
         Args:
-            people_df (pd.DataFrame): People data
-            promotions_df (pd.DataFrame): Promotions data
-            transactions_df (pd.DataFrame, optional): Transactions data
-        """
-        super().__init__()
-        self.people_df = people_df
-        self.promotions_df = promotions_df
-        self.transactions_df = transactions_df
-    
-    def _add_user_references_to_promotions(self) -> pd.DataFrame:
-        """
-        Add user_id references to promotions based on email or phone.
+            columns (List[str]): Columns to check for missing values
         
         Returns:
-            pd.DataFrame: Promotions DataFrame with user_id references
+            bool: True if no missing values found, False otherwise
         """
-        promotions_df = self.promotions_df.copy()
+        if not all(col in self.df.columns for col in columns):
+            self._add_error(f"Cannot check for missing values, some columns do not exist: {columns}")
+            return False
         
-        # Check if user_id already exists and is populated
-        if 'user_id' in promotions_df.columns and not promotions_df['user_id'].isna().all():
-            logger.info("Promotions already have user_id references")
-            return promotions_df
+        missing_counts = self.df[columns].isna().sum()
+        missing_columns = missing_counts[missing_counts > 0].index.tolist()
         
-        # Initialize user_id column if it doesn't exist
-        if 'user_id' not in promotions_df.columns:
-            promotions_df['user_id'] = None
+        if missing_columns:
+            for col in missing_columns:
+                count = missing_counts[col]
+                self._add_error(f"Column '{col}' has {count} missing values")
+            return False
         
-        # Check for email reference
-        if 'client_email' in promotions_df.columns and 'email' in self.people_df.columns:
-            email_map = self.people_df.set_index('email')['user_id'].to_dict()
-            
-            for index, row in promotions_df.iterrows():
-                if pd.notna(row['client_email']) and row['client_email'] in email_map:
-                    promotions_df.at[index, 'user_id'] = email_map[row['client_email']]
-            
-            # Drop client_email column since we now have user_id
-            promotions_df.drop(columns=['client_email'], inplace=True, errors='ignore')
-            logger.info("Added user references to promotions based on email")
-        
-        # Check for phone reference
-        if 'telephone' in promotions_df.columns and 'phone' in self.people_df.columns:
-            phone_map = self.people_df.set_index('phone')['user_id'].to_dict()
-            
-            # For rows that still have no user_id, try to find by phone
-            mask = promotions_df['user_id'].isna()
-            for index, row in promotions_df[mask].iterrows():
-                if pd.notna(row['telephone']) and row['telephone'] in phone_map:
-                    promotions_df.at[index, 'user_id'] = phone_map[row['telephone']]
-            
-            # Drop telephone column since we now have user_id
-            promotions_df.drop(columns=['telephone'], inplace=True, errors='ignore')
-            logger.info("Added user references to promotions based on phone")
-        
-        # Log warning for promotions without user_id
-        missing_user_id = promotions_df['user_id'].isna().sum()
-        if missing_user_id > 0:
-            self._add_error(f"Could not find user_id for {missing_user_id} promotions")
-        
-        return promotions_df
+        return True
     
-    def _add_user_references_to_transactions(self) -> pd.DataFrame:
+    def _validate_column_values(self, column: str, validator: Callable[[Any], bool], 
+                              error_message: str) -> bool:
         """
-        Add user_id references to transactions based on phone.
-        
-        Returns:
-            pd.DataFrame: Transactions DataFrame with user_id references
-        """
-        if self.transactions_df is None:
-            logger.info("No transactions data provided for user reference merging")
-            return pd.DataFrame()
-        
-        transactions_df = self.transactions_df.copy()
-        
-        # Check if user_id already exists and is populated
-        if 'user_id' in transactions_df.columns and not transactions_df['user_id'].isna().all():
-            logger.info("Transactions already have user_id references")
-            return transactions_df
-        
-        # Initialize user_id column if it doesn't exist
-        if 'user_id' not in transactions_df.columns:
-            transactions_df['user_id'] = None
-        
-        # Check for phone reference
-        if 'phone' in transactions_df.columns and 'phone' in self.people_df.columns:
-            phone_map = self.people_df.set_index('phone')['user_id'].to_dict()
-            
-            for index, row in transactions_df.iterrows():
-                if pd.notna(row['phone']) and row['phone'] in phone_map:
-                    transactions_df.at[index, 'user_id'] = phone_map[row['phone']]
-            
-            # Drop phone column since we now have user_id
-            transactions_df.drop(columns=['phone'], inplace=True, errors='ignore')
-            logger.info("Added user references to transactions based on phone")
-        
-        # Log warning for transactions without user_id
-        missing_user_id = transactions_df['user_id'].isna().sum()
-        if missing_user_id > 0:
-            self._add_error(f"Could not find user_id for {missing_user_id} transactions")
-        
-        return transactions_df
-    
-    def merge(self) -> Dict[str, pd.DataFrame]:
-        """
-        Merge user references into promotions and transactions.
-        
-        Returns:
-            Dict[str, pd.DataFrame]: Dictionary with updated DataFrames
-        """
-        try:
-            logger.info("Adding user references to related data...")
-            
-            result = {}
-            
-            # Add user references to promotions
-            promotions_df = self._add_user_references_to_promotions()
-            result['promotions'] = promotions_df
-            
-            # Add user references to transactions if available
-            if self.transactions_df is not None:
-                transactions_df = self._add_user_references_to_transactions()
-                result['transactions'] = transactions_df
-            
-            logger.info("Completed adding user references")
-            return result
-            
-        except Exception as e:
-            error_msg = f"Unexpected error in user reference merging: {str(e)}"
-            logger.error(error_msg)
-            self._add_error(error_msg)
-            return {'promotions': self.promotions_df, 'transactions': self.transactions_df}
-
-
-class UserTransactionsMerger(DataMerger):
-    """Merger for creating user-level transaction summaries."""
-    
-    def __init__(self, transactions_df: pd.DataFrame, people_df: pd.DataFrame):
-        """
-        Initialize the merger with transactions and people data.
+        Validate that all values in a column pass a custom validation function.
         
         Args:
-            transactions_df (pd.DataFrame): Transactions data
-            people_df (pd.DataFrame): People data
+            column (str): Column to validate
+            validator (Callable[[Any], bool]): Function to validate each value
+            error_message (str): Error message template
+        
+        Returns:
+            bool: True if all values pass validation, False otherwise
         """
-        super().__init__()
-        self.transactions_df = transactions_df
-        self.people_df = people_df
+        if column not in self.df.columns:
+            self._add_error(f"Cannot validate values, column does not exist: {column}")
+            return False
+        
+        # Skip NaN values to avoid validation errors
+        invalid_indices = self.df[~self.df[column].isna()][~self.df[column].apply(validator)].index.tolist()
+        
+        if invalid_indices:
+            self._add_error(error_message.format(len(invalid_indices), column))
+            return False
+        
+        return True
     
-    def _get_favorite_store(self, stores: pd.Series) -> str:
+    def _validate_numeric_column(self, column: str, min_val: Optional[float] = None, 
+                               max_val: Optional[float] = None) -> bool:
         """
-        Get the most frequent store for a user.
+        Validate that a column contains only numeric values within an optional range.
         
         Args:
-            stores (pd.Series): Series of stores
+            column (str): Column to validate
+            min_val (float, optional): Minimum allowed value
+            max_val (float, optional): Maximum allowed value
         
         Returns:
-            str: Most frequent store or None if no data
+            bool: True if validation passed, False otherwise
         """
-        if stores.empty:
-            return None
+        if column not in self.df.columns:
+            self._add_error(f"Cannot validate numeric values, column does not exist: {column}")
+            return False
         
-        mode = stores.mode()
-        return mode.iloc[0] if not mode.empty else None
+        # Check that values are numeric
+        non_numeric = self.df[~self.df[column].isna() & ~pd.to_numeric(self.df[column], errors='coerce').notna()]
+        
+        if not non_numeric.empty:
+            self._add_error(f"Column '{column}' has {len(non_numeric)} non-numeric values")
+            return False
+        
+        # Convert to numeric for range validation
+        numeric_col = pd.to_numeric(self.df[column], errors='coerce')
+        
+        # Check minimum value if specified
+        if min_val is not None:
+            below_min = numeric_col < min_val
+            if below_min.any():
+                count = below_min.sum()
+                self._add_error(f"Column '{column}' has {count} values below minimum {min_val}")
+                return False
+        
+        # Check maximum value if specified
+        if max_val is not None:
+            above_max = numeric_col > max_val
+            if above_max.any():
+                count = above_max.sum()
+                self._add_error(f"Column '{column}' has {count} values above maximum {max_val}")
+                return False
+        
+        return True
     
-    def _get_favorite_item(self, items: pd.Series) -> str:
+    def _validate_string_pattern(self, column: str, pattern: str) -> bool:
         """
-        Get the most frequently purchased item for a user.
+        Validate that all string values in a column match a regex pattern.
         
         Args:
-            items (pd.Series): Series of items
+            column (str): Column to validate
+            pattern (str): Regular expression pattern
         
         Returns:
-            str: Most frequent item or None if no data
+            bool: True if all values match the pattern, False otherwise
         """
-        if items.empty:
-            return None
+        if column not in self.df.columns:
+            self._add_error(f"Cannot validate pattern, column does not exist: {column}")
+            return False
         
-        mode = items.mode()
-        return mode.iloc[0] if not mode.empty else None
+        # Create a compiled regex for better performance
+        regex = re.compile(pattern)
+        
+        # Only check non-NA string values
+        mask = ~self.df[column].isna() & self.df[column].apply(lambda x: isinstance(x, str))
+        invalid = ~self.df.loc[mask, column].apply(lambda x: bool(regex.match(x)))
+        
+        if invalid.any():
+            count = invalid.sum()
+            self._add_error(f"Column '{column}' has {count} values not matching pattern '{pattern}'")
+            return False
+        
+        return True
+
+
+class PeopleValidator(DataValidator):
+    """Validator for people data."""
     
-    def merge(self) -> Dict[str, pd.DataFrame]:
+    def validate(self) -> bool:
         """
-        Create user-level transaction summaries.
+        Validate people data.
         
         Returns:
-            Dict[str, pd.DataFrame]: Dictionary with user_transactions DataFrame
+            bool: True if validation passed, False otherwise
         """
-        try:
-            logger.info("Creating user-level transaction summaries...")
-            
-            # Ensure required columns exist
-            required_columns = ['user_id', 'transaction_id', 'price', 'item', 'store']
-            if not all(col in self.transactions_df.columns for col in required_columns):
-                missing = [col for col in required_columns if col not in self.transactions_df.columns]
-                self._add_error(f"Missing required columns for user transactions summary: {missing}")
-                return {'user_transactions': pd.DataFrame()}
-            
-            # Group transactions by user_id
-            aggregated_df = self.transactions_df.groupby('user_id').agg(
-                total_spent=('price', 'sum'),
-                transaction_count=('transaction_id', 'nunique'),
-                favorite_store=('store', self._get_favorite_store),
-                favorite_item=('item', self._get_favorite_item)
-            )
-            
-            # Reset index to make user_id a column
-            aggregated_df = aggregated_df.reset_index()
-            
-            # Merge with people data to ensure all users are included
-            result_df = pd.merge(self.people_df[['user_id']], aggregated_df, on='user_id', how='left')
-            
-            # Fill missing values for users with no transactions
-            result_df['total_spent'] = result_df['total_spent'].fillna(0)
-            result_df['transaction_count'] = result_df['transaction_count'].fillna(0).astype(int)
-            
-            logger.info(f"Created user transaction summaries with shape {result_df.shape}")
-            
-            return {'user_transactions': result_df}
-            
-        except Exception as e:
-            error_msg = f"Unexpected error in user transactions merging: {str(e)}"
-            logger.error(error_msg)
-            self._add_error(error_msg)
-            return {'user_transactions': pd.DataFrame()}
-
-
-class UserTransfersMerger(DataMerger):
-    """Merger for creating user-level transfer summaries."""
-    
-    def __init__(self, transfers_df: pd.DataFrame, people_df: pd.DataFrame):
-        """
-        Initialize the merger with transfers and people data.
+        is_valid = True
         
-        Args:
-            transfers_df (pd.DataFrame): Transfers data
-            people_df (pd.DataFrame): People data
-        """
-        super().__init__()
-        self.transfers_df = transfers_df
-        self.people_df = people_df
+        # Check required columns
+        required_columns = ['id', 'email', 'phone']
+        if not self._validate_required_columns(required_columns):
+            is_valid = False
+        
+        # Check for unique identifiers
+        if 'id' in self.df.columns and not self._validate_no_duplicates(['id']):
+            is_valid = False
+        
+        if 'email' in self.df.columns and not self._validate_no_duplicates(['email']):
+            is_valid = False
+        
+        if 'phone' in self.df.columns and not self._validate_no_duplicates(['phone']):
+            is_valid = False
+        
+        # Check for missing values in key fields
+        non_empty_columns = ['id', 'email']
+        if not self._validate_no_missing_values(non_empty_columns):
+            is_valid = False
+        
+        # Validate email format
+        if 'email' in self.df.columns:
+            email_pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+            if not self._validate_string_pattern('email', email_pattern):
+                is_valid = False
+        
+        # Validate phone format (basic check, may need to be adapted)
+        if 'phone' in self.df.columns:
+            phone_pattern = r'^\+?[0-9\s-()]{7,20}$'
+            if not self._validate_string_pattern('phone', phone_pattern):
+                is_valid = False
+        
+        # Location data validation (if present)
+        location_columns = ['city', 'country']
+        if all(col in self.df.columns for col in location_columns):
+            if not self._validate_no_missing_values(location_columns):
+                is_valid = False
+        
+        return is_valid
+
+
+class PromotionsValidator(DataValidator):
+    """Validator for promotions data."""
     
-    def merge(self) -> Dict[str, pd.DataFrame]:
+    def validate(self) -> bool:
         """
-        Create user-level transfer summaries.
+        Validate promotions data.
         
         Returns:
-            Dict[str, pd.DataFrame]: Dictionary with user_transfers DataFrame
+            bool: True if validation passed, False otherwise
         """
-        try:
-            logger.info("Creating user-level transfer summaries...")
-            
-            # Ensure required columns exist
-            required_columns = ['transfer_id', 'sender_id', 'recipient_id', 'amount']
-            if not all(col in self.transfers_df.columns for col in required_columns):
-                missing = [col for col in required_columns if col not in self.transfers_df.columns]
-                self._add_error(f"Missing required columns for user transfers summary: {missing}")
-                return {'user_transfers': pd.DataFrame()}
-            
-            # Calculate sent amounts
-            sent_total = self.transfers_df.groupby('sender_id')['amount'].sum()
-            sent_count = self.transfers_df.groupby('sender_id')['transfer_id'].nunique()
-            
-            # Calculate received amounts
-            received_total = self.transfers_df.groupby('recipient_id')['amount'].sum()
-            received_count = self.transfers_df.groupby('recipient_id')['transfer_id'].nunique()
-            
-            # Calculate net transferred
-            net_transferred = pd.Series(dtype='float64')
-            all_user_ids = set(self.transfers_df['sender_id']).union(set(self.transfers_df['recipient_id']))
-            for user_id in all_user_ids:
-                sent = sent_total.get(user_id, 0)
-                received = received_total.get(user_id, 0)
-                net_transferred[user_id] = received - sent
-            
-            # Create the result DataFrame
-            result_df = pd.DataFrame({
-                'user_id': list(all_user_ids)
-            })
-            
-            # Add calculated columns
-            result_df['total_sent'] = result_df['user_id'].map(sent_total).fillna(0)
-            result_df['total_received'] = result_df['user_id'].map(received_total).fillna(0)
-            result_df['net_transferred'] = result_df['user_id'].map(net_transferred).fillna(0)
-            result_df['sent_count'] = result_df['user_id'].map(sent_count).fillna(0).astype(int)
-            result_df['received_count'] = result_df['user_id'].map(received_count).fillna(0).astype(int)
-            result_df['transfer_count'] = result_df['sent_count'] + result_df['received_count']
-            
-            # Merge with people data to ensure all users are included
-            result_df = pd.merge(self.people_df[['user_id']], result_df, on='user_id', how='left')
-            
-            # Fill missing values for users with no transfers
-            for col in ['total_sent', 'total_received', 'net_transferred']:
-                result_df[col] = result_df[col].fillna(0)
-            
-            for col in ['sent_count', 'received_count', 'transfer_count']:
-                result_df[col] = result_df[col].fillna(0).astype(int)
-            
-            logger.info(f"Created user transfer summaries with shape {result_df.shape}")
-            
-            return {'user_transfers': result_df}
-            
-        except Exception as e:
-            error_msg = f"Unexpected error in user transfers merging: {str(e)}"
-            logger.error(error_msg)
-            self._add_error(error_msg)
-            return {'user_transfers': pd.DataFrame()}
-
-
-class ItemSummaryMerger(DataMerger):
-    """Merger for creating item-level summaries."""
-    
-    def __init__(self, transactions_df: pd.DataFrame):
-        """
-        Initialize the merger with transactions data.
+        is_valid = True
         
-        Args:
-            transactions_df (pd.DataFrame): Transactions data
-        """
-        super().__init__()
-        self.transactions_df = transactions_df
+        # Check required columns
+        required_columns = ['promotion_id', 'promotion', 'responded']
+        if not self._validate_required_columns(required_columns):
+            is_valid = False
+        
+        # Check for unique identifiers
+        if 'promotion_id' in self.df.columns and not self._validate_no_duplicates(['promotion_id']):
+            is_valid = False
+        
+        # Check for missing values in key fields
+        non_empty_columns = ['promotion_id', 'promotion']
+        if not self._validate_no_missing_values(non_empty_columns):
+            is_valid = False
+        
+        # Validate response values
+        if 'responded' in self.df.columns:
+            valid_responses = ['Yes', 'No']
+            
+            def is_valid_response(val):
+                return val in valid_responses
+            
+            error_msg = "Column 'responded' has {} invalid values (expected 'Yes' or 'No')"
+            if not self._validate_column_values('responded', is_valid_response, error_msg):
+                is_valid = False
+        
+        # Validate user_id if present (should match existing users)
+        if 'user_id' in self.df.columns:
+            if not self._validate_no_missing_values(['user_id']):
+                is_valid = False
+        
+        return is_valid
+
+
+class TransfersValidator(DataValidator):
+    """Validator for transfers data."""
     
-    def merge(self) -> Dict[str, pd.DataFrame]:
+    def validate(self) -> bool:
         """
-        Create item-level summaries.
+        Validate transfers data.
         
         Returns:
-            Dict[str, pd.DataFrame]: Dictionary with item_summary DataFrame
+            bool: True if validation passed, False otherwise
         """
-        try:
-            logger.info("Creating item-level summaries...")
+        is_valid = True
+        
+        # Check required columns
+        required_columns = ['sender_id', 'recipient_id', 'amount']
+        if not self._validate_required_columns(required_columns):
+            is_valid = False
+        
+        # Check for missing values in key fields
+        if not self._validate_no_missing_values(required_columns):
+            is_valid = False
+        
+        # Validate amount is numeric and positive
+        if 'amount' in self.df.columns:
+            if not self._validate_numeric_column('amount', min_val=0):
+                is_valid = False
+        
+        # Sender and recipient should be different
+        if all(col in self.df.columns for col in ['sender_id', 'recipient_id']):
+            same_sender_recipient = (self.df['sender_id'] == self.df['recipient_id']).sum()
             
-            # Ensure required columns exist
-            required_columns = ['item', 'price', 'quantity', 'transaction_id']
-            if not all(col in self.transactions_df.columns for col in required_columns):
-                missing = [col for col in required_columns if col not in self.transactions_df.columns]
-                self._add_error(f"Missing required columns for item summary: {missing}")
-                return {'item_summary': pd.DataFrame()}
-            
-            # Group transactions by item
-            aggregated_df = self.transactions_df.groupby('item').agg(
-                total_revenue=('price', 'sum'),
-                items_sold=('quantity', 'sum'),
-                transaction_count=('transaction_id', 'nunique')
-            )
-            
-            # Calculate average price per item
-            aggregated_df['average_price'] = (aggregated_df['total_revenue'] / aggregated_df['items_sold']).round(2)
-            
-            # Reset index to make item a column
-            aggregated_df = aggregated_df.reset_index()
-            
-            logger.info(f"Created item summaries with shape {aggregated_df.shape}")
-            
-            return {'item_summary': aggregated_df}
-            
-        except Exception as e:
-            error_msg = f"Unexpected error in item summary merging: {str(e)}"
-            logger.error(error_msg)
-            self._add_error(error_msg)
-            return {'item_summary': pd.DataFrame()}
+            if same_sender_recipient > 0:
+                self._add_error(f"Found {same_sender_recipient} transfers where sender_id equals recipient_id")
+                is_valid = False
+        
+        return is_valid
 
 
-class StoreSummaryMerger(DataMerger):
-    """Merger for creating store-level summaries."""
+class TransactionsValidator(DataValidator):
+    """Validator for transactions data."""
     
-    def __init__(self, transactions_df: pd.DataFrame):
+    def validate(self) -> bool:
         """
-        Initialize the merger with transactions data.
-        
-        Args:
-            transactions_df (pd.DataFrame): Transactions data
-        """
-        super().__init__()
-        self.transactions_df = transactions_df
-    
-    def _get_most_sold_item(self, store: str) -> str:
-        """
-        Get the most sold item for a store based on quantity.
-        
-        Args:
-            store (str): Store name
+        Validate transactions data.
         
         Returns:
-            str: Most sold item or None if no data
+            bool: True if validation passed, False otherwise
         """
-        store_data = self.transactions_df[self.transactions_df['store'] == store]
-        if store_data.empty:
-            return None
+        is_valid = True
         
-        item_qty = store_data.groupby('item')['quantity'].sum()
-        return item_qty.idxmax() if not item_qty.empty else None
-    
-    def _get_most_profitable_item(self, store: str) -> str:
-        """
-        Get the most profitable item for a store based on total revenue.
+        # Check required columns
+        required_columns = ['transaction_id', 'item', 'price', 'quantity', 'store']
+        if not self._validate_required_columns(required_columns):
+            is_valid = False
         
-        Args:
-            store (str): Store name
+        # Check for unique identifiers
+        if 'transaction_id' in self.df.columns and not self._validate_no_duplicates(['transaction_id']):
+            is_valid = False
         
-        Returns:
-            str: Most profitable item or None if no data
-        """
-        store_data = self.transactions_df[self.transactions_df['store'] == store]
-        if store_data.empty:
-            return None
+        # Check for missing values in key fields
+        non_empty_columns = ['transaction_id', 'item', 'price', 'store']
+        if not self._validate_no_missing_values(non_empty_columns):
+            is_valid = False
         
-        item_revenue = store_data.groupby('item')['price'].sum()
-        return item_revenue.idxmax() if not item_revenue.empty else None
-    
-    def merge(self) -> Dict[str, pd.DataFrame]:
-        """
-        Create store-level summaries.
+        # Validate numeric fields
+        if 'price' in self.df.columns:
+            if not self._validate_numeric_column('price', min_val=0):
+                is_valid = False
         
-        Returns:
-            Dict[str, pd.DataFrame]: Dictionary with store_summary DataFrame
-        """
-        try:
-            logger.info("Creating store-level summaries...")
-            
-            # Ensure required columns exist
-            required_columns = ['store', 'item', 'price', 'quantity', 'transaction_id']
-            if not all(col in self.transactions_df.columns for col in required_columns):
-                missing = [col for col in required_columns if col not in self.transactions_df.columns]
-                self._add_error(f"Missing required columns for store summary: {missing}")
-                return {'store_summary': pd.DataFrame()}
-            
-            # Group transactions by store
-            aggregated_df = self.transactions_df.groupby('store').agg(
-                total_revenue=('price', 'sum'),
-                items_sold=('quantity', 'sum'),
-                total_transactions=('transaction_id', 'nunique')
-            )
-            
-            # Calculate average transaction value
-            aggregated_df['average_transaction_value'] = (
-                aggregated_df['total_revenue'] / aggregated_df['total_transactions']
-            ).round(2)
-            
-            # Add most sold and most profitable items
-            stores = aggregated_df.index.tolist()
-            
-            most_sold_items = []
-            most_profitable_items = []
-            
-            for store in stores:
-                most_sold_items.append(self._get_most_sold_item(store))
-                most_profitable_items.append(self._get_most_profitable_item(store))
-            
-            aggregated_df['most_sold_item'] = most_sold_items
-            aggregated_df['most_profitable_item'] = most_profitable_items
-            
-            # Reset index to make store a column
-            aggregated_df = aggregated_df.reset_index()
-            
-            logger.info(f"Created store summaries with shape {aggregated_df.shape}")
-            
-            return {'store_summary': aggregated_df}
-            
-        except Exception as e:
-            error_msg = f"Unexpected error in store summary merging: {str(e)}"
-            logger.error(error_msg)
-            self._add_error(error_msg)
-            return {'store_summary': pd.DataFrame()}
+        if 'quantity' in self.df.columns:
+            if not self._validate_numeric_column('quantity', min_val=1):
+                is_valid = False
+        
+        if 'price_per_item' in self.df.columns:
+            if not self._validate_numeric_column('price_per_item', min_val=0):
+                is_valid = False
+        
+        return is_valid
 
 
-class MainDataMerger(DataMerger):
-    """Main merger class to orchestrate the entire merging process."""
+# Factory function to get the appropriate validator
+def get_validator(data_type: str, df: pd.DataFrame) -> DataValidator:
+    """
+    Factory function to get the appropriate validator for a data type.
     
-    def __init__(self, 
-                people_json_df: pd.DataFrame, 
-                people_yml_df: pd.DataFrame,
-                promotions_df: pd.DataFrame,
-                transfers_df: pd.DataFrame,
-                transactions_df: Optional[pd.DataFrame] = None,
-                output_dir: str = 'data/processed'):
-        """
-        Initialize the main merger with all data sources.
-        
-        Args:
-            people_json_df (pd.DataFrame): People data from JSON
-            people_yml_df (pd.DataFrame): People data from YAML
-            promotions_df (pd.DataFrame): Promotions data
-            transfers_df (pd.DataFrame): Transfers data
-            transactions_df (pd.DataFrame, optional): Transactions data
-            output_dir (str): Directory to save processed data
-        """
-        super().__init__()
-        self.people_json_df = people_json_df
-        self.people_yml_df = people_yml_df
-        self.promotions_df = promotions_df
-        self.transfers_df = transfers_df
-        self.transactions_df = transactions_df
-        self.output_dir = output_dir
+    Args:
+        data_type (str): Type of data to validate ('people', 'promotions', 'transfers', 'transactions')
+        df (pd.DataFrame): DataFrame to validate
     
-    def merge(self) -> Dict[str, pd.DataFrame]:
-        """
-        Execute the full merging pipeline.
-        
-        Returns:
-            Dict[str, pd.DataFrame]: Dictionary with all merged DataFrames
-        """
-        try:
-            logger.info("Starting main data merging process...")
-            
-            all_results = {}
-            
-            # Step 1: Merge people data from JSON and YAML
-            people_merger = PeopleMerger(self.people_json_df, self.people_yml_df)
-            people_results = people_merger.merge()
-            all_results.update(people_results)
-            
-            # Check if we have people data
-            if 'people' not in all_results or all_results['people'].empty:
-                self._add_error("Failed to merge people data, cannot continue")
-                return all_results
-            
-            people_df = all_results['people']
-            
-            # Step 2: Add user references to promotions and transactions
-            user_refs_merger = UserReferencesMerger(
-                people_df, 
-                self.promotions_df,
-                self.transactions_df
-            )
-            user_refs_results = user_refs_merger.merge()
-            all_results.update(user_refs_results)
-            
-            # Get the updated DataFrames
-            promotions_df = user_refs_results.get('promotions', self.promotions_df)
-            transactions_df = user_refs_results.get('transactions', self.transactions_df)
-            
-            # Step 3: Create user transaction summaries
-            if transactions_df is not None and not transactions_df.empty:
-                user_transactions_merger = UserTransactionsMerger(transactions_df, people_df)
-                user_transactions_results = user_transactions_merger.merge()
-                all_results.update(user_transactions_results)
-            
-                # Step 4: Create item and store summaries
-                item_summary_merger = ItemSummaryMerger(transactions_df)
-                item_summary_results = item_summary_merger.merge()
-                all_results.update(item_summary_results)
-                
-                store_summary_merger = StoreSummaryMerger(transactions_df)
-                store_summary_results = store_summary_merger.merge()
-                all_results.update(store_summary_results)
-            
-            # Step 5: Create user transfer summaries
-            user_transfers_merger = UserTransfersMerger(self.transfers_df, people_df)
-            user_transfers_results = user_transfers_merger.merge()
-            all_results.update(user_transfers_results)
-            
-            # Save all results to CSV
-            for name, df in all_results.items():
-                self._save_dataframe(df, name, self.output_dir)
-            
-            logger.info("Completed main data merging process")
-            
-            return all_results
-            
-        except Exception as e:
-            error_msg = f"Unexpected error in main data merging: {str(e)}"
-            logger.error(error_msg)
-            self._add_error(error_msg)
-            return {}
+    Returns:
+        DataValidator: Validator for the specified data type
+    
+    Raises:
+        ValueError: If the data type is not supported
+    """
+    validators = {
+        'people': PeopleValidator,
+        'promotions': PromotionsValidator,
+        'transfers': TransfersValidator,
+        'transactions': TransactionsValidator
+    }
+    
+    if data_type.lower() not in validators:
+        logger.error(f"Unsupported data type: {data_type}")
+        raise ValueError(f"Unsupported data type: {data_type}")
+    
+    return validators[data_type.lower()](df)
+
+
+# Convenience function for direct validation
+def validate_dataframe(df: pd.DataFrame, data_type: str) -> List[str]:
+    """
+    Validate a DataFrame for a specific data type.
+    
+    Args:
+        df (pd.DataFrame): DataFrame to validate
+        data_type (str): Type of data to validate ('people', 'promotions', 'transfers', 'transactions')
+    
+    Returns:
+        List[str]: List of validation error messages, empty if validation passed
+    
+    Raises:
+        ValueError: If the data type is not supported
+    """
+    validator = get_validator(data_type, df)
+    validator.validate()
+    return validator.get_errors()
