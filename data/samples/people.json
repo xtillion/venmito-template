@@ -1,0 +1,304 @@
+[
+    {
+        "id": "0001",
+        "first_name": "Jamie",
+        "last_name": "Bright",
+        "telephone": "533-849-3913",
+        "email": "Jamie.Bright@example.com",
+        "devices": [
+            "Android"
+        ],
+        "location": {
+            "City": "Montreal",
+            "Country": "Canada"
+        },
+        "dob": "05/20/2000"
+    },
+    {
+        "id": "0002",
+        "first_name": "Arabella",
+        "last_name": "Knox",
+        "telephone": "652-272-9539",
+        "email": "Arabella.Knox@example.com",
+        "devices": [
+            "Android",
+            "Iphone"
+        ],
+        "location": {
+            "City": "Los Angeles",
+            "Country": "USA"
+        },
+        "dob": "02/22/1996"
+    },
+    {
+        "id": "0003",
+        "first_name": "Yusra",
+        "last_name": "Fletcher",
+        "telephone": "385-702-8874",
+        "email": "Yusra.Fletcher@example.com",
+        "devices": [
+            "Android",
+            "Iphone",
+            "Desktop"
+        ],
+        "location": {
+            "City": "Toronto",
+            "Country": "Canada"
+        },
+        "dob": "10/30/1998"
+    },
+    {
+        "id": "0004",
+        "first_name": "Esme",
+        "last_name": "Nielsen",
+        "telephone": "621-797-5367",
+        "email": "Esme.Nielsen@example.com",
+        "devices": [
+            "Android",
+            "Iphone"
+        ],
+        "location": {
+            "City": "Los Angeles",
+            "Country": "USA"
+        },
+        "dob": "02/17/2000"
+    },
+    {
+        "id": "0006",
+        "first_name": "Dean",
+        "last_name": "Lewis",
+        "telephone": "243-955-3782",
+        "email": "Dean.Lewis@example.com",
+        "devices": [
+            "Android",
+            "Iphone",
+            "Desktop"
+        ],
+        "location": {
+            "City": "San Diego",
+            "Country": "USA"
+        },
+        "dob": "10/14/2000"
+    },
+    {
+        "id": "0007",
+        "first_name": "Inaaya",
+        "last_name": "Velasquez",
+        "telephone": "489-241-7631",
+        "email": "Inaaya.Velasquez@example.com",
+        "devices": [
+            "Android",
+            "Iphone",
+            "Desktop"
+        ],
+        "location": {
+            "City": "Los Angeles",
+            "Country": "USA"
+        },
+        "dob": "04/23/1987"
+    },
+    {
+        "id": "0008",
+        "first_name": "Tasnim",
+        "last_name": "Cobb",
+        "telephone": "262-380-8877",
+        "email": "Tasnim.Cobb@example.com",
+        "devices": [
+            "Desktop"
+        ],
+        "location": {
+            "City": "San Diego",
+            "Country": "USA"
+        },
+        "dob": "01/04/1992"
+    },
+    {
+        "id": "0009",
+        "first_name": "Asa",
+        "last_name": "Vazquez",
+        "telephone": "504-421-4485",
+        "email": "Asa.Vazquez@example.com",
+        "devices": [
+            "Android"
+        ],
+        "location": {
+            "City": "Toronto",
+            "Country": "Canada"
+        },
+        "dob": "06/23/2004"
+    },
+    {
+        "id": "0010",
+        "first_name": "Keith",
+        "last_name": "Donovan",
+        "telephone": "549-515-6738",
+        "email": "Keith.Donovan@example.com",
+        "devices": [
+            "Iphone",
+            "Desktop"
+        ],
+        "location": {
+            "City": "Chicago",
+            "Country": "USA"
+        },
+        "dob": "06/22/1994"
+    },
+    {
+        "id": "0011",
+        "first_name": "Moshe",
+        "last_name": "Colon",
+        "telephone": "131-622-5442",
+        "email": "Moshe.Colon@example.com",
+        "devices": [
+            "Iphone",
+            "Desktop"
+        ],
+        "location": {
+            "City": "New York",
+            "Country": "USA"
+        },
+        "dob": "02/19/1988"
+    },
+    {
+        "id": "0012",
+        "first_name": "Hussain",
+        "last_name": "Santos",
+        "telephone": "379-352-6285",
+        "email": "Hussain.Santos@example.com",
+        "devices": [
+            "Iphone",
+            "Desktop"
+        ],
+        "location": {
+            "City": "San Diego",
+            "Country": "USA"
+        },
+        "dob": "11/06/1989"
+    },
+    {
+        "id": "0013",
+        "first_name": "Lillian",
+        "last_name": "Hanna",
+        "telephone": "488-762-8236",
+        "email": "Lillian.Hanna@example.com",
+        "devices": [
+            "Iphone"
+        ],
+        "location": {
+            "City": "Los Angeles",
+            "Country": "USA"
+        },
+        "dob": "08/24/1999"
+    },
+    {
+        "id": "0014",
+        "first_name": "Harvey",
+        "last_name": "Guerrero",
+        "telephone": "597-677-6862",
+        "email": "Harvey.Guerrero@example.com",
+        "devices": [
+            "Iphone"
+        ],
+        "location": {
+            "City": "Chicago",
+            "Country": "USA"
+        },
+        "dob": "02/10/1988"
+    },
+    {
+        "id": "0015",
+        "first_name": "Leroy",
+        "last_name": "Barrera",
+        "telephone": "659-190-9378",
+        "email": "Leroy.Barrera@example.com",
+        "devices": [
+            "Android",
+            "Iphone",
+            "Desktop"
+        ],
+        "location": {
+            "City": "New York",
+            "Country": "USA"
+        },
+        "dob": "10/23/1989"
+    },
+    {
+        "id": "0016",
+        "first_name": "Zack",
+        "last_name": "Griffin",
+        "telephone": "467-370-7724",
+        "email": "Zack.Griffin@example.com",
+        "devices": [
+            "Desktop"
+        ],
+        "location": {
+            "City": "San Diego",
+            "Country": "USA"
+        },
+        "dob": "01/24/1998"
+    },
+    {
+        "id": "0017",
+        "first_name": "Adele",
+        "last_name": "Garza",
+        "telephone": "429-916-1662",
+        "email": "Adele.Garza@example.com",
+        "devices": [
+            "Android",
+            "Iphone",
+            "Desktop"
+        ],
+        "location": {
+            "City": "New York",
+            "Country": "USA"
+        },
+        "dob": "02/10/1991"
+    },
+    {
+        "id": "0018",
+        "first_name": "Sandra",
+        "last_name": "Cherry",
+        "telephone": "218-605-4170",
+        "email": "Sandra.Cherry@example.com",
+        "devices": [
+            "Desktop"
+        ],
+        "location": {
+            "City": "San Francisco",
+            "Country": "USA"
+        },
+        "dob": "05/22/1972"
+    },
+    {
+        "id": "0019",
+        "first_name": "Carmen",
+        "last_name": "Burton",
+        "telephone": "527-368-7429",
+        "email": "Carmen.Burton@example.com",
+        "devices": [
+            "Android",
+            "Desktop"
+        ],
+        "location": {
+            "City": "Toronto",
+            "Country": "Canada"
+        },
+        "dob": "03/25/1989"
+    },
+    {
+        "id": "0020",
+        "first_name": "Donald",
+        "last_name": "Stone",
+        "telephone": "730-260-4630",
+        "email": "Donald.Stone@example.com",
+        "devices": [
+            "Android",
+            "Desktop"
+        ],
+        "location": {
+            "City": "London",
+            "Country": "United Kingdom"
+        },
+        "dob": "12/10/1994"
+    }
+]
