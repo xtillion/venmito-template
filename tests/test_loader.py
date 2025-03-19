@@ -58,7 +58,7 @@ def sample_xml_data():
 
 @pytest.fixture
 def temp_json_file(sample_json_data):
-    with tempfile.NamedTemporaryFile(suffix=".json", delete=False) as f:
+    with tempfile.NamedTemporaryFile(suffix=".json", delete=False, mode='w') as f:
         json.dump(sample_json_data, f)
         temp_file_path = f.name
     yield temp_file_path
@@ -66,7 +66,7 @@ def temp_json_file(sample_json_data):
 
 @pytest.fixture
 def temp_yaml_file(sample_yaml_data):
-    with tempfile.NamedTemporaryFile(suffix=".yml", delete=False) as f:
+    with tempfile.NamedTemporaryFile(suffix=".yml", delete=False, mode='w') as f:
         yaml.dump(sample_yaml_data, f)
         temp_file_path = f.name
     yield temp_file_path
