@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Analysis Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Data Analysis Dashboard</h1>
+    </header>
+    <main>
+        <div class="dashboard-container">
+            <div class="dashboard-card">
+                <h2>User Analytics</h2>
+                <div id="user-chart"></div>
+            </div>
+            <div class="dashboard-card">
+                <h2>Transfer Analysis</h2>
+                <div id="transfer-chart"></div>
+            </div>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
