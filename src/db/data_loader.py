@@ -98,6 +98,11 @@ class DataLoader:
             elif 'count' in col:
                 df_copy[col] = df_copy[col].fillna(0).astype(int)
         
+        # Convert NumPy types to Python native types
+        for col in df_copy.columns:
+            if pd.api.types.is_numeric_dtype(df_copy[col]):
+                df_copy[col] = df_copy[col].astype(float if pd.api.types.is_float_dtype(df_copy[col]) else int)
+        
         return df_copy
     
     def _df_to_params_list(self, df: pd.DataFrame, columns: List[str]) -> List[tuple]:
