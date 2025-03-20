@@ -166,16 +166,17 @@ class TestDataProcessor:
         assert "Iphone" not in processor.df.columns
         assert "Desktop" not in processor.df.columns
     
-    def test_fill_missing_values(self, raw_people_df):
-        """Test filling missing values in a column."""
-        # Create df with missing values
-        df = raw_people_df.copy()
-        df.loc[0, "email"] = None
-        
-        processor = DataProcessor(df)
-        processor._fill_missing_values("email", "default@example.com")
-        assert processor.df.loc[0, "email"] == "default@example.com"
+def test_fill_missing_values(self, raw_people_df):
+    """Test filling missing values in a column."""
+    # Create df with missing values
+    df = raw_people_df.copy()
+    df.loc[0, "email"] = None
     
+    # Use TestableDataProcessor instead of DataProcessor
+    processor = TestableDataProcessor(df)
+    processor._fill_missing_values("email", "default@example.com")
+    assert processor.df.loc[0, "email"] == "default@example.com"
+
     def test_convert_column_type(self, raw_people_df):
         """Test converting column type."""
         processor = TestableDataProcessor(raw_people_df)
