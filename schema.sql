@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS people (
 
 -- Promotions table
 CREATE TABLE IF NOT EXISTS promotions (
-    promotion_id SERIAL PRIMARY KEY,
+    promotion_id BIGINT PRIMARY KEY,
     user_id INTEGER REFERENCES people(user_id),
     promotion VARCHAR(100) NOT NULL,
     amount DECIMAL(10, 2),
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS promotions (
 
 -- Transfers table
 CREATE TABLE IF NOT EXISTS transfers (
-    transfer_id SERIAL PRIMARY KEY,
+    transfer_id BIGINT PRIMARY KEY,
     sender_id INTEGER REFERENCES people(user_id),
     recipient_id INTEGER REFERENCES people(user_id),
     amount DECIMAL(10, 2) NOT NULL,

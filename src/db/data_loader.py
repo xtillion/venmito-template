@@ -82,6 +82,12 @@ class DataLoader:
             if 'user_id' not in df_copy.columns:
                 logger.warning("user_id column missing from people data, using index")
                 df_copy['user_id'] = df_copy.index + 1
+                
+        elif table_name == 'promotions':
+            # Handle column name differences
+            if 'promotion_date' in df_copy.columns and 'date' not in df_copy.columns:
+                df_copy['date'] = df_copy['promotion_date']
+                logger.info("Renamed promotion_date column to date")
         
         # Fill NA values appropriately
         for col in df_copy.columns:
@@ -172,7 +178,19 @@ class DataLoader:
             df = self.load_csv_to_df('promotions.csv')
             df = self._prepare_df_for_db(df, 'promotions')
             
-            columns = ['promotion_id', 'user_id', 'promotion', 'amount', 'responded', 'date']
+            columns = ['promotion_id', 'user_id', 'promotion', 'responded']
+            
+            # Handle column rename if needed (promotion_date -> date)
+            if 'promotion_date' in df.columns:
+                df['date'] = df['promotion_date']
+                columns.append('date')
+            elif 'date' in df.columns:
+                columns.append('date')
+                
+            # Add amount column if it exists
+            if 'amount' in df.columns:
+                columns.append('amount')
+            
             columns = [col for col in columns if col in df.columns]
             
             placeholders = ', '.join(['%s'] * len(columns))
@@ -185,10 +203,14 @@ class DataLoader:
                 SET 
                     user_id = EXCLUDED.user_id,
                     promotion = EXCLUDED.promotion,
-                    amount = EXCLUDED.amount,
-                    responded = EXCLUDED.responded,
-                    date = EXCLUDED.date
+                    responded = EXCLUDED.responded
             """
+            
+            if 'date' in columns:
+                query += ", date = EXCLUDED.date"
+                
+            if 'amount' in columns:
+                query += ", amount = EXCLUDED.amount"
             
             params_list = self._df_to_params_list(df, columns)
             rows_affected = Database.execute_many(query, params_list)
