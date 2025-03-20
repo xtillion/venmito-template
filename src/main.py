@@ -11,29 +11,23 @@ def main():
     promotions = loader.load_csv('../data/promotions.csv')
     transactions = loader.load_xml('../data/transactions.xml')
 
-    # Step 2: Transform Data
+    # Step 2: Transform and Merge Data
     transformer = DataTransformer()
-    people = transformer.normalize_data(people)
-    transfers = transformer.normalize_data(transfers)
-    promotions = transformer.normalize_data(promotions)
-    transactions = transformer.normalize_data(transactions)
+    consolidated_df = transformer.consolidate_data(people, transactions, transfers, promotions)
 
-    # Step 3: Merge Data
-    combined_df = transformer.merge_data(people, transactions, on="phone")
-
-    # Step 4: Analyze Data
+    # Step 3: Analyze Data
     analyzer = DataAnalyzer()
-    top_products = analyzer.get_top_selling_products(combined_df)
-    store_performance = analyzer.get_store_performance(combined_df)
+    top_products = analyzer.get_top_selling_products(consolidated_df)
+    store_performance = analyzer.get_store_performance(consolidated_df)
 
     print("\nTop Products:")
     print(top_products)
     print("\nStore Performance:")
     print(store_performance)
 
-    # Step 5: Save to Database
+    # Step 4: Save to Database
     db = DatabaseHandler()
-    db.save_to_db(combined_df, 'consolidated_data')
+    db.save_to_db(consolidated_df, 'consolidated_data')
 
 if __name__ == "__main__":
     main()
