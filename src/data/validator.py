@@ -276,7 +276,7 @@ class PeopleValidator(DataValidator):
         
         # Validate phone format (basic check, may need to be adapted)
         if 'phone' in self.df.columns:
-            phone_pattern = r'^\+?[0-9\s-()]{7,20}$'
+            phone_pattern = r'^\+?[0-9\s\-\(\)]{7,20}$'
             if not self._validate_string_pattern('phone', phone_pattern):
                 is_valid = False
         

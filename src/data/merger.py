@@ -656,71 +656,60 @@ class MainDataMerger(DataMerger):
     
     def merge(self) -> Dict[str, pd.DataFrame]:
         """
-        Execute the full merging pipeline.
+        Merge people data from JSON and YAML sources.
         
         Returns:
-            Dict[str, pd.DataFrame]: Dictionary with all merged DataFrames
+            Dict[str, pd.DataFrame]: Dictionary with the merged people DataFrame
         """
         try:
-            logger.info("Starting main data merging process...")
+            logger.info("Merging people data...")
             
-            all_results = {}
+            # Convert any list columns to strings to avoid "unhashable type: 'list'" error
+            people_json_df = self.people_json_df.copy()
+            people_yml_df = self.people_yml_df.copy()
             
-            # Step 1: Merge people data from JSON and YAML
-            people_merger = PeopleMerger(self.people_json_df, self.people_yml_df)
-            people_results = people_merger.merge()
-            all_results.update(people_results)
+            for df in [people_json_df, people_yml_df]:
+                for col in df.columns:
+                    # Check if column contains lists
+                    if df[col].apply(lambda x: isinstance(x, list)).any():
+                        # Convert lists to comma-separated strings
+                        df[col] = df[col].apply(lambda x: ', '.join(map(str, x)) if isinstance(x, list) else x)
             
-            # Check if we have people data
-            if 'people' not in all_results or all_results['people'].empty:
-                self._add_error("Failed to merge people data, cannot continue")
-                return all_results
+            # Check for overlapping users
+            json_ids = set(people_json_df['user_id']) if 'user_id' in people_json_df.columns else set()
+            yml_ids = set(people_yml_df['user_id']) if 'user_id' in people_yml_df.columns else set()
             
-            people_df = all_results['people']
+            overlap = json_ids.intersection(yml_ids)
+            if overlap:
+                logger.info(f"Found {len(overlap)} overlapping users in JSON and YAML data")
             
-            # Step 2: Add user references to promotions and transactions
-            user_refs_merger = UserReferencesMerger(
-                people_df, 
-                self.promotions_df,
-                self.transactions_df
-            )
-            user_refs_results = user_refs_merger.merge()
-            all_results.update(user_refs_results)
+            # Columns that should be in both dataframes for a proper merge
+            common_columns = [
+                'user_id', 'first_name', 'last_name', 'email', 'phone', 
+                'city', 'country', 'devices'
+            ]
             
-            # Get the updated DataFrames
-            promotions_df = user_refs_results.get('promotions', self.promotions_df)
-            transactions_df = user_refs_results.get('transactions', self.transactions_df)
+            # Ensure all common columns exist in both dataframes
+            for df, source in [(people_json_df, 'JSON'), (people_yml_df, 'YAML')]:
+                missing_columns = [col for col in common_columns if col not in df.columns]
+                if missing_columns:
+                    logger.warning(f"Missing columns in {source} data: {missing_columns}")
+                    for col in missing_columns:
+                        df[col] = None
             
-            # Step 3: Create user transaction summaries
-            if transactions_df is not None and not transactions_df.empty:
-                user_transactions_merger = UserTransactionsMerger(transactions_df, people_df)
-                user_transactions_results = user_transactions_merger.merge()
-                all_results.update(user_transactions_results)
+            # Use concat + drop_duplicates instead of merge for more robustness
+            merged_df = pd.concat([people_json_df, people_yml_df], ignore_index=True)
             
-                # Step 4: Create item and store summaries
-                item_summary_merger = ItemSummaryMerger(transactions_df)
-                item_summary_results = item_summary_merger.merge()
-                all_results.update(item_summary_results)
-                
-                store_summary_merger = StoreSummaryMerger(transactions_df)
-                store_summary_results = store_summary_merger.merge()
-                all_results.update(store_summary_results)
+            # Remove duplicates based on user_id (keeping the first occurrence, which will be from JSON)
+            if 'user_id' in merged_df.columns:
+                merged_df = merged_df.drop_duplicates(subset=['user_id'], keep='first')
             
-            # Step 5: Create user transfer summaries
-            user_transfers_merger = UserTransfersMerger(self.transfers_df, people_df)
-            user_transfers_results = user_transfers_merger.merge()
-            all_results.update(user_transfers_results)
+            logger.info(f"Merged people data with shape {merged_df.shape}")
             
-            # Save all results to CSV
-            for name, df in all_results.items():
-                self._save_dataframe(df, name, self.output_dir)
-            
-            logger.info("Completed main data merging process")
-            
-            return all_results
-            
+            return {'people': merged_df}
+        
         except Exception as e:
-            error_msg = f"Unexpected error in main data merging: {str(e)}"
+            error_msg = f"Unexpected error in people data merging: {str(e)}"
             logger.error(error_msg)
             self._add_error(error_msg)
-            return {}
+            return {'people': pd.DataFrame()}
