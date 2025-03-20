@@ -656,60 +656,132 @@ class MainDataMerger(DataMerger):
     
     def merge(self) -> Dict[str, pd.DataFrame]:
         """
-        Merge people data from JSON and YAML sources.
+        Execute the full merging pipeline.
         
         Returns:
-            Dict[str, pd.DataFrame]: Dictionary with the merged people DataFrame
+            Dict[str, pd.DataFrame]: Dictionary with all merged DataFrames
         """
-        try:
-            logger.info("Merging people data...")
-            
-            # Convert any list columns to strings to avoid "unhashable type: 'list'" error
-            people_json_df = self.people_json_df.copy()
-            people_yml_df = self.people_yml_df.copy()
-            
-            for df in [people_json_df, people_yml_df]:
-                for col in df.columns:
-                    # Check if column contains lists
-                    if df[col].apply(lambda x: isinstance(x, list)).any():
-                        # Convert lists to comma-separated strings
-                        df[col] = df[col].apply(lambda x: ', '.join(map(str, x)) if isinstance(x, list) else x)
-            
-            # Check for overlapping users
-            json_ids = set(people_json_df['user_id']) if 'user_id' in people_json_df.columns else set()
-            yml_ids = set(people_yml_df['user_id']) if 'user_id' in people_yml_df.columns else set()
-            
-            overlap = json_ids.intersection(yml_ids)
-            if overlap:
-                logger.info(f"Found {len(overlap)} overlapping users in JSON and YAML data")
-            
-            # Columns that should be in both dataframes for a proper merge
-            common_columns = [
-                'user_id', 'first_name', 'last_name', 'email', 'phone', 
-                'city', 'country', 'devices'
-            ]
-            
-            # Ensure all common columns exist in both dataframes
-            for df, source in [(people_json_df, 'JSON'), (people_yml_df, 'YAML')]:
-                missing_columns = [col for col in common_columns if col not in df.columns]
-                if missing_columns:
-                    logger.warning(f"Missing columns in {source} data: {missing_columns}")
-                    for col in missing_columns:
-                        df[col] = None
-            
-            # Use concat + drop_duplicates instead of merge for more robustness
-            merged_df = pd.concat([people_json_df, people_yml_df], ignore_index=True)
-            
-            # Remove duplicates based on user_id (keeping the first occurrence, which will be from JSON)
-            if 'user_id' in merged_df.columns:
-                merged_df = merged_df.drop_duplicates(subset=['user_id'], keep='first')
-            
-            logger.info(f"Merged people data with shape {merged_df.shape}")
-            
-            return {'people': merged_df}
+        all_results = {}
         
+        try:
+            logger.info("Starting main data merging process...")
+            
+            # Step 1: Merge people data from JSON and YAML
+            try:
+                people_merger = PeopleMerger(self.people_json_df, self.people_yml_df)
+                people_results = people_merger.merge()
+                all_results.update(people_results)
+                
+                # Check if we have people data
+                if 'people' not in all_results or all_results['people'].empty:
+                    self._add_error("Failed to merge people data, cannot continue")
+                    return all_results
+                    
+                people_df = all_results['people']
+                logger.info(f"Successfully merged people data with shape {people_df.shape}")
+                
+                # Save the people data immediately
+                self._save_dataframe(people_df, "people", self.output_dir)
+            except Exception as e:
+                error_msg = f"Error in people merging: {str(e)}"
+                logger.error(error_msg)
+                self._add_error(error_msg)
+                return all_results
+            
+            # Step 2: Add user references to promotions and transactions
+            try:
+                user_refs_merger = UserReferencesMerger(
+                    people_df, 
+                    self.promotions_df,
+                    self.transactions_df
+                )
+                user_refs_results = user_refs_merger.merge()
+                all_results.update(user_refs_results)
+                
+                # Get the updated DataFrames
+                promotions_df = user_refs_results.get('promotions', self.promotions_df)
+                transactions_df = user_refs_results.get('transactions', self.transactions_df)
+                
+                # Save the promotions data immediately
+                if 'promotions' in all_results:
+                    self._save_dataframe(all_results['promotions'], "promotions", self.output_dir)
+                    logger.info(f"Saved promotions data with shape {all_results['promotions'].shape}")
+                    
+                # Save the transactions data immediately if it exists
+                if 'transactions' in all_results:
+                    self._save_dataframe(all_results['transactions'], "transactions", self.output_dir)
+                    logger.info(f"Saved transactions data with shape {all_results['transactions'].shape}")
+            except Exception as e:
+                error_msg = f"Error in user references merging: {str(e)}"
+                logger.error(error_msg)
+                self._add_error(error_msg)
+                # Continue with other steps
+            
+            # Step 3: Create user transaction summaries
+            if transactions_df is not None and not transactions_df.empty:
+                try:
+                    user_transactions_merger = UserTransactionsMerger(transactions_df, people_df)
+                    user_transactions_results = user_transactions_merger.merge()
+                    all_results.update(user_transactions_results)
+                    
+                    # Save the user transactions data immediately
+                    if 'user_transactions' in all_results:
+                        self._save_dataframe(all_results['user_transactions'], "user_transactions", self.output_dir)
+                        logger.info(f"Saved user transactions data with shape {all_results['user_transactions'].shape}")
+                except Exception as e:
+                    error_msg = f"Error in user transactions merging: {str(e)}"
+                    logger.error(error_msg)
+                    self._add_error(error_msg)
+            
+                # Step 4: Create item and store summaries
+                try:
+                    item_summary_merger = ItemSummaryMerger(transactions_df)
+                    item_summary_results = item_summary_merger.merge()
+                    all_results.update(item_summary_results)
+                    
+                    # Save the item summary data immediately
+                    if 'item_summary' in all_results:
+                        self._save_dataframe(all_results['item_summary'], "item_summary", self.output_dir)
+                        logger.info(f"Saved item summary data with shape {all_results['item_summary'].shape}")
+                except Exception as e:
+                    error_msg = f"Error in item summary merging: {str(e)}"
+                    logger.error(error_msg)
+                    self._add_error(error_msg)
+                    
+                try:
+                    store_summary_merger = StoreSummaryMerger(transactions_df)
+                    store_summary_results = store_summary_merger.merge()
+                    all_results.update(store_summary_results)
+                    
+                    # Save the store summary data immediately
+                    if 'store_summary' in all_results:
+                        self._save_dataframe(all_results['store_summary'], "store_summary", self.output_dir)
+                        logger.info(f"Saved store summary data with shape {all_results['store_summary'].shape}")
+                except Exception as e:
+                    error_msg = f"Error in store summary merging: {str(e)}"
+                    logger.error(error_msg)
+                    self._add_error(error_msg)
+            
+            # Step 5: Create user transfer summaries
+            try:
+                user_transfers_merger = UserTransfersMerger(self.transfers_df, people_df)
+                user_transfers_results = user_transfers_merger.merge()
+                all_results.update(user_transfers_results)
+                
+                # Save the user transfers data immediately
+                if 'user_transfers' in all_results:
+                    self._save_dataframe(all_results['user_transfers'], "user_transfers", self.output_dir)
+                    logger.info(f"Saved user transfers data with shape {all_results['user_transfers'].shape}")
+            except Exception as e:
+                error_msg = f"Error in user transfers merging: {str(e)}"
+                logger.error(error_msg)
+                self._add_error(error_msg)
+            
+            logger.info("Completed main data merging process")
+            
         except Exception as e:
-            error_msg = f"Unexpected error in people data merging: {str(e)}"
+            error_msg = f"Unexpected error in main data merging: {str(e)}"
             logger.error(error_msg)
             self._add_error(error_msg)
-            return {'people': pd.DataFrame()}
+        
+        return all_results
