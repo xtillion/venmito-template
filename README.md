@@ -1,4 +1,43 @@
-# Venmito Data Engineering Project
+# Venmito Data Engineering Project by Jared Hidalgo
+
+**Email**: jaredhidalgo@gmail.com
+
+## The Process
+
+### Used Technologies
+
+- **OS**: Windows 11 Home 22631.5039
+- **Language**: Python 3.13.2
+    - [Packages]
+- **Software**
+    - **IDE**: Visual Studio Code v1.98.2
+    - **Server**: pgAdmin 4 v9.1
+
+### Development Steps
+
+1. On local computer, set up "postgres" database using pgAdmin and run server. Requires the following input:
+    - User: postgres
+    - Password: Space!3742
+1. In Python script, added routine to auto-check required packages before proceeding with the code.
+1. Wrote code to check if database based on data-centric files already exists. If not, setup database.
+1. Wrote algorithm to process new files.
+
+## About the Program
+
+X
+
+The program assumes the username is "postgres" and the password is "Space!3742".
+
+## How To Use The Program
+
+### Before Running
+
+The user may, but is not required to, do the following tasks before running the program:
+- Add a virtual environment.
+- Run `pip install -r requirements.txt`
+
+---
+---
 
 ## Introduction
 

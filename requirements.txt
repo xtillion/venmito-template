@@ -1,0 +1,7 @@
+psycopg[binary]
+sqlalchemy
+xmltodict
+pyyaml
+pandas
+chime
+rich
