@@ -718,13 +718,6 @@ class TestMergerIntegration:
                 if not pd.isna(user_row['total_spent'].values[0]):
                     assert abs(user_row['total_spent'].values[0] - trans_total) < 0.01
 
-# Helper class for testing the abstract base class
-class TestableDataMerger(DataMerger):
-    def merge(self):
-        # For the specific test_merge_not_implemented test, we need different behavior
-        if getattr(self, '_raise_not_implemented', False):
-            raise NotImplementedError("Test implementation")
-        return {"test": pd.DataFrame()}
     
 # Performance tests
 @pytest.mark.parametrize("size", [100, 1000])
@@ -770,3 +763,12 @@ def test_merger_performance(size, temp_output_dir):
     
     # Log the performance (this will show in the test output)
     print(f"\nMerged {size*2} people records in {end_time - start_time:.6f} seconds")
+
+# Helper class for testing
+@pytest.mark.skip(reason="Helper class, not a test")
+class TestableDataMerger(DataMerger):
+    def merge(self):
+        # For the specific test_merge_not_implemented test, we need different behavior
+        if getattr(self, '_raise_not_implemented', False):
+            raise NotImplementedError("Test implementation")
+        return {"test": pd.DataFrame()}    
