@@ -128,21 +128,21 @@ def expected_processed_transactions_df():
 class TestDataProcessor:
     def test_init(self, raw_people_df):
         """Test initializing the DataProcessor base class."""
-        processor = DataProcessor(raw_people_df)
+        processor = TestableDataProcessor(raw_people_df)
         assert isinstance(processor, DataProcessor)
         assert processor.df is not raw_people_df  # Should be a copy
         assert processor.processing_errors == []
     
     def test_add_error(self, raw_people_df):
         """Test adding errors to the processor."""
-        processor = DataProcessor(raw_people_df)
+        processor = TestableDataProcessor(raw_people_df)
         processor._add_error("Test error")
         assert len(processor.processing_errors) == 1
         assert processor.processing_errors[0] == "Test error"
     
     def test_get_errors(self, raw_people_df):
         """Test getting errors from the processor."""
-        processor = DataProcessor(raw_people_df)
+        processor = TestableDataProcessor(raw_people_df)
         processor._add_error("Error 1")
         processor._add_error("Error 2")
         errors = processor.get_errors()
@@ -151,7 +151,7 @@ class TestDataProcessor:
     
     def test_rename_columns(self, raw_people_df):
         """Test renaming columns in the DataFrame."""
-        processor = DataProcessor(raw_people_df)
+        processor = TestableDataProcessor(raw_people_df)
         processor._rename_columns({"id": "user_id", "name": "full_name"})
         assert "user_id" in processor.df.columns
         assert "full_name" in processor.df.columns
@@ -160,7 +160,7 @@ class TestDataProcessor:
     
     def test_drop_columns(self, raw_people_df):
         """Test dropping columns from the DataFrame."""
-        processor = DataProcessor(raw_people_df)
+        processor = TestableDataProcessor(raw_people_df)
         processor._drop_columns(["Android", "Iphone", "Desktop"])
         assert "Android" not in processor.df.columns
         assert "Iphone" not in processor.df.columns
@@ -178,13 +178,13 @@ class TestDataProcessor:
     
     def test_convert_column_type(self, raw_people_df):
         """Test converting column type."""
-        processor = DataProcessor(raw_people_df)
+        processor = TestableDataProcessor(raw_people_df)
         processor._convert_column_type("id", str)
         assert processor.df["id"].dtype == object  # string columns have object dtype
     
     def test_apply_to_column(self, raw_people_df):
         """Test applying a function to a column."""
-        processor = DataProcessor(raw_people_df)
+        processor = TestableDataProcessor(raw_people_df)
         processor._apply_to_column("email", lambda x: x.lower() if isinstance(x, str) else x)
         
         # Check all emails are lowercase
@@ -193,7 +193,7 @@ class TestDataProcessor:
     
     def test_normalize_text(self, raw_people_df):
         """Test normalizing text in a column."""
-        processor = DataProcessor(raw_people_df)
+        processor = TestableDataProcessor(raw_people_df)
         processor._normalize_text("email")
         
         # Check emails are normalized (lowercase and stripped)
@@ -576,6 +576,10 @@ class TestProcessorIntegration:
         # Verify that the user_ids remain valid references
         assert all(uid in people_df['user_id'].values for uid in processed_promotions['user_id'])
 
+# Helper class for testing the abstract base class
+class TestableDataProcessor(DataProcessor):
+    def process(self):
+        return self.df
 
 # Performance tests
 @pytest.mark.parametrize("size", [100, 1000])

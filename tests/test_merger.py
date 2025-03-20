@@ -110,20 +110,20 @@ def temp_output_dir():
 class TestDataMerger:
     def test_init(self):
         """Test initializing the DataMerger base class."""
-        merger = DataMerger()
+        merger = TestableDataMerger()
         assert isinstance(merger, DataMerger)
         assert merger.merge_errors == []
     
     def test_add_error(self):
         """Test adding errors to the merger."""
-        merger = DataMerger()
+        merger = TestableDataMerger()
         merger._add_error("Test error")
         assert len(merger.merge_errors) == 1
         assert merger.merge_errors[0] == "Test error"
     
     def test_get_errors(self):
         """Test getting errors from the merger."""
-        merger = DataMerger()
+        merger = TestableDataMerger()
         merger._add_error("Error 1")
         merger._add_error("Error 2")
         errors = merger.get_errors()
@@ -132,7 +132,7 @@ class TestDataMerger:
     
     def test_save_dataframe(self, temp_output_dir):
         """Test saving a DataFrame to CSV."""
-        merger = DataMerger()
+        merger = TestableDataMerger()
         df = pd.DataFrame({'col1': [1, 2, 3], 'col2': ['a', 'b', 'c']})
         
         # Save the DataFrame
@@ -148,7 +148,7 @@ class TestDataMerger:
     
     def test_merge_not_implemented(self):
         """Test that merge() raises NotImplementedError."""
-        merger = DataMerger()
+        merger = TestableDataMerger()
         with pytest.raises(NotImplementedError):
             merger.merge()
 
@@ -713,7 +713,11 @@ class TestMergerIntegration:
                 if not pd.isna(user_row['total_spent'].values[0]):
                     assert abs(user_row['total_spent'].values[0] - trans_total) < 0.01
 
-
+# Helper class for testing the abstract base class
+class TestableDataMerger(DataMerger):
+    def merge(self):
+        return {"test": pd.DataFrame()}
+    
 # Performance tests
 @pytest.mark.parametrize("size", [100, 1000])
 def test_merger_performance(size, temp_output_dir):
