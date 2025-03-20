@@ -68,22 +68,23 @@ class DataTransformer:
 
     # Merge data based on client_id or phone number
     def merge_data(self, df1, df2):
-        try:
-            if df1 is None or df2 is None:
-                return None
+        if df1 is None:
+            return df2
+        if df2 is None:
+            return df1
 
-            # Merge on client_id (if available) or phone number as a fallback
+        try:
             merged_df = pd.merge(
-                df1,
-                df2,
-                on=['client_id', 'phone'],
+                df1, 
+                df2, 
+                on=['client_id', 'phone'], 
                 how='outer'
             )
             return merged_df
-
         except Exception as e:
             print(f"Error merging data: {e}")
-            return None
+            return df1
+
 
     # Consolidate multiple dataframes into one unified dataset
     def consolidate_data(self, people, transactions, transfers, promotions):
@@ -99,12 +100,19 @@ class DataTransformer:
         transfers = self.assign_client_id(transfers)
         promotions = self.assign_client_id(promotions)
 
-        # Merge all datasets using client_id
-        consolidated = self.merge_data(people, transactions)
-        consolidated = self.merge_data(consolidated, transfers)
-        consolidated = self.merge_data(consolidated, promotions)
+        # Fallback handling to avoid NoneType issues
+        consolidated = people if people is not None else pd.DataFrame()
 
-        # Final cleanup (drop any unnecessary columns)
-        consolidated.dropna(axis=1, how='all', inplace=True) 
+        if transactions is not None:
+            consolidated = self.merge_data(consolidated, transactions)
+        if transfers is not None:
+            consolidated = self.merge_data(consolidated, transfers)
+        if promotions is not None:
+            consolidated = self.merge_data(consolidated, promotions)
+
+        # Final cleanup (only drop if the dataframe is not empty)
+        if not consolidated.empty:
+            consolidated.dropna(axis=1, how='all', inplace=True) 
 
         return consolidated
+
