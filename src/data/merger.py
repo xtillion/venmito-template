@@ -110,36 +110,54 @@ class PeopleMerger(DataMerger):
             logger.info("Merging people data...")
             
             # Check for overlapping users
-            json_ids = set(self.people_json_df['user_id']) if 'user_id' in self.people_json_df.columns else set()
-            yml_ids = set(self.people_yml_df['user_id']) if 'user_id' in self.people_yml_df.columns else set()
+            json_ids = set(self.people_json_df['user_id'].astype(str)) if 'user_id' in self.people_json_df.columns else set()
+            yml_ids = set(self.people_yml_df['user_id'].astype(str)) if 'user_id' in self.people_yml_df.columns else set()
             
             overlap = json_ids.intersection(yml_ids)
             if overlap:
                 logger.info(f"Found {len(overlap)} overlapping users in JSON and YAML data")
             
-            # Columns that should be in both dataframes for a proper merge
-            common_columns = [
-                'user_id', 'first_name', 'last_name', 'email', 'phone', 
-                'city', 'country', 'devices'
-            ]
+            # Make a copy of the dataframes to avoid modifying the originals
+            json_df = self.people_json_df.copy()
+            yml_df = self.people_yml_df.copy()
             
-            # Ensure all common columns exist in both dataframes
-            for df, source in [(self.people_json_df, 'JSON'), (self.people_yml_df, 'YAML')]:
-                missing_columns = [col for col in common_columns if col not in df.columns]
-                if missing_columns:
-                    logger.warning(f"Missing columns in {source} data: {missing_columns}")
-                    for col in missing_columns:
-                        df[col] = None
+            # Standardize the devices column to ensure it's a string
+            if 'devices' in json_df.columns:
+                json_df['devices'] = json_df['devices'].apply(
+                    lambda x: ', '.join(x) if isinstance(x, list) else str(x) if pd.notna(x) else ''
+                )
             
-            # Merge dataframes, preferring JSON data for overlapping users
-            # Using outer join to keep all users from both sources
-            merged_df = pd.merge(
-                self.people_json_df, 
-                self.people_yml_df,
-                on=common_columns,
-                how='outer',
-                suffixes=('_json', '_yml')
-            )
+            if 'devices' in yml_df.columns:
+                yml_df['devices'] = yml_df['devices'].apply(
+                    lambda x: ', '.join(x) if isinstance(x, list) else str(x) if pd.notna(x) else ''
+                )
+            
+            # Identify common columns for the merge
+            json_columns = set(json_df.columns)
+            yml_columns = set(yml_df.columns)
+            common_columns = list(json_columns.intersection(yml_columns))
+            
+            # Ensure user_id is included in common columns if it exists in both dataframes
+            if 'user_id' in json_columns and 'user_id' in yml_columns:
+                if 'user_id' not in common_columns:
+                    common_columns.append('user_id')
+            
+            # For columns that are in one dataframe but not the other, add them with NaN values
+            for col in json_columns - set(common_columns):
+                if col not in yml_df.columns:
+                    yml_df[col] = np.nan
+            
+            for col in yml_columns - set(common_columns):
+                if col not in json_df.columns:
+                    json_df[col] = np.nan
+            
+            # Concatenate the dataframes instead of merging
+            # This avoids issues with unhashable types and complex merge logic
+            merged_df = pd.concat([json_df, yml_df], ignore_index=True)
+            
+            # Remove duplicate user_ids, keeping the first occurrence (from JSON)
+            if 'user_id' in merged_df.columns:
+                merged_df = merged_df.drop_duplicates(subset=['user_id'], keep='first')
             
             logger.info(f"Merged people data with shape {merged_df.shape}")
             
