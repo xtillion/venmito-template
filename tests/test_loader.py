@@ -210,19 +210,16 @@ class TestCSVLoader:
 
     def test_load_invalid_csv(self):
         """Test loading a malformed CSV file."""
-        with tempfile.NamedTemporaryFile(suffix=".csv", delete=False) as f:
+        with tempfile.NamedTemporaryFile(suffix=".csv", delete=False, mode='w') as f:
             # CSV with mismatched columns
-            f.write(b"id,name,email\n1,John Doe\n2,Jane Smith,jane@example.com,extra")
+            f.write("id,name,email\n1,John Doe\n2,Jane Smith,jane@example.com,extra")
             temp_file_path = f.name
         
         try:
             loader = CSVLoader(temp_file_path)
-            # This should still load but will have warnings
-            df = loader.load()
-            assert isinstance(df, pd.DataFrame)
-            
-            # Check that parsing handled the mismatched columns
-            assert len(df) == 2
+            # This should raise a ValueError
+            with pytest.raises(ValueError, match="Error loading CSV data"):
+                loader.load()
         finally:
             os.unlink(temp_file_path)
 
