@@ -4,18 +4,19 @@ from analysis import DataAnalyzer
 from output import DatabaseHandler
 
 def main():
-    # Step 1: Load Data
+    # Initiate DataLoader in instance and Load Data from every file
     loader = DataLoader()
     people = loader.load_json('../data/people.json')
     transfers = loader.load_csv('../data/transfers.csv')
     promotions = loader.load_csv('../data/promotions.csv')
     transactions = loader.load_xml('../data/transactions.xml')
 
-    # Step 2: Transform and Merge Data
+    # Initiate DataTransformer to transform and merge data
     transformer = DataTransformer()
     consolidated_df = transformer.consolidate_data(people, transactions, transfers, promotions)
+    print(consolidated_df)
 
-    # Step 3: Analyze Data
+    # Placeholder Data Analysis phase logic
     analyzer = DataAnalyzer()
     top_products = analyzer.get_top_selling_products(consolidated_df)
     store_performance = analyzer.get_store_performance(consolidated_df)
