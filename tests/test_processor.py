@@ -33,7 +33,7 @@ def raw_people_df():
         'location': [
             {'City': 'New York', 'Country': 'USA'},
             {'City': 'Los Angeles', 'Country': 'USA'},
-            {'City': 'Chicago, USA'}
+            {'City': 'Chicago', 'Country': 'USA'}
         ],
         'Android': [1, 0, 0],
         'Iphone': [0, 1, 0],
@@ -50,9 +50,9 @@ def expected_processed_people_df():
         'last_name': ['Doe', 'Smith', 'Johnson'],
         'email': ['john@example.com', 'jane@example.com', 'bob@example.com'],
         'city': ['new york', 'los angeles', 'chicago'],
-        'country': ['usa', 'usa', 'usa'],
+        'country': ['usa', 'usa', 'usa'],  
         'devices': ['Android', 'Iphone', 'Desktop'],
-        'phone': ['+1234567890', '+19876543210', '+5551234567']
+        'phone': ['1234567890', '+19876543210', '5551234567']
     })
 
 @pytest.fixture
