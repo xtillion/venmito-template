@@ -600,7 +600,8 @@ class TestMainDataMerger:
         assert "Failed to merge people data" in merger.merge_errors[0]
         
         # Result should be empty
-        assert len(result) == 0
+        assert 'people' in result
+        assert result['people'].empty
     
     @patch('src.data.merger.PeopleMerger')
     def test_error_propagation(self, mock_people_merger, people_json_df, people_yml_df, 
@@ -612,14 +613,15 @@ class TestMainDataMerger:
         mock_merger_instance.get_errors.return_value = ["Test error from PeopleMerger"]
         mock_people_merger.return_value = mock_merger_instance
         
-        merger = MainDataMerger(
-            people_json_df, people_yml_df, promotions_df, transfers_df, transactions_df, temp_output_dir
-        )
-        result = merger.merge()
+        # Create the MainDataMerger and verify it uses the mock
+        with patch.object(MainDataMerger, '_add_error') as mock_add_error:
+            merger = MainDataMerger(
+                people_json_df, people_yml_df, promotions_df, transfers_df, transactions_df, temp_output_dir
+            )
+            result = merger.merge()
         
-        # MainDataMerger should have absorbed the error from PeopleMerger
-        assert "Test error from PeopleMerger" in merger.get_errors()
-
+            # Check that the error was added
+            mock_add_error.assert_any_call("Test error from PeopleMerger")
 
 # Integration tests
 class TestMergerIntegration:

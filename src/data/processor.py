@@ -142,7 +142,8 @@ class PeopleProcessor(DataProcessor):
                 if phone_str.startswith('+'):
                     return '+' + re.sub(r'[^0-9]', '', phone_str[1:])
                 else:
-                    return re.sub(r'[^0-9]', '', phone_str)
+                    # Add + if it doesn't exist
+                    return '+' + re.sub(r'[^0-9]', '', phone_str)
             
             self._apply_to_column(target_column, clean_phone, 
                                 "Error standardizing phone number in column")
