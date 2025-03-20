@@ -13,10 +13,20 @@ class DataTransformer:
     # Clean column names to match
     def normalize_data(self, df):
         if df is not None:
-            df['phone'] = df['phone'].apply(self.clean_phone_number)
+            if 'phone' not in df.columns:
+                print("⚠️ Warning: 'phone' column is missing")
+            if 'email' not in df.columns:
+                print("⚠️ Warning: 'email' column is missing")
+            if 'name' not in df.columns:
+                print("⚠️ Warning: 'name' column is missing")
+
+            if 'phone' in df.columns:
+                df['phone'] = df['phone'].apply(self.clean_phone_number)
+
             df.columns = df.columns.str.lower()
             return df
         return None
+
 
     # Remove or merge duplicates and fill missing data
     def clean_and_fix_data(self, df):
