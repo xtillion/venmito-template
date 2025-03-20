@@ -6,10 +6,10 @@ from output import DatabaseHandler
 def main():
     # Initiate DataLoader in instance and Load Data from every file
     loader = DataLoader()
-    people = loader.load_json('../data/people.json')
-    transfers = loader.load_csv('../data/transfers.csv')
-    promotions = loader.load_csv('../data/promotions.csv')
-    transactions = loader.load_xml('../data/transactions.xml')
+    people = loader.load_json('data/people.json')
+    transfers = loader.load_csv('data/transfers.csv')
+    promotions = loader.load_csv('data/promotions.csv')
+    transactions = loader.load_xml('data/transactions.xml')
 
     # Initiate DataTransformer to transform and merge data
     transformer = DataTransformer()
