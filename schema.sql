@@ -10,7 +10,8 @@ CREATE TABLE IF NOT EXISTS people (
     city VARCHAR(100),
     country VARCHAR(100),
     devices VARCHAR(255),
-    phone VARCHAR(20) UNIQUE
+    phone VARCHAR(20) UNIQUE,
+    dob DATE
 );
 
 -- Promotions table
@@ -20,7 +21,7 @@ CREATE TABLE IF NOT EXISTS promotions (
     promotion VARCHAR(100) NOT NULL,
     amount DECIMAL(10, 2),
     responded VARCHAR(3) CHECK (responded IN ('Yes', 'No')),
-    date TIMESTAMP
+    promotion_date TIMESTAMP
 );
 
 -- Transfers table
@@ -29,8 +30,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     sender_id INTEGER REFERENCES people(user_id),
     recipient_id INTEGER REFERENCES people(user_id),
     amount DECIMAL(10, 2) NOT NULL,
-    timestamp TIMESTAMP,
-    CHECK (sender_id != recipient_id)
+    timestamp TIMESTAMP
 );
 
 -- Transactions table

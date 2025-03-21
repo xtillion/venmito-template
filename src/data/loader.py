@@ -151,25 +151,80 @@ class XMLLoader(BaseLoader):
             logger.info(f"Loading XML data from {self.file_path}")
             tree = ET.parse(self.file_path)
             root = tree.getroot()
-            data = []
             
-            # This is a generic implementation, which needs to be adapted
-            # to the specific XML structure of your data
-            for child in root:
-                item = {}
-                for subchild in child:
-                    item[subchild.tag] = subchild.text
-                data.append(item)
-            
-            df = pd.DataFrame(data)
-            logger.info(f"Successfully loaded XML data with shape {df.shape}")
-            return df
+            # Check if this is a transactions XML file
+            if root.tag == 'transactions':
+                return self._load_transactions_xml(root)
+            else:
+                # Default generic implementation
+                data = []
+                for child in root:
+                    item = {}
+                    for subchild in child:
+                        item[subchild.tag] = subchild.text
+                    data.append(item)
+                
+                df = pd.DataFrame(data)
+                logger.info(f"Successfully loaded XML data with shape {df.shape}")
+                return df
+                
         except ET.ParseError as e:
             logger.error(f"Error parsing XML data: {str(e)}")
             raise ValueError(f"Error parsing XML data: {str(e)}")
         except Exception as e:
             logger.error(f"Unexpected error in XML parsing: {str(e)}")
             raise ValueError(f"Unexpected error in XML parsing: {str(e)}")
+    
+    def _load_transactions_xml(self, root) -> pd.DataFrame:
+        """
+        Load transactions XML data into a DataFrame.
+        
+        Args:
+            root: XML root element
+            
+        Returns:
+            pd.DataFrame: DataFrame containing transaction data
+        """
+        data = []
+        
+        # Process each transaction
+        for transaction in root.findall('transaction'):
+            transaction_id = f"T{transaction.get('id').zfill(3)}"
+            phone = transaction.find('phone').text
+            store = transaction.find('store').text
+            date = transaction.find('date').text
+            
+            # Calculate total price and total quantity for the transaction
+            total_price = 0
+            total_quantity = 0
+            items = []
+            
+            # Process each item in the transaction
+            for item_element in transaction.findall('.//items/item'):
+                item_name = item_element.find('item').text
+                price = float(item_element.find('price').text)
+                price_per_item = float(item_element.find('price_per_item').text)
+                quantity = int(item_element.find('quantity').text)
+                
+                items.append(item_name)
+                total_price += price
+                total_quantity += quantity
+            
+            # Add a single row per transaction with aggregated data
+            data.append({
+                'transaction_id': transaction_id,
+                'phone': phone,
+                'store': store,
+                'date': date,
+                'price': total_price,
+                'quantity': total_quantity,
+                'item': ', '.join(items) if items else None,
+                'price_per_item': total_price / total_quantity if total_quantity > 0 else 0
+            })
+        
+        df = pd.DataFrame(data)
+        logger.info(f"Successfully loaded transactions XML data with shape {df.shape}")
+        return df
 
 
 class DataLoader:

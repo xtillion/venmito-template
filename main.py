@@ -14,21 +14,8 @@ def main():
     
     # Create output directory if it doesn't exist
     output_dir = "data/processed"
-    try:
-        os.makedirs(output_dir, exist_ok=True)
-        print(f"Output directory created/exists at: {os.path.abspath(output_dir)}")
-        
-        # Test write access
-        test_file = os.path.join(output_dir, "test_write.txt")
-        with open(test_file, 'w') as f:
-            f.write("Test write access")
-        print(f"Successfully wrote test file to: {test_file}")
-        
-        # Clean up the test file
-        os.remove(test_file)
-        print("Test file removed")
-    except Exception as e:
-        print(f"Error with output directory: {e}")
+    os.makedirs(output_dir, exist_ok=True)
+    print(f"Output directory created/exists at: {os.path.abspath(output_dir)}")
     
     # Step 1: Load data
     print("Loading data...")
@@ -37,6 +24,14 @@ def main():
     promotions = load_file("data/raw/promotions.csv")
     transfers = load_file("data/raw/transfers.csv")
     
+    # Load transactions from XML file (our XMLLoader class will handle the format)
+    try:
+        transactions = load_file("data/raw/transactions.xml")
+        print(f"Loaded transactions XML data: {len(transactions)} rows")
+    except Exception as e:
+        print(f"Warning: Could not load transactions data: {e}")
+        transactions = pd.DataFrame()
+    
     # Step 2: Validate data
     print("Validating data...")
     json_errors = validate_dataframe(people_json, "people")
@@ -44,12 +39,18 @@ def main():
     promotions_errors = validate_dataframe(promotions, "promotions")
     transfers_errors = validate_dataframe(transfers, "transfers")
     
+    # Only validate transactions if data exists
+    transactions_errors = []
+    if not transactions.empty:
+        transactions_errors = validate_dataframe(transactions, "transactions")
+    
     # Log validation errors
     for data_type, errors in [
         ("people_json", json_errors),
         ("people_yml", yml_errors),
         ("promotions", promotions_errors),
-        ("transfers", transfers_errors)
+        ("transfers", transfers_errors),
+        ("transactions", transactions_errors)
     ]:
         if errors:
             print(f"Validation errors for {data_type}:")
@@ -63,24 +64,45 @@ def main():
     processed_promotions = process_dataframe(promotions, "promotions")
     processed_transfers = process_dataframe(transfers, "transfers")
     
+    # Process transactions if data exists
+    if not transactions.empty:
+        processed_transactions = process_dataframe(transactions, "transactions")
+        print(f"Processed transactions data: {len(processed_transactions)} rows")
+    else:
+        processed_transactions = pd.DataFrame()
+    
     # Step 4: Merge data
     print("Merging data...")
+    
+    # Print data types for debugging
+    print(f"People JSON type: {type(processed_people_json)}")
+    print(f"People YAML type: {type(processed_people_yml)}")
+    print(f"Promotions type: {type(processed_promotions)}")
+    print(f"Transfers type: {type(processed_transfers)}")
+    print(f"Transactions type: {type(processed_transactions)}")
+    
     merger = MainDataMerger(
         processed_people_json,
         processed_people_yml,
         processed_promotions,
         processed_transfers,
+        processed_transactions,  # Pass transactions data to merger
         output_dir=output_dir
     )
     
-    # Debug: Check datatypes before merge
-    print(f"People JSON type: {type(processed_people_json)}")
-    print(f"People YAML type: {type(processed_people_yml)}")
-    print(f"Promotions type: {type(processed_promotions)}")
-    print(f"Transfers type: {type(processed_transfers)}")
-    
     try:
         merged_data = merger.merge()
+        
+        # Ensure all data was properly saved
+        for data_name, df in {
+            "transfers": processed_transfers,
+            "transactions": processed_transactions
+        }.items():
+            if not df.empty:
+                file_path = os.path.join(output_dir, f"{data_name}.csv")
+                if not os.path.exists(file_path) or os.path.getsize(file_path) == 0:
+                    print(f"Warning: {data_name}.csv was not properly saved, saving it manually")
+                    df.to_csv(file_path, index=False)
         
         # Step 5: Report results
         print("\nProcessing complete!")
@@ -88,13 +110,11 @@ def main():
         for name, df in merged_data.items():
             print(f"  - {name}: {df.shape[0]} rows, {df.shape[1]} columns")
         
-        # Debug: Check output directory
+        # List files in output directory
         print(f"\nFiles in output directory ({output_dir}):")
-        if os.path.exists(output_dir):
-            for file in os.listdir(output_dir):
-                print(f"  - {file}")
-        else:
-            print(f"  Directory {output_dir} does not exist")
+        for file in os.listdir(output_dir):
+            file_path = os.path.join(output_dir, file)
+            print(f"  - {file}: {os.path.getsize(file_path)} bytes")
             
     except Exception as e:
         import traceback
@@ -102,39 +122,6 @@ def main():
         traceback.print_exc()
     
     print(f"\nResults saved to {output_dir}")
-    
-    # After you get the merged_data dictionary
-    if 'people' in merged_data:
-        try:
-            print("\nTesting direct save of people data...")
-            people_df = merged_data['people']
-            save_path = os.path.join(output_dir, "people_direct.csv")
-            people_df.to_csv(save_path, index=False)
-            print(f"Successfully saved people DataFrame to: {save_path}")
-            
-            # Verify the file exists
-            if os.path.exists(save_path):
-                print(f"People file exists: {save_path}")
-            else:
-                print(f"People file does not exist: {save_path}")
-        except Exception as e:
-            print(f"Error saving people DataFrame: {e}")
-
-    # Test direct save
-    try:
-        print("\nTesting direct save...")
-        test_df = pd.DataFrame({'test': [1, 2, 3]})
-        save_path = os.path.join(output_dir, "test_save.csv")
-        test_df.to_csv(save_path, index=False)
-        print(f"Successfully saved test DataFrame to: {save_path}")
-        
-        # Verify the file exists
-        if os.path.exists(save_path):
-            print(f"File exists: {save_path}")
-        else:
-            print(f"File does not exist: {save_path}")
-    except Exception as e:
-        print(f"Error saving test DataFrame: {e}")
 
 
 if __name__ == "__main__":
