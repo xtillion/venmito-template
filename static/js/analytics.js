@@ -57,6 +57,7 @@ const state = {
       });
     }
     
+    
     // Create transfer distribution chart
     const transferDistCtx = document.getElementById('transfer-distribution-chart');
     if (transferDistCtx) {
