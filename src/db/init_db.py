@@ -7,7 +7,7 @@ import logging
 import argparse
 from dotenv import load_dotenv
 
-from src.db.db import Database, init_db_from_env, load_schema
+from src.db.db import Database, init_db_from_env, load_schema  # Removed get_connection_params
 from src.db.data_loader import DataLoader
 
 # Configure logging
@@ -27,8 +27,17 @@ def init_database(schema_file, processed_dir='data/processed'):
         logger.info(f"Loading database schema from {schema_file}...")
         load_schema(schema_file)
         
-        # Initialize data loader
-        loader = DataLoader(processed_dir=processed_dir)
+        # Get connection parameters from environment
+        connection_params = {
+            'host': os.environ.get('DB_HOST'),
+            'database': os.environ.get('DB_NAME'),
+            'user': os.environ.get('DB_USER'),
+            'password': os.environ.get('DB_PASSWORD'),
+            'port': os.environ.get('DB_PORT', '5432')
+        }
+        
+        # Initialize data loader with connection parameters
+        loader = DataLoader(connection_params=connection_params, processed_dir=processed_dir)
         
         # Load all data
         logger.info("Loading all data into the database...")
