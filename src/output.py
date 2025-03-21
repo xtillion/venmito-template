@@ -7,10 +7,15 @@ class DatabaseHandler:
 
     def save_to_db(self, df, table_name):
         try:
+            # Convert Timestamp to string format before saving
+            if 'date' in df.columns:
+                df['date'] = df['date'].astype(str)
+
             df.to_sql(table_name, self.engine, if_exists='replace', index=False)
-            print(f"Saved data to table '{table_name}'")
+            print(f" Saved data to table '{table_name}'")
         except Exception as e:
             print(f"Error saving data: {e}")
+
 
     def load_from_db(self, table_name):
         try:

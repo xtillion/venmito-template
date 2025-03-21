@@ -1,6 +1,5 @@
 import pandas as pd
 import yaml
-import xmltodict
 
 class DataLoader:
     #Manages data extraction of json file
@@ -12,7 +11,7 @@ class DataLoader:
             return None
 
     #Manages data extraction of yaml file
-    def load_yaml(self, file_path):
+    def load_yml(self, file_path):
         try:
             with open(file_path, 'r') as file:
                 data = yaml.safe_load(file)
@@ -33,8 +32,8 @@ class DataLoader:
     def load_xml(self, file_path):
         try:
             with open(file_path, 'r') as file:
-                data = xmltodict.parse(file.read())
-                return pd.json_normalize(data['transactions']['transaction'])
+                data = file.read()
+                return data
         except Exception as e:
             print(f"Error loading XML: {e}")
             return None
