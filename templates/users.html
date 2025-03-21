@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+
+{% block title %}Venmito - Users{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Users</h3>
+                <div class="d-flex">
+                    <input type="text" id="user-search" class="form-control me-2" placeholder="Search users...">
+                    <button class="btn btn-primary" id="search-btn">Search</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="users-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Location</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" class="text-center">Loading users...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <nav aria-label="Users pagination">
+                    <ul class="pagination justify-content-center" id="users-pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- User Details Modal -->
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">User Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Personal Information</h4>
+                        <p><strong>Name:</strong> <span id="user-name"></span></p>
+                        <p><strong>Email:</strong> <span id="user-email"></span></p>
+                        <p><strong>Phone:</strong> <span id="user-phone"></span></p>
+                        <p><strong>Location:</strong> <span id="user-location"></span></p>
+                        <p><strong>Devices:</strong> <span id="user-devices"></span></p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Financial Summary</h4>
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5>Transactions</h5>
+                                <p><strong>Total Spent:</strong> $<span id="user-total-spent"></span></p>
+                                <p><strong>Transaction Count:</strong> <span id="user-transaction-count"></span></p>
+                                <p><strong>Favorite Store:</strong> <span id="user-favorite-store"></span></p>
+                                <p><strong>Favorite Item:</strong> <span id="user-favorite-item"></span></p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Transfers</h5>
+                                <p><strong>Total Sent:</strong> $<span id="user-total-sent"></span></p>
+                                <p><strong>Total Received:</strong> $<span id="user-total-received"></span></p>
+                                <p><strong>Net Balance:</strong> $<span id="user-net-transferred"></span></p>
+                                <p><strong>Transfer Count:</strong> <span id="user-transfer-count"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="view-user-details">View Full Details</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/users.js') }}"></script>
+{% endblock %}

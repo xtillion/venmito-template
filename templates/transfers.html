@@ -1,0 +1,127 @@
+{% extends 'layout.html' %}
+
+{% block title %}Venmito - Transfers{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Transfers</h3>
+                <div class="d-flex">
+                    <input type="text" id="transfer-search" class="form-control me-2" placeholder="Search by user...">
+                    <div class="input-group me-2">
+                        <span class="input-group-text">From</span>
+                        <input type="date" id="start-date" class="form-control">
+                    </div>
+                    <div class="input-group me-2">
+                        <span class="input-group-text">To</span>
+                        <input type="date" id="end-date" class="form-control">
+                    </div>
+                    <button class="btn btn-primary" id="filter-btn">Filter</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id="transfers-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date</th>
+                                <th>Sender</th>
+                                <th>Recipient</th>
+                                <th>Amount</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" class="text-center">Loading transfers...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <nav aria-label="Transfers pagination">
+                    <ul class="pagination justify-content-center" id="transfers-pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Transfer Amount Distribution</div>
+            <div class="card-body">
+                <canvas id="transfer-distribution-chart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Daily Transfer Volume</div>
+            <div class="card-body">
+                <canvas id="daily-transfers-chart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Transfer Details Modal -->
+<div class="modal fade" id="transferModal" tabindex="-1" aria-labelledby="transferModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="transferModalLabel">Transfer Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Transfer ID:</strong> <span id="transfer-id"></span></p>
+                <p><strong>Date:</strong> <span id="transfer-date"></span></p>
+                <p><strong>Amount:</strong> $<span id="transfer-amount"></span></p>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">Sender</div>
+                            <div class="card-body">
+                                <p><strong>Name:</strong> <span id="sender-name"></span></p>
+                                <p><strong>Email:</strong> <span id="sender-email"></span></p>
+                                <a href="#" id="sender-details-link" class="btn btn-sm btn-outline-primary">View Sender Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">Recipient</div>
+                            <div class="card-body">
+                                <p><strong>Name:</strong> <span id="recipient-name"></span></p>
+                                <p><strong>Email:</strong> <span id="recipient-email"></span></p>
+                                <a href="#" id="recipient-details-link" class="btn btn-sm btn-outline-primary">View Recipient Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/transfers.js') }}"></script>
+{% endblock %}
