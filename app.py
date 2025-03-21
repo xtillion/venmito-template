@@ -6,7 +6,7 @@ This module initializes the Flask application and registers API routes.
 
 import os
 import logging
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 from flask_cors import CORS
 
 from src.api.routes import init_app as init_routes
@@ -46,11 +46,44 @@ def create_app(config_object=None):
     # Register API routes
     init_routes(app)
     
+    # Register web view routes
+    register_web_routes(app)
+    
     # Register error handlers
     register_error_handlers(app)
     
     logger.info("Flask application initialized")
     return app
+
+
+def register_web_routes(app):
+    """
+    Register web view routes for the Flask application.
+    
+    Args:
+        app: Flask application instance
+    """
+    @app.route('/')
+    def index():
+        return render_template('index.html')
+    
+    @app.route('/users')
+    def users():
+        return render_template('users.html')
+    
+    @app.route('/transfers')
+    def transfers():
+        return render_template('transfers.html')
+    
+    @app.route('/transactions')
+    def transactions():
+        return render_template('transactions.html')
+    
+    @app.route('/analytics')
+    def analytics():
+        return render_template('analytics.html')
+    
+    logger.info("Web routes registered")
 
 
 def register_error_handlers(app):
