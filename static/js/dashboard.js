@@ -1,292 +1,494 @@
-// Dashboard JavaScript
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("Dashboard loaded");
-    
-    // Example fetch for data
-    // fetch("/api/user-analytics")
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         // Process and visualize data
-    //     });
-});/**
-* Dashboard JavaScript file for Venmito dashboard.
-* Manages the charts and data for the main dashboard page.
-*/
+/**
+ * Dashboard JavaScript file for Venmito dashboard.
+ * Manages the charts and data for the main dashboard page.
+ */
+
+// Set Chart.js global defaults for dark theme
+Chart.defaults.color = '#b3b3b3';
+Chart.defaults.borderColor = '#3d3d3d';
+Chart.defaults.plugins.legend.labels.color = '#b3b3b3';
+Chart.defaults.plugins.title.color = '#ffffff';
+
+// Define chart color palette
+const chartColors = {
+  blue: '#4285f4',
+  green: '#34a853',
+  yellow: '#fbbc05',
+  red: '#ea4335',
+  purple: '#ab47bc',
+  teal: '#26a69a',
+  lightBlue: '#64b5f6',
+  lightGreen: '#66bb6a',
+  orange: '#ff9800',
+  pink: '#ec407a'
+};
 
 document.addEventListener('DOMContentLoaded', function() {
-   loadDashboardData();
-   setupCharts();
+    console.log("Dashboard loaded with dark theme");
+    initializeCharts();
+    loadDashboardData();
 });
 
 /**
-* Load dashboard data from API
-*/
+ * Initialize chart instances with default settings
+ */
+function initializeCharts() {
+    // Activity Chart
+    const activityCtx = document.getElementById('activity-chart');
+    if (activityCtx) {
+        window.activityChart = new Chart(activityCtx.getContext('2d'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Transfers',
+                    data: [8540, 9320, 8950, 10250, 10850, 11280, 12150, 12980, 13250, 14350, 15420, 15980],
+                    borderColor: chartColors.blue,
+                    backgroundColor: 'rgba(66, 133, 244, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }, {
+                    label: 'Transactions',
+                    data: [3250, 3420, 3680, 3890, 4120, 4350, 4580, 4720, 4980, 5250, 5620, 5980],
+                    borderColor: chartColors.green,
+                    backgroundColor: 'rgba(52, 168, 83, 0.1)',
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Count'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Month'
+                        }
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Activity Over Time',
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Sources Chart
+    const sourcesCtx = document.getElementById('sources-chart');
+    if (sourcesCtx) {
+        window.sourcesChart = new Chart(sourcesCtx.getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['JSON', 'YAML', 'CSV', 'API'],
+                datasets: [{
+                    data: [40, 25, 20, 15],
+                    backgroundColor: [
+                        chartColors.blue, 
+                        chartColors.green, 
+                        chartColors.yellow, 
+                        chartColors.red
+                    ],
+                    borderColor: '#1e1e1e',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Data Source Distribution (%)',
+                        padding: {
+                            top: 10,
+                            bottom: 20
+                        }
+                    }
+                }
+            }
+        });
+    }
+}
+
+/**
+ * Load dashboard data from API
+ */
 async function loadDashboardData() {
-   try {
-       // Get dashboard data
-       const dashboardData = await Utils.fetchAPI('/analytics/dashboard');
-       
-       // Update cards with summary statistics
-       updateSummaryCards(dashboardData);
-       
-       // Update charts with data
-       updateCharts(dashboardData);
-       
-       // Update top users table
-       updateTopUsersTable(dashboardData.top_users_by_spending);
-       
-   } catch (error) {
-       console.error('Error loading dashboard data:', error);
-       alert('Failed to load dashboard data. Please try again later.');
-   }
+    try {
+        // Update summary cards
+        fetchSummaryStats();
+        
+        // Update charts
+        fetchChartData();
+        
+        // Update tables
+        fetchTableData();
+    } catch (error) {
+        console.error('Error loading dashboard data:', error);
+    }
 }
 
 /**
-* Update summary cards with data
-* @param {Object} data - Dashboard data
-*/
+ * Fetch summary statistics from API
+ */
+function fetchSummaryStats() {
+    fetch('/api/summary')
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            // Update summary cards
+            updateSummaryCards(data);
+        })
+        .catch(error => {
+            console.error('Error fetching summary data:', error);
+            // Show error or use fallback data
+        });
+}
+
+/**
+ * Update summary cards with data
+ * @param {Object} data - Summary statistics data
+ */
 function updateSummaryCards(data) {
-   // For now, we'll use mock data
-   // In a real implementation, this would be replaced with the actual data
-   
-   // Total users
-   const totalUsers = 1250;
-   document.getElementById('total-users').textContent = totalUsers.toLocaleString();
-   
-   // Total transfers
-   const totalTransfers = 8765;
-   document.getElementById('total-transfers').textContent = totalTransfers.toLocaleString();
-   
-   // Total transactions
-   const totalTransactions = 15420;
-   document.getElementById('total-transactions').textContent = totalTransactions.toLocaleString();
-   
-   // Total revenue
-   const totalRevenue = 975652.75;
-   document.getElementById('total-revenue').textContent = Utils.formatCurrency(totalRevenue).replace('$', '');
+    // Update each stats card if element exists and data is available
+    const totalUsersEl = document.querySelector('.stats-card:nth-of-type(1) .stats-value');
+    const totalTransfersEl = document.querySelector('.stats-card:nth-of-type(2) .stats-value');
+    const avgTransferEl = document.querySelector('.stats-card:nth-of-type(3) .stats-value');
+    const totalTransactionsEl = document.querySelector('.stats-card:nth-of-type(4) .stats-value');
+    
+    // Growth indicators
+    const userGrowthEl = document.querySelector('.stats-card:nth-of-type(1) .stats-change');
+    const transferGrowthEl = document.querySelector('.stats-card:nth-of-type(2) .stats-change');
+    const avgTransferGrowthEl = document.querySelector('.stats-card:nth-of-type(3) .stats-change');
+    const transactionGrowthEl = document.querySelector('.stats-card:nth-of-type(4) .stats-change');
+    
+    // Update values if elements exist and data is available
+    if (totalUsersEl && data.total_users) {
+        totalUsersEl.textContent = formatNumber(data.total_users);
+    }
+    
+    if (totalTransfersEl && data.total_transfers) {
+        totalTransfersEl.textContent = formatCurrency(data.total_transfers, false);
+    }
+    
+    if (avgTransferEl && data.average_transfer) {
+        avgTransferEl.textContent = formatCurrency(data.average_transfer);
+    }
+    
+    if (totalTransactionsEl && data.total_transactions) {
+        totalTransactionsEl.textContent = formatNumber(data.total_transactions);
+    }
+    
+    // Update growth indicators
+    updateGrowthIndicator(userGrowthEl, data.user_growth);
+    updateGrowthIndicator(transferGrowthEl, data.transfer_growth);
+    updateGrowthIndicator(avgTransferGrowthEl, data.avg_transfer_growth);
+    updateGrowthIndicator(transactionGrowthEl, data.transaction_growth);
 }
 
 /**
-* Set up chart instances
-*/
-function setupCharts() {
-   // Transfers chart
-   const transfersCtx = document.getElementById('transfers-chart').getContext('2d');
-   window.transfersChart = new Chart(transfersCtx, {
-       type: 'line',
-       data: {
-           labels: [], // Will be populated with dates
-           datasets: [{
-               label: 'Transfer Count',
-               data: [],
-               borderColor: 'rgb(54, 162, 235)',
-               backgroundColor: 'rgba(54, 162, 235, 0.1)',
-               borderWidth: 2,
-               tension: 0.2,
-               fill: true
-           }, {
-               label: 'Transfer Amount',
-               data: [],
-               borderColor: 'rgb(75, 192, 192)',
-               backgroundColor: 'rgba(75, 192, 192, 0.1)',
-               borderWidth: 2,
-               tension: 0.2,
-               fill: true,
-               yAxisID: 'y1'
-           }]
-       },
-       options: {
-           responsive: true,
-           interaction: {
-               mode: 'index',
-               intersect: false,
-           },
-           scales: {
-               y: {
-                   title: {
-                       display: true,
-                       text: 'Transfer Count'
-                   }
-               },
-               y1: {
-                   position: 'right',
-                   title: {
-                       display: true,
-                       text: 'Amount'
-                   },
-                   grid: {
-                       drawOnChartArea: false,
-                   },
-               }
-           }
-       }
-   });
-   
-   // Transactions chart
-   const transactionsCtx = document.getElementById('transactions-chart').getContext('2d');
-   window.transactionsChart = new Chart(transactionsCtx, {
-       type: 'line',
-       data: {
-           labels: [], // Will be populated with dates
-           datasets: [{
-               label: 'Transaction Count',
-               data: [],
-               borderColor: 'rgb(255, 99, 132)',
-               backgroundColor: 'rgba(255, 99, 132, 0.1)',
-               borderWidth: 2,
-               tension: 0.2,
-               fill: true
-           }, {
-               label: 'Revenue',
-               data: [],
-               borderColor: 'rgb(255, 159, 64)',
-               backgroundColor: 'rgba(255, 159, 64, 0.1)',
-               borderWidth: 2,
-               tension: 0.2,
-               fill: true,
-               yAxisID: 'y1'
-           }]
-       },
-       options: {
-           responsive: true,
-           interaction: {
-               mode: 'index',
-               intersect: false,
-           },
-           scales: {
-               y: {
-                   title: {
-                       display: true,
-                       text: 'Transaction Count'
-                   }
-               },
-               y1: {
-                   position: 'right',
-                   title: {
-                       display: true,
-                       text: 'Revenue'
-                   },
-                   grid: {
-                       drawOnChartArea: false,
-                   },
-               }
-           }
-       }
-   });
-   
-   // Spending distribution chart
-   const spendingDistCtx = document.getElementById('spending-distribution-chart').getContext('2d');
-   window.spendingDistChart = new Chart(spendingDistCtx, {
-       type: 'pie',
-       data: {
-           labels: [], // Will be populated
-           datasets: [{
-               data: [],
-               backgroundColor: Utils.generateChartColors(6)
-           }]
-       },
-       options: {
-           responsive: true,
-           plugins: {
-               legend: {
-                   position: 'bottom'
-               },
-               tooltip: {
-                   callbacks: {
-                       label: function(context) {
-                           const label = context.label || '';
-                           const value = context.raw || 0;
-                           const percentage = context.parsed || 0;
-                           return `${label}: ${value} users (${percentage.toFixed(1)}%)`;
-                       }
-                   }
-               }
-           }
-       }
-   });
+ * Update growth indicator elements
+ * @param {Element} element - Growth indicator element
+ * @param {number} value - Growth percentage value
+ */
+function updateGrowthIndicator(element, value) {
+    if (!element || value === undefined) return;
+    
+    // Determine if positive or negative
+    const isPositive = value >= 0;
+    const absValue = Math.abs(value);
+    
+    // Update class and content
+    element.className = `stats-change ${isPositive ? 'positive' : 'negative'}`;
+    element.innerHTML = `
+        <i class="fas fa-arrow-${isPositive ? 'up' : 'down'}"></i> 
+        ${absValue.toFixed(1)}% from last month
+    `;
 }
 
 /**
-* Update charts with data
-* @param {Object} data - Dashboard data
-*/
+ * Fetch chart data from API
+ */
+function fetchChartData() {
+    fetch('/api/analytics')
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            // Update charts with the data
+            updateCharts(data);
+        })
+        .catch(error => {
+            console.error('Error fetching chart data:', error);
+        });
+}
+
+/**
+ * Update charts with API data
+ * @param {Object} data - Analytics data
+ */
 function updateCharts(data) {
-   // For now, we'll use mock data
-   // In a real implementation, this would be replaced with the actual data
-   
-   // Mock data for transfers chart
-   const transfersDates = Array.from({length: 30}, (_, i) => {
-       const date = new Date();
-       date.setDate(date.getDate() - 29 + i);
-       return date.toISOString().split('T')[0];
-   });
-   
-   const transfersCount = Array.from({length: 30}, () => Math.floor(Math.random() * 100) + 50);
-   const transfersAmount = Array.from({length: 30}, () => Math.floor(Math.random() * 10000) + 5000);
-   
-   // Update transfers chart
-   window.transfersChart.data.labels = transfersDates;
-   window.transfersChart.data.datasets[0].data = transfersCount;
-   window.transfersChart.data.datasets[1].data = transfersAmount;
-   window.transfersChart.update();
-   
-   // Mock data for transactions chart
-   const transactionsDates = transfersDates; // Same dates
-   const transactionsCount = Array.from({length: 30}, () => Math.floor(Math.random() * 150) + 30);
-   const transactionsRevenue = Array.from({length: 30}, () => Math.floor(Math.random() * 15000) + 3000);
-   
-   // Update transactions chart
-   window.transactionsChart.data.labels = transactionsDates;
-   window.transactionsChart.data.datasets[0].data = transactionsCount;
-   window.transactionsChart.data.datasets[1].data = transactionsRevenue;
-   window.transactionsChart.update();
-   
-   // Mock data for spending distribution
-   const spendingLabels = [
-       '$0 (No purchases)', 
-       '$0.01 - $99.99', 
-       '$100 - $499.99',
-       '$500 - $999.99',
-       '$1,000 - $4,999.99',
-       '$5,000+'
-   ];
-   const spendingData = [250, 450, 300, 150, 75, 25];
-   
-   // Update spending distribution chart
-   window.spendingDistChart.data.labels = spendingLabels;
-   window.spendingDistChart.data.datasets[0].data = spendingData;
-   window.spendingDistChart.update();
+    // Update activity chart
+    if (window.activityChart && data.monthly_activity) {
+        // Update monthly data
+        window.activityChart.data.labels = data.monthly_activity.labels || 
+            ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        
+        if (data.monthly_activity.transfers) {
+            window.activityChart.data.datasets[0].data = data.monthly_activity.transfers;
+        }
+        
+        if (data.monthly_activity.transactions) {
+            window.activityChart.data.datasets[1].data = data.monthly_activity.transactions;
+        }
+        
+        window.activityChart.update();
+    }
+    
+    // Update sources chart
+    if (window.sourcesChart && data.data_sources) {
+        window.sourcesChart.data.labels = data.data_sources.labels || 
+            ['JSON', 'YAML', 'CSV', 'API'];
+        window.sourcesChart.data.datasets[0].data = data.data_sources.values || 
+            [40, 25, 20, 15];
+        window.sourcesChart.update();
+    }
 }
 
 /**
-* Update top users table
-* @param {Array} users - Top users by spending
-*/
-function updateTopUsersTable(users) {
-   // For now, we'll use mock data
-   // In a real implementation, this would be replaced with the actual data
-   
-   const mockUsers = [
-       { first_name: 'John', last_name: 'Doe', total_spent: 15789.50, transaction_count: 42 },
-       { first_name: 'Jane', last_name: 'Smith', total_spent: 12450.75, transaction_count: 36 },
-       { first_name: 'Robert', last_name: 'Johnson', total_spent: 9876.25, transaction_count: 28 },
-       { first_name: 'Emily', last_name: 'Wilson', total_spent: 8765.40, transaction_count: 31 },
-       { first_name: 'Michael', last_name: 'Brown', total_spent: 7890.15, transaction_count: 25 }
-   ];
-   
-   const tableBody = document.querySelector('#top-users-table tbody');
-   tableBody.innerHTML = '';
-   
-   mockUsers.forEach(user => {
-       const avgTransaction = user.total_spent / user.transaction_count;
-       
-       const row = document.createElement('tr');
-       row.innerHTML = `
-           <td>${user.first_name} ${user.last_name}</td>
-           <td>${Utils.formatCurrency(user.total_spent)}</td>
-           <td>${user.transaction_count}</td>
-       `;
-       
-       tableBody.appendChild(row);
-   });
+ * Fetch table data from API
+ */
+function fetchTableData() {
+    // Fetch recent transfers
+    fetch('/api/transfers?limit=3&sort=timestamp&order=desc')
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            updateRecentTransfersTable(data.data || []);
+        })
+        .catch(error => {
+            console.error('Error fetching recent transfers:', error);
+        });
+    
+    // Fetch recent transactions
+    fetch('/api/transactions?limit=3&sort=timestamp&order=desc')
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            updateRecentTransactionsTable(data.data || []);
+        })
+        .catch(error => {
+            console.error('Error fetching recent transactions:', error);
+        });
 }
+
+/**
+ * Update recent transfers table with API data
+ * @param {Array} transfers - Recent transfers data
+ */
+function updateRecentTransfersTable(transfers) {
+    const tableBody = document.querySelector('table:nth-of-type(1) tbody');
+    if (!tableBody) return;
+    
+    if (transfers.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="4" class="text-center">No recent transfers</td></tr>';
+        return;
+    }
+    
+    // Clear existing rows
+    tableBody.innerHTML = '';
+    
+    // Fetch user details for each transfer if not included
+    const userPromises = [];
+    const userCache = {};
+    
+    // Collect unique user IDs that need to be fetched
+    const userIds = new Set();
+    transfers.forEach(transfer => {
+        if (transfer.sender_id && !transfer.sender_name) {
+            userIds.add(transfer.sender_id);
+        }
+        if (transfer.recipient_id && !transfer.recipient_name) {
+            userIds.add(transfer.recipient_id);
+        }
+    });
+    
+    // If we need to fetch user details
+    if (userIds.size > 0) {
+        // Fetch user details for all unique user IDs
+        userPromises.push(
+            fetch(`/api/users?ids=${Array.from(userIds).join(',')}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Create a cache of user details
+                    (data.data || []).forEach(user => {
+                        userCache[user.user_id] = {
+                            name: `${user.first_name} ${user.last_name}`,
+                            email: user.email
+                        };
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching user details:', error);
+                })
+        );
+    }
+    
+    // Once all user details are fetched, update the table
+    Promise.all(userPromises).then(() => {
+        transfers.forEach(transfer => {
+            const row = document.createElement('tr');
+            
+            // Get sender name
+            const senderName = transfer.sender_name || 
+                (userCache[transfer.sender_id] ? userCache[transfer.sender_id].name : `User ${transfer.sender_id}`);
+            
+            // Get recipient name
+            const recipientName = transfer.recipient_name || 
+                (userCache[transfer.recipient_id] ? userCache[transfer.recipient_id].name : `User ${transfer.recipient_id}`);
+            
+            // Format date
+            const date = new Date(transfer.timestamp);
+            const formattedDate = date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+            
+            row.innerHTML = `
+                <td>${senderName}</td>
+                <td>${recipientName}</td>
+                <td>${formatCurrency(transfer.amount)}</td>
+                <td>${formattedDate}</td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
+    });
+}
+
+/**
+ * Update recent transactions table with API data
+ * @param {Array} transactions - Recent transactions data
+ */
+function updateRecentTransactionsTable(transactions) {
+    const tableBody = document.querySelector('table:nth-of-type(2) tbody');
+    if (!tableBody) return;
+    
+    if (transactions.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="4" class="text-center">No recent transactions</td></tr>';
+        return;
+    }
+    
+    // Clear existing rows
+    tableBody.innerHTML = '';
+    
+    // Fetch user details for each transaction if not included
+    const userPromises = [];
+    const userCache = {};
+    
+    // Collect unique user IDs that need to be fetched
+    const userIds = new Set();
+    transactions.forEach(transaction => {
+        if (transaction.user_id && !transaction.user_name) {
+            userIds.add(transaction.user_id);
+        }
+    });
+    
+    // If we need to fetch user details
+    if (userIds.size > 0) {
+        // Fetch user details for all unique user IDs
+        userPromises.push(
+            fetch(`/api/users?ids=${Array.from(userIds).join(',')}`)
+                .then(response => response.json())
+                .then(data => {
+                    // Create a cache of user details
+                    (data.data || []).forEach(user => {
+                        userCache[user.user_id] = {
+                            name: `${user.first_name} ${user.last_name}`,
+                            email: user.email
+                        };
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching user details:', error);
+                })
+        );
+    }
+    
+    // Once all user details are fetched, update the table
+    Promise.all(userPromises).then(() => {
+        transactions.forEach(transaction => {
+            const row = document.createElement('tr');
+            
+            // Get user name
+            const userName = transaction.user_name || 
+                (userCache[transaction.user_id] ? userCache[transaction.user_id].name : `User ${transaction.user_id}`);
+            
+            row.innerHTML = `
+                <td>${userName}</td>
+                <td>${transaction.item}</td>
+                <td>${transaction.store}</td>
+                <td>${formatCurrency(transaction.price)}</td>
+            `;
+            
+            tableBody.appendChild(row);
+        });
+    });
+}
+
+/**
+ * Format currency values with $ and thousands separators
+ * @param {number} value - The numeric value to format
+ * @param {boolean} showCents - Whether to show cents
+ * @returns {string} - Formatted currency string
+ */
+function formatCurrency(value, showCents = true) {
+    if (value === null || value === undefined) return '-';
+    
+    const options = {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: showCents ? 2 : 0,
+        maximumFractionDigits: showCents ? 2 : 0
+    };
+    
+    return new Intl.NumberFormat('en-US', options).format(value);
+}
+
+/**
+ * Format large numbers with thousands separators
+ * @param {number} value - The numeric value to format
+ * @returns {string} - Formatted number string
+ */
+function formatNumber(value) {
+    if (value === null || value === undefined) return '-';
+    
+    return new Intl.NumberFormat('en-US').format(value);
+}
+
