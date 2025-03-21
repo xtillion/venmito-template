@@ -52,44 +52,47 @@
     </div>
 </div>
 
+<!-- Removed empty charts section -->
+
 <div class="row">
-    <!-- Charts -->
+    <!-- Top Items and Stores -->
     <div class="col-md-6 mb-4">
         <div class="card">
-            <div class="card-header">Transfer Activity (Last 30 Days)</div>
+            <div class="card-header">Top Items by Revenue</div>
             <div class="card-body">
-                <canvas id="transfers-chart" width="400" height="300"></canvas>
+                <canvas id="top-items-chart" width="400" height="300"></canvas>
             </div>
         </div>
     </div>
     <div class="col-md-6 mb-4">
         <div class="card">
-            <div class="card-header">Transaction Volume (Last 30 Days)</div>
+            <div class="card-header">Top Stores by Revenue</div>
             <div class="card-body">
-                <canvas id="transactions-chart" width="400" height="300"></canvas>
+                <canvas id="top-stores-chart" width="400" height="300"></canvas>
             </div>
         </div>
     </div>
 </div>
 
 <div class="row">
-    <!-- Top Users -->
+    <!-- Top Transactions and Top Transfers -->
     <div class="col-md-6 mb-4">
         <div class="card">
-            <div class="card-header">Top Users by Spending</div>
+            <div class="card-header">Recent Transactions</div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped" id="top-users-table">
+                    <table class="table table-striped" id="recent-transactions-table">
                         <thead>
                             <tr>
-                                <th>User</th>
-                                <th>Total Spent</th>
-                                <th>Transactions</th>
+                                <th>ID</th>
+                                <th>Item</th>
+                                <th>Store</th>
+                                <th>Price</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="3" class="text-center">Loading data...</td>
+                                <td colspan="4" class="text-center">Loading data...</td>
                             </tr>
                         </tbody>
                     </table>
@@ -99,9 +102,25 @@
     </div>
     <div class="col-md-6 mb-4">
         <div class="card">
-            <div class="card-header">User Spending Distribution</div>
+            <div class="card-header">Recent Transfers</div>
             <div class="card-body">
-                <canvas id="spending-distribution-chart" width="400" height="300"></canvas>
+                <div class="table-responsive">
+                    <table class="table table-striped" id="recent-transfers-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Sender</th>
+                                <th>Recipient</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4" class="text-center">Loading data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

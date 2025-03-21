@@ -38,7 +38,7 @@ def get_daily_transactions_summary(days: int = 30):
         COALESCE(AVG(t.price), 0) AS average_transaction_value,
         COALESCE(COUNT(DISTINCT t.user_id), 0) AS unique_users
     FROM date_series ds
-    LEFT JOIN transactions t ON DATE(t.timestamp) = ds.day
+    LEFT JOIN transactions t ON DATE(t.transaction_date) = ds.day
     GROUP BY ds.day
     ORDER BY ds.day
     """
@@ -46,7 +46,6 @@ def get_daily_transactions_summary(days: int = 30):
     params = {'days': f'{days} days'}
     
     return execute_query(query, params)
-
 
 def get_daily_transfers_summary(days: int = 30):
     """
