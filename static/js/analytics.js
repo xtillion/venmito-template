@@ -1,593 +1,441 @@
-// Set Chart.js global defaults for dark theme
-Chart.defaults.color = '#b3b3b3';
-Chart.defaults.borderColor = '#3d3d3d';
-Chart.defaults.plugins.legend.labels.color = '#b3b3b3';
-Chart.defaults.plugins.title.color = '#ffffff';
+/**
+ * Analytics JavaScript for Venmito
+ * 
+ * This file handles the analytics page functionality, including:
+ * - Loading and displaying analytics data
+ * - Rendering various charts and visualizations
+ * - Handling time period selections
+ * - Displaying tables with top users
+ */
 
-// Define chart color palette
-const chartColors = {
-  blue: '#4285f4',
-  green: '#34a853',
-  yellow: '#fbbc05',
-  red: '#ea4335',
-  purple: '#ab47bc',
-  teal: '#26a69a',
-  lightBlue: '#64b5f6',
-  lightGreen: '#66bb6a',
-  orange: '#ff9800',
-  pink: '#ec407a'
-};
-
-document.addEventListener('DOMContentLoaded', function() {
-  initializeCharts();
-  fetchAnalyticsData();
-});
-
-// Initialize all charts
-function initializeCharts() {
-  // Spending Distribution Chart
-  const spendingDistributionCtx = document.getElementById('spending-distribution-chart');
-  if (spendingDistributionCtx) {
-    window.spendingDistributionChart = new Chart(spendingDistributionCtx.getContext('2d'), {
-      type: 'pie',
-      data: {
-        labels: ['Electronics', 'Clothing', 'Food & Dining', 'Entertainment', 'Travel', 'Other'],
-        datasets: [{
-          data: [35, 15, 20, 10, 12, 8],
-          backgroundColor: [
-            chartColors.blue,
-            chartColors.green,
-            chartColors.yellow,
-            chartColors.red,
-            chartColors.purple,
-            chartColors.teal
-          ],
-          borderColor: '#1e1e1e',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'right',
-          },
-          title: {
-            display: true,
-            text: 'Spending Categories (%)',
-            padding: {
-              top: 10,
-              bottom: 20
-            }
-          }
-        }
-      }
-    });
-  }
-
-  // Transfer Distribution Chart
-  const transferDistributionCtx = document.getElementById('transfer-distribution-chart');
-  if (transferDistributionCtx) {
-    window.transferDistributionChart = new Chart(transferDistributionCtx.getContext('2d'), {
-      type: 'bar',
-      data: {
-        labels: ['$0-$20', '$21-$50', '$51-$100', '$101-$200', '$201-$500', '$500+'],
-        datasets: [{
-          label: 'Number of Transfers',
-          data: [382, 724, 516, 298, 157, 84],
-          backgroundColor: chartColors.purple,
-          borderColor: chartColors.purple,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Number of Transfers'
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Amount Range'
-            }
-          }
-        },
-        plugins: {
-          title: {
-            display: true,
-            text: 'Transfer Amount Distribution',
-            padding: {
-              top: 10,
-              bottom: 20
-            }
-          }
-        }
-      }
-    });
-  }
-
-  // Popular Items Trend Chart
-  const popularItemsTrendCtx = document.getElementById('popular-items-trend-chart');
-  if (popularItemsTrendCtx) {
-    window.popularItemsTrendChart = new Chart(popularItemsTrendCtx.getContext('2d'), {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [
-          {
-            label: 'Electronics',
-            data: [42, 45, 38, 40, 48, 52, 54, 59, 63, 58, 65, 72],
-            borderColor: chartColors.blue,
-            backgroundColor: 'rgba(66, 133, 244, 0.2)',
-            tension: 0.3,
-            fill: true
-          },
-          {
-            label: 'Clothing',
-            data: [28, 30, 34, 32, 36, 39, 35, 38, 40, 42, 46, 51],
-            borderColor: chartColors.green,
-            backgroundColor: 'rgba(52, 168, 83, 0.2)',
-            tension: 0.3,
-            fill: true
-          },
-          {
-            label: 'Food & Dining',
-            data: [35, 36, 37, 38, 40, 42, 44, 46, 48, 49, 50, 52],
-            borderColor: chartColors.yellow,
-            backgroundColor: 'rgba(251, 188, 5, 0.2)',
-            tension: 0.3,
-            fill: true
-          },
-          {
-            label: 'Entertainment',
-            data: [22, 24, 26, 28, 30, 33, 35, 37, 38, 40, 42, 45],
-            borderColor: chartColors.red,
-            backgroundColor: 'rgba(234, 67, 53, 0.2)',
-            tension: 0.3,
-            fill: true
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Number of Purchases'
-            }
-          },
-          x: {
-            title: {
-              display: true,
-              text: 'Month'
-            }
-          }
-        },
-        plugins: {
-          title: {
-            display: true,
-            text: 'Popular Items by Month',
-            padding: {
-              top: 10,
-              bottom: 20
-            }
-          }
-        }
-      }
-    });
-  }
-
-  // Time Transactions Chart
-  const timeTransactionsCtx = document.getElementById('time-transactions-chart');
-  if (timeTransactionsCtx) {
-    window.timeTransactionsChart = new Chart(timeTransactionsCtx.getContext('2d'), {
-      type: 'line',
-      data: {
-        labels: Array.from({length: 30}, (_, i) => `Day ${i+1}`),
-        datasets: [{
-          label: 'Transactions',
-          data: Array.from({length: 30}, () => Math.floor(Math.random() * 50) + 30),
-          borderColor: chartColors.teal,
-          backgroundColor: 'rgba(38, 166, 154, 0.2)',
-          tension: 0.4,
-          fill: true
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Number of Transactions'
-            }
-          }
-        }
-      }
-    });
-  }
-
-  // Time Transfers Chart
-  const timeTransfersCtx = document.getElementById('time-transfers-chart');
-  if (timeTransfersCtx) {
-    window.timeTransfersChart = new Chart(timeTransfersCtx.getContext('2d'), {
-      type: 'line',
-      data: {
-        labels: Array.from({length: 30}, (_, i) => `Day ${i+1}`),
-        datasets: [{
-          label: 'Transfers',
-          data: Array.from({length: 30}, () => Math.floor(Math.random() * 40) + 20),
-          borderColor: chartColors.lightBlue,
-          backgroundColor: 'rgba(100, 181, 246, 0.2)',
-          tension: 0.4,
-          fill: true
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Number of Transfers'
-            }
-          }
-        }
-      }
-    });
-  }
-
-  // Map visualization placeholder
-  const mapContainer = document.getElementById('geo-spending-map');
-  if (mapContainer) {
-    mapContainer.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100%; color: var(--text-secondary);">' +
-      '<p>Geographic visualization - loading data...</p>' +
-      '</div>';
-  }
-
-  // Setup time period selector event
-  const updateTimeChartsBtn = document.getElementById('update-time-charts');
-  if (updateTimeChartsBtn) {
-    updateTimeChartsBtn.addEventListener('click', updateTimeCharts);
-  }
-}
-
-// Update time-based charts when period changes
-function updateTimeCharts() {
-  const period = document.getElementById('time-period').value;
-  const days = parseInt(period);
+// Store current state
+const state = {
+    timePeriod: 30, // Default to 30 days
+    charts: {}
+  };
   
-  // Update labels based on selected period
-  const labels = Array.from({length: days}, (_, i) => `Day ${i+1}`);
-  
-  // Fetch data for the selected period
-  fetch(`/api/analytics/time-series?period=${days}`)
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      // Update charts with the new data
-      if (window.timeTransactionsChart) {
-        window.timeTransactionsChart.data.labels = labels;
-        window.timeTransactionsChart.data.datasets[0].data = data.transactions || 
-          Array.from({length: days}, () => Math.floor(Math.random() * 50) + 30); // Fallback to random
-        window.timeTransactionsChart.update();
-      }
-      
-      if (window.timeTransfersChart) {
-        window.timeTransfersChart.data.labels = labels;
-        window.timeTransfersChart.data.datasets[0].data = data.transfers || 
-          Array.from({length: days}, () => Math.floor(Math.random() * 40) + 20); // Fallback to random
-        window.timeTransfersChart.update();
-      }
-      
-      console.log(`Charts updated for the last ${days} days with API data`);
-    })
-    .catch(error => {
-      console.error('Error fetching time series data:', error);
-      
-      // Fallback to random data on error
-      if (window.timeTransactionsChart) {
-        window.timeTransactionsChart.data.labels = labels;
-        window.timeTransactionsChart.data.datasets[0].data = 
-          Array.from({length: days}, () => Math.floor(Math.random() * 50) + 30);
-        window.timeTransactionsChart.update();
-      }
-      
-      if (window.timeTransfersChart) {
-        window.timeTransfersChart.data.labels = labels;
-        window.timeTransfersChart.data.datasets[0].data = 
-          Array.from({length: days}, () => Math.floor(Math.random() * 40) + 20);
-        window.timeTransfersChart.update();
-      }
-      
-      console.log(`Charts updated for the last ${days} days with random data (API error)`);
-    });
-}
-
-// Fetch and update analytics data from the API
-function fetchAnalyticsData() {
-  // Update stat cards
-  fetchSummaryStats();
-  
-  // Update charts
-  fetchChartData();
-  
-  // Update tables
-  fetchTableData();
-}
-
-// Fetch summary statistics
-function fetchSummaryStats() {
-  fetch('/api/summary')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      // Update summary cards
-      updateSummaryCards(data);
-    })
-    .catch(error => {
-      console.error('Error fetching summary data:', error);
-    });
-}
-
-// Update summary cards with data
-function updateSummaryCards(data) {
-  // Find all stats cards
-  const totalUsersEl = document.querySelector('.stats-card .stats-value:nth-of-type(1)');
-  const totalTransfersEl = document.querySelector('.stats-card:nth-of-type(2) .stats-value');
-  const avgTransferEl = document.querySelector('.stats-card:nth-of-type(3) .stats-value');
-  const totalTransactionsEl = document.querySelector('.stats-card:nth-of-type(4) .stats-value');
-  
-  // User growth indicators
-  const userGrowthEl = document.querySelector('.stats-card:nth-of-type(1) .stats-change');
-  const transferGrowthEl = document.querySelector('.stats-card:nth-of-type(2) .stats-change');
-  const avgTransferGrowthEl = document.querySelector('.stats-card:nth-of-type(3) .stats-change');
-  const transactionGrowthEl = document.querySelector('.stats-card:nth-of-type(4) .stats-change');
-  
-  // Update values if elements exist and data is available
-  if (totalUsersEl && data.total_users) {
-    totalUsersEl.textContent = formatNumber(data.total_users);
-  }
-  
-  if (totalTransfersEl && data.total_transfers) {
-    totalTransfersEl.textContent = formatCurrency(data.total_transfers);
-  }
-  
-  if (avgTransferEl && data.average_transfer) {
-    avgTransferEl.textContent = formatCurrency(data.average_transfer);
-  }
-  
-  if (totalTransactionsEl && data.total_transactions) {
-    totalTransactionsEl.textContent = formatNumber(data.total_transactions);
-  }
-  
-  // Update growth indicators
-  updateGrowthIndicator(userGrowthEl, data.user_growth);
-  updateGrowthIndicator(transferGrowthEl, data.transfer_growth);
-  updateGrowthIndicator(avgTransferGrowthEl, data.avg_transfer_growth);
-  updateGrowthIndicator(transactionGrowthEl, data.transaction_growth);
-}
-
-// Update growth indicator
-function updateGrowthIndicator(element, value) {
-  if (!element || value === undefined) return;
-  
-  // Determine if positive or negative
-  const isPositive = value >= 0;
-  const absValue = Math.abs(value);
-  
-  // Update class
-  element.className = `stats-change ${isPositive ? 'positive' : 'negative'}`;
-  
-  // Update content
-  element.innerHTML = `
-    <i class="fas fa-arrow-${isPositive ? 'up' : 'down'}"></i> 
-    ${absValue.toFixed(1)}% from last month
-  `;
-}
-
-// Fetch chart data
-function fetchChartData() {
-  fetch('/api/analytics')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      // Update charts with the data
-      updateCharts(data);
-    })
-    .catch(error => {
-      console.error('Error fetching chart data:', error);
-    });
-}
-
-// Update charts with API data
-function updateCharts(data) {
-  // Update spending distribution chart
-  if (window.spendingDistributionChart && data.spending_distribution) {
-    window.spendingDistributionChart.data.datasets[0].data = data.spending_distribution;
-    window.spendingDistributionChart.update();
-  }
-  
-  // Update transfer distribution chart
-  if (window.transferDistributionChart && data.transfer_distribution) {
-    window.transferDistributionChart.data.datasets[0].data = data.transfer_distribution;
-    window.transferDistributionChart.update();
-  }
-  
-  // Update popular items trend chart
-  if (window.popularItemsTrendChart && data.popular_items) {
-    data.popular_items.forEach((item, index) => {
-      if (index < window.popularItemsTrendChart.data.datasets.length) {
-        window.popularItemsTrendChart.data.datasets[index].data = item.monthly_data;
-        window.popularItemsTrendChart.data.datasets[index].label = item.item;
-      }
-    });
-    window.popularItemsTrendChart.update();
-  }
-  
-  // Update time series charts (initial load)
-  if (window.timeTransactionsChart && data.time_transactions) {
-    window.timeTransactionsChart.data.labels = data.time_labels || window.timeTransactionsChart.data.labels;
-    window.timeTransactionsChart.data.datasets[0].data = data.time_transactions;
-    window.timeTransactionsChart.update();
-  }
-  
-  if (window.timeTransfersChart && data.time_transfers) {
-    window.timeTransfersChart.data.labels = data.time_labels || window.timeTransfersChart.data.labels;
-    window.timeTransfersChart.data.datasets[0].data = data.time_transfers;
-    window.timeTransfersChart.update();
-  }
-  
-  // Update geographical data if available
-  if (data.geo_data) {
-    updateGeoVisualization(data.geo_data);
-  }
-}
-
-// Update geographic visualization
-function updateGeoVisualization(geoData) {
-  const mapContainer = document.getElementById('geo-spending-map');
-  if (!mapContainer) return;
-  
-  // If D3 is available, create a map visualization
-  if (typeof d3 !== 'undefined') {
-    mapContainer.innerHTML = ''; // Clear placeholder
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Initialize charts with loading state
+    initializeCharts();
     
-    // This would be where you implement your D3 geographical visualization
-    // For now, we'll just show the data is loaded
-    mapContainer.innerHTML = '<div style="display: flex; justify-content: center; align-items: center; height: 100%; color: var(--text-secondary);">' +
-      '<p>Geographic data loaded successfully</p>' +
-      '</div>';
-  }
-}
-
-// Fetch table data
-function fetchTableData() {
-  // Fetch top spenders
-  fetch('/api/users?sort=total_spent&limit=5')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      updateTopSpendersTable(data.data || []);
-    })
-    .catch(error => {
-      console.error('Error fetching top spenders:', error);
-    });
-  
-  // Fetch top transferers
-  fetch('/api/transfers/summary?sort=volume&limit=5')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      updateTopTransferersTable(data.data || []);
-    })
-    .catch(error => {
-      console.error('Error fetching top transferers:', error);
-    });
-}
-
-// Update top spenders table
-function updateTopSpendersTable(users) {
-  const tableBody = document.querySelector('#top-spenders-table tbody');
-  if (!tableBody) return;
-  
-  if (users.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="5" class="text-center">No data available</td></tr>';
-    return;
-  }
-  
-  tableBody.innerHTML = '';
-  
-  users.forEach(user => {
-    const row = document.createElement('tr');
+    // Set up event listeners
+    setupEventListeners();
     
-    // Calculate average transaction
-    const avgTransaction = user.transaction_count > 0 
-      ? user.total_spent / user.transaction_count 
-      : 0;
-    
-    row.innerHTML = `
-      <td>${user.first_name || ''} ${user.last_name || ''}</td>
-      <td>${user.email || ''}</td>
-      <td>${formatCurrency(user.total_spent)}</td>
-      <td>${formatCurrency(avgTransaction)}</td>
-      <td>${formatNumber(user.transaction_count)}</td>
-    `;
-    
-    tableBody.appendChild(row);
+    // Load initial analytics data
+    await loadAnalyticsData();
   });
-}
-
-// Update top transferers table
-function updateTopTransferersTable(users) {
-  const tableBody = document.querySelector('#top-transferers-table tbody');
-  if (!tableBody) return;
   
-  if (users.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="6" class="text-center">No data available</td></tr>';
-    return;
+  /**
+   * Initialize charts with loading state
+   */
+  function initializeCharts() {
+    // Create spending distribution chart
+    const spendingDistCtx = document.getElementById('spending-distribution-chart');
+    if (spendingDistCtx) {
+      state.charts.spendingDistribution = new Chart(spendingDistCtx, {
+        type: 'doughnut',
+        data: {
+          labels: [],
+          datasets: [{
+            data: [],
+            backgroundColor: API.generateChartColors(5),
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Loading spending distribution...'
+            },
+            legend: {
+              position: 'right'
+            }
+          }
+        }
+      });
+    }
+    
+    // Create transfer distribution chart
+    const transferDistCtx = document.getElementById('transfer-distribution-chart');
+    if (transferDistCtx) {
+      state.charts.transferDistribution = new Chart(transferDistCtx, {
+        type: 'bar',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Number of Transfers',
+            data: [],
+            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Loading transfer distribution...'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+    
+    // Create popular items trend chart
+    const popularItemsCtx = document.getElementById('popular-items-trend-chart');
+    if (popularItemsCtx) {
+      state.charts.popularItems = new Chart(popularItemsCtx, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: []
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Loading popular items trend...'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+    
+    // Create time period transactions chart
+    const timeTransactionsCtx = document.getElementById('time-transactions-chart');
+    if (timeTransactionsCtx) {
+      state.charts.timeTransactions = new Chart(timeTransactionsCtx, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Transaction Volume',
+            data: [],
+            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderWidth: 2,
+            tension: 0.3
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Loading transactions data...'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+    
+    // Create time period transfers chart
+    const timeTransfersCtx = document.getElementById('time-transfers-chart');
+    if (timeTransfersCtx) {
+      state.charts.timeTransfers = new Chart(timeTransfersCtx, {
+        type: 'line',
+        data: {
+          labels: [],
+          datasets: [{
+            label: 'Transfer Volume',
+            data: [],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderWidth: 2,
+            tension: 0.3
+          }]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Loading transfers data...'
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
   }
   
-  tableBody.innerHTML = '';
-  
-  users.forEach(user => {
-    const row = document.createElement('tr');
+  /**
+   * Set up event listeners for the page
+   */
+  function setupEventListeners() {
+    // Time period select change
+    document.getElementById('time-period')?.addEventListener('change', (e) => {
+      state.timePeriod = parseInt(e.target.value);
+    });
     
-    // Calculate total volume
-    const totalVolume = (user.total_sent || 0) + (user.total_received || 0);
-    
-    row.innerHTML = `
-      <td>${user.first_name || ''} ${user.last_name || ''}</td>
-      <td>${user.email || ''}</td>
-      <td>${formatCurrency(totalVolume)}</td>
-      <td>${formatCurrency(user.total_sent)}</td>
-      <td>${formatCurrency(user.total_received)}</td>
-      <td>${formatNumber(user.transfer_count)}</td>
-    `;
-    
-    tableBody.appendChild(row);
-  });
-}
-
-// Format currency values with $ and thousands separators
-function formatCurrency(value) {
-  if (value === null || value === undefined) return '-';
+    // Update time charts button click
+    document.getElementById('update-time-charts')?.addEventListener('click', () => {
+      loadTimePeriodData();
+    });
+  }
   
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  }).format(value);
-}
-
-// Format large numbers with thousands separators
-function formatNumber(value) {
-  if (value === null || value === undefined) return '-';
+  /**
+   * Load all analytics data
+   */
+  async function loadAnalyticsData() {
+    try {
+      // Load spending distribution data
+      const spendingDistribution = await API.analytics.getUserSpendingDistribution();
+      updateSpendingDistributionChart(spendingDistribution);
+      
+      // Load transfer distribution data
+      const transferDistribution = await API.analytics.getTransferAmountDistribution();
+      updateTransferDistributionChart(transferDistribution);
+      
+      // Load popular items trend data
+      const popularItems = await API.analytics.getPopularItemsByMonth(12);
+      updatePopularItemsChart(popularItems);
+      
+      // Load time period data (initially 30 days)
+      await loadTimePeriodData();
+      
+      // Load top users data
+      await loadTopUsersData();
+      
+      // Update summary statistics cards
+      updateStatisticsCards();
+      
+    } catch (error) {
+      console.error('Error loading analytics data:', error);
+      // Error handling is managed by the API utility
+    }
+  }
   
-  return new Intl.NumberFormat('en-US').format(value);
-}
+  /**
+   * Load time period data based on selected time period
+   */
+  async function loadTimePeriodData() {
+    try {
+      // Load daily transactions data
+      const transactions = await API.analytics.getDailyTransactionsSummary(state.timePeriod);
+      updateTimeTransactionsChart(transactions);
+      
+      // Load daily transfers data
+      const transfers = await API.analytics.getDailyTransfersSummary(state.timePeriod);
+      updateTimeTransfersChart(transfers);
+    } catch (error) {
+      console.error('Error loading time period data:', error);
+      // Error handling is managed by the API utility
+    }
+  }
+  
+  /**
+   * Load top users data
+   */
+  async function loadTopUsersData() {
+    try {
+      // Load top users by spending
+      const topSpenders = await API.analytics.getTopUsersBySpending(5);
+      updateTopSpendersTable(topSpenders);
+      
+      // Load top users by transfers
+      const topTransferers = await API.analytics.getTopUsersByTransfers(5);
+      updateTopTransferersTable(topTransferers);
+    } catch (error) {
+      console.error('Error loading top users data:', error);
+      // Error handling is managed by the API utility
+    }
+  }
+  
+  /**
+   * Update spending distribution chart with data
+   * 
+   * @param {Array} data - Spending distribution data
+   */
+  function updateSpendingDistributionChart(data) {
+    if (!state.charts.spendingDistribution || !data || data.length === 0) return;
+    
+    // Format data for chart
+    const labels = data.map(item => `${item.range} (${item.percentage}%)`);
+    const values = data.map(item => item.count);
+    
+    // Update chart data
+    state.charts.spendingDistribution.data.labels = labels;
+    state.charts.spendingDistribution.data.datasets[0].data = values;
+    state.charts.spendingDistribution.options.plugins.title.text = 'User Spending Distribution';
+    state.charts.spendingDistribution.update();
+  }
+  
+  /**
+   * Update transfer distribution chart with data
+   * 
+   * @param {Array} data - Transfer distribution data
+   */
+  function updateTransferDistributionChart(data) {
+    if (!state.charts.transferDistribution || !data || data.length === 0) return;
+    
+    // Format data for chart
+    const labels = data.map(item => item.range);
+    const values = data.map(item => item.count);
+    
+    // Update chart data
+    state.charts.transferDistribution.data.labels = labels;
+    state.charts.transferDistribution.data.datasets[0].data = values;
+    state.charts.transferDistribution.options.plugins.title.text = 'Transfer Amount Distribution';
+    state.charts.transferDistribution.update();
+  }
+  
+  /**
+   * Update popular items chart with data
+   * 
+   * @param {Array} data - Popular items data
+   */
+  function updatePopularItemsChart(data) {
+    if (!state.charts.popularItems || !data || data.length === 0) return;
+    
+    // Process the data to get unique months and items
+    const months = [...new Set(data.map(item => item.month))].sort();
+    const itemNames = [...new Set(data.map(item => item.item))];
+    
+    // Create datasets for each item
+    const datasets = itemNames.map((item, index) => {
+      const itemData = data.filter(d => d.item === item);
+      const monthlyData = months.map(month => {
+        const monthItem = itemData.find(d => d.month === month);
+        return monthItem ? monthItem.sales : 0;
+      });
+      
+      return {
+        label: item,
+        data: monthlyData,
+        borderColor: API.generateChartColors(itemNames.length)[index],
+        backgroundColor: API.generateChartColors(itemNames.length)[index].replace('0.7', '0.1'),
+        borderWidth: 2,
+        tension: 0.3
+      };
+    });
+    
+    // Update chart data
+    state.charts.popularItems.data.labels = months;
+    state.charts.popularItems.data.datasets = datasets;
+    state.charts.popularItems.options.plugins.title.text = 'Monthly Popular Items Trend';
+    state.charts.popularItems.update();
+  }
+  
+  /**
+   * Update time transactions chart with data
+   * 
+   * @param {Array} data - Daily transactions data
+   */
+  function updateTimeTransactionsChart(data) {
+    if (!state.charts.timeTransactions || !data || data.length === 0) return;
+    
+    // Format data for chart
+    const labels = data.map(item => API.formatDate(item.date));
+    const values = data.map(item => item.amount);
+    
+    // Update chart data
+    state.charts.timeTransactions.data.labels = labels;
+    state.charts.timeTransactions.data.datasets[0].data = values;
+    state.charts.timeTransactions.options.plugins.title.text = `Daily Transaction Volume (Last ${state.timePeriod} Days)`;
+    state.charts.timeTransactions.update();
+  }
+  
+  /**
+   * Update time transfers chart with data
+   * 
+   * @param {Array} data - Daily transfers data
+   */
+  function updateTimeTransfersChart(data) {
+    if (!state.charts.timeTransfers || !data || data.length === 0) return;
+    
+    // Format data for chart
+    const labels = data.map(item => API.formatDate(item.date));
+    const values = data.map(item => item.amount);
+    
+    // Update chart data
+    state.charts.timeTransfers.data.labels = labels;
+    state.charts.timeTransfers.data.datasets[0].data = values;
+    state.charts.timeTransfers.options.plugins.title.text = `Daily Transfer Volume (Last ${state.timePeriod} Days)`;
+    state.charts.timeTransfers.update();
+  }
+  
+  /**
+   * Update top spenders table with data
+   * 
+   * @param {Array} data - Top spenders data
+   */
+  function updateTopSpendersTable(data) {
+    const tableBody = document.getElementById('top-spenders-table')?.querySelector('tbody');
+    
+    if (!tableBody) return;
+    
+    if (!data || data.length === 0) {
+      // If no data, use the existing mock data in the HTML
+      return;
+    }
+    
+    tableBody.innerHTML = data.map(user => `
+      <tr>
+        <td>${user.first_name} ${user.last_name}</td>
+        <td>${user.email}</td>
+        <td>${API.formatCurrency(user.total_spent)}</td>
+        <td>${API.formatCurrency(user.average_transaction)}</td>
+        <td>${user.transaction_count}</td>
+      </tr>
+    `).join('');
+  }
+  
+  /**
+   * Update top transferers table with data
+   * 
+   * @param {Array} data - Top transferers data
+   */
+  function updateTopTransferersTable(data) {
+    const tableBody = document.getElementById('top-transferers-table')?.querySelector('tbody');
+    
+    if (!tableBody) return;
+    
+    if (!data || data.length === 0) {
+      // If no data, use the existing mock data in the HTML
+      return;
+    }
+    
+    tableBody.innerHTML = data.map(user => `
+      <tr>
+        <td>${user.first_name} ${user.last_name}</td>
+        <td>${user.email}</td>
+        <td>${API.formatCurrency(user.total_volume)}</td>
+        <td>${API.formatCurrency(user.total_sent)}</td>
+        <td>${API.formatCurrency(user.total_received)}</td>
+        <td>${user.transfer_count}</td>
+      </tr>
+    `).join('');
+  }
+  
+  /**
+   * Update statistics summary cards
+   */
+  function updateStatisticsCards() {
+    // Since we don't have direct API endpoints for these stats, 
+    // we're using the pre-filled data in the HTML for now.
+    // In a real implementation, you would fetch this data from the API.
+  }
