@@ -397,19 +397,21 @@ class DataLoader:
             'store': str,
             'price': float,
             'quantity': int,
-            'price_per_item': float
+            'price_per_item': float,
+            'transaction_date': datetime.datetime  # Add this line
         }
         
         query = """
-        INSERT INTO transactions (transaction_id, user_id, item, store, price, quantity, price_per_item)
-        VALUES (%s, %s, %s, %s, %s, %s, %s)
+        INSERT INTO transactions (transaction_id, user_id, item, store, price, quantity, price_per_item, transaction_date)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         ON CONFLICT (transaction_id) DO UPDATE SET
             user_id = EXCLUDED.user_id,
             item = EXCLUDED.item,
             store = EXCLUDED.store,
             price = EXCLUDED.price,
             quantity = EXCLUDED.quantity,
-            price_per_item = EXCLUDED.price_per_item
+            price_per_item = EXCLUDED.price_per_item,
+            transaction_date = EXCLUDED.transaction_date
         """
         
         try:

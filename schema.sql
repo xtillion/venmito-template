@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS transfers (
     sender_id INTEGER REFERENCES people(user_id),
     recipient_id INTEGER REFERENCES people(user_id),
     amount DECIMAL(10, 2) NOT NULL,
-    timestamp TIMESTAMP
+    timestamp DATE
 );
 
 -- Transactions table
@@ -41,7 +41,8 @@ CREATE TABLE IF NOT EXISTS transactions (
     store VARCHAR(100) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
     quantity INTEGER NOT NULL,
-    price_per_item DECIMAL(10, 2) NOT NULL
+    price_per_item DECIMAL(10, 2) NOT NULL,
+    transaction_date TIMESTAMP
 );
 
 -- User-level transaction summaries

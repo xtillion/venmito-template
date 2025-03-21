@@ -502,6 +502,27 @@ class TransactionsProcessor(DataProcessor):
             except Exception as e:
                 self._add_error(f"Failed to validate price consistency: {str(e)}")
     
+    def _standardize_date(self) -> None:
+        """Standardize date field to ensure it's converted to a proper timestamp."""
+        if 'date' in self.df.columns:
+            try:
+                # Convert to datetime and create transaction_date column
+                self.df['transaction_date'] = pd.to_datetime(self.df['date'], errors='coerce')
+                
+                # Check for any dates that couldn't be parsed
+                invalid_dates = self.df['transaction_date'].isna() & self.df['date'].notna()
+                if invalid_dates.any():
+                    invalid_count = invalid_dates.sum()
+                    self._add_error(f"Found {invalid_count} invalid date values")
+                
+                logger.info("Converted date to transaction_date")
+            except Exception as e:
+                self._add_error(f"Failed to standardize date: {str(e)}")
+        else:
+            # If no date column exists, add a default date (this is optional)
+            self.df['transaction_date'] = pd.Timestamp.now()
+            logger.info("No date column found, added current timestamp as transaction_date")
+    
     def process(self) -> pd.DataFrame:
         """
         Process transactions data to standardize format.
@@ -516,6 +537,7 @@ class TransactionsProcessor(DataProcessor):
             self._standardize_ids()
             self._standardize_numeric_fields()
             self._standardize_item_and_store_names()
+            self._standardize_date() 
             self._validate_price_and_quantity()
             
             logger.info(f"Completed processing transactions data. Result shape: {self.df.shape}")

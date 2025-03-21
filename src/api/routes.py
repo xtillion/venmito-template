@@ -160,3 +160,7 @@ def init_app(app):
     """
     app.register_blueprint(api_bp)
     logger.info("API routes registered")
+    #debug info
+    endpoints = [str(rule) for rule in app.url_map.iter_rules() 
+                if str(rule).startswith('/api')]
+    logger.info(f"Available API endpoints: {endpoints}")

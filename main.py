@@ -86,7 +86,7 @@ def main():
         processed_people_yml,
         processed_promotions,
         processed_transfers,
-        processed_transactions,  # Pass transactions data to merger
+        processed_transactions,
         output_dir=output_dir
     )
     
