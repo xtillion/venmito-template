@@ -21,12 +21,54 @@
     </div>
 </div>
 
+<!-- Statistics Overview Cards -->
+<div class="row mb-4">
+    <div class="col-md-3 col-sm-6">
+        <div class="stats-card blue-accent">
+            <div class="stats-title">Total Users</div>
+            <div class="stats-value">2,584</div>
+            <div class="stats-change positive">
+                <i class="fas fa-arrow-up"></i> 12.5% from last month
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stats-card green-accent">
+            <div class="stats-title">Total Transfers</div>
+            <div class="stats-value">$487,320</div>
+            <div class="stats-change positive">
+                <i class="fas fa-arrow-up"></i> 8.3% from last month
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stats-card yellow-accent">
+            <div class="stats-title">Average Transfer</div>
+            <div class="stats-value">$78.42</div>
+            <div class="stats-change negative">
+                <i class="fas fa-arrow-down"></i> 2.1% from last month
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="stats-card purple-accent">
+            <div class="stats-title">Total Transactions</div>
+            <div class="stats-value">18,237</div>
+            <div class="stats-change positive">
+                <i class="fas fa-arrow-up"></i> 15.2% from last month
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-6 mb-4">
         <div class="card">
             <div class="card-header">User Spending Distribution</div>
             <div class="card-body">
-                <canvas id="spending-distribution-chart" width="400" height="300"></canvas>
+                <div class="chart-container-md">
+                    <canvas id="spending-distribution-chart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -34,7 +76,9 @@
         <div class="card">
             <div class="card-header">Transfer Amount Distribution</div>
             <div class="card-body">
-                <canvas id="transfer-distribution-chart" width="400" height="300"></canvas>
+                <div class="chart-container-md">
+                    <canvas id="transfer-distribution-chart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -45,7 +89,9 @@
         <div class="card">
             <div class="card-header">Monthly Popular Items Trend</div>
             <div class="card-body">
-                <canvas id="popular-items-trend-chart" width="800" height="300"></canvas>
+                <div class="chart-container-md">
+                    <canvas id="popular-items-trend-chart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -56,7 +102,7 @@
         <div class="card">
             <div class="card-header">Geographic Spending Summary</div>
             <div class="card-body">
-                <div id="geo-spending-map" style="height: 500px;"></div>
+                <div id="geo-spending-map" class="chart-container-xl"></div>
             </div>
         </div>
     </div>
@@ -80,7 +126,39 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="5" class="text-center">Loading data...</td>
+                                <td>John Doe</td>
+                                <td>john.doe@example.com</td>
+                                <td>$4,285.32</td>
+                                <td>$124.80</td>
+                                <td>34</td>
+                            </tr>
+                            <tr>
+                                <td>Jane Smith</td>
+                                <td>jane.smith@example.com</td>
+                                <td>$3,578.21</td>
+                                <td>$142.10</td>
+                                <td>25</td>
+                            </tr>
+                            <tr>
+                                <td>Robert Johnson</td>
+                                <td>robert.j@example.com</td>
+                                <td>$2,952.45</td>
+                                <td>$132.80</td>
+                                <td>22</td>
+                            </tr>
+                            <tr>
+                                <td>Emily Davis</td>
+                                <td>emily.d@example.com</td>
+                                <td>$2,851.90</td>
+                                <td>$119.80</td>
+                                <td>24</td>
+                            </tr>
+                            <tr>
+                                <td>Michael Brown</td>
+                                <td>michael.b@example.com</td>
+                                <td>$2,485.75</td>
+                                <td>$155.40</td>
+                                <td>16</td>
                             </tr>
                         </tbody>
                     </table>
@@ -106,7 +184,44 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="6" class="text-center">Loading data...</td>
+                                <td>Sarah Miller</td>
+                                <td>sarah.m@example.com</td>
+                                <td>$12,485.50</td>
+                                <td>$5,842.20</td>
+                                <td>$6,643.30</td>
+                                <td>48</td>
+                            </tr>
+                            <tr>
+                                <td>David Wilson</td>
+                                <td>david.w@example.com</td>
+                                <td>$10,957.80</td>
+                                <td>$6,124.50</td>
+                                <td>$4,833.30</td>
+                                <td>42</td>
+                            </tr>
+                            <tr>
+                                <td>Lisa Taylor</td>
+                                <td>lisa.t@example.com</td>
+                                <td>$9,842.35</td>
+                                <td>$4,521.15</td>
+                                <td>$5,321.20</td>
+                                <td>38</td>
+                            </tr>
+                            <tr>
+                                <td>James Anderson</td>
+                                <td>james.a@example.com</td>
+                                <td>$8,742.90</td>
+                                <td>$3,856.40</td>
+                                <td>$4,886.50</td>
+                                <td>36</td>
+                            </tr>
+                            <tr>
+                                <td>Patricia Moore</td>
+                                <td>patricia.m@example.com</td>
+                                <td>$8,125.60</td>
+                                <td>$3,745.20</td>
+                                <td>$4,380.40</td>
+                                <td>32</td>
                             </tr>
                         </tbody>
                     </table>
@@ -124,165 +239,41 @@
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-md-4">
-                        <div class="form-group">{% extends 'layout.html' %}
-
-                            {% block title %}Venmito - Advanced Analytics{% endblock %}
-                            
-                            {% block head_content %}
-                            <!-- Include D3.js for more advanced visualizations -->
-                            <script src="https://d3js.org/d3.v7.min.js"></script>
-                            {% endblock %}
-                            
-                            {% block content %}
-                            <div class="row mb-4">
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h3 class="mb-0">Advanced Analytics Dashboard</h3>
-                                        </div>
-                                        <div class="card-body">
-                                            <p class="lead">Explore detailed analytics about user behaviors, financial patterns, and business performance.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <div class="card">
-                                        <div class="card-header">User Spending Distribution</div>
-                                        <div class="card-body">
-                                            <canvas id="spending-distribution-chart" width="400" height="300"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="card">
-                                        <div class="card-header">Transfer Amount Distribution</div>
-                                        <div class="card-body">
-                                            <canvas id="transfer-distribution-chart" width="400" height="300"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-12 mb-4">
-                                    <div class="card">
-                                        <div class="card-header">Monthly Popular Items Trend</div>
-                                        <div class="card-body">
-                                            <canvas id="popular-items-trend-chart" width="800" height="300"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-12 mb-4">
-                                    <div class="card">
-                                        <div class="card-header">Geographic Spending Summary</div>
-                                        <div class="card-body">
-                                            <div id="geo-spending-map" style="height: 500px;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6 mb-4">
-                                    <div class="card">
-                                        <div class="card-header">Top Users by Spending</div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped" id="top-spenders-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>User</th>
-                                                            <th>Email</th>
-                                                            <th>Total Spent</th>
-                                                            <th>Avg. Transaction</th>
-                                                            <th>Transaction Count</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td colspan="5" class="text-center">Loading data...</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-4">
-                                    <div class="card">
-                                        <div class="card-header">Top Users by Transfer Volume</div>
-                                        <div class="card-body">
-                                            <div class="table-responsive">
-                                                <table class="table table-striped" id="top-transferers-table">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>User</th>
-                                                            <th>Email</th>
-                                                            <th>Total Volume</th>
-                                                            <th>Sent</th>
-                                                            <th>Received</th>
-                                                            <th>Transfer Count</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td colspan="6" class="text-center">Loading data...</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Time Period Selector for Charts -->
-                            <div class="row mb-4">
-                                <div class="col-md-12">
-                                    <div class="card">
-                                        <div class="card-header">Time Period Analysis</div>
-                                        <div class="card-body">
-                                            <div class="row align-items-center">
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label>Select Period:</label>
-                                                        <select id="time-period" class="form-select">
-                                                            <option value="30">Last 30 Days</option>
-                                                            <option value="90">Last 90 Days</option>
-                                                            <option value="180">Last 6 Months</option>
-                                                            <option value="365">Last Year</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <button id="update-time-charts" class="btn btn-primary mt-3">Update Charts</button>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="row mt-4">
-                                                <div class="col-md-6">
-                                                    <h5>Daily Transactions</h5>
-                                                    <canvas id="time-transactions-chart" width="400" height="300"></canvas>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <h5>Daily Transfers</h5>
-                                                    <canvas id="time-transfers-chart" width="400" height="300"></canvas>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {% endblock %}
-                            
-                            {% block scripts %}
-                            <script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
-                            {% endblock %}
-                            <label>Select Period:</label>
+                        <div class="mb-3">
+                            <label class="form-label">Select Period:</label>
                             <select id="time-period" class="form-select">
+                                <option value="30">Last 30 Days</option>
+                                <option value="90">Last 90 Days</option>
+                                <option value="180">Last 6 Months</option>
+                                <option value="365">Last Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <button id="update-time-charts" class="btn btn-primary mt-3">Update Charts</button>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5>Daily Transactions</h5>
+                        <div class="chart-container-md">
+                            <canvas id="time-transactions-chart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Daily Transfers</h5>
+                        <div class="chart-container-md">
+                            <canvas id="time-transfers-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+{% endblock %}
