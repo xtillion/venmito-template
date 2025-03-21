@@ -1,27 +1,113 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analysis Dashboard</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-    <header>
-        <h1>Data Analysis Dashboard</h1>
-    </header>
-    <main>
-        <div class="dashboard-container">
-            <div class="dashboard-card">
-                <h2>User Analytics</h2>
-                <div id="user-chart"></div>
+{% extends 'layout.html' %}
+
+{% block title %}Venmito Dashboard{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="mb-0">Venmito Financial Dashboard</h2>
             </div>
-            <div class="dashboard-card">
-                <h2>Transfer Analysis</h2>
-                <div id="transfer-chart"></div>
+            <div class="card-body">
+                <p class="lead">Welcome to Venmito's financial data visualization platform. Use the navigation menu to explore different sections of the dashboard.</p>
             </div>
         </div>
-    </main>
-    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
-</body>
-</html>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Summary Statistics Cards -->
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 border-primary">
+            <div class="card-header bg-primary text-white">Total Users</div>
+            <div class="card-body text-center">
+                <h1 class="display-4" id="total-users">--</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 border-success">
+            <div class="card-header bg-success text-white">Total Transfers</div>
+            <div class="card-body text-center">
+                <h1 class="display-4" id="total-transfers">--</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 border-info">
+            <div class="card-header bg-info text-white">Total Transactions</div>
+            <div class="card-body text-center">
+                <h1 class="display-4" id="total-transactions">--</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="card h-100 border-warning">
+            <div class="card-header bg-warning text-dark">Total Revenue</div>
+            <div class="card-body text-center">
+                <h1 class="display-4" id="total-revenue">--</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Charts -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Transfer Activity (Last 30 Days)</div>
+            <div class="card-body">
+                <canvas id="transfers-chart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Transaction Volume (Last 30 Days)</div>
+            <div class="card-body">
+                <canvas id="transactions-chart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Top Users -->
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Top Users by Spending</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="top-users-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Total Spent</th>
+                                <th>Transactions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="3" class="text-center">Loading data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">User Spending Distribution</div>
+            <div class="card-body">
+                <canvas id="spending-distribution-chart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+
+{% block title %}Venmito - Advanced Analytics{% endblock %}
+
+{% block head_content %}
+<!-- Include D3.js for more advanced visualizations -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="mb-0">Advanced Analytics Dashboard</h3>
+            </div>
+            <div class="card-body">
+                <p class="lead">Explore detailed analytics about user behaviors, financial patterns, and business performance.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">User Spending Distribution</div>
+            <div class="card-body">
+                <canvas id="spending-distribution-chart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Transfer Amount Distribution</div>
+            <div class="card-body">
+                <canvas id="transfer-distribution-chart" width="400" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-header">Monthly Popular Items Trend</div>
+            <div class="card-body">
+                <canvas id="popular-items-trend-chart" width="800" height="300"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-header">Geographic Spending Summary</div>
+            <div class="card-body">
+                <div id="geo-spending-map" style="height: 500px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Top Users by Spending</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="top-spenders-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Total Spent</th>
+                                <th>Avg. Transaction</th>
+                                <th>Transaction Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="5" class="text-center">Loading data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">Top Users by Transfer Volume</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped" id="top-transferers-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Total Volume</th>
+                                <th>Sent</th>
+                                <th>Received</th>
+                                <th>Transfer Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6" class="text-center">Loading data...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Time Period Selector for Charts -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">Time Period Analysis</div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Select Period:</label>
+                            <select id="time-period" class="form-select">
