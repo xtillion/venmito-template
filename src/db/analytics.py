@@ -456,7 +456,7 @@ class Analytics:
                     2
                 ) AS retention_rate
             FROM
-                cohort_size c
+                cohort_size chttps://claude.ai/chat/142ee15c-9e77-4e6d-892d-ecdd11a4ea38
             JOIN
                 retention r ON c.cohort_month = r.cohort_month
             ORDER BY
