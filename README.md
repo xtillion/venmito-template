@@ -1,5 +1,6 @@
-# Venmito Data Engineering Project by Jared Hidalgo
+# Venmito Data Engineering Project
 
+**Author**: Jared Hidalgo
 **Email**: jaredhidalgo@gmail.com
 
 ## About the Program
