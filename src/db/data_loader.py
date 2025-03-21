@@ -398,7 +398,7 @@ class DataLoader:
             'price': float,
             'quantity': int,
             'price_per_item': float,
-            'transaction_date': datetime.datetime  # Add this line
+            'transaction_date': datetime.datetime
         }
         
         query = """
@@ -732,13 +732,19 @@ class DataLoader:
         """
         try:
             df = self.load_csv_to_df('transactions.csv')
+            
+            # Convert 'date' to 'transaction_date' if needed
+            if 'date' in df.columns and 'transaction_date' not in df.columns:
+                df['transaction_date'] = pd.to_datetime(df['date'])
+                logger.info("Converted 'date' column to 'transaction_date'")
+            
             df = self._prepare_df_for_db(df, 'transactions')
             return self.load_transactions_df(df)
         except Exception as e:
             error_msg = f"Error loading transactions data: {str(e)}"
             logger.error(error_msg)
             raise DatabaseError(error_msg)
-    
+
     def load_user_transactions(self) -> int:
         """
         Load user transactions summary data from CSV into the database.
