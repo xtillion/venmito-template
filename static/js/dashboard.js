@@ -299,17 +299,66 @@ async function loadRecentTransfers() {
 * @param {Array} data - Item summary data
 */
 function updateTopItemsChart(data) {
-  if (!window.topItemsChart || !data || data.length === 0) return;
+  if (!window.topItemsChart) return;
   
-  // Format data for chart
-  const sortedData = [...data].sort((a, b) => b.total_revenue - a.total_revenue).slice(0, 5);
-  const labels = sortedData.map(item => item.item);
-  const revenues = sortedData.map(item => item.total_revenue);
+  console.log('Item summary data:', data); // Debug log
+  
+  // If no data or empty array, display a "no data" message 
+  if (!data || data.length === 0) {
+      // Clear any existing data
+      window.topItemsChart.data.labels = [];
+      window.topItemsChart.data.datasets[0].data = [];
+      window.topItemsChart.options.plugins.title.text = 'No Item Revenue Data Available';
+      window.topItemsChart.update();
+      return;
+  }
+  
+  // Sort data by revenue (highest first) and limit to top 5
+  const sortedData = [...data]
+      .sort((a, b) => {
+          // Handle revenue as string or number
+          const revenueA = typeof a.total_revenue === 'string' ? parseFloat(a.total_revenue) : (a.total_revenue || 0);
+          const revenueB = typeof b.total_revenue === 'string' ? parseFloat(b.total_revenue) : (b.total_revenue || 0);
+          return revenueB - revenueA;
+      })
+      .slice(0, 5);
+  
+  // Extract item names for labels - make sure they're unique and clear
+  const labels = sortedData.map(item => {
+      // Limit item name length and ensure it's a string
+      const itemName = typeof item.item === 'string' ? item.item : 'Unknown Item';
+      return itemName.length > 20 ? itemName.substring(0, 17) + '...' : itemName;
+  });
+  
+  // Extract revenue data - handle different property names
+  const revenues = sortedData.map(item => {
+      if (typeof item.total_revenue !== 'undefined') {
+          return typeof item.total_revenue === 'string' ? parseFloat(item.total_revenue) : (item.total_revenue || 0);
+      } else if (typeof item.revenue !== 'undefined') {
+          return typeof item.revenue === 'string' ? parseFloat(item.revenue) : (item.revenue || 0);
+      } else {
+          return 0;
+      }
+  });
   
   // Update chart data
   window.topItemsChart.data.labels = labels;
   window.topItemsChart.data.datasets[0].data = revenues;
   window.topItemsChart.options.plugins.title.text = 'Top Items by Revenue';
+  
+  // Add more chart customization
+  window.topItemsChart.options.plugins.tooltip = {
+      callbacks: {
+          label: function(context) {
+              return `Revenue: ${window.venmito.formatCurrency(context.raw)}`;
+          }
+      }
+  };
+  
+  // Make sure bars are not stacked and each item is properly separated
+  window.topItemsChart.options.scales.x.stacked = false;
+  window.topItemsChart.options.scales.y.stacked = false;
+  
   window.topItemsChart.update();
 }
 
@@ -319,17 +368,66 @@ function updateTopItemsChart(data) {
 * @param {Array} data - Store summary data
 */
 function updateTopStoresChart(data) {
-  if (!window.topStoresChart || !data || data.length === 0) return;
+  if (!window.topStoresChart) return;
   
-  // Format data for chart
-  const sortedData = [...data].sort((a, b) => b.total_revenue - a.total_revenue).slice(0, 5);
-  const labels = sortedData.map(store => store.store);
-  const revenues = sortedData.map(store => store.total_revenue);
+  console.log('Store summary data:', data); // Debug log
+  
+  // If no data or empty array, display a "no data" message
+  if (!data || data.length === 0) {
+      // Clear any existing data
+      window.topStoresChart.data.labels = [];
+      window.topStoresChart.data.datasets[0].data = [];
+      window.topStoresChart.options.plugins.title.text = 'No Store Revenue Data Available';
+      window.topStoresChart.update();
+      return;
+  }
+  
+  // Sort data by revenue (highest first) and limit to top 5
+  const sortedData = [...data]
+      .sort((a, b) => {
+          // Handle revenue as string or number
+          const revenueA = typeof a.total_revenue === 'string' ? parseFloat(a.total_revenue) : (a.total_revenue || 0);
+          const revenueB = typeof b.total_revenue === 'string' ? parseFloat(b.total_revenue) : (b.total_revenue || 0);
+          return revenueB - revenueA;
+      })
+      .slice(0, 5);
+  
+  // Extract store names for labels - make sure they're unique and clear
+  const labels = sortedData.map(store => {
+      // Limit store name length and ensure it's a string
+      const storeName = typeof store.store === 'string' ? store.store : 'Unknown Store';
+      return storeName.length > 20 ? storeName.substring(0, 17) + '...' : storeName;
+  });
+  
+  // Extract revenue data - handle different property names
+  const revenues = sortedData.map(store => {
+      if (typeof store.total_revenue !== 'undefined') {
+          return typeof store.total_revenue === 'string' ? parseFloat(store.total_revenue) : (store.total_revenue || 0);
+      } else if (typeof store.revenue !== 'undefined') {
+          return typeof store.revenue === 'string' ? parseFloat(store.revenue) : (store.revenue || 0);
+      } else {
+          return 0;
+      }
+  });
   
   // Update chart data
   window.topStoresChart.data.labels = labels;
   window.topStoresChart.data.datasets[0].data = revenues;
   window.topStoresChart.options.plugins.title.text = 'Top Stores by Revenue';
+  
+  // Add more chart customization
+  window.topStoresChart.options.plugins.tooltip = {
+      callbacks: {
+          label: function(context) {
+              return `Revenue: ${window.venmito.formatCurrency(context.raw)}`;
+          }
+      }
+  };
+  
+  // Make sure bars are not stacked and each store is properly separated
+  window.topStoresChart.options.scales.x.stacked = false;
+  window.topStoresChart.options.scales.y.stacked = false;
+  
   window.topStoresChart.update();
 }
 
@@ -343,9 +441,15 @@ function updateTopStoresChart(data) {
 function updateSummaryCards(dashboardData) {
   console.log('Dashboard data for summary cards:', dashboardData); // Debug log
   
-  // Get actual counts from the dashboard data without any default values
+  // Get total users - this should be more than just the top spenders
+  // In the spending_distribution, there's a user_count that represents all users
   let totalUsers = 0;
-  if (dashboardData && dashboardData.top_users_by_spending) {
+  if (dashboardData && dashboardData.spending_distribution && dashboardData.spending_distribution.length > 0) {
+      // Sum user_count from all spending ranges
+      totalUsers = dashboardData.spending_distribution.reduce((sum, range) => 
+          sum + (parseInt(range.user_count) || 0), 0);
+  } else if (dashboardData && dashboardData.top_users_by_spending) {
+      // Fallback to top users if spending distribution isn't available
       totalUsers = dashboardData.top_users_by_spending.length;
   }
   
@@ -356,10 +460,11 @@ function updateSummaryCards(dashboardData) {
           sum + (parseInt(range.transfer_count) || 0), 0);
   }
   
-  // For transactions, we need to check daily_transactions
+  // For transactions, we need to check multiple sources
   let totalTransactions = 0;
   let totalRevenue = 0;
   
+  // Method 1: Check daily_transactions
   if (dashboardData && dashboardData.daily_transactions) {
       dashboardData.daily_transactions.forEach(day => {
           // Check if transaction_count is a number or string, and parse accordingly
@@ -375,6 +480,25 @@ function updateSummaryCards(dashboardData) {
               : day.total_amount || 0;
               
           totalRevenue += amount;
+      });
+  }
+  
+  // Method 2: If transactions are still 0, check if we can get data from top users by spending
+  if (totalTransactions === 0 && dashboardData && dashboardData.top_users_by_spending) {
+      dashboardData.top_users_by_spending.forEach(user => {
+          // Add user's transaction count
+          const count = typeof user.transaction_count === 'string'
+              ? parseInt(user.transaction_count) || 0
+              : user.transaction_count || 0;
+              
+          totalTransactions += count;
+          
+          // Add user's spending
+          const spent = typeof user.total_spent === 'string'
+              ? parseFloat(user.total_spent) || 0
+              : user.total_spent || 0;
+              
+          totalRevenue += spent;
       });
   }
   
