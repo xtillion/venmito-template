@@ -2,104 +2,72 @@
 
 **Email**: jaredhidalgo@gmail.com
 
+## About the Program
+
+This CLI program sets up the database from scratch and provides a wide variety of options for data analysis.
+
 ## The Process
 
 ### Used Technologies
 
 - **OS**: Windows 11 Home 22631.5039
 - **Language**: Python 3.13.2
-    - [Packages]
+    - Check the requirements.txt file for Python packages.
 - **Software**
     - **IDE**: Visual Studio Code v1.98.2
     - **Server**: pgAdmin 4 v9.1
+        - Username: postgres
+        - Password: Space!3742
 
 ### Development Steps
 
-1. On local computer, set up "postgres" database using pgAdmin and run server. Requires the following input:
-    - User: postgres
-    - Password: Space!3742
-1. In Python script, added routine to auto-check required packages before proceeding with the code.
-1. Wrote code to check if database based on data-centric files already exists. If not, setup database.
-1. Wrote algorithm to process new files.
-
-## About the Program
-
-X
-
-The program assumes the username is "postgres" and the password is "Space!3742".
+1. The Server
+    - Installed pgAdmin 4 and setup basic server.
+1. The Python Script
+    - Wrote routine to auto-check required packages on startup.
+    - Wrote functions to 
+    - Wrote menu for user options.
 
 ## How To Use The Program
 
 ### Before Running
 
-The user may, but is not required to, do the following tasks before running the program:
-- Add a virtual environment.
-- Run `pip install -r requirements.txt`
+1. Requirements
+    - Run a pgAdmin 4 server
+    - Start an empty database titled `postgres` with the following login:
+        - User: postgres
+        - Password: Space!3742
+    - Connection to our customized DeepSeek LLM.
+1. Optional Tasks 
+    - Add a virtual environment.
+    - Run `pip install -r requirements.txt`
 
----
----
+### Running: Prerequisites
 
-## Introduction
+The program will first run two sets of prerequisites before entering the Main Menu:
+1. Checking packages
+2. Checking the connection of the database as in the requirements.
 
-Hello and welcome to this data engineering project for Venmito. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.
+### Running: The Main Menu
 
-Venmito is a payment company that allows users to transfer funds to other users and pay in participant stores. The company has several data files in various formats. Our goal is to organize all of this information to gain insights about our clients and transactions. We believe that there is an immense value hidden in these data files, and we are looking for a solution that can help us extract and utilize this value.
-
-We have five files:
-
-- `people.json`
-- `people.yml`
-- `transfers.csv`
-- `transactions.xml`
-- `promotions.csv`
-
-Each of these files contains different pieces of information about our clients, their transactions, transfers and promotions.
-
-Your task is to develop a solution that can read these files, match and conform the data, and provide a way to consume this data.
-
-## Requirements
-
-1. **Data Ingestion**: Your solution should be able to read and load data from all the provided files. Take into account that these files are in different formats (JSON, YAML, CSV, XML).
-
-2. **Data Matching and Conforming**: Once the data is loaded, your solution should be capable of matching and conforming the data across these files. This includes identifying common entities, resolving inconsistencies, and organizing the data into a unified format. Furthermore, the consolidated data should not only be transient but also persistent. This persistence should be achieved using appropriate methods such as storing in a file, database, or other suitable data storage solutions, and not restricted to just a variable in memory. This way, the integrity and availability of the consolidated data are ensured for future use and analysis.
-
-3. **Data Analysis**: Your solution should be able to process the conformed data to derive insights about our clients and transactions. This would involve implementing data aggregations, calculating relevant metrics, and identifying patterns. These insights will be invaluable in helping us understand our clientele and transaction trends better. Examples of things, but is not restricted to, we want to be able to see are:
-    - Which clients have what type of promotion?
-    - Give suggestions on how to turn "No" responses from clients in the promotions file.
-    - Insights on stores, like:
-        - What item is the best seller?
-        - What store has had the most profit?
-        - Etc.
-    - How can we use the data we got from the transfer file?
-  
-    These are only suggestions. Please don't limit yourself to only these examples and explore in your analysis any other suggestions could be beneficial for Venmito.
-
-4. **Data Output**: The final output of your solution should enable us to consume the reorganized and analyzed data in a meaningful way. This could be, but is not restricted to, a command line interface (CLI), a database with structured schemas, a GUI featuring interactive visualizations, a Jupyter Notebook, or a RESTful API. We invite you to leverage other innovative methods that you believe would be beneficial for a company like Venmito. Please provide at least 2 data consumption methods, 1 for the non-technical team and 1 for the technical team.
-
-5. **Code**: The code for your solution should be well-structured and comprehensible, with comments included where necessary. Remember, the quality and readability of the code will be a significant factor in the evaluation of the final deliverable.
-
-Note: The examples provided in these requirements (such as GUI, RESTful API etc.) are purely illustrative. You are free to employ any solution or technology you deem fit for fulfilling these requirements
-
-## Deliverables
-
-1. Source code.
-2. A README file with your name, email, a description of your solution, your design decisions, and clear instructions on how to run your code.
-3. A method to consume the reorganized and analyzed data.
-
-## Instructions for Submission
-
-1. Complete your project as described above in a branch within your fork.
-2. Write a detailed README file with your name, email, a description explaining your approach, the technologies you used, and provides clear instructions on how to run your code.
-3. Submit your project by uploading a zip file to the provided URL.
-
-We look forward to seeing your solution!
-
-Thank you,
-
-Venmito
+This software isn't finished, but the plan is the following:
+- In the Main Menu, the user can...
+    - Manually import new data with `[0] Import New Data`.
+    - Pick options to generate pre-made report scripts with `[1] Report Templates`.
+    - Write their own SQL script and generate a graph from its results with `[2] DIY Report`.
+    - Make an AI prompt with a customized DeepSeek LLM (local or online) with `[3] Create DeepSeek Prompt`.
+    - Start over once they finish a task.
+- [1] Report Templates: For example, the user can select an option to make a frequency graph of bought products from the TRANSACTION_UNIQUE and TRANSACTION_PRODUCTS tables.
+- [2] DIY Report
+    - The user will be prompted for their choice(s) for exporting their desired data.
+    - Then the user can write an SQL command within certain parameters.
+- [3] Create DeepSeek Prompt
+    - Once the user selects this, the program will connect with our customized (local or online) DeepSeek LLM.
+    - Then the user can enter in a prompt for the DeepSeek LLM.
+    - Once the user's prompt is submitted, the program will send it to the DeepSeek LLM where the LLM will connect with the database, analyze it, and bring back a report based on the user's prompt.
 
 ## DISCLAIMER:
 
-This project and its contents are the exclusive property of Xtillion, LLC and are intended solely for the evaluation of the individual to whom it was provided. Any distribution, reproduction, or unauthorized use is strictly prohibited. By accessing and using this project, you agree to abide by these conditions. Failure to comply with these terms may result in legal action.
+This project and its contents are the exclusive property of Xtillion, LLC and are intended solely for the evaluation of Jared Hidalgo. Any distribution, reproduction, or unauthorized use is strictly prohibited. By accessing and using this project, I agree to abide by these conditions. Failure to comply with these terms may result in legal action.
 
 Please note that this project is provided "as is", without warranty of any kind, express or implied. Xtillion is not liable for any damages or claims that might arise from using or misusing this project.

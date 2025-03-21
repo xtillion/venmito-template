@@ -135,18 +135,11 @@ class Venmito_Evaluator():
     b_new_devices = False
     devices = DEVICES
     """Boolean to keep user in this program after finishing a task."""
-    THE_PLAN = """This software isn't finished, but the plan is the following:
-
-    - Create a MAIN MENU. The user can...
-        - Manually import new data with `[0] Import New Data`.
-        - Pick options to generate pre-made report scripts with `[1] Report Templates`.
-        - Write their own SQL script and generate a graph from its results with `[2] DIY Report`.
-        - Make an AI prompt with a customized DeepSeek LLM (online or local) with `[3] DeepSeek Prompt`.
-        - Start over once they finish a task.
-    - [1] Report Templates: For example, the user can select an option to...
-        - Make a frequency graph of bought products from the TRANSACTION_UNIQUE and TRANSACTION_PRODUCTS tables.
-        - 
-    X"""
+    THE_PLAN = """MAIN MENU \{Beta\}
+    
+    [1] Report Templates
+    [2] DIY Report
+    [3] Create DeepSeek Prompt"""
 
     def __init__( self ):
         try:
@@ -175,7 +168,7 @@ class Venmito_Evaluator():
             self._func_process_master( True )
             self._func_handle_views()
         else:
-            sys.exit( "<< ERROR | No valid files detected in `data` folder.\n{EXIT}" )
+            sys.exit( f"<< ERROR | No valid files detected in `data` folder.\n{EXIT}" )
 
 
     def _func_reset_database( self ):
@@ -213,12 +206,10 @@ class Venmito_Evaluator():
                     )""" )
         cur.execute( """
                     CREATE TABLE transfers ( 
-                        sender_id INTEGER, 
-                        recipient_id INTEGER, 
-                        amount MONEY, 
-                        date DATE, 
-                        FOREIGN KEY(sender_id) REFERENCES people(id), 
-                        FOREIGN KEY(recipient_id) REFERENCES people(id) 
+                        sender_id INTEGER REFERENCES people(id), 
+                        recipient_id INTEGER REFERENCES people(id), 
+                        amount FLOAT, 
+                        date TEXT
                     )""" )
         cur.execute( """
                     CREATE TABLE promotions ( 
@@ -226,23 +217,23 @@ class Venmito_Evaluator():
                         customer_id INTEGER, 
                         promotion TEXT, 
                         responded BOOLEAN, 
-                        FOREIGN KEY (customer_id) REFERENCES people(id) 
+                        FOREIGN KEY(customer_id) REFERENCES people(id) 
                     )""" )
         cur.execute( """
                     CREATE TABLE transactions_unique ( 
                         id INTEGER PRIMARY KEY, 
                         customer_id INTEGER, 
                         store TEXT, 
-                        FOREIGN KEY (customer_id) REFERENCES people(id)
+                        FOREIGN KEY(customer_id) REFERENCES people(id)
                     )""" )
         cur.execute( """
                     CREATE TABLE transaction_products ( 
                         transaction_id INTEGER, 
                         item TEXT, 
-                        price MONEY, 
-                        price_per_item MONEY, 
+                        price FLOAT, 
+                        price_per_item FLOAT, 
                         quantity INTEGER, 
-                        FOREIGN KEY (transaction_id) REFERENCES transactions_unique(id) 
+                        FOREIGN KEY(transaction_id) REFERENCES transactions_unique(id) 
                     )""" )
         self.conn.commit()
         cur.close()
@@ -285,6 +276,7 @@ class Venmito_Evaluator():
         if FILE_EXIST["people.json"] or FILE_EXIST["people.yml"]:
             DATA_PEOPLE == None
 
+            # DEV NOTE FOR ERROR!: Rewrite databases to capture empty data!
             # TO DO: Rewrite code below to allow temporary tables on database.
             if FILE_EXIST["people.json"]:
                 print(f">> Processing files [{c_p}/{n_p}]...")
@@ -321,7 +313,8 @@ class Venmito_Evaluator():
             # TO DO: Replace `if_exists` with `method` to ignore duplicates and [...].
             DATA_PEOPLE.to_sql( "people", self.engine, index=False, if_exists='append' ) 
         
-        '''if DATA_PEOPLE == None and b_first_time:
+        '''# DEV NOTE: This is for handling loss of files.
+        if DATA_PEOPLE == None and b_first_time:
             # > HAPPENS WHEN `people.json` and `people.yml` don't exist while there IS NO usable data.
             # TO DO: Rewrite code below based on changes for temporary tables mentioned above.
             # - User must be prompted to find the right files to get rid of temporary tables.
@@ -342,6 +335,7 @@ class Venmito_Evaluator():
             c_p += 1
             TRANSFERS = pd.read_csv( os.path.join( DIR_DATA, "transfers.csv" ) )
             TRANSFERS.columns = [ h.lower() for h in TRANSFERS.columns ]
+            #TRANSFERS["date"] = [ datetime.strftime( e, "%Y %m %d, %H %M %S %f" ) for e in TRANSFERS["date"] ]
             TRANSFERS.to_sql( "transfers", self.engine, index=False, if_exists="append" )
         
         # PROMOTIONS: Process file.
