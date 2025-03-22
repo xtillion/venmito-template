@@ -54,22 +54,41 @@ VENMITO-EMILIODEJESUS/
 
 🛠️ How to Set Up and Run the Project
 
-1. Clone the Repository:
-    git clone https://github.com/emiliodejesus/venmito-emiliodejesus.git
-    cd venmito-emiliodejesus.git
+    1. Clone the Repository:
+        git clone https://github.com/emiliodejesus/venmito-emiliodejesus.git
+        cd venmito-emiliodejesus.git
 
-2. Create and Activate Virtual Environment:
-    python3 -m venv .venv
-    source .venv/bin/activate
+    2. Create and Activate Virtual Environment:
+        python3 -m venv .venv
+        source .venv/bin/activate
 
-3. Install Dependencies:
-    pip install -r requirements.txt
+    3. Install Dependencies:
+        pip install -r requirements.txt
 
-4. Run the Application:
-    python3 -m src.main
+    4. Run the Application:
+        python3 -m src.main
 
+📕 Use Instructions
+    -> Choose Between CLI or GUI
+        After running the project, you’ll be prompted to choose between the Command Line Interface (CLI) or the Graphical User Interface (GUI):
+            CLI – Use the CLI for detailed analysis and direct database queries.
+            GUI – Use the GUI for a more visual and interactive experience.
 
---> Key Insights Available
+    -> CLI Instructions:
+        If you select CLI, you'll see a menu of options. Just type the corresponding number and press Enter to get the analysis or data you want. For example:
+            1 – View Top Clients
+            5 – View Top Senders
+            15 – Run Custom SQL Query
+            16 – Exit the CLI
+
+    -> GUI Instructions
+        If you select GUI, a window will open with buttons for each type of analysis. Just click the button to view the corresponding data.
+
+    -> Exit
+        To exit the CLI, type 16 or select the exit option in the GUI.
+        You can always rerun the project to explore more data.
+
+🔎 Key Insights Available
 
     -> Promotions Analysis:
         Client Promotions
