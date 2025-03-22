@@ -203,3 +203,46 @@ def get_analytics_dashboard():
     except Exception as e:
         logger.error(f"Error getting analytics dashboard: {str(e)}")
         return jsonify({'error': 'Internal server error'}), 500
+    
+def get_dashboard_totals():
+    """
+    API endpoint for comprehensive dashboard metrics
+    
+    Returns:
+        JSON response with dashboard metrics
+    """
+    try:
+        totals = analytics_queries.get_dashboard_totals()
+        return jsonify(totals), 200
+    except Exception as e:
+        logger.error(f"Error getting dashboard totals: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+
+def get_top_items():
+    """
+    API endpoint for top items
+    
+    Query parameters:
+    - limit: Number of top items to return (default 5)
+    - order_by: Metric to order by ('revenue', 'sales', 'transactions', default 'revenue')
+    
+    Returns:
+        JSON response with top items
+    """
+    try:
+        # Get query parameters with defaults
+        limit = min(int(request.args.get('limit', 5)), 20)  # Limit to 20 max
+        order_by = request.args.get('order_by', 'revenue')
+        
+        # Validate order_by parameter
+        valid_order_by = ['revenue', 'sales', 'transactions']
+        if order_by not in valid_order_by:
+            order_by = 'revenue'
+        
+        # Get top items
+        top_items = analytics_queries.get_top_items(limit, order_by)
+        
+        return jsonify(top_items), 200
+    except Exception as e:
+        logger.error(f"Error getting top items: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500

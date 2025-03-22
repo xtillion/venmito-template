@@ -13,12 +13,12 @@ from src.db.config import execute_query
 # Configure logging
 logger = logging.getLogger(__name__)
 
-def get_daily_transactions_summary(days: int = 30):
+def get_daily_transactions_summary(days: int = 365):
     """
-    Get a summary of daily transactions.
+    Get a summary of daily transactions across all historical data.
     
     Args:
-        days (int): Number of days to include
+        days (int): Number of days to include (default to full history)
     
     Returns:
         list: Daily transaction summaries
@@ -26,8 +26,8 @@ def get_daily_transactions_summary(days: int = 30):
     query = """
     WITH date_series AS (
         SELECT generate_series(
-            current_date - %(days)s::interval,
-            current_date,
+            (SELECT MIN(DATE(transaction_date)) FROM transactions),
+            (SELECT MAX(DATE(transaction_date)) FROM transactions),
             '1 day'::interval
         )::date AS day
     )
@@ -43,9 +43,7 @@ def get_daily_transactions_summary(days: int = 30):
     ORDER BY ds.day
     """
     
-    params = {'days': f'{days} days'}
-    
-    return execute_query(query, params)
+    return execute_query(query)
 
 def get_daily_transfers_summary(days: int = 30):
     """
@@ -311,3 +309,66 @@ def get_transfer_amount_distribution():
     """
     
     return execute_query(query)
+
+def get_dashboard_totals():
+    """
+    Get comprehensive dashboard metrics
+    
+    Returns:
+        dict: Expanded dashboard metrics
+    """
+    query = """
+    WITH revenue_metrics AS (
+        SELECT 
+            ROUND(SUM(total_revenue), 2) AS total_revenue,
+            SUM(transaction_count) AS total_transactions,
+            ROUND(AVG(average_price), 2) AS average_transaction_value,
+            COUNT(DISTINCT item) AS unique_items_sold
+        FROM item_summary
+    ), top_item AS (
+        SELECT item, total_revenue, items_sold
+        FROM item_summary
+        ORDER BY total_revenue DESC
+        LIMIT 1
+    )
+    SELECT 
+        rm.*,
+        ti.item AS top_selling_item,
+        ti.total_revenue AS top_item_revenue,
+        ti.items_sold AS top_item_sales
+    FROM revenue_metrics, top_item
+    """
+    
+    return execute_query(query)[0]
+
+def get_top_items(limit: int = 5, order_by: str = 'revenue'):
+    """
+    Get top items by different metrics
+    
+    Args:
+        limit (int): Number of top items to return
+        order_by (str): Metric to order by ('revenue', 'sales', 'transactions')
+    
+    Returns:
+        list: Top items
+    """
+    order_column = {
+        'revenue': 'total_revenue',
+        'sales': 'items_sold',
+        'transactions': 'transaction_count'
+    }.get(order_by, 'total_revenue')
+    
+    query = f"""
+    SELECT 
+        item,
+        SUM(price) AS total_revenue,
+        SUM(quantity) AS items_sold,
+        COUNT(*) AS transaction_count
+    FROM transactions
+    GROUP BY item
+    ORDER BY {order_column} DESC
+    LIMIT %(limit)s
+    """
+    
+    params = {'limit': limit}
+    return execute_query(query, params)
