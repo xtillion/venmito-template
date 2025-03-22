@@ -9,6 +9,7 @@ from typing import Dict, Any, Optional, List, Tuple
 from flask import jsonify, request, abort
 
 from src.api.queries import analytics_queries
+from src.api.queries import transactions_queries
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -219,6 +220,7 @@ def get_dashboard_totals():
         return jsonify({'error': 'Internal server error'}), 500
 
 def get_top_items():
+
     """
     API endpoint for top items
     
@@ -245,4 +247,24 @@ def get_top_items():
         return jsonify(top_items), 200
     except Exception as e:
         logger.error(f"Error getting top items: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
+    
+def get_top_transactions():
+    """
+    Get top transactions by amount.
+    
+    Returns:
+        tuple: (JSON response, status code)
+    """
+    try:
+        # Get limit parameter
+        limit = min(int(request.args.get('limit', 5)), 100)  # Default 5, max 100
+        
+        # Get top transactions
+        transactions = transactions_queries.get_top_transactions_by_amount(limit)
+        
+        return jsonify(transactions), 200
+    
+    except Exception as e:
+        logger.error(f"Error getting top transactions: {str(e)}")
         return jsonify({'error': 'Internal server error'}), 500

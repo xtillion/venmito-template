@@ -318,25 +318,29 @@ def get_dashboard_totals():
         dict: Expanded dashboard metrics
     """
     query = """
-    WITH revenue_metrics AS (
+    WITH revenue_metrics AS  (
         SELECT 
             ROUND(SUM(total_revenue), 2) AS total_revenue,
             SUM(transaction_count) AS total_transactions,
             ROUND(AVG(average_price), 2) AS average_transaction_value,
             COUNT(DISTINCT item) AS unique_items_sold
         FROM item_summary
-    ), top_item AS (
+    ), 
+    top_item AS (
         SELECT item, total_revenue, items_sold
         FROM item_summary
         ORDER BY total_revenue DESC
         LIMIT 1
     )
     SELECT 
-        rm.*,
+        rm.total_revenue,
+        rm.total_transactions,
+        rm.average_transaction_value,
+        rm.unique_items_sold,
         ti.item AS top_selling_item,
         ti.total_revenue AS top_item_revenue,
         ti.items_sold AS top_item_sales
-    FROM revenue_metrics, top_item
+    FROM revenue_metrics rm, top_item ti;
     """
     
     return execute_query(query)[0]
@@ -371,4 +375,35 @@ def get_top_items(limit: int = 5, order_by: str = 'revenue'):
     """
     
     params = {'limit': limit}
+    return execute_query(query, params)
+
+def get_top_transactions_by_amount(limit: int = 5):
+    """
+    Get top transactions by amount.
+    
+    Args:
+        limit (int): Maximum number of transactions to return
+    
+    Returns:
+        list: List of top transaction records sorted by price
+    """
+    query = """
+    SELECT 
+        t.transaction_id, 
+        t.user_id, 
+        t.item, 
+        t.store,
+        t.price,
+        t.quantity,
+        t.price_per_item,
+        p.first_name,
+        p.last_name
+    FROM transactions t
+    JOIN people p ON t.user_id = p.user_id
+    ORDER BY t.price DESC
+    LIMIT %(limit)s
+    """
+    
+    params = {'limit': limit}
+    
     return execute_query(query, params)

@@ -128,6 +128,10 @@ def get_transfer_amount_distribution():
 def get_analytics_dashboard():
     return analytics_controller.get_analytics_dashboard()
 
+@analytics_bp.route('/top-transactions', methods=['GET'])
+def top_transactions():
+    return analytics_controller.get_top_transactions()
+
 @analytics_bp.route('/dashboard-totals', methods=['GET'])
 def dashboard_totals():
     return analytics_controller.get_dashboard_totals()
