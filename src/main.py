@@ -29,35 +29,6 @@ def main():
 
     analyzer = DataAnalyzer(people_df, transactions_df, transfers_df, promotions_df)
 
-    # Promotions Analysis
-    print("\nClient Promotions: \n", analyzer.get_client_promotions())
-    print("\nPromotion Effectiveness: \n", analyzer.get_promotion_effectiveness())
-
-    # Suggestions for converting "No" responses to "Yes"
-    print("\nPromotion Suggestions: \n", analyzer.get_promotion_suggestions())
-
-    # Transactions Analysis
-    print("\nTop Items: \n", analyzer.get_top_items())
-    print("\nTop Stores: \n", analyzer.get_top_stores())
-    print("\nTop Clients: \n", analyzer.get_top_clients())
-
-    # Additional Store Insights
-    print("\nStore Customer Count: \n", analyzer.get_store_customers())
-    print("\nAverage Transaction Value Per Store: \n", analyzer.get_average_transaction_value())
-    print("\nMost Popular Store for Each Item: \n", analyzer.get_most_popular_store_for_items())
-
-    # Transfers Analysis
-    print("\nTop Senders: \n", analyzer.get_top_senders())
-    print("\nTop Recipients: \n", analyzer.get_top_recipients())
-    print("\nUnusual Transfers: \n", analyzer.get_unusual_transfers())
-    print("\nMost Common Transfer Amount: \n", analyzer.get_most_common_transfer_amount())
-    print("\nTransfer Pattern by Day of Week: \n", analyzer.get_transfer_pattern_by_day())
-
-    # Client Insights
-    print("\nVIP Clients: \n", analyzer.get_most_valuable_clients())
-    print("\nLocation Patterns: \n", analyzer.get_location_patterns())
-    print("\nCustomer Targeting Insights: \n", analyzer.get_customer_targeting_insights())
-
     db = DatabaseHandler()
     db.connect()
     db.create_tables()
@@ -74,7 +45,7 @@ def main():
     db.close()
 
     # Start CLI
-    cli = CLIHandler()
+    cli = CLIHandler(analyzer)
     cli.run()
     cli.close()
 
