@@ -1,0 +1,255 @@
+/* 
+ * Venmito Dark Theme
+ * A sophisticated dark theme with accent colors for the Venmito application
+ */
+
+ :root {
+    /* Main theme colors */
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --text-muted: #8c8c8c;
+    
+    /* Accent colors for highlights and data visualization */
+    --accent-blue: #4285f4;
+    --accent-green: #34a853;
+    --accent-yellow: #fbbc05;
+    --accent-red: #ea4335;
+    --accent-purple: #ab47bc;
+    --accent-teal: #26a69a;
+    
+    /* Border and shadow */
+    --border-color: #3d3d3d;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Base styles */
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Navbar styling */
+  .navbar {
+    background-color: var(--bg-secondary) !important;
+    box-shadow: var(--box-shadow);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .navbar-brand {
+    color: var(--text-primary) !important;
+    font-weight: bold;
+  }
+  
+  .navbar-nav {
+    margin-left: auto; /* Moves nav items to the right */
+  }
+  
+  .nav-link {
+    color: var(--text-secondary) !important;
+    margin: 0 5px;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover, .nav-link.active {
+    color: var(--text-primary) !important;
+    border-bottom: 2px solid var(--accent-blue);
+  }
+  
+  /* Cards styling */
+  .card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+  
+  .card-header {
+    background-color: var(--bg-tertiary);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+  }
+  
+  .card-body {
+    padding: 1.5rem;
+  }
+  
+  /* Tables styling */
+  .table {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--bg-tertiary);
+  }
+  
+  .table thead th {
+    border-bottom: 2px solid var(--border-color);
+    color: var(--text-secondary);
+    font-weight: 600;
+  }
+  
+  .table td, .table th {
+    border-top: 1px solid var(--border-color);
+    padding: 0.75rem;
+    vertical-align: middle;
+  }
+  
+  /* Form elements */
+  .form-control, .form-select {
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+  
+  .form-control:focus, .form-select:focus {
+    background-color: var(--bg-tertiary);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 0.2rem rgba(66, 133, 244, 0.25);
+    color: var(--text-primary);
+  }
+  
+  .form-label {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Buttons */
+  .btn-primary {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+  }
+  
+  .btn-primary:hover {
+    background-color: #3367d6;
+    border-color: #3367d6;
+  }
+  
+  .btn-success {
+    background-color: var(--accent-green);
+    border-color: var(--accent-green);
+  }
+  
+  .btn-warning {
+    background-color: var(--accent-yellow);
+    border-color: var(--accent-yellow);
+    color: #212529;
+  }
+  
+  .btn-danger {
+    background-color: var(--accent-red);
+    border-color: var(--accent-red);
+  }
+  
+  /* Chart containers */
+  canvas {
+    background-color: var(--bg-secondary);
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Stats cards */
+  .stats-card {
+    background-color: var(--bg-tertiary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 140px;
+  }
+  
+  .stats-card .stats-title {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stats-card .stats-value {
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .stats-card .stats-change {
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 1rem;
+  }
+  
+  .stats-card .stats-change.positive {
+    color: var(--accent-green);
+  }
+  
+  .stats-card .stats-change.negative {
+    color: var(--accent-red);
+  }
+  
+  .stats-card.blue-accent .stats-value {
+    color: var(--accent-blue);
+  }
+  
+  .stats-card.green-accent .stats-value {
+    color: var(--accent-green);
+  }
+  
+  .stats-card.yellow-accent .stats-value {
+    color: var(--accent-yellow);
+  }
+  
+  .stats-card.red-accent .stats-value {
+    color: var(--accent-red);
+  }
+  
+  .stats-card.purple-accent .stats-value {
+    color: var(--accent-purple);
+  }
+  
+  .stats-card.teal-accent .stats-value {
+    color: var(--accent-teal);
+  }
+  
+  /* Chart size adjustments */
+  .chart-container-sm {
+    height: 200px;
+  }
+  
+  .chart-container-md {
+    height: 300px;
+  }
+  
+  .chart-container-lg {
+    height: 400px;
+  }
+  
+  .chart-container-xl {
+    height: 500px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .stats-card {
+      min-height: 120px;
+    }
+    
+    .stats-card .stats-value {
+      font-size: 1.7rem;
+    }
+    
+    .chart-container-sm,
+    .chart-container-md,
+    .chart-container-lg,
+    .chart-container-xl {
+      height: 250px;
+    }
+  }

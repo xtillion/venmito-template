@@ -1,0 +1,306 @@
+- Android: 1
+  Desktop: 0
+  Iphone: 0
+  city: Montreal, Canada
+  email: Jamie.Bright@example.com
+  id: 1
+  name: Jamie Bright
+  phone: 533-849-3913
+  dob: May 20, 2000
+- Android: 1
+  Desktop: 1
+  Iphone: 1
+  city: Toronto, Canada
+  email: Yusra.Fletcher@example.com
+  id: 3
+  name: Yusra Fletcher
+  phone: 385-702-8874
+  dob: October 30, 1998
+- Android: 1
+  Desktop: 0
+  Iphone: 0
+  city: Paris, France
+  email: Beatrix.Everett@example.com
+  id: 5
+  name: Beatrix Everett
+  phone: 194-640-2758
+  dob: August 14, 1984
+- Android: 1
+  Desktop: 0
+  Iphone: 0
+  city: Toronto, Canada
+  email: Asa.Vazquez@example.com
+  id: 9
+  name: Asa Vazquez
+  phone: 504-421-4485
+  dob: June 23, 2004
+- Android: 1
+  Desktop: 1
+  Iphone: 0
+  city: Toronto, Canada
+  email: Carmen.Burton@example.com
+  id: 19
+  name: Carmen Burton
+  phone: 527-368-7429
+  dob: March 25, 1989
+- Android: 1
+  Desktop: 1
+  Iphone: 0
+  city: London, United Kingdom
+  email: Donald.Stone@example.com
+  id: 20
+  name: Donald Stone
+  phone: 730-260-4630
+  dob: December 10, 1994
+- Android: 1
+  Desktop: 0
+  Iphone: 1
+  city: Paris, France
+  email: Isabelle.Lopez@example.com
+  id: 24
+  name: Isabelle Lopez
+  phone: 981-878-3234
+  dob: July 09, 1966
+- Android: 1
+  Desktop: 1
+  Iphone: 1
+  city: Barcelona, Spain
+  email: Julius.Garrett@example.com
+  id: 26
+  name: Julius Garrett
+  phone: 866-664-7969
+  dob: April 10, 1963
+- Android: 1
+  Desktop: 1
+  Iphone: 1
+  city: Barcelona, Spain
+  email: Dafydd.Preston@example.com
+  id: 29
+  name: Dafydd Preston
+  phone: 368-987-3267
+  dob: July 20, 1977
+- Android: 1
+  Desktop: 0
+  Iphone: 0
+  city: Montreal, Canada
+  email: Stephanie.Rice@example.com
+  id: 30
+  name: Stephanie Rice
+  phone: 830-901-9870
+  dob: April 19, 1990
+- Android: 0
+  Desktop: 0
+  Iphone: 1
+  city: Montreal, Canada
+  email: Bradley.Butler@example.com
+  id: 31
+  name: Bradley Butler
+  phone: 937-172-2269
+  dob: November 25, 1988
+- Android: 1
+  Desktop: 0
+  Iphone: 1
+  city: Barcelona, Spain
+  email: Louise.Daniel@example.com
+  id: 33
+  name: Louise Daniel
+  phone: 917-348-4728
+  dob: April 18, 1976
+- Android: 0
+  Desktop: 0
+  Iphone: 1
+  city: Toronto, Canada
+  email: Livia.Howe@example.com
+  id: 34
+  name: Livia Howe
+  phone: 868-828-4315
+  dob: October 26, 1992
+- Android: 1
+  Desktop: 0
+  Iphone: 1
+  city: Toronto, Canada
+  email: Lili.Schroeder@example.com
+  id: 37
+  name: Lili Schroeder
+  phone: 640-348-2128
+  dob: February 26, 1999
+- Android: 1
+  Desktop: 0
+  Iphone: 0
+  city: London, United Kingdom
+  email: Jeremiah.Martin@example.com
+  id: 38
+  name: Jeremiah Martin
+  phone: 277-350-5557
+  dob: December 15, 1995
+- Android: 1
+  Desktop: 0
+  Iphone: 1
+  city: Barcelona, Spain
+  email: Keyaan.Holland@example.com
+  id: 39
+  name: Keyaan Holland
+  phone: 845-797-2979
+  dob: October 31, 1974
+- Android: 1
+  Desktop: 1
+  Iphone: 1
+  city: London, United Kingdom
+  email: Cody.Riley@example.com
+  id: 41
+  name: Cody Riley
+  phone: 872-906-9681
+  dob: September 28, 1986
+- Android: 0
+  Desktop: 0
+  Iphone: 1
+  city: London, United Kingdom
+  email: Tomas.Griffith@example.com
+  id: 42
+  name: Tomas Griffith
+  phone: 492-337-4468
+  dob: December 14, 2000
+- Android: 1
+  Desktop: 0
+  Iphone: 1
+  city: Montreal, Canada
+  email: Amaan.Rangel@example.com
+  id: 52
+  name: Amaan Rangel
+  phone: 837-435-2302
+  dob: October 18, 1993
+- Android: 0
+  Desktop: 1
+  Iphone: 0
+  city: London, United Kingdom
+  email: Billie.Price@example.com
+  id: 57
+  name: Billie Price
+  phone: 917-866-8131
+  dob: April 13, 1962
+- Android: 1
+  Desktop: 1
+  Iphone: 0
+  city: London, United Kingdom
+  email: Phoebe.Weiss@example.com
+  id: 59
+  name: Phoebe Weiss
+  phone: 299-560-9666
+  dob: March 03, 1986
+- Android: 0
+  Desktop: 0
+  Iphone: 1
+  city: Toronto, Canada
+  email: Aled.Silva@example.com
+  id: 65
+  name: Aled Silva
+  phone: 612-360-5367
+  dob: April 20, 1985
+- Android: 0
+  Desktop: 0
+  Iphone: 1
+  city: Paris, France
+  email: Saif.Green@example.com
+  id: 68
+  name: Saif Green
+  phone: 978-659-7286
+  dob: March 03, 1943
+- Android: 1
+  Desktop: 1
+  Iphone: 1
+  city: Toronto, Canada
+  email: Valerie.Oneal@example.com
+  id: 70
+  name: Valerie Oneal
+  phone: 651-335-6190
+  dob: January 28, 1986
+- Android: 0
+  Desktop: 0
+  Iphone: 1
+  city: London, United Kingdom
+  email: Ilyas.Dunlap@example.com
+  id: 71
+  name: Ilyas Dunlap
+  phone: 491-981-1293
+  dob: February 01, 1997
+- Android: 1
+  Desktop: 0
+  Iphone: 1
+  city: Paris, France
+  email: Kara.Stewart@example.com
+  id: 73
+  name: Kara Stewart
+  phone: 794-314-2500
+  dob: April 21, 1992
+- Android: 1
+  Desktop: 1
+  Iphone: 1
+  city: Toronto, Canada
+  email: Myrtle.Doyle@example.com
+  id: 74
+  name: Myrtle Doyle
+  phone: 525-796-7991
+  dob: October 02, 1994
+- Android: 1
+  Desktop: 0
+  Iphone: 0
+  city: London, United Kingdom
+  email: Angela.Mcmillan@example.com
+  id: 78
+  name: Angela Mcmillan
+  phone: 868-463-1850
+  dob: February 17, 2000
+- Android: 1
+  Desktop: 1
+  Iphone: 1
+  city: London, United Kingdom
+  email: Amir.Clark@example.com
+  id: 91
+  name: Amir Clark
+  phone: 924-287-4068
+  dob: August 03, 1998
+- Android: 1
+  Desktop: 1
+  Iphone: 1
+  city: London, United Kingdom
+  email: Usman.Swanson@example.com
+  id: 100
+  name: Usman Swanson
+  phone: 431-103-9132
+  dob: August 13, 1995
+- Android: 0
+  Desktop: 0
+  Iphone: 1
+  city: Toronto, Canada
+  email: Caspar.Hudson@example.com
+  id: 103
+  name: Caspar Hudson
+  phone: 830-584-4874
+  dob: May 15, 1996
+- Android: 0
+  Desktop: 1
+  Iphone: 0
+  city: Toronto, Canada
+  email: Mohsin.Tucker@example.com
+  id: 108
+  name: Mohsin Tucker
+  phone: 174-389-8757
+  dob: February 17, 1999
+- Android: 0
+  Desktop: 1
+  Iphone: 1
+  city: Toronto, Canada
+  email: Laurie.Melendez@example.com
+  id: 114
+  name: Laurie Melendez
+  phone: 488-382-1416
+  dob: October 26, 1989
+- Android: 1
+  Desktop: 0
+  Iphone: 1
+  city: Montreal, Canada
+  email: Tanya.Watson@example.com
+  id: 115
+  name: Tanya Watson
+  phone: 432-515-4933
+  dob: March 07, 1987
