@@ -1,5 +1,5 @@
 # Venmito Data Engineering Project
-## By: Emilio De Jesus Hernandez
+## By: Emilio E De Jesus Hernandez
 **Email:** emilio.dejesus@upr.edu
 
 ---

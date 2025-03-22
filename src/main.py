@@ -40,19 +40,36 @@ def main():
     db.insert_transfers(transfers_df)
     db.insert_promotions(promotions_df)
 
-    # Example Query
-    db.query_clients()
-
     # Close connection
     db.close()
 
-    # Initiates GUI and opens window with buttons of the metrics to be viewed
-    GUIHandler(analyzer)
+    while True:
+            print("\nWould you like to use the CLI or the GUI?")
+            print("1. CLI")
+            print("2. GUI")
+            print("3. Exit")
 
-    # Start CLI
-    cli = CLIHandler(analyzer)
-    cli.run()
-    cli.close()
+            choice = input("\nChoose an option (1-3): ")
+
+            if choice == '1':
+                print("\n[Starting CLI...]\n")
+                cli = CLIHandler(analyzer)
+                cli.run()
+                cli.close()
+                break
+
+            elif choice == '2':
+                print("\n[Starting GUI...]\n")
+                gui = GUIHandler(analyzer)
+                gui.run()
+                break
+
+            elif choice == '3':
+                print("\n👋 Exiting program. Goodbye!")
+                break
+
+            else:
+                print("\n❌ Invalid choice. Please enter a valid option (1-3).")
 
 if __name__ == "__main__":
     main()
