@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+from analysis import DataAnalyzer
 
 class DatabaseHandler:
     def __init__(self, db_name='venmito.db'):
@@ -108,8 +109,9 @@ class DatabaseHandler:
             print("Database connection closed")
 
 class CLIHandler:
-    def __init__(self, db_name='venmito.db'):
+    def __init__(self, analyzer, db_name='venmito.db'):
         self.conn = sqlite3.connect(db_name)
+        self.analyzer = analyzer
 
     # Function to execute and display query results
     def run_query(self, query):
@@ -129,59 +131,82 @@ class CLIHandler:
         print("2. View most profitable store")
         print("3. View most popular store for items")
         print("4. View promotion suggestions")
-        print("5. Run custom SQL query")
-        print("6. Exit")
+        print("5. View top senders")
+        print("6. View top recipients")
+        print("7. View unusual transfers")
+        print("8. View most valuable clients (VIP)")
+        print("9. View location-based client spending")
+        print("10. View average transaction value per store")
+        print("11. View most common transfer amount")
+        print("12. View store customer count")
+        print("13. View most popular store for items")
+        print("14. View transfer pattern by day of week")
+        print("15. Run custom SQL query")
+        print("16. Exit")
 
-    # Predefined queries
+    # Predefined options based on analyzer methods
     def handle_option(self, option):
         if option == '1':
-            query = """
-                SELECT name AS 'Client Name', SUM(price) AS 'Total Spent'
-                FROM transactions
-                JOIN clients ON transactions.phone = clients.phone
-                GROUP BY name
-                ORDER BY SUM(price) DESC
-                LIMIT 10
-            """
-            self.run_query(query)
+            print("\n[Top Clients]\n")
+            print(self.analyzer.get_top_clients())
 
         elif option == '2':
-            query = """
-                SELECT store AS 'Store', SUM(price) AS 'Total Revenue'
-                FROM transactions
-                GROUP BY store
-                ORDER BY SUM(price) DESC
-                LIMIT 5
-            """
-            self.run_query(query)
+            print("\n[Most Profitable Stores]\n")
+            print(self.analyzer.get_top_stores())
 
         elif option == '3':
-            query = """
-                SELECT item AS 'Item', store AS 'Top Store', COUNT(*) AS 'Units Sold'
-                FROM transactions
-                GROUP BY item, store
-                ORDER BY COUNT(*) DESC
-                LIMIT 5
-            """
-            self.run_query(query)
+            print("\n[Most Popular Store for Each Item]\n")
+            print(self.analyzer.get_most_popular_store_for_items())
 
         elif option == '4':
-            query = """
-                SELECT promotion AS 'Promotion', city AS 'City', COUNT(*) AS 'Negative Responses'
-                FROM promotions
-                JOIN clients ON promotions.telephone = clients.phone
-                WHERE responded = 0
-                GROUP BY promotion, city
-                ORDER BY COUNT(*) DESC
-                LIMIT 5
-            """
-            self.run_query(query)
+            print("\n[Promotion Suggestions]\n")
+            print(self.analyzer.get_promotion_suggestions())
 
         elif option == '5':
+            print("\n[Top Senders]\n")
+            print(self.analyzer.get_top_senders())
+
+        elif option == '6':
+            print("\n[Top Recipients]\n")
+            print(self.analyzer.get_top_recipients())
+
+        elif option == '7':
+            print("\n[Unusual Transfers]\n")
+            print(self.analyzer.get_unusual_transfers())
+
+        elif option == '8':
+            print("\n[Most Valuable Clients]\n")
+            print(self.analyzer.get_most_valuable_clients())
+
+        elif option == '9':
+            print("\n[Location-Based Spending]\n")
+            print(self.analyzer.get_location_patterns())
+
+        elif option == '10':
+            print("\n[Average Transaction Value per Store]\n")
+            print(self.analyzer.get_average_transaction_value())
+
+        elif option == '11':
+            print("\n[Most Common Transfer Amount]\n")
+            print(self.analyzer.get_most_common_transfer_amount())
+
+        elif option == '12':
+            print("\n[Store Customer Count]\n")
+            print(self.analyzer.get_store_customers())
+
+        elif option == '13':
+            print("\n[Most Popular Store for Each Item]\n")
+            print(self.analyzer.get_most_popular_store_for_items())
+
+        elif option == '14':
+            print("\n[Transfer Pattern by Day of Week]\n")
+            print(self.analyzer.get_transfer_pattern_by_day())
+
+        elif option == '15':
             custom_query = input("\nEnter your custom SQL query:\n> ")
             self.run_query(custom_query)
 
-        elif option == '6':
+        elif option == '16':
             print("\n👋 Exiting CLI. Goodbye!")
             return False
 
@@ -195,7 +220,7 @@ class CLIHandler:
         running = True
         while running:
             self.display_menu()
-            option = input("\nChoose an option (1-6): ")
+            option = input("\nChoose an option (1-16): ")
             running = self.handle_option(option)
 
     # Close connection
@@ -203,4 +228,3 @@ class CLIHandler:
         if self.conn:
             self.conn.close()
             print("\n🔒 Database connection closed.")
-
