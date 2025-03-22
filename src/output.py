@@ -106,3 +106,101 @@ class DatabaseHandler:
         if self.conn:
             self.conn.close()
             print("Database connection closed")
+
+class CLIHandler:
+    def __init__(self, db_name='venmito.db'):
+        self.conn = sqlite3.connect(db_name)
+
+    # Function to execute and display query results
+    def run_query(self, query):
+        try:
+            result = pd.read_sql_query(query, self.conn)
+            if result.empty:
+                print("\n⚠️ No results found.")
+            else:
+                print("\n", result.to_string(index=False))
+        except Exception as e:
+            print(f"\n❌ Error: {e}")
+
+    # Display available options
+    def display_menu(self):
+        print("\n[Venmito CLI]")
+        print("1. View top clients")
+        print("2. View most profitable store")
+        print("3. View most popular store for items")
+        print("4. View promotion suggestions")
+        print("5. Run custom SQL query")
+        print("6. Exit")
+
+    # Predefined queries
+    def handle_option(self, option):
+        if option == '1':
+            query = """
+                SELECT name AS 'Client Name', SUM(price) AS 'Total Spent'
+                FROM transactions
+                JOIN clients ON transactions.phone = clients.phone
+                GROUP BY name
+                ORDER BY SUM(price) DESC
+                LIMIT 10
+            """
+            self.run_query(query)
+
+        elif option == '2':
+            query = """
+                SELECT store AS 'Store', SUM(price) AS 'Total Revenue'
+                FROM transactions
+                GROUP BY store
+                ORDER BY SUM(price) DESC
+                LIMIT 5
+            """
+            self.run_query(query)
+
+        elif option == '3':
+            query = """
+                SELECT item AS 'Item', store AS 'Top Store', COUNT(*) AS 'Units Sold'
+                FROM transactions
+                GROUP BY item, store
+                ORDER BY COUNT(*) DESC
+                LIMIT 5
+            """
+            self.run_query(query)
+
+        elif option == '4':
+            query = """
+                SELECT promotion AS 'Promotion', city AS 'City', COUNT(*) AS 'Negative Responses'
+                FROM promotions
+                JOIN clients ON promotions.telephone = clients.phone
+                WHERE responded = 0
+                GROUP BY promotion, city
+                ORDER BY COUNT(*) DESC
+                LIMIT 5
+            """
+            self.run_query(query)
+
+        elif option == '5':
+            custom_query = input("\nEnter your custom SQL query:\n> ")
+            self.run_query(custom_query)
+
+        elif option == '6':
+            print("\n👋 Exiting CLI. Goodbye!")
+            return False
+
+        else:
+            print("\n❌ Invalid option. Try again.")
+
+        return True
+
+    # Start CLI loop
+    def run(self):
+        running = True
+        while running:
+            self.display_menu()
+            option = input("\nChoose an option (1-6): ")
+            running = self.handle_option(option)
+
+    # Close connection
+    def close(self):
+        if self.conn:
+            self.conn.close()
+            print("\n🔒 Database connection closed.")
+
