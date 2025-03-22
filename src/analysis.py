@@ -67,11 +67,17 @@ class DataAnalyzer:
     # What store generates the highest revenue?
     def get_top_stores(self):
         result = self.transactions_df.groupby('store')['price'].sum().reset_index()
-        result['price'] = result['price'].apply(self.format_currency)
+
         result = result.rename(columns={
             'store': 'Store',
             'price': 'Total Revenue'
-        }).sort_values(by='Total Revenue', ascending=False).reset_index(drop=True)
+        })
+
+        # Sort numerically BEFORE formatting
+        result = result.sort_values(by='Total Revenue', ascending=False).reset_index(drop=True)
+
+        result['Total Revenue'] = result['Total Revenue'].apply(self.format_currency)
+
         return result
 
 
@@ -85,18 +91,21 @@ class DataAnalyzer:
             how='inner'
         )
         result = merged.groupby('name')['price'].sum().reset_index()
-        result['price'] = result['price'].apply(self.format_currency)
 
-        # Rename columns for cleaner display
+        # Rename columns before formatting
         result = result.rename(columns={
             'name': 'Client Name',
             'price': 'Total Spent'
-        }).sort_values(by='Total Spent', ascending=False).reset_index(drop=True)
+        })
 
+        # Sort numerically first
+        result = result.sort_values(by='Total Spent', ascending=False).reset_index(drop=True)
 
-        result = result.reset_index(drop=True)
+        # Apply formatting after sorting
+        result['Total Spent'] = result['Total Spent'].apply(self.format_currency)
 
-        return result.sort_values(by='Total Spent', ascending=False)
+        return result
+
 
 
     # Who sends the most money?
@@ -109,19 +118,21 @@ class DataAnalyzer:
             how='inner'
         ).dropna()
 
-        # Remove duplicates before summing
         merged = merged.drop_duplicates(subset=['sender_id', 'recipient_id', 'amount'])
 
         result = merged.groupby('name', as_index=False)['amount'].sum()
-        result['amount'] = result['amount'].apply(self.format_currency)
 
-        # Reset index after sorting
         result = result.rename(columns={
             'name': 'Sender',
             'amount': 'Total Sent'
-        }).sort_values(by='Total Sent', ascending=False).reset_index(drop=True)
+        })
+
+        result = result.sort_values(by='Total Sent', ascending=False).reset_index(drop=True)
+
+        result['Total Sent'] = result['Total Sent'].apply(self.format_currency)
 
         return result
+
 
 
     def get_top_recipients(self):
@@ -133,17 +144,18 @@ class DataAnalyzer:
             how='inner'
         ).dropna()
 
-        # Remove duplicates before summing
         merged = merged.drop_duplicates(subset=['recipient_id', 'sender_id', 'amount'])
 
         result = merged.groupby('name', as_index=False)['amount'].sum()
-        result['amount'] = result['amount'].apply(self.format_currency)
 
-        # Reset index after sorting
         result = result.rename(columns={
             'name': 'Recipient',
             'amount': 'Total Received'
-        }).sort_values(by='Total Received', ascending=False).reset_index(drop=True)
+        })
+
+        result = result.sort_values(by='Total Received', ascending=False).reset_index(drop=True)
+
+        result['Total Received'] = result['Total Received'].apply(self.format_currency)
 
         return result
 
@@ -155,10 +167,7 @@ class DataAnalyzer:
         # Create a copy to avoid SettingWithCopyWarning
         result = self.transfers_df[self.transfers_df['amount'] > threshold].copy()
 
-        # Format currency
-        result['amount'] = result['amount'].apply(self.format_currency)
-
-        # Rename columns for cleaner display
+        # Rename columns BEFORE formatting
         result = result.rename(columns={
             'id': 'ID',
             'sender_id': 'Sender ID',
@@ -167,10 +176,14 @@ class DataAnalyzer:
             'date': 'Date'
         })
 
-        # Clean indexing after filtering
-        result = result.reset_index(drop=True)
+        # Sort numerically first
+        result = result.sort_values(by='Amount', ascending=False).reset_index(drop=True)
+
+        # Apply formatting AFTER sorting
+        result['Amount'] = result['Amount'].apply(self.format_currency)
 
         return result
+
 
 
     # Who are the most valuable clients?
@@ -182,16 +195,17 @@ class DataAnalyzer:
             right_on='phone',
             how='inner'
         )
-        result = merged.groupby('name')['price'].sum().reset_index().sort_values(by='price', ascending=False).head(10)
 
-        result['price'] = result['price'].apply(self.format_currency)
+        result = merged.groupby('name')['price'].sum().reset_index()
 
-        # Rename columns for cleaner display
         result = result.rename(columns={
             'name': 'VIP Client',
             'price': 'Total Spent'
         })
-        result = result.reset_index(drop=True)
+
+        result = result.sort_values(by='Total Spent', ascending=False).reset_index(drop=True)
+
+        result['Total Spent'] = result['Total Spent'].apply(self.format_currency)
 
         return result
 
@@ -205,20 +219,19 @@ class DataAnalyzer:
             right_on='phone',
             how='inner'
         )
-        result = merged.groupby('city')['price'].sum().reset_index()
-        result['price'] = result['price'].apply(self.format_currency)
 
-        # Rename columns for cleaner display
+        result = merged.groupby('city')['price'].sum().reset_index()
+
         result = result.rename(columns={
             'city': 'City',
             'price': 'Total Revenue'
-        }).sort_values(by='Total Revenue', ascending=False).reset_index(drop=True)
+        })
 
+        result = result.sort_values(by='Total Revenue', ascending=False).reset_index(drop=True)
 
-        result = result.reset_index(drop=True)
+        result['Total Revenue'] = result['Total Revenue'].apply(self.format_currency)
 
-        return result.sort_values(by='Total Revenue', ascending=False)
-
+        return result
 
 
     # How can the business improve customer targeting?
