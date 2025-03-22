@@ -1,7 +1,7 @@
 from ingestion import DataLoader
 from transformation import DataTransformer
 from analysis import DataAnalyzer
-from output import DatabaseHandler
+from output import DatabaseHandler, CLIHandler
 
 def main():
     # Initiate DataLoader in instance and Load Data from every file
@@ -72,6 +72,11 @@ def main():
 
     # Close connection
     db.close()
+
+    # Start CLI
+    cli = CLIHandler()
+    cli.run()
+    cli.close()
 
 if __name__ == "__main__":
     main()
