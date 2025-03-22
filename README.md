@@ -297,3 +297,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [Pandas](https://pandas.pydata.org/) - Data processing
 - [Chart.js](https://www.chartjs.org/) - Data visualization
 - [Bootstrap](https://getbootstrap.com/) - UI framework
+
+Alexander Puga -  pugadev@gmail.com
