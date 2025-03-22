@@ -58,16 +58,20 @@ def main():
     print("\nLocation Patterns: \n", analyzer.get_location_patterns())
     print("\nCustomer Targeting Insights: \n", analyzer.get_customer_targeting_insights())
 
+    db = DatabaseHandler()
+    db.connect()
+    db.create_tables()
 
+    db.insert_clients(people_df)
+    db.insert_transactions(transactions_df)
+    db.insert_transfers(transfers_df)
+    db.insert_promotions(promotions_df)
 
-    # print("\nTop Products:")
-    # print(top_products)
-    # print("\nStore Performance:")
-    # print(store_performance)
+    # Example Query
+    db.query_clients()
 
-    # # Step 4: Save to Database
-    # db = DatabaseHandler()
-    # db.save_to_db(consolidated_df, 'consolidated_data')
+    # Close connection
+    db.close()
 
 if __name__ == "__main__":
     main()
