@@ -243,3 +243,108 @@ class DataAnalyzer:
             'Negative Response Rate': self.format_percentage(negative_response_rate),
             'Most Effective Promotion': most_effective_promotion
         }
+
+    # Suggestions to convert "No" to "Yes"
+    def get_promotion_suggestions(self):
+        promo_data = pd.merge(
+            self.promotions_df,
+            self.people_df,
+            left_on='telephone',
+            right_on='phone',
+            how='inner'
+        )
+        
+        # Analyze patterns of those who said "No"
+        negative_responses = promo_data[promo_data['responded'] == 0]
+
+        # Group by promotion type and city to see patterns
+        result = negative_responses.groupby(['promotion', 'city']).size().reset_index(name='Count')
+
+        # Suggest targeting based on the most negative responses per city
+        suggestions = result.sort_values(by='Count', ascending=False).head(10)
+        suggestions = suggestions.rename(columns={
+            'promotion': 'Promotion',
+            'city': 'City',
+            'Count': 'Negative Responses'
+        }).reset_index(drop=True)
+
+        return suggestions
+
+
+    # Most customers per store
+    def get_store_customers(self):
+        merged = pd.merge(
+            self.transactions_df,
+            self.people_df,
+            left_on='phone',
+            right_on='phone',
+            how='inner'
+        )
+
+        result = merged.groupby('store')['phone'].nunique().reset_index()
+        result = result.rename(columns={
+            'store': 'Store',
+            'phone': 'Unique Customers'
+        }).sort_values(by='Unique Customers', ascending=False).reset_index(drop=True)
+
+        return result
+
+
+    # Average transaction value per store
+    def get_average_transaction_value(self):
+        merged = pd.merge(
+            self.transactions_df,
+            self.people_df,
+            left_on='phone',
+            right_on='phone',
+            how='inner'
+        )
+
+        result = merged.groupby('store')['price'].mean().reset_index()
+        result['price'] = result['price'].apply(self.format_currency)
+
+        result = result.rename(columns={
+            'store': 'Store',
+            'price': 'Average Transaction Value'
+        }).sort_values(by='Average Transaction Value', ascending=False).reset_index(drop=True)
+
+        return result
+
+
+    # Most popular store for each item
+    def get_most_popular_store_for_items(self):
+        merged = self.transactions_df.groupby(['item', 'store']).size().reset_index(name='count')
+
+        # Get the store with the max count per item
+        idx = merged.groupby('item')['count'].idxmax()
+        result = merged.loc[idx]
+
+        result = result.rename(columns={
+            'item': 'Item',
+            'store': 'Top Store',
+            'count': 'Units Sold'
+        }).sort_values(by='Units Sold', ascending=False).reset_index(drop=True)
+
+        return result
+
+
+    # Most common transfer amount
+    def get_most_common_transfer_amount(self):
+        mode_value = self.transfers_df['amount'].mode()
+        if not mode_value.empty:
+            return self.format_currency(mode_value.iloc[0])
+        return "No data available"
+
+
+    # Day-of-week transfer pattern
+    def get_transfer_pattern_by_day(self):
+        self.transfers_df['day_of_week'] = pd.to_datetime(self.transfers_df['date']).dt.day_name()
+
+        result = self.transfers_df.groupby('day_of_week').size().reset_index(name='Transfer Count')
+
+        result = result.rename(columns={
+            'day_of_week': 'Day of Week',
+            'Transfer Count': 'Number of Transfers'
+        }).sort_values(by='Number of Transfers', ascending=False).reset_index(drop=True)
+
+        return result
