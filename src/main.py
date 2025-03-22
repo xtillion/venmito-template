@@ -2,6 +2,8 @@ from ingestion import DataLoader
 from transformation import DataTransformer
 from analysis import DataAnalyzer
 from output import DatabaseHandler, CLIHandler
+from gui import GUIHandler
+
 
 def main():
     # Initiate DataLoader in instance and Load Data from every file
@@ -43,6 +45,9 @@ def main():
 
     # Close connection
     db.close()
+
+    # Initiates GUI and opens window with buttons of the metrics to be viewed
+    GUIHandler(analyzer)
 
     # Start CLI
     cli = CLIHandler(analyzer)
