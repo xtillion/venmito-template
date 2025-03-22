@@ -67,7 +67,7 @@ def register_web_routes(app):
     def index():
         return render_template('index.html')
     
-    @app.route('/users')
+    @app.route('/people')
     def users():
         return render_template('users.html')
     
