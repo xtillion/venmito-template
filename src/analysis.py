@@ -67,10 +67,11 @@ class DataAnalyzer:
     # What store generates the highest revenue?
     def get_top_stores(self):
         result = self.transactions_df.groupby('store')['price'].sum().reset_index()
+        result['price'] = result['price'].apply(self.format_currency)
         result = result.rename(columns={
             'store': 'Store',
-            'price': 'Price'
-        }).sort_values(by='Price', ascending=False).reset_index(drop=True)
+            'price': 'Total Revenue'
+        }).sort_values(by='Total Revenue', ascending=False).reset_index(drop=True)
         return result
 
 
