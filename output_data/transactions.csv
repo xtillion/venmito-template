@@ -1,0 +1,323 @@
+transaction_id,telephone,store,item_name,total_price,price_per_item,quantity,date
+1,245-506-5389,PetPals Mart,GatorBoost,3.0,3.0,1,2024-04-12
+2,796-816-9963,Urban Outfitters Loft,Flixnet,10.0,10.0,1,2023-11-01
+2,796-816-9963,Urban Outfitters Loft,Dovee,1.0,1.0,1,2023-11-01
+3,507-883-4629,Urban Outfitters Loft,Flixnet,10.0,10.0,1,2024-02-15
+4,504-112-5228,Urban Outfitters Loft,KittyKat,2.0,2.0,1,2022-05-23
+5,699-966-4749,BestChoice Buy,Dovee,2.0,2.0,1,2022-05-15
+6,368-154-2650,Urban Outfitters Loft,RedCow,9.0,3.0,3,2022-08-25
+7,778-566-2709,Trader Tales,Colgatex,3.0,3.0,1,2022-07-05
+7,778-566-2709,Trader Tales,Krafty Cheddar,5.0,5.0,1,2022-07-05
+8,999-999-9999,Trader Tales,Krafty Cheddar,1.0,1.0,1,2023-08-17
+9,481-405-7265,Trader Tales,Colgatex,3.0,3.0,1,2022-07-31
+9,481-405-7265,Trader Tales,Flixnet,11.0,11.0,1,2022-07-31
+9,481-405-7265,Trader Tales,Coca-Splash,3.0,3.0,1,2022-07-31
+10,999-999-9999,Trader Tales,GatorBoost,1.0,1.0,1,2023-07-30
+11,743-908-5464,SparkMart,Colgatex,4.0,4.0,1,2022-12-11
+12,194-235-2353,Trader Tales,RedCow,12.0,4.0,3,2022-06-20
+12,194-235-2353,Trader Tales,Krafty Cheddar,10.0,5.0,2,2022-06-20
+13,228-202-6360,Urban Outfitters Loft,Popsi,6.0,3.0,2,2022-10-03
+13,228-202-6360,Urban Outfitters Loft,Dovee,1.0,1.0,1,2022-10-03
+13,228-202-6360,Urban Outfitters Loft,Flixnet,5.0,5.0,1,2022-10-03
+14,264-319-7312,Urban Outfitters Loft,Dovee,1.0,1.0,1,2022-07-01
+14,264-319-7312,Urban Outfitters Loft,Colgatex,2.0,2.0,1,2022-07-01
+15,148-739-3707,PetPals Mart,Flixnet,20.0,10.0,2,2023-04-27
+15,148-739-3707,PetPals Mart,GatorBoost,3.0,3.0,1,2023-04-27
+16,617-226-9486,PetPals Mart,Flixnet,10.0,10.0,1,2023-01-09
+16,617-226-9486,PetPals Mart,Oreoz,3.0,3.0,1,2023-01-09
+16,617-226-9486,PetPals Mart,KittyKat,2.0,2.0,1,2023-01-09
+17,839-124-9420,SparkMart,Colgatex,4.0,4.0,1,2022-02-23
+17,839-124-9420,SparkMart,RedCow,5.0,5.0,1,2022-02-23
+17,839-124-9420,SparkMart,KittyKat,4.0,4.0,1,2022-02-23
+18,645-829-7495,Trader Tales,Krafty Cheddar,5.0,5.0,1,2022-09-04
+19,999-999-9999,Trader Tales,Oreoz,1.0,1.0,1,2023-10-02
+20,652-272-9539,Urban Outfitters Loft,RedCow,6.0,3.0,2,2024-03-19
+20,652-272-9539,Urban Outfitters Loft,Dovee,1.0,1.0,1,2024-03-19
+20,652-272-9539,Urban Outfitters Loft,Popsi,3.0,3.0,1,2024-03-19
+21,531-380-1711,PetPals Mart,KittyKat,2.0,2.0,1,2023-04-28
+21,531-380-1711,PetPals Mart,Flixnet,10.0,10.0,1,2023-04-28
+22,444-295-8051,Trader Tales,Flixnet,11.0,11.0,1,2023-06-26
+22,444-295-8051,Trader Tales,RedCow,4.0,4.0,1,2023-06-26
+22,444-295-8051,Trader Tales,Popsi,4.0,4.0,1,2023-06-26
+23,515-268-3667,PetPals Mart,Dovee,1.0,1.0,1,2023-05-02
+24,271-604-3446,Urban Outfitters Loft,KittyKat,6.0,2.0,3,2024-04-21
+24,271-604-3446,Urban Outfitters Loft,GatorBoost,3.0,3.0,1,2024-04-21
+25,999-999-9999,Trader Tales,Flixnet,1.0,1.0,1,2024-01-01
+26,561-761-7547,Trader Tales,Oreoz,4.0,4.0,1,2022-06-27
+26,561-761-7547,Trader Tales,Colgatex,3.0,3.0,1,2022-06-27
+27,659-190-9378,Trader Tales,Flixnet,22.0,11.0,2,2023-08-20
+27,659-190-9378,Trader Tales,RedCow,4.0,4.0,1,2023-08-20
+27,659-190-9378,Trader Tales,KittyKat,3.0,3.0,1,2023-08-20
+28,782-806-6417,PetPals Mart,Dovee,1.0,1.0,1,2022-03-27
+28,782-806-6417,PetPals Mart,Colgatex,2.0,2.0,1,2022-03-27
+28,782-806-6417,PetPals Mart,Oreoz,6.0,3.0,2,2022-03-27
+29,640-390-3390,Trader Tales,Flixnet,22.0,11.0,2,2022-03-27
+29,640-390-3390,Trader Tales,RedCow,12.0,4.0,3,2022-03-27
+30,392-468-4297,Trader Tales,Dovee,6.0,2.0,3,2022-11-27
+30,392-468-4297,Trader Tales,Krafty Cheddar,5.0,5.0,1,2022-11-27
+31,344-278-2013,Urban Outfitters Loft,Oreoz,3.0,3.0,1,2022-04-16
+32,891-887-3513,PetPals Mart,Colgatex,2.0,2.0,1,2023-12-28
+32,891-887-3513,PetPals Mart,Flixnet,30.0,10.0,3,2023-12-28
+33,247-523-1403,PetPals Mart,Oreoz,6.0,3.0,2,2022-08-05
+34,752-347-2146,SparkMart,KittyKat,8.0,4.0,2,2024-03-08
+34,752-347-2146,SparkMart,Flixnet,12.0,12.0,1,2024-03-08
+35,791-853-6464,PetPals Mart,Dovee,1.0,1.0,1,2023-10-17
+36,530-539-9474,Urban Outfitters Loft,RedCow,6.0,3.0,2,2023-02-19
+36,530-539-9474,Urban Outfitters Loft,KittyKat,2.0,2.0,1,2023-02-19
+36,530-539-9474,Urban Outfitters Loft,Flixnet,5.0,5.0,1,2023-02-19
+36,530-539-9474,Urban Outfitters Loft,GatorBoost,2.0,2.0,1,2023-02-19
+37,924-146-4189,PetPals Mart,Dovee,1.0,1.0,1,2023-08-27
+38,563-494-9026,Urban Outfitters Loft,Colgatex,2.0,2.0,1,2023-10-24
+39,728-796-4352,BestChoice Buy,Flixnet,33.0,11.0,3,2022-10-02
+39,728-796-4352,BestChoice Buy,KittyKat,3.0,3.0,1,2022-10-02
+39,728-796-4352,BestChoice Buy,Colgatex,1.0,1.0,1,2022-10-02
+40,270-914-6681,PetPals Mart,Krafty Cheddar,8.0,4.0,2,2022-03-02
+40,270-914-6681,PetPals Mart,Dovee,1.0,1.0,1,2022-03-02
+40,270-914-6681,PetPals Mart,Colgatex,2.0,2.0,1,2022-03-02
+41,336-283-3896,Trader Tales,KittyKat,3.0,3.0,1,2022-06-18
+41,336-283-3896,Trader Tales,Flixnet,11.0,11.0,1,2022-06-18
+42,505-476-1251,PetPals Mart,Krafty Cheddar,4.0,4.0,1,2023-09-02
+42,505-476-1251,PetPals Mart,Colgatex,4.0,2.0,2,2023-09-02
+42,505-476-1251,PetPals Mart,Popsi,6.0,3.0,2,2023-09-02
+43,512-600-6692,Urban Outfitters Loft,Dovee,2.0,1.0,2,2022-04-17
+44,553-407-1049,Urban Outfitters Loft,RedCow,9.0,3.0,3,2023-04-17
+44,553-407-1049,Urban Outfitters Loft,KittyKat,6.0,2.0,3,2023-04-17
+45,742-395-8995,Urban Outfitters Loft,Flixnet,30.0,10.0,3,2024-02-02
+45,742-395-8995,Urban Outfitters Loft,Popsi,3.0,3.0,1,2024-02-02
+45,742-395-8995,Urban Outfitters Loft,GatorBoost,3.0,3.0,1,2024-02-02
+45,742-395-8995,Urban Outfitters Loft,Flixnet,5.0,5.0,1,2024-02-02
+46,805-146-4773,Urban Outfitters Loft,GatorBoost,6.0,3.0,2,2023-04-18
+46,805-146-4773,Urban Outfitters Loft,Colgatex,2.0,2.0,1,2023-04-18
+47,402-586-5192,Urban Outfitters Loft,Flixnet,20.0,10.0,2,2022-10-08
+47,402-586-5192,Urban Outfitters Loft,Dovee,1.0,1.0,1,2022-10-08
+48,315-892-7127,PetPals Mart,KittyKat,6.0,2.0,3,2023-02-17
+48,315-892-7127,PetPals Mart,Popsi,6.0,3.0,2,2023-02-17
+48,315-892-7127,PetPals Mart,Dovee,1.0,1.0,1,2023-02-17
+49,159-573-6793,Urban Outfitters Loft,Dovee,1.0,1.0,1,2022-10-15
+49,159-573-6793,Urban Outfitters Loft,Oreoz,3.0,3.0,1,2022-10-15
+50,934-954-3387,Urban Outfitters Loft,Flixnet,20.0,10.0,2,2023-03-22
+50,934-954-3387,Urban Outfitters Loft,KittyKat,2.0,2.0,1,2023-03-22
+50,934-954-3387,Urban Outfitters Loft,Colgatex,2.0,2.0,1,2023-03-22
+51,233-159-4158,Trader Tales,Krafty Cheddar,5.0,5.0,1,2022-09-10
+51,233-159-4158,Trader Tales,Popsi,4.0,4.0,1,2022-09-10
+51,233-159-4158,Trader Tales,Oreoz,8.0,4.0,2,2022-09-10
+52,507-766-7432,Urban Outfitters Loft,Dovee,1.0,1.0,1,2023-06-19
+52,507-766-7432,Urban Outfitters Loft,GatorBoost,6.0,3.0,2,2023-06-19
+53,478-814-3941,Trader Tales,Dovee,2.0,2.0,1,2023-12-28
+53,478-814-3941,Trader Tales,Colgatex,9.0,3.0,3,2023-12-28
+54,705-890-7715,PetPals Mart,Popsi,6.0,3.0,2,2023-12-13
+54,705-890-7715,PetPals Mart,Flixnet,10.0,10.0,1,2023-12-13
+55,878-870-9506,Trader Tales,Krafty Cheddar,5.0,5.0,1,2022-05-12
+55,878-870-9506,Trader Tales,Dovee,4.0,2.0,2,2022-05-12
+56,999-999-9999,Trader Tales,Oreoz,1.0,1.0,1,2023-09-24
+57,742-395-8995,Trader Tales,GatorBoost,4.0,4.0,1,2022-07-07
+58,549-750-2047,Urban Outfitters Loft,KittyKat,2.0,2.0,1,2022-09-06
+59,362-464-9875,Trader Tales,Popsi,4.0,4.0,1,2023-06-11
+59,362-464-9875,Trader Tales,Colgatex,6.0,3.0,2,2023-06-11
+60,551-867-4367,Urban Outfitters Loft,GatorBoost,3.0,3.0,1,2022-04-24
+60,551-867-4367,Urban Outfitters Loft,KittyKat,2.0,2.0,1,2022-04-24
+60,551-867-4367,Urban Outfitters Loft,Dovee,2.0,1.0,2,2022-04-24
+61,114-507-5478,BestChoice Buy,RedCow,4.0,4.0,1,2023-01-26
+61,114-507-5478,BestChoice Buy,Colgatex,3.0,3.0,1,2023-01-26
+61,114-507-5478,BestChoice Buy,Dovee,4.0,2.0,2,2023-01-26
+62,124-533-2523,SparkMart,Colgatex,12.0,4.0,3,2022-11-17
+62,124-533-2523,SparkMart,Dovee,9.0,3.0,3,2022-11-17
+63,553-407-1049,PetPals Mart,Popsi,3.0,3.0,1,2023-11-19
+63,553-407-1049,PetPals Mart,RedCow,3.0,3.0,1,2023-11-19
+63,553-407-1049,PetPals Mart,Flixnet,10.0,10.0,1,2023-11-19
+64,663-149-3581,Urban Outfitters Loft,Oreoz,3.0,3.0,1,2023-02-28
+64,663-149-3581,Urban Outfitters Loft,Dovee,2.0,1.0,2,2023-02-28
+64,663-149-3581,Urban Outfitters Loft,Popsi,3.0,3.0,1,2023-02-28
+65,312-891-9587,Trader Tales,Dovee,6.0,2.0,3,2022-02-09
+66,547-388-2503,Trader Tales,Colgatex,9.0,3.0,3,2023-02-18
+67,489-241-7631,PetPals Mart,RedCow,3.0,3.0,1,2023-06-02
+68,849-570-8792,PetPals Mart,Dovee,1.0,1.0,1,2022-12-10
+68,849-570-8792,PetPals Mart,Oreoz,6.0,3.0,2,2022-12-10
+68,849-570-8792,PetPals Mart,Colgatex,2.0,2.0,1,2022-12-10
+69,915-320-3214,Urban Outfitters Loft,Colgatex,2.0,2.0,1,2022-11-04
+70,480-560-1876,Trader Tales,KittyKat,6.0,3.0,2,2022-04-13
+70,480-560-1876,Trader Tales,RedCow,12.0,4.0,3,2022-04-13
+70,480-560-1876,Trader Tales,Colgatex,6.0,3.0,2,2022-04-13
+71,429-916-1662,PetPals Mart,RedCow,6.0,3.0,2,2023-12-24
+72,145-501-4975,SparkMart,Oreoz,5.0,5.0,1,2022-09-22
+72,145-501-4975,SparkMart,GatorBoost,5.0,5.0,1,2022-09-22
+73,919-925-5280,BestChoice Buy,RedCow,8.0,4.0,2,2022-02-22
+74,553-482-8315,BestChoice Buy,Dovee,4.0,2.0,2,2023-07-27
+74,553-482-8315,BestChoice Buy,RedCow,8.0,4.0,2,2023-07-27
+75,725-427-2794,PetPals Mart,Colgatex,2.0,2.0,1,2023-03-15
+76,659-190-9378,Trader Tales,Colgatex,3.0,3.0,1,2023-05-28
+76,659-190-9378,Trader Tales,Dovee,2.0,2.0,1,2023-05-28
+76,659-190-9378,Trader Tales,Flixnet,11.0,11.0,1,2023-05-28
+77,558-134-7531,Trader Tales,Flixnet,11.0,11.0,1,2023-04-29
+77,558-134-7531,Trader Tales,RedCow,4.0,4.0,1,2023-04-29
+78,738-911-3567,Urban Outfitters Loft,Flixnet,20.0,10.0,2,2022-04-28
+78,738-911-3567,Urban Outfitters Loft,RedCow,3.0,3.0,1,2022-04-28
+79,530-539-9474,BestChoice Buy,KittyKat,6.0,3.0,2,2022-04-14
+79,530-539-9474,BestChoice Buy,Colgatex,9.0,3.0,3,2022-04-14
+79,530-539-9474,BestChoice Buy,Krafty Cheddar,5.0,5.0,1,2022-04-14
+79,530-539-9474,BestChoice Buy,GatorBoost,2.0,2.0,1,2022-04-14
+80,993-541-7464,BestChoice Buy,Colgatex,6.0,3.0,2,2023-08-14
+80,993-541-7464,BestChoice Buy,RedCow,4.0,4.0,1,2023-08-14
+81,312-891-9587,Urban Outfitters Loft,Popsi,3.0,3.0,1,2022-02-01
+82,776-243-3725,Trader Tales,Dovee,2.0,2.0,1,2023-03-31
+83,116-866-3838,Urban Outfitters Loft,Popsi,6.0,3.0,2,2022-03-14
+83,116-866-3838,Urban Outfitters Loft,Dovee,2.0,1.0,2,2022-03-14
+83,116-866-3838,Urban Outfitters Loft,RedCow,6.0,3.0,2,2022-03-14
+84,583-114-3994,BestChoice Buy,KittyKat,9.0,3.0,3,2024-01-01
+85,137-491-6519,BestChoice Buy,KittyKat,3.0,3.0,1,2022-02-10
+86,107-156-5064,PetPals Mart,Dovee,2.0,1.0,2,2023-08-29
+87,598-173-8153,Trader Tales,Dovee,2.0,2.0,1,2023-04-09
+87,598-173-8153,Trader Tales,Colgatex,6.0,3.0,2,2023-04-09
+87,598-173-8153,Trader Tales,Popsi,4.0,4.0,1,2023-04-09
+88,313-206-2033,BestChoice Buy,RedCow,4.0,4.0,1,2024-01-21
+88,313-206-2033,BestChoice Buy,KittyKat,3.0,3.0,1,2024-01-21
+89,891-887-3513,PetPals Mart,RedCow,3.0,3.0,1,2023-02-16
+89,891-887-3513,PetPals Mart,Oreoz,2.0,2.0,1,2023-02-16
+90,520-305-7264,Trader Tales,Colgatex,3.0,3.0,1,2023-03-08
+90,520-305-7264,Trader Tales,Popsi,4.0,4.0,1,2023-03-08
+90,520-305-7264,Trader Tales,Flixnet,11.0,11.0,1,2023-03-08
+91,173-881-1582,Trader Tales,Popsi,4.0,4.0,1,2022-11-12
+92,953-386-1321,PetPals Mart,Coca-Splash,2.0,2.0,1,2022-10-04
+92,953-386-1321,PetPals Mart,Popsi,6.0,3.0,2,2022-10-04
+92,953-386-1321,PetPals Mart,Colgatex,2.0,2.0,1,2022-10-04
+93,101-165-2021,SparkMart,Flixnet,12.0,12.0,1,2022-05-26
+93,101-165-2021,SparkMart,Popsi,10.0,5.0,2,2022-05-26
+94,237-295-4490,Trader Tales,Dovee,4.0,2.0,2,2023-04-18
+94,237-295-4490,Trader Tales,Oreoz,12.0,4.0,3,2023-04-18
+95,852-236-4050,Urban Outfitters Loft,Dovee,1.0,1.0,1,2024-04-17
+96,111-862-3502,PetPals Mart,RedCow,6.0,3.0,2,2024-04-15
+96,111-862-3502,PetPals Mart,KittyKat,1.0,1.0,1,2024-04-15
+96,111-862-3502,PetPals Mart,Flixnet,5.0,5.0,1,2024-04-15
+96,111-862-3502,PetPals Mart,Colgatex,1.0,1.0,1,2024-04-15
+97,946-447-2454,PetPals Mart,RedCow,6.0,3.0,2,2023-09-19
+97,946-447-2454,PetPals Mart,KittyKat,2.0,2.0,1,2023-09-19
+98,558-608-9550,Trader Tales,Dovee,4.0,2.0,2,2023-01-11
+99,416-776-3422,Urban Outfitters Loft,KittyKat,2.0,2.0,1,2023-02-05
+99,416-776-3422,Urban Outfitters Loft,GatorBoost,3.0,3.0,1,2023-02-05
+99,416-776-3422,Urban Outfitters Loft,Dovee,2.0,1.0,2,2023-02-05
+100,645-829-7495,SparkMart,Colgatex,8.0,4.0,2,2023-03-02
+100,645-829-7495,SparkMart,Flixnet,24.0,12.0,2,2023-03-02
+101,999-999-9999,Trader Tales,Flixnet,1.0,1.0,1,2024-01-22
+102,139-396-1336,PetPals Mart,Dovee,3.0,1.0,3,2022-08-10
+102,139-396-1336,PetPals Mart,Popsi,6.0,3.0,2,2022-08-10
+102,139-396-1336,PetPals Mart,Colgatex,4.0,2.0,2,2022-08-10
+103,724-444-3001,Urban Outfitters Loft,Flixnet,10.0,10.0,1,2023-11-02
+103,724-444-3001,Urban Outfitters Loft,Popsi,6.0,3.0,2,2023-11-02
+104,782-806-6417,Urban Outfitters Loft,Oreoz,3.0,3.0,1,2022-05-23
+105,334-436-6254,Urban Outfitters Loft,Krafty Cheddar,8.0,4.0,2,2022-03-12
+105,334-436-6254,Urban Outfitters Loft,RedCow,3.0,3.0,1,2022-03-12
+105,334-436-6254,Urban Outfitters Loft,Dovee,2.0,1.0,2,2022-03-12
+106,573-696-6671,Trader Tales,Krafty Cheddar,5.0,5.0,1,2023-12-04
+106,573-696-6671,Trader Tales,Dovee,4.0,2.0,2,2023-12-04
+106,573-696-6671,Trader Tales,Popsi,4.0,4.0,1,2023-12-04
+107,372-218-6551,BestChoice Buy,Colgatex,3.0,3.0,1,2024-02-14
+107,372-218-6551,BestChoice Buy,Krafty Cheddar,10.0,5.0,2,2024-02-14
+107,372-218-6551,BestChoice Buy,Popsi,4.0,4.0,1,2024-02-14
+108,390-911-6534,BestChoice Buy,Dovee,6.0,2.0,3,2024-01-08
+108,390-911-6534,BestChoice Buy,KittyKat,9.0,3.0,3,2024-01-08
+108,390-911-6534,BestChoice Buy,Popsi,8.0,4.0,2,2024-01-08
+108,390-911-6534,BestChoice Buy,KittyKat,1.0,1.0,1,2024-01-08
+109,424-390-3432,PetPals Mart,Krafty Cheddar,4.0,4.0,1,2022-05-01
+109,424-390-3432,PetPals Mart,Dovee,2.0,1.0,2,2022-05-01
+110,811-806-5304,Trader Tales,Flixnet,11.0,11.0,1,2022-11-21
+111,516-779-4464,Trader Tales,Dovee,4.0,2.0,2,2023-07-12
+112,805-146-4773,BestChoice Buy,Oreoz,4.0,4.0,1,2022-05-14
+112,805-146-4773,BestChoice Buy,Popsi,4.0,4.0,1,2022-05-14
+112,805-146-4773,BestChoice Buy,Krafty Cheddar,5.0,5.0,1,2022-05-14
+113,727-709-3351,BestChoice Buy,Colgatex,6.0,3.0,2,2024-03-18
+113,727-709-3351,BestChoice Buy,Popsi,8.0,4.0,2,2024-03-18
+114,544-944-1609,PetPals Mart,Colgatex,2.0,2.0,1,2024-04-09
+115,821-675-4190,SparkMart,Dovee,3.0,3.0,1,2024-04-30
+115,821-675-4190,SparkMart,Oreoz,5.0,5.0,1,2024-04-30
+116,202-632-2346,Trader Tales,GatorBoost,8.0,4.0,2,2024-04-28
+116,202-632-2346,Trader Tales,Colgatex,6.0,3.0,2,2024-04-28
+117,950-639-9777,PetPals Mart,Oreoz,3.0,3.0,1,2022-05-29
+117,950-639-9777,PetPals Mart,Dovee,1.0,1.0,1,2022-05-29
+118,629-807-5687,PetPals Mart,Dovee,1.0,1.0,1,2022-04-06
+118,629-807-5687,PetPals Mart,Oreoz,6.0,3.0,2,2022-04-06
+119,634-813-9351,BestChoice Buy,Flixnet,11.0,11.0,1,2022-10-23
+119,634-813-9351,BestChoice Buy,Colgatex,6.0,3.0,2,2022-10-23
+119,634-813-9351,BestChoice Buy,Oreoz,2.0,2.0,1,2022-10-23
+120,999-999-9999,Trader Tales,Flixnet,1.0,1.0,1,2024-02-07
+121,615-102-4849,PetPals Mart,Popsi,3.0,3.0,1,2022-06-04
+121,615-102-4849,PetPals Mart,Flixnet,10.0,10.0,1,2022-06-04
+122,271-963-2123,Urban Outfitters Loft,Dovee,1.0,1.0,1,2022-09-09
+123,582-574-4299,PetPals Mart,Dovee,3.0,1.0,3,2023-03-29
+123,582-574-4299,PetPals Mart,Flixnet,10.0,10.0,1,2023-03-29
+123,582-574-4299,PetPals Mart,Colgatex,4.0,2.0,2,2023-03-29
+124,866-155-1011,PetPals Mart,Popsi,6.0,3.0,2,2022-03-14
+124,866-155-1011,PetPals Mart,Popsi,3.0,3.0,1,2022-03-14
+125,999-999-9999,Trader Tales,Colgatex,1.0,1.0,1,2023-11-15
+126,627-954-8991,Targeted Treasures,Dovee,3.0,3.0,1,2023-12-10
+126,627-954-8991,Targeted Treasures,Popsi,10.0,5.0,2,2023-12-10
+127,500-251-7080,Trader Tales,Dovee,2.0,2.0,1,2023-02-24
+128,936-522-1085,Urban Outfitters Loft,Popsi,3.0,3.0,1,2023-08-31
+128,936-522-1085,Urban Outfitters Loft,RedCow,6.0,3.0,2,2023-08-31
+128,936-522-1085,Urban Outfitters Loft,Dovee,1.0,1.0,1,2023-08-31
+129,326-267-7811,Urban Outfitters Loft,KittyKat,2.0,2.0,1,2022-03-27
+129,326-267-7811,Urban Outfitters Loft,Dovee,3.0,1.0,3,2022-03-27
+130,273-616-5739,SparkMart,KittyKat,8.0,4.0,2,2022-04-15
+130,273-616-5739,SparkMart,RedCow,5.0,5.0,1,2022-04-15
+130,273-616-5739,SparkMart,Dovee,9.0,3.0,3,2022-04-15
+131,999-999-9999,Trader Tales,Coca-Splash,1.0,1.0,1,2023-05-21
+132,323-234-9528,Urban Outfitters Loft,Popsi,3.0,3.0,1,2024-04-01
+132,323-234-9528,Urban Outfitters Loft,Krafty Cheddar,4.0,4.0,1,2024-04-01
+132,323-234-9528,Urban Outfitters Loft,KittyKat,2.0,2.0,1,2024-04-01
+133,196-551-2162,SparkMart,RedCow,5.0,5.0,1,2022-05-21
+133,196-551-2162,SparkMart,Krafty Cheddar,12.0,6.0,2,2022-05-21
+134,999-999-9999,Trader Tales,Popsi,1.0,1.0,1,2023-06-21
+135,441-847-1955,Urban Outfitters Loft,Popsi,9.0,3.0,3,2022-04-06
+135,441-847-1955,Urban Outfitters Loft,Dovee,3.0,1.0,3,2022-04-06
+135,441-847-1955,Urban Outfitters Loft,Flixnet,10.0,10.0,1,2022-04-06
+136,220-102-3684,BestChoice Buy,Krafty Cheddar,10.0,5.0,2,2022-12-01
+137,778-172-1502,Trader Tales,RedCow,8.0,4.0,2,2024-04-17
+137,778-172-1502,Trader Tales,Popsi,4.0,4.0,1,2024-04-17
+138,558-608-9550,BestChoice Buy,Krafty Cheddar,5.0,5.0,1,2023-04-24
+139,999-999-9999,Trader Tales,Colgatex,1.0,1.0,1,2023-04-12
+140,545-458-1679,Trader Tales,Krafty Cheddar,10.0,5.0,2,2022-12-15
+140,545-458-1679,Trader Tales,GatorBoost,8.0,4.0,2,2022-12-15
+141,247-523-1403,SparkMart,Colgatex,4.0,4.0,1,2022-03-17
+141,247-523-1403,SparkMart,Popsi,10.0,5.0,2,2022-03-17
+141,247-523-1403,SparkMart,RedCow,10.0,5.0,2,2022-03-17
+142,795-682-8733,Urban Outfitters Loft,RedCow,6.0,3.0,2,2022-06-02
+142,795-682-8733,Urban Outfitters Loft,KittyKat,4.0,2.0,2,2022-06-02
+142,795-682-8733,Urban Outfitters Loft,Dovee,3.0,1.0,3,2022-06-02
+143,227-737-8739,SparkMart,Flixnet,12.0,12.0,1,2023-04-15
+144,220-296-3772,PetPals Mart,Dovee,1.0,1.0,1,2023-01-07
+145,883-481-7339,Urban Outfitters Loft,RedCow,3.0,3.0,1,2024-03-08
+145,883-481-7339,Urban Outfitters Loft,Krafty Cheddar,4.0,4.0,1,2024-03-08
+146,918-588-9531,Trader Tales,RedCow,8.0,4.0,2,2024-04-28
+146,918-588-9531,Trader Tales,Krafty Cheddar,5.0,5.0,1,2024-04-28
+147,531-709-2553,Trader Tales,Oreoz,8.0,4.0,2,2022-01-22
+147,531-709-2553,Trader Tales,Dovee,2.0,2.0,1,2022-01-22
+147,531-709-2553,Trader Tales,Colgatex,3.0,3.0,1,2022-01-22
+148,999-999-9999,Trader Tales,Oreoz,1.0,1.0,1,2024-03-21
+149,782-806-6417,PetPals Mart,RedCow,6.0,3.0,2,2022-09-21
+149,782-806-6417,PetPals Mart,Popsi,3.0,3.0,1,2022-09-21
+150,964-448-9785,Urban Outfitters Loft,KittyKat,4.0,2.0,2,2023-01-26
+151,254-627-7406,Urban Outfitters Loft,RedCow,6.0,3.0,2,2022-02-20
+151,254-627-7406,Urban Outfitters Loft,Flixnet,20.0,10.0,2,2022-02-20
+151,254-627-7406,Urban Outfitters Loft,Popsi,3.0,3.0,1,2022-02-20
+152,731-730-2543,Urban Outfitters Loft,Colgatex,2.0,2.0,1,2022-11-28
+153,520-550-1148,Urban Outfitters Loft,Krafty Cheddar,4.0,4.0,1,2022-05-13
+153,520-550-1148,Urban Outfitters Loft,Popsi,3.0,3.0,1,2022-05-13
+154,626-458-8110,Targeted Treasures,RedCow,10.0,5.0,2,2023-09-08
+155,626-458-8110,Urban Outfitters Loft,Oreoz,6.0,3.0,2,2022-07-31
+155,626-458-8110,Urban Outfitters Loft,RedCow,3.0,3.0,1,2022-07-31
+155,626-458-8110,Urban Outfitters Loft,Flixnet,30.0,10.0,3,2022-07-31
+156,723-357-7363,Trader Tales,Oreoz,4.0,4.0,1,2023-12-13
+156,723-357-7363,Trader Tales,Dovee,4.0,2.0,2,2023-12-13
+157,549-515-6738,SparkMart,GatorBoost,5.0,5.0,1,2022-06-10
+157,549-515-6738,SparkMart,Krafty Cheddar,6.0,6.0,1,2022-06-10
+157,549-515-6738,SparkMart,Popsi,15.0,5.0,3,2022-06-10
+157,549-515-6738,SparkMart,Oreoz,2.0,2.0,1,2022-06-10
+158,958-724-3846,PetPals Mart,Dovee,1.0,1.0,1,2022-08-18
+158,958-724-3846,PetPals Mart,Flixnet,10.0,10.0,1,2022-08-18
+158,958-724-3846,PetPals Mart,Popsi,3.0,3.0,1,2022-08-18
+159,743-908-5464,PetPals Mart,RedCow,6.0,3.0,2,2022-03-01
+160,294-365-8364,Urban Outfitters Loft,Popsi,3.0,3.0,1,2024-01-08
+160,294-365-8364,Urban Outfitters Loft,KittyKat,4.0,2.0,2,2024-01-08
+161,441-847-1955,BestChoice Buy,Dovee,4.0,2.0,2,2023-08-02
+161,441-847-1955,BestChoice Buy,Oreoz,2.0,2.0,1,2023-08-02
+162,313-206-2033,Targeted Treasures,RedCow,5.0,5.0,1,2022-04-12
+162,313-206-2033,Targeted Treasures,Dovee,6.0,3.0,2,2022-04-12
