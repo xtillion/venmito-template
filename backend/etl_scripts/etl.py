@@ -1,8 +1,9 @@
 from sqlalchemy import inspect
 
-from data_ingestor import ingest_data_from_file
-from data_transformer import *
-from data_loader import *
+from backend.etl_scripts.data_ingestor import ingest_data_from_file
+from backend.etl_scripts.data_loader import load_data_to_table
+from backend.etl_scripts.data_transformer import *
+
 
 def tables_exist(table_names, db_engine):
     inspector = inspect(db_engine)
