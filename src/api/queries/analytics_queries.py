@@ -389,18 +389,16 @@ def get_top_transactions_by_amount(limit: int = 5):
     """
     query = """
     SELECT 
-        t.transaction_id, 
-        t.user_id, 
-        t.item, 
-        t.store,
-        t.price,
-        t.quantity,
-        t.price_per_item,
-        p.first_name,
-        p.last_name
-    FROM transactions t
-    JOIN people p ON t.user_id = p.user_id
-    ORDER BY t.price DESC
+        transaction_id, 
+        user_id, 
+        item, 
+        store,
+        price,
+        quantity,
+        price_per_item,
+        transaction_date
+    FROM transactions
+    ORDER BY price DESC
     LIMIT %(limit)s
     """
     

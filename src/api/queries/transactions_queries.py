@@ -42,10 +42,8 @@ def get_all_transactions(limit: int = 100, offset: int = 0,
         t.price,
         t.quantity,
         t.price_per_item,
-        p.first_name,
-        p.last_name
+        t.transaction_date
     FROM transactions t
-    JOIN people p ON t.user_id = p.user_id
     WHERE 1=1
     """
     
@@ -270,6 +268,36 @@ def get_store_summary(limit: int = 20):
     FROM transactions t1
     GROUP BY store
     ORDER BY total_revenue DESC
+    LIMIT %(limit)s
+    """
+    
+    params = {'limit': limit}
+    
+    return execute_query(query, params)
+
+
+def get_top_transactions_by_amount(limit: int = 5):
+    """
+    Get top transactions by amount.
+    
+    Args:
+        limit (int): Maximum number of transactions to return
+    
+    Returns:
+        list: List of top transaction records sorted by price
+    """
+    query = """
+    SELECT 
+        transaction_id, 
+        user_id, 
+        item, 
+        store,
+        price,
+        quantity,
+        price_per_item,
+        transaction_date
+    FROM transactions
+    ORDER BY price DESC
     LIMIT %(limit)s
     """
     

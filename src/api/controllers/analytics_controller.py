@@ -260,11 +260,15 @@ def get_top_transactions():
         # Get limit parameter
         limit = min(int(request.args.get('limit', 5)), 100)  # Default 5, max 100
         
+        # Add detailed logging
+        logger.info(f"Getting top transactions with limit {limit}")
+        
         # Get top transactions
         transactions = transactions_queries.get_top_transactions_by_amount(limit)
         
         return jsonify(transactions), 200
     
     except Exception as e:
-        logger.error(f"Error getting top transactions: {str(e)}")
-        return jsonify({'error': 'Internal server error'}), 500
+        # Log the full exception details
+        logger.error(f"Error getting top transactions: {str(e)}", exc_info=True)
+        return jsonify({'error': f'Internal server error: {str(e)}'}), 500

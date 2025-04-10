@@ -10,7 +10,7 @@
     --bg-tertiary: #2d2d2d;
     --text-primary: #ffffff;
     --text-secondary: #b3b3b3;
-    --text-muted: #8c8c8c;
+    --text-muted: #a4a2a2;
     
     /* Accent colors for highlights and data visualization */
     --accent-blue: #4285f4;
@@ -84,17 +84,21 @@
   
   /* Tables styling */
   .table {
-    color: var(--text-primary);
+    color: var(--text-secondary);
     border-color: var(--border-color);
   }
   
   .table-striped tbody tr:nth-of-type(odd) {
     background-color: var(--bg-tertiary);
   }
+
+  .table-striped tbody tr:nth-of-type(odd) td {
+    color: var(--text-muted); /* Force brighter text */
+  }
   
   .table thead th {
     border-bottom: 2px solid var(--border-color);
-    color: var(--text-secondary);
+    color: var(--text-primary);
     font-weight: 600;
   }
   

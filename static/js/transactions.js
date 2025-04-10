@@ -234,14 +234,14 @@ const state = {
     if (!tableBody) return;
     
     if (transactions.length === 0) {
-      tableBody.innerHTML = '<tr><td colspan="7" class="text-center">No transactions found</td></tr>';
-      return;
+        tableBody.innerHTML = '<tr><td colspan="7" class="text-center">No transactions found</td></tr>';
+        return;
     }
     
     tableBody.innerHTML = transactions.map(transaction => `
       <tr>
         <td>${transaction.transaction_id}</td>
-        <td>${transaction.user_name || `User #${transaction.user_id}`}</td>
+        <td>${transaction.transaction_date ? API.formatDate(transaction.transaction_date) : 'N/A'}</td>
         <td>${transaction.item}</td>
         <td>${transaction.store}</td>
         <td>${API.formatCurrency(transaction.price)}</td>
@@ -264,7 +264,7 @@ const state = {
         loadTransactionDetails(transactionId);
       });
     });
-  }
+}
   
   /**
    * Load transaction details for the modal

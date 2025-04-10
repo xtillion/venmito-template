@@ -376,7 +376,7 @@ async function loadDashboardData() {
       window.API.analytics.getDashboardTotals(),
       window.API.analytics.getTopItems(5),
       window.API.transactions.getStoreSummary(5),
-      window.API.fetch('/api/analytics/top-transactions?limit=5', {}, () => []),
+      window.API.fetch('/analytics/top-transactions?limit=5', {}, () => []),
       window.API.transfers.getTransfers(1, 5),
       window.API.people.getUsers(1, 1000) // Get user count
     ]);
