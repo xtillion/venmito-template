@@ -94,18 +94,16 @@ def get_transaction_by_id(transaction_id: str):
     """
     query = """
     SELECT 
-        t.transaction_id, 
-        t.user_id, 
-        t.item, 
-        t.store,
-        t.price,
-        t.quantity,
-        t.price_per_item,
-        p.first_name,
-        p.last_name
-    FROM transactions t
-    JOIN people p ON t.user_id = p.user_id
-    WHERE t.transaction_id = %(transaction_id)s
+        transaction_id, 
+        user_id, 
+        item, 
+        store,
+        price,
+        quantity,
+        price_per_item,
+        transaction_date
+    FROM transactions
+    WHERE transaction_id = %(transaction_id)s
     """
     
     params = {'transaction_id': transaction_id}

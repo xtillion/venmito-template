@@ -280,6 +280,66 @@ class UserReferencesMerger(DataMerger):
         
         return transactions_df
     
+    def identify_store_accounts(self) -> pd.DataFrame:
+        """
+        Identify potential store accounts based on transfer patterns.
+        
+        Returns:
+            pd.DataFrame: Updated people DataFrame with is_store_account flag
+        """
+        logger.info("Identifying store accounts...")
+        
+        # Create a copy of the people DataFrame
+        updated_people_df = self.people_df.copy()
+        
+        # Add is_store_account column with default False
+        if 'is_store_account' not in updated_people_df.columns:
+            updated_people_df['is_store_account'] = False
+        
+        # Only continue if we have transfers data
+        if self.transfers_df is None or self.transfers_df.empty:
+            logger.warning("No transfers data available to identify store accounts")
+            return updated_people_df
+            
+        # Only continue if we have transactions data
+        if self.transactions_df is None or self.transactions_df.empty:
+            logger.warning("No transactions data available to identify store accounts")
+            return updated_people_df
+        
+        # Count how many times each user appears as a recipient in transfers
+        recipient_counts = self.transfers_df['recipient_id'].value_counts()
+        
+        # Find transaction amounts
+        transaction_amounts = set(self.transactions_df['price'].round(2))
+        
+        store_account_ids = set()
+        
+        # For each frequent recipient, check if their transfer amounts match transaction amounts
+        for user_id, count in recipient_counts.items():
+            if count >= 10:  # Threshold for potential store account
+                # Get transfers received by this user
+                user_transfers = self.transfers_df[self.transfers_df['recipient_id'] == user_id]
+                
+                # Round transfer amounts for comparison
+                transfer_amounts = set(user_transfers['amount'].round(2))
+                
+                # Check overlap between transfer amounts and transaction amounts
+                common_amounts = transaction_amounts.intersection(transfer_amounts)
+                
+                # Calculate ratio of matching amounts
+                match_ratio = len(common_amounts) / len(transfer_amounts) if len(transfer_amounts) > 0 else 0
+                
+                # If high match ratio, mark as store account
+                if match_ratio > 0.5 and len(common_amounts) >= 5:
+                    store_account_ids.add(user_id)
+                    logger.info(f"Identified user_id {user_id} as potential store account " +
+                               f"(match ratio: {match_ratio:.2f}, matching amounts: {len(common_amounts)})")
+        
+        # Mark identified accounts in the DataFrame
+        updated_people_df.loc[updated_people_df['user_id'].isin(store_account_ids), 'is_store_account'] = True
+        
+        logger.info(f"Identified {len(store_account_ids)} potential store accounts")
+        return updated_people_df
     def merge(self) -> Dict[str, pd.DataFrame]:
         """
         Merge user references into promotions and transactions.
@@ -419,6 +479,56 @@ class UserTransfersMerger(DataMerger):
         self.transfers_df = transfers_df
         self.people_df = people_df
     
+    def link_transfers_to_transactions(self, transactions_df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Link transfers to their corresponding transactions.
+        
+        Args:
+            transactions_df (pd.DataFrame): Transactions data
+        
+        Returns:
+            pd.DataFrame: Updated transfers DataFrame with related_transaction_id
+        """
+        logger.info("Linking transfers to transactions...")
+        
+        # Create a copy of the transfers DataFrame
+        updated_transfers_df = self.transfers_df.copy()
+        
+        # Add related_transaction_id column with default None
+        if 'related_transaction_id' not in updated_transfers_df.columns:
+            updated_transfers_df['related_transaction_id'] = None
+        
+        # Only continue if we have transactions data
+        if transactions_df is None or transactions_df.empty:
+            logger.warning("No transactions data available to link transfers")
+            return updated_transfers_df
+        
+        # Create mappings for faster lookups
+        # For each store and amount, find matching transaction_ids
+        transaction_lookup = {}
+        for _, tx in transactions_df.iterrows():
+            key = (tx['user_id'], round(tx['price'], 2))
+            if key not in transaction_lookup:
+                transaction_lookup[key] = []
+            transaction_lookup[key].append(tx['transaction_id'])
+        
+        # Try to match transfers to transactions
+        matched_count = 0
+        
+        for idx, transfer in updated_transfers_df.iterrows():
+            sender_id = transfer['sender_id']
+            amount = round(transfer['amount'], 2)
+            
+            # Look for matching transaction
+            key = (sender_id, amount)
+            if key in transaction_lookup and transaction_lookup[key]:
+                # Use the first matching transaction and remove it from the list
+                transaction_id = transaction_lookup[key].pop(0)
+                updated_transfers_df.at[idx, 'related_transaction_id'] = transaction_id
+                matched_count += 1
+        
+        logger.info(f"Linked {matched_count} transfers to transactions")
+        return updated_transfers_df
     def merge(self) -> Dict[str, pd.DataFrame]:
         """
         Create user-level transfer summaries.
@@ -484,8 +594,7 @@ class UserTransfersMerger(DataMerger):
             logger.error(error_msg)
             self._add_error(error_msg)
             return {'user_transfers': pd.DataFrame()}
-
-
+    
 class ItemSummaryMerger(DataMerger):
     """Merger for creating item-level summaries."""
     

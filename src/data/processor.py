@@ -7,7 +7,7 @@ from various sources into a standardized format.
 
 import logging
 import re
-from typing import List, Dict, Any, Optional, Union, Callable
+from typing import List, Dict, Any, Optional, Union, Callable, Tuple
 
 import pandas as pd
 import numpy as np
@@ -522,13 +522,86 @@ class TransactionsProcessor(DataProcessor):
             # If no date column exists, add a default date (this is optional)
             self.df['transaction_date'] = pd.Timestamp.now()
             logger.info("No date column found, added current timestamp as transaction_date")
-    
-    def process(self) -> pd.DataFrame:
+
+    def _process_transaction_items(self) -> Tuple[pd.DataFrame, pd.DataFrame]:
         """
-        Process transactions data to standardize format.
+        Process transaction items into separate DataFrames.
         
         Returns:
-            pd.DataFrame: Processed DataFrame
+            Tuple[pd.DataFrame, pd.DataFrame]: (transaction_df, transaction_items_df)
+        """
+        # Create a copy of the original DataFrame for transactions
+        transaction_df = self.df.copy()
+        
+        # Create an empty DataFrame for transaction items
+        items_columns = ['transaction_id', 'item', 'quantity', 'price_per_item', 'subtotal']
+        transaction_items_df = pd.DataFrame(columns=items_columns)
+        
+        # Temporary list to hold item rows
+        items_rows = []
+        
+        # Process each transaction row
+        for idx, row in transaction_df.iterrows():
+            transaction_id = row['transaction_id']
+            
+            # Check if item is a comma-separated list
+            if isinstance(row['item'], str) and ',' in row['item']:
+                items = [item.strip() for item in row['item'].split(',')]
+                
+                # If we have quantities for each item
+                if isinstance(row['quantity'], str) and ',' in row['quantity']:
+                    quantities = [int(q.strip()) for q in row['quantity'].split(',')]
+                else:
+                    # Default to equal distribution if single quantity
+                    quantities = [row['quantity'] // len(items)] * len(items)
+                    # Add remainder to first item
+                    quantities[0] += row['quantity'] % len(items)
+                
+                # Calculate price per item based on total price
+                if len(items) > 1:
+                    # Distribute price evenly if multiple items
+                    price_per_item = [row['price'] / row['quantity']] * len(items)
+                else:
+                    # Use existing price_per_item if available
+                    price_per_item = [row['price_per_item'] if 'price_per_item' in row else row['price'] / row['quantity']]
+                
+                # Create item rows
+                for i, (item, qty, price) in enumerate(zip(items, quantities, price_per_item)):
+                    subtotal = qty * price
+                    items_rows.append({
+                        'transaction_id': transaction_id,
+                        'item': item,
+                        'quantity': qty,
+                        'price_per_item': price,
+                        'subtotal': subtotal
+                    })
+            else:
+                # Single item transaction
+                subtotal = row['quantity'] * (row['price_per_item'] if 'price_per_item' in row else row['price'] / row['quantity'])
+                items_rows.append({
+                    'transaction_id': transaction_id,
+                    'item': row['item'],
+                    'quantity': row['quantity'],
+                    'price_per_item': row['price_per_item'] if 'price_per_item' in row else row['price'] / row['quantity'],
+                    'subtotal': subtotal
+                })
+        
+        # Create the transaction items DataFrame
+        if items_rows:
+            transaction_items_df = pd.DataFrame(items_rows)
+        
+        # Remove item-specific columns from transaction_df
+        if 'item' in transaction_df.columns:
+            transaction_df.drop(columns=['item', 'quantity', 'price_per_item'], inplace=True, errors='ignore')
+        
+        return transaction_df, transaction_items_df
+
+    def process(self) -> Dict[str, pd.DataFrame]:
+        """
+        Process transactions data and return both transactions and transaction_items DataFrames.
+        
+        Returns:
+            Dict[str, pd.DataFrame]: Dictionary with processed DataFrames
         """
         try:
             logger.info("Processing transactions data...")
@@ -537,18 +610,25 @@ class TransactionsProcessor(DataProcessor):
             self._standardize_ids()
             self._standardize_numeric_fields()
             self._standardize_item_and_store_names()
-            self._standardize_date() 
+            self._standardize_date()
             self._validate_price_and_quantity()
             
-            logger.info(f"Completed processing transactions data. Result shape: {self.df.shape}")
-            return self.df
+            # Process transaction items
+            transactions_df, transaction_items_df = self._process_transaction_items()
+            
+            logger.info(f"Completed processing transactions data. Result shapes: " +
+                    f"transactions {transactions_df.shape}, items {transaction_items_df.shape}")
+            
+            return {
+                'transactions': transactions_df,
+                'transaction_items': transaction_items_df
+            }
             
         except Exception as e:
             error_msg = f"Unexpected error in transactions data processing: {str(e)}"
             logger.error(error_msg)
             self._add_error(error_msg)
-            return self.df
-
+            return {'transactions': self.df, 'transaction_items': pd.DataFrame()}
 
 # Dictionary mapping data types to processor classes
 PROCESSOR_MAP = {
