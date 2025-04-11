@@ -829,6 +829,13 @@ class MainDataMerger(DataMerger):
                 promotions_df = user_refs_results.get('promotions', self.promotions_df)
                 transactions_df = user_refs_results.get('transactions', self.transactions_df)
                 
+                # Identify store accounts (NEW)
+                updated_people_df = user_refs_merger.identify_store_accounts()
+                all_results['people'] = updated_people_df
+                
+                # Save the updated people data
+                self._save_dataframe(updated_people_df, "people", self.output_dir)
+                
                 # Save the promotions data immediately
                 if 'promotions' in all_results:
                     self._save_dataframe(all_results['promotions'], "promotions", self.output_dir)
@@ -889,9 +896,20 @@ class MainDataMerger(DataMerger):
                     logger.error(error_msg)
                     self._add_error(error_msg)
             
-            # Step 5: Create user transfer summaries
+            # Step 5: Create user transfer summaries and link transfers to transactions
             try:
                 user_transfers_merger = UserTransfersMerger(self.transfers_df, people_df)
+                
+                # Link transfers to transactions (NEW)
+                if transactions_df is not None and not transactions_df.empty:
+                    updated_transfers_df = user_transfers_merger.link_transfers_to_transactions(transactions_df)
+                    self.transfers_df = updated_transfers_df  # Update transfers data
+                    all_results['transfers'] = updated_transfers_df
+                    
+                    # Save the updated transfers data
+                    self._save_dataframe(updated_transfers_df, "transfers", self.output_dir)
+                
+                # Continue with regular transfer summaries
                 user_transfers_results = user_transfers_merger.merge()
                 all_results.update(user_transfers_results)
                 

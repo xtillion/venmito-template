@@ -640,7 +640,7 @@ PROCESSOR_MAP = {
 
 
 # Convenience function for direct processing
-def process_dataframe(df: pd.DataFrame, data_type: str) -> pd.DataFrame:
+def process_dataframe(df: pd.DataFrame, data_type: str) -> Union[pd.DataFrame, Dict[str, pd.DataFrame]]:
     """
     Process a DataFrame for a specific data type.
     
@@ -649,10 +649,18 @@ def process_dataframe(df: pd.DataFrame, data_type: str) -> pd.DataFrame:
         data_type (str): Type of data to process ('people', 'promotions', 'transfers', 'transactions')
     
     Returns:
-        pd.DataFrame: Processed DataFrame
+        Union[pd.DataFrame, Dict[str, pd.DataFrame]]: Processed DataFrame(s)
+                                                     Returns a dictionary for 'transactions' type
     
     Raises:
         ValueError: If the data type is not supported
     """
     processor = get_processor(data_type, df, PROCESSOR_MAP)
-    return processor.process()
+    result = processor.process()
+    
+    # TransactionsProcessor now returns a dictionary
+    if data_type.lower() == 'transactions' and isinstance(result, dict):
+        return result
+    
+    # For other processors that return a single DataFrame
+    return result
