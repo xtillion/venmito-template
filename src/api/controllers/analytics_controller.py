@@ -263,7 +263,7 @@ def get_top_transactions():
         # Add detailed logging
         logger.info(f"Getting top transactions with limit {limit}")
         
-        # Get top transactions
+        # Get top transactions by reusing the transactions query function
         transactions = transactions_queries.get_top_transactions_by_amount(limit)
         
         return jsonify(transactions), 200

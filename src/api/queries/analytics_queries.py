@@ -376,32 +376,3 @@ def get_top_items(limit: int = 5, order_by: str = 'revenue'):
     
     params = {'limit': limit}
     return execute_query(query, params)
-
-def get_top_transactions_by_amount(limit: int = 5):
-    """
-    Get top transactions by amount.
-    
-    Args:
-        limit (int): Maximum number of transactions to return
-    
-    Returns:
-        list: List of top transaction records sorted by price
-    """
-    query = """
-    SELECT 
-        transaction_id, 
-        user_id, 
-        item, 
-        store,
-        price,
-        quantity,
-        price_per_item,
-        transaction_date
-    FROM transactions
-    ORDER BY price DESC
-    LIMIT %(limit)s
-    """
-    
-    params = {'limit': limit}
-    
-    return execute_query(query, params)
