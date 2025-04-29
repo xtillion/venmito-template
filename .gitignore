@@ -34,6 +34,6 @@ venv_py311
 .idea/
 
 # Processed data
-data/processed/
+
 
 .fake

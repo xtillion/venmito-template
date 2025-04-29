@@ -375,7 +375,7 @@ class DataLoader:
                 self.conn.rollback()
             logger.error(f"Error loading transfers data: {str(e)}")
             raise
-    
+  
     def load_transactions(self) -> int:
         """
         Load transactions data from CSV into the database.
@@ -421,6 +421,74 @@ class DataLoader:
             logger.error(error_msg)
             raise DatabaseError(error_msg)
 
+    def load_transactions_df(self, transactions_df: pd.DataFrame) -> int:
+        """
+        Load transactions data into the database.
+        
+        Args:
+            transactions_df (pd.DataFrame): DataFrame containing transactions data
+        
+        Returns:
+            int: Number of records inserted
+        """
+        if transactions_df.empty:
+            logger.warning("No transactions data to load")
+            return 0
+        
+        # Based on the new schema (without item, quantity, price_per_item columns)
+        column_types = {
+            'transaction_id': str,
+            'user_id': int,  # This can be NULL if no matching user
+            'store': str,
+            'price': float,
+            'transaction_date': datetime.datetime,
+            'store_account_id': int  # This can be NULL
+        }
+        
+        # Filter the DataFrame to include only columns in column_types
+        valid_columns = [col for col in column_types.keys() if col in transactions_df.columns]
+        filtered_df = transactions_df[valid_columns]
+        
+        # Build the SQL query dynamically based on available columns
+        columns_str = ", ".join(valid_columns)
+        placeholders = ", ".join(["%s"] * len(valid_columns))
+        
+        query = f"""
+        INSERT INTO transactions ({columns_str})
+        VALUES ({placeholders})
+        ON CONFLICT (transaction_id) DO UPDATE SET
+        """
+        
+        # Add SET clauses for each column except transaction_id
+        update_clauses = []
+        for col in valid_columns:
+            if col != 'transaction_id':
+                update_clauses.append(f"{col} = EXCLUDED.{col}")
+        
+        query += ", ".join(update_clauses)
+        
+        try:
+            # Ensure we have a database connection
+            if not self.conn or not self.cursor:
+                self.connect()
+            
+            # Prepare parameters
+            params_list = []
+            for _, row in filtered_df.iterrows():
+                params = tuple(row[col] for col in valid_columns)
+                params_list.append(params)
+            
+            # Execute batch insert
+            execute_batch(self.cursor, query, params_list, page_size=100)
+            self.conn.commit()
+            
+            logger.info(f"Loaded {len(params_list)} transaction records into database")
+            return len(params_list)
+        except Exception as e:
+            if self.conn:
+                self.conn.rollback()
+            logger.error(f"Error loading transactions data: {str(e)}")
+            raise
     def load_transaction_items_df(self, transaction_items_df: pd.DataFrame) -> int:
         """
         Load transaction items data into the database.
