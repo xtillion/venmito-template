@@ -33,16 +33,23 @@ CREATE TABLE IF NOT EXISTS transfers (
     timestamp DATE
 );
 
--- Transactions table
+-- Transactions table (without item-specific columns)
 CREATE TABLE IF NOT EXISTS transactions (
     transaction_id VARCHAR(20) PRIMARY KEY,
     user_id INTEGER REFERENCES people(user_id),
-    item VARCHAR(100) NOT NULL,
     store VARCHAR(100) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
+    transaction_date TIMESTAMP
+);
+
+-- Transaction items table (new)
+CREATE TABLE IF NOT EXISTS transaction_items (
+    item_id SERIAL PRIMARY KEY,
+    transaction_id VARCHAR(20) REFERENCES transactions(transaction_id),
+    item VARCHAR(100) NOT NULL,
     quantity INTEGER NOT NULL,
     price_per_item DECIMAL(10, 2) NOT NULL,
-    transaction_date TIMESTAMP
+    subtotal DECIMAL(10, 2) NOT NULL
 );
 
 -- User-level transaction summaries

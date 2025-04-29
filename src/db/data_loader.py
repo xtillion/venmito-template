@@ -376,42 +376,80 @@ class DataLoader:
             logger.error(f"Error loading transfers data: {str(e)}")
             raise
     
-    def load_transactions_df(self, transactions_df: pd.DataFrame) -> int:
+    def load_transactions(self) -> int:
         """
-        Load transactions data into the database.
+        Load transactions data from CSV into the database.
+        
+        Returns:
+            int: Number of rows inserted
+        
+        Raises:
+            DatabaseError: If database insertion fails
+        """
+        try:
+            df = self.load_csv_to_df('transactions.csv')
+            
+            # Check if this is already processed data or raw data
+            if 'transaction_items' in df.columns:
+                # Already processed
+                transactions_df = df
+                transaction_items_df = None
+            else:
+                # Process into transaction and items
+                from src.data.processor import TransactionsProcessor
+                processor = TransactionsProcessor(df)
+                result = processor.process()
+                
+                if isinstance(result, dict):
+                    transactions_df = result.get('transactions')
+                    transaction_items_df = result.get('transaction_items')
+                else:
+                    transactions_df = result
+                    transaction_items_df = None
+            
+            # Load transactions first
+            transactions_count = self.load_transactions_df(transactions_df)
+            
+            # Then load transaction items if available
+            items_count = 0
+            if transaction_items_df is not None and not transaction_items_df.empty:
+                items_count = self.load_transaction_items_df(transaction_items_df)
+            
+            return transactions_count + items_count
+        except Exception as e:
+            error_msg = f"Error loading transactions data: {str(e)}"
+            logger.error(error_msg)
+            raise DatabaseError(error_msg)
+
+    def load_transaction_items_df(self, transaction_items_df: pd.DataFrame) -> int:
+        """
+        Load transaction items data into the database.
         
         Args:
-            transactions_df (pd.DataFrame): DataFrame containing transactions data
+            transaction_items_df (pd.DataFrame): DataFrame containing transaction items data
         
         Returns:
             int: Number of records inserted
         """
-        if transactions_df.empty:
-            logger.warning("No transactions data to load")
+        if transaction_items_df.empty:
+            logger.warning("No transaction items data to load")
             return 0
         
         column_types = {
             'transaction_id': str,
-            'user_id': int,  # This can be NULL if no matching user
             'item': str,
-            'store': str,
-            'price': float,
             'quantity': int,
             'price_per_item': float,
-            'transaction_date': datetime.datetime
+            'subtotal': float
         }
         
         query = """
-        INSERT INTO transactions (transaction_id, user_id, item, store, price, quantity, price_per_item, transaction_date)
-        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
-        ON CONFLICT (transaction_id) DO UPDATE SET
-            user_id = EXCLUDED.user_id,
-            item = EXCLUDED.item,
-            store = EXCLUDED.store,
-            price = EXCLUDED.price,
+        INSERT INTO transaction_items (transaction_id, item, quantity, price_per_item, subtotal)
+        VALUES (%s, %s, %s, %s, %s)
+        ON CONFLICT (transaction_id, item) DO UPDATE SET
             quantity = EXCLUDED.quantity,
             price_per_item = EXCLUDED.price_per_item,
-            transaction_date = EXCLUDED.transaction_date
+            subtotal = EXCLUDED.subtotal
         """
         
         try:
@@ -420,20 +458,19 @@ class DataLoader:
                 self.connect()
                 
             # Prepare parameters
-            params = self.prepare_parameters(transactions_df, column_types)
+            params = self.prepare_parameters(transaction_items_df, column_types)
             
             # Execute batch insert
             execute_batch(self.cursor, query, params, page_size=100)
             self.conn.commit()
             
-            logger.info(f"Loaded {len(params)} transaction records into database")
+            logger.info(f"Loaded {len(params)} transaction item records into database")
             return len(params)
         except Exception as e:
             if self.conn:
                 self.conn.rollback()
-            logger.error(f"Error loading transactions data: {str(e)}")
-            raise
-    
+            logger.error(f"Error loading transaction items data: {str(e)}")
+            raise  
     def load_user_transfers_df(self, user_transfers_df: pd.DataFrame) -> int:
         """
         Load user transfer summaries into the database.

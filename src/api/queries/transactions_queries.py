@@ -242,19 +242,30 @@ def get_store_summary(limit: int = 20):
     """
     query = """
     SELECT
-        store,
-        SUM(price) AS total_revenue,
-        COUNT(*) AS total_transactions,
-        ROUND(SUM(price) / COUNT(*), 2) AS average_transaction_value,
+        t.store,
+        SUM(t.price) AS total_revenue,
+        COUNT(DISTINCT t.transaction_id) AS total_transactions,
+        ROUND(SUM(t.price) / COUNT(DISTINCT t.transaction_id), 2) AS average_transaction_value,
         (
-            SELECT transaction_id
-            FROM transactions t2
-            WHERE t2.store = t1.store
-            ORDER BY price DESC
+            SELECT ti.item
+            FROM transaction_items ti
+            JOIN transactions t2 ON ti.transaction_id = t2.transaction_id
+            WHERE t2.store = t.store
+            GROUP BY ti.item
+            ORDER BY SUM(ti.quantity) DESC
             LIMIT 1
-        ) AS top_transaction_id
-    FROM transactions t1
-    GROUP BY store
+        ) AS most_sold_item,
+        (
+            SELECT ti.item
+            FROM transaction_items ti
+            JOIN transactions t2 ON ti.transaction_id = t2.transaction_id
+            WHERE t2.store = t.store
+            GROUP BY ti.item
+            ORDER BY SUM(ti.subtotal) DESC
+            LIMIT 1
+        ) AS most_profitable_item
+    FROM transactions t
+    GROUP BY t.store
     ORDER BY total_revenue DESC
     LIMIT %(limit)s
     """

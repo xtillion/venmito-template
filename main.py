@@ -1,5 +1,5 @@
 """
-Main script to run the Venmito data processing pipeline.
+Main script to run the Venmito data processing pipeline with support for the new schema.
 """
 
 import os
@@ -65,9 +65,23 @@ def main():
     processed_transfers = process_dataframe(transfers, "transfers")
     
     # Process transactions if data exists
+    processed_transactions = {}
+    processed_transaction_items = None
+    
     if not transactions.empty:
-        processed_transactions = process_dataframe(transactions, "transactions")
-        print(f"Processed transactions data: {len(processed_transactions)} rows")
+        # The process_dataframe function now returns a dictionary for transactions
+        processed_result = process_dataframe(transactions, "transactions")
+        
+        # Check if we got a dictionary (new format) or DataFrame (old format)
+        if isinstance(processed_result, dict):
+            processed_transactions = processed_result.get('transactions', pd.DataFrame())
+            processed_transaction_items = processed_result.get('transaction_items', pd.DataFrame())
+            print(f"Processed transactions data: {len(processed_transactions)} rows")
+            print(f"Processed transaction items data: {len(processed_transaction_items)} rows")
+        else:
+            # Handle the case where process_dataframe still returns a DataFrame
+            processed_transactions = processed_result
+            print(f"Processed transactions data (old format): {len(processed_transactions)} rows")
     else:
         processed_transactions = pd.DataFrame()
     
@@ -96,19 +110,32 @@ def main():
         # Ensure all data was properly saved
         for data_name, df in {
             "transfers": processed_transfers,
-            "transactions": processed_transactions
+            "transactions": processed_transactions,
         }.items():
-            if not df.empty:
+            if isinstance(df, pd.DataFrame) and not df.empty:
                 file_path = os.path.join(output_dir, f"{data_name}.csv")
                 if not os.path.exists(file_path) or os.path.getsize(file_path) == 0:
                     print(f"Warning: {data_name}.csv was not properly saved, saving it manually")
                     df.to_csv(file_path, index=False)
         
+        # Save transaction_items separately if available
+        if processed_transaction_items is not None and not processed_transaction_items.empty:
+            file_path = os.path.join(output_dir, "transaction_items.csv")
+            if not os.path.exists(file_path) or os.path.getsize(file_path) == 0:
+                print(f"Saving transaction_items.csv manually")
+                processed_transaction_items.to_csv(file_path, index=False)
+                
+            # Also add to merged_data for reporting
+            merged_data['transaction_items'] = processed_transaction_items
+        
         # Step 5: Report results
         print("\nProcessing complete!")
         print("Summary of merged data:")
         for name, df in merged_data.items():
-            print(f"  - {name}: {df.shape[0]} rows, {df.shape[1]} columns")
+            if isinstance(df, pd.DataFrame):
+                print(f"  - {name}: {df.shape[0]} rows, {df.shape[1]} columns")
+            else:
+                print(f"  - {name}: {type(df)} (not a DataFrame)")
         
         # List files in output directory
         print(f"\nFiles in output directory ({output_dir}):")
