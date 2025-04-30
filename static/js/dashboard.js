@@ -241,8 +241,9 @@ function updateTopItemsChart(data) {
 }
 
 /**
- * Update transactions table with top transactions by amount
- * @param {Array} transactions Transaction data
+ * Update the transactions table in the dashboard
+ * 
+ * @param {Array} transactions The transactions data
  */
 function updateTransactionsTable(transactions) {
   console.log('Dashboard: Updating transactions table');
