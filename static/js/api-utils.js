@@ -390,6 +390,46 @@ window.API = {
     },
     
     /**
+     * Get items for a specific transaction
+     * 
+     * @param {string} transactionId - Transaction ID
+     * @returns {Promise<Array>} - Transaction items data
+     */
+    async getTransactionItems(transactionId) {
+      return window.API.fetch(`/transactions/${transactionId}/items`, {}, () => []);
+    },
+
+    /**
+     * Get a transaction with all its items
+     * 
+     * @param {string} transactionId - Transaction ID
+     * @returns {Promise<Object>} - Complete transaction data with items
+     */
+    async getTransactionWithItems(transactionId) {
+      try {
+        // Fetch both transaction and items in parallel
+        const [transaction, items] = await Promise.all([
+          this.getTransaction(transactionId),
+          this.getTransactionItems(transactionId)
+        ]);
+        
+        if (transaction) {
+          // Attach items to transaction object
+          transaction.items = items || [];
+          
+          // Calculate additional metrics
+          transaction.totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
+          transaction.averagePricePerItem = transaction.price / transaction.totalQuantity;
+        }
+        
+        return transaction;
+      } catch (error) {
+        console.error(`Error fetching transaction ${transactionId} with items:`, error);
+        return null;
+      }
+    },
+
+    /**
      * Get a user's transaction summary
      * 
      * @param {number} userId - User ID

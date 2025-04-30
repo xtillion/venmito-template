@@ -234,30 +234,42 @@ const state = {
     if (!tableBody) return;
     
     if (transactions.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="7" class="text-center">No transactions found</td></tr>';
-        return;
+      tableBody.innerHTML = '<tr><td colspan="7" class="text-center">No transactions found</td></tr>';
+      return;
     }
     
-    // Note: Transaction items are now separate, so we need to display something generic for the "Item" column
-    // We'll update the item column to show a count instead of the specific item name
-    tableBody.innerHTML = transactions.map(transaction => `
-      <tr>
-        <td>${transaction.transaction_id}</td>
-        <td>${transaction.transaction_date ? API.formatDate(transaction.transaction_date) : 'N/A'}</td>
-        <td>${transaction.items ? transaction.items.length + ' items' : 'Unknown'}</td>
-        <td>${transaction.store}</td>
-        <td>${API.formatCurrency(transaction.price)}</td>
-        <td>${transaction.quantity || 'N/A'}</td>
-        <td>
-          <button class="btn btn-sm btn-primary view-transaction-btn" 
-                  data-transaction-id="${transaction.transaction_id}" 
-                  data-bs-toggle="modal" 
-                  data-bs-target="#transactionModal">
-            View
-          </button>
-        </td>
-      </tr>
-    `).join('');
+    tableBody.innerHTML = transactions.map(transaction => {
+      // Format item display based on item_count or first_item
+      let itemDisplay = 'Unknown';
+      if (transaction.item_count > 1) {
+        itemDisplay = `${transaction.item_count} items`;
+      } else if (transaction.first_item) {
+        itemDisplay = transaction.first_item;
+      } else if (transaction.items && transaction.items.length > 0) {
+        itemDisplay = transaction.items.length > 1 
+          ? `${transaction.items.length} items` 
+          : transaction.items[0].item;
+      }
+      
+      return `
+        <tr>
+          <td>${transaction.transaction_id}</td>
+          <td>${transaction.transaction_date ? API.formatDate(transaction.transaction_date) : 'N/A'}</td>
+          <td>${itemDisplay}</td>
+          <td>${transaction.store}</td>
+          <td>${API.formatCurrency(transaction.price)}</td>
+          <td>${transaction.total_quantity || transaction.quantity || 'N/A'}</td>
+          <td>
+            <button class="btn btn-sm btn-primary view-transaction-btn" 
+                    data-transaction-id="${transaction.transaction_id}" 
+                    data-bs-toggle="modal" 
+                    data-bs-target="#transactionModal">
+              View
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
     
     // Add event listeners for view buttons
     tableBody.querySelectorAll('.view-transaction-btn').forEach(button => {
@@ -267,34 +279,42 @@ const state = {
       });
     });
   }
-
+ 
   /**
-   * Load transaction details for the modal
+   * Load transaction details for the modal with the new schema
    * 
    * @param {string} transactionId - Transaction ID to load details for
    */
   async function loadTransactionDetails(transactionId) {
-  try {
-    // Get transaction details (now includes items array from our updated API method)
-    const transaction = await API.transactions.getTransaction(transactionId);
-    
-    if (!transaction) {
-      API.showError('Transaction not found');
-      return;
-    }
-    
-    // Get user details
-    const user = await API.people.getUser(transaction.user_id);
-    
-    // Update modal with transaction details
-    document.getElementById('transaction-id').textContent = transaction.transaction_id;
-    document.getElementById('transaction-user').textContent = user ? `${user.first_name} ${user.last_name}` : `User #${transaction.user_id}`;
-    document.getElementById('transaction-store').textContent = transaction.store;
-    document.getElementById('transaction-price').textContent = transaction.price.toFixed(2);
-    
-    // Update items section - this assumes we add a new items section to the modal
-    const itemsContainer = document.getElementById('transaction-items');
-    if (itemsContainer) {
+    try {
+      // Show loading state in the modal
+      document.getElementById('transaction-items').innerHTML = 
+        '<div class="text-center"><div class="spinner-border text-primary" role="status">' +
+        '<span class="visually-hidden">Loading...</span></div><p class="mt-2">Loading items...</p></div>';
+      
+      // Get complete transaction with items using our enhanced API method
+      const transaction = await API.transactions.getTransactionWithItems(transactionId);
+      
+      if (!transaction) {
+        API.showError('Transaction not found');
+        return;
+      }
+      
+      // Get user details
+      const user = await API.people.getUser(transaction.user_id);
+      
+      // Update modal with transaction details
+      document.getElementById('transaction-id').textContent = transaction.transaction_id;
+      document.getElementById('transaction-user').textContent = user ? `${user.first_name} ${user.last_name}` : `User #${transaction.user_id}`;
+      document.getElementById('transaction-store').textContent = transaction.store;
+      document.getElementById('transaction-price').textContent = transaction.price.toFixed(2);
+      document.getElementById('transaction-date').textContent = API.formatDateTime(transaction.transaction_date);
+      
+      // Update user details link
+      document.getElementById('user-details-link').href = `/people/${transaction.user_id}`;
+      
+      // Update items container
+      const itemsContainer = document.getElementById('transaction-items');
       if (transaction.items && transaction.items.length > 0) {
         // Generate HTML for each item
         const itemsHtml = transaction.items.map(item => `
@@ -306,6 +326,7 @@ const state = {
           </tr>
         `).join('');
         
+        // Create a table with the items
         itemsContainer.innerHTML = `
           <table class="table table-sm">
             <thead>
@@ -319,18 +340,20 @@ const state = {
             <tbody>
               ${itemsHtml}
             </tbody>
+            <tfoot>
+              <tr>
+                <th colspan="3" class="text-end">Total:</th>
+                <th>${API.formatCurrency(transaction.price)}</th>
+              </tr>
+            </tfoot>
           </table>
         `;
       } else {
         itemsContainer.innerHTML = '<p class="text-muted">No items found for this transaction.</p>';
       }
+    } catch (error) {
+      console.error('Error loading transaction details:', error);
+      document.getElementById('transaction-items').innerHTML = 
+        '<div class="alert alert-danger">Failed to load transaction items. Please try again.</div>';
     }
-    
-    // Update user details link
-    document.getElementById('user-details-link').href = `/people/${transaction.user_id}`;
-    
-  } catch (error) {
-    console.error('Error loading transaction details:', error);
-    // Error handling is managed by the API utility
-  }
 }
