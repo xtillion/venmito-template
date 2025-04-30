@@ -540,7 +540,7 @@ window.API = {
      */
     async getStoreSummary(limit = 20) {
       return window.API.fetch(`/transactions/stores/summary?limit=${limit}`, {}, () => []);
-    }
+    },
   },
   
   /**
@@ -556,6 +556,8 @@ window.API = {
     async getDailyTransactionsSummary(days = 30) {
       return window.API.fetch(`/analytics/transactions/daily?days=${days}`, {}, () => []);
     },
+
+    
     
     /**
      * Get daily transfers summary
@@ -669,6 +671,42 @@ window.API = {
         daily_transactions: [],
         daily_transfers: []
       }));
-    }
+    },
+  
+    /**
+     * Get top transactions by amount
+     * 
+     * @param {number} limit - Maximum number of transactions to return
+     * @returns {Promise<Array>} - Top transactions by amount
+     */
+      async getTopTransactions(limit = 5) {
+        try {
+          // Try the analytics endpoint first
+          const transactions = await window.API.fetch(`/analytics/top-transactions?limit=${limit}`, {}, () => null);
+          
+          if (transactions) {
+            return transactions;
+          }
+          
+          // Fallback to getting all transactions and sorting manually
+          const response = await this.getTransactions(1, 100);
+          if (response && response.data && Array.isArray(response.data)) {
+            // Sort by price and get top X
+            return response.data
+              .filter(tx => tx && tx.price !== undefined && tx.price !== null)
+              .sort((a, b) => {
+                const priceA = typeof a.price === 'string' ? parseFloat(a.price) : a.price;
+                const priceB = typeof b.price === 'string' ? parseFloat(b.price) : b.price;
+                return priceB - priceA;
+              })
+              .slice(0, limit);
+          }
+          
+          return [];
+        } catch (error) {
+          console.error('Error getting top transactions:', error);
+          return [];
+        }
+      }
   }
-};
+  };
