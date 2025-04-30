@@ -1,154 +1,176 @@
+#!/usr/bin/env python
 """
-Main script to run the Venmito data processing pipeline with support for the new schema.
+Upload processed CSV files directly to the database.
+
+This standalone script can be used to upload previously processed CSV files
+to the database without reprocessing the original data.
+
+Usage:
+    python upload_csv_to_db.py --dir data/processed
+    python upload_csv_to_db.py --dir data/processed --types transactions transaction_items
 """
 
 import os
+import sys
+import argparse
 import pandas as pd
-from src.data.loader import load_file
-from src.data.validator import validate_dataframe
-from src.data.processor import process_dataframe
-from src.data.merger import MainDataMerger
+import logging
+from dotenv import load_dotenv
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
+# Add the project root directory to the Python path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+
+def upload_csv_to_db(csv_dir, data_types=None, db_config=None):
+    """
+    Upload CSV files from a directory to the database.
+    
+    Args:
+        csv_dir (str): Directory containing CSV files
+        data_types (list, optional): Specific data types to upload
+        db_config (dict, optional): Database configuration parameters
+    
+    Returns:
+        dict: Results of database upload with counts of inserted rows
+    """
+    from src.db.data_loader import DataLoader
+    
+    # Load database configuration from environment if not provided
+    if db_config is None:
+        db_config = {
+            'host': os.environ.get('DB_HOST', 'localhost'),
+            'database': os.environ.get('DB_NAME', 'venmito'),
+            'user': os.environ.get('DB_USER', 'postgres'),
+            'password': os.environ.get('DB_PASSWORD', 'postgres'),
+            'port': os.environ.get('DB_PORT', '5432')
+        }
+    
+    # Define the available data types and their loader methods
+    available_types = {
+        'people': 'load_people_df',
+        'promotions': 'load_promotions_df',
+        'transfers': 'load_transfers_df',
+        'transactions': 'load_transactions_df',
+        'transaction_items': 'load_transaction_items_df',
+        'user_transactions': 'load_user_transactions_df',
+        'user_transfers': 'load_user_transfers_df',
+        'item_summary': 'load_item_summary_df',
+        'store_summary': 'load_store_summary_df'
+    }
+    
+    # Use all available types if none specified
+    if data_types is None:
+        data_types = list(available_types.keys())
+    
+    # Initialize DataLoader with configuration
+    loader = DataLoader(connection_params=db_config, processed_dir=None)
+    
+    try:
+        # Connect to database
+        loader.connect()
+        print(f"Connected to database {db_config['database']} on {db_config['host']}")
+        
+        results = {}
+        
+        # Process each data type
+        for data_type in data_types:
+            csv_file = os.path.join(csv_dir, f"{data_type}.csv")
+            
+            if not os.path.exists(csv_file):
+                logger.warning(f"CSV file not found: {csv_file}")
+                continue
+            
+            logger.info(f"Loading {data_type} from {csv_file}")
+            try:
+                # Read CSV file into DataFrame
+                df = pd.read_csv(csv_file)
+                
+                if df.empty:
+                    logger.warning(f"Empty CSV file: {csv_file}")
+                    results[data_type] = 0
+                    continue
+                
+                # Get appropriate loader method
+                method_name = available_types.get(data_type)
+                if not method_name or not hasattr(loader, method_name):
+                    logger.warning(f"No loader method found for {data_type}")
+                    continue
+                
+                # Call the loader method
+                method = getattr(loader, method_name)
+                count = method(df)
+                
+                logger.info(f"Loaded {count} rows for {data_type}")
+                results[data_type] = count
+                
+            except Exception as e:
+                logger.error(f"Error loading {data_type}: {str(e)}")
+                results[data_type] = f"ERROR: {str(e)}"
+        
+        return results
+    
+    except Exception as e:
+        logger.error(f"Database connection error: {str(e)}")
+        return {'error': str(e)}
+    
+    finally:
+        # Always disconnect when done
+        loader.disconnect()
+        logger.info("Database connection closed")
+
 
 def main():
-    print("Running Venmito data processing pipeline...")
+    """Main function for the script execution."""
+    parser = argparse.ArgumentParser(description='Upload CSV files to database')
+    parser.add_argument('--dir', '-d', type=str, default='data/processed',
+                       help='Directory containing processed CSV files')
+    parser.add_argument('--types', '-t', nargs='+', 
+                       help='Specific data types to upload (space-separated)')
+    parser.add_argument('--env-file', '-e', type=str, default='.env',
+                       help='Path to .env file with database credentials')
+    args = parser.parse_args()
     
-    # Create output directory if it doesn't exist
-    output_dir = "data/processed"
-    os.makedirs(output_dir, exist_ok=True)
-    print(f"Output directory created/exists at: {os.path.abspath(output_dir)}")
+    # Load environment variables
+    load_dotenv(args.env_file)
     
-    # Step 1: Load data
-    print("Loading data...")
-    people_json = load_file("data/raw/people.json")
-    people_yml = load_file("data/raw/people.yml")
-    promotions = load_file("data/raw/promotions.csv")
-    transfers = load_file("data/raw/transfers.csv")
+    # Check if required database environment variables are present
+    required_vars = ['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASSWORD']
+    missing_vars = [var for var in required_vars if not os.environ.get(var)]
     
-    # Load transactions from XML file (our XMLLoader class will handle the format)
-    try:
-        transactions = load_file("data/raw/transactions.xml")
-        print(f"Loaded transactions XML data: {len(transactions)} rows")
-    except Exception as e:
-        print(f"Warning: Could not load transactions data: {e}")
-        transactions = pd.DataFrame()
+    if missing_vars:
+        logger.error(f"Missing required environment variables: {', '.join(missing_vars)}")
+        logger.error("Please ensure these are set in your .env file or environment")
+        sys.exit(1)
     
-    # Step 2: Validate data
-    print("Validating data...")
-    json_errors = validate_dataframe(people_json, "people")
-    yml_errors = validate_dataframe(people_yml, "people")
-    promotions_errors = validate_dataframe(promotions, "promotions")
-    transfers_errors = validate_dataframe(transfers, "transfers")
+    # Check if directory exists
+    if not os.path.isdir(args.dir):
+        logger.error(f"Directory not found: {args.dir}")
+        sys.exit(1)
     
-    # Only validate transactions if data exists
-    transactions_errors = []
-    if not transactions.empty:
-        transactions_errors = validate_dataframe(transactions, "transactions")
+    # Upload CSV files to database
+    print(f"Uploading data from {args.dir} to database...")
+    results = upload_csv_to_db(args.dir, args.types)
     
-    # Log validation errors
-    for data_type, errors in [
-        ("people_json", json_errors),
-        ("people_yml", yml_errors),
-        ("promotions", promotions_errors),
-        ("transfers", transfers_errors),
-        ("transactions", transactions_errors)
-    ]:
-        if errors:
-            print(f"Validation errors for {data_type}:")
-            for error in errors:
-                print(f"  - {error}")
+    # Print results
+    print("\nUpload results:")
+    for data_type, result in results.items():
+        print(f"  - {data_type}: {result}")
     
-    # Step 3: Process data
-    print("Processing data...")
-    processed_people_json = process_dataframe(people_json, "people")
-    processed_people_yml = process_dataframe(people_yml, "people")
-    processed_promotions = process_dataframe(promotions, "promotions")
-    processed_transfers = process_dataframe(transfers, "transfers")
+    # Check for errors
+    has_errors = any(isinstance(r, str) and r.startswith("ERROR") for r in results.values())
     
-    # Process transactions if data exists
-    processed_transactions = {}
-    processed_transaction_items = None
-    
-    if not transactions.empty:
-        # The process_dataframe function now returns a dictionary for transactions
-        processed_result = process_dataframe(transactions, "transactions")
-        
-        # Check if we got a dictionary (new format) or DataFrame (old format)
-        if isinstance(processed_result, dict):
-            processed_transactions = processed_result.get('transactions', pd.DataFrame())
-            processed_transaction_items = processed_result.get('transaction_items', pd.DataFrame())
-            print(f"Processed transactions data: {len(processed_transactions)} rows")
-            print(f"Processed transaction items data: {len(processed_transaction_items)} rows")
-        else:
-            # Handle the case where process_dataframe still returns a DataFrame
-            processed_transactions = processed_result
-            print(f"Processed transactions data (old format): {len(processed_transactions)} rows")
+    if has_errors:
+        print("\nSome errors occurred during upload. Check the logs for details.")
+        sys.exit(1)
     else:
-        processed_transactions = pd.DataFrame()
-    
-    # Step 4: Merge data
-    print("Merging data...")
-    
-    # Print data types for debugging
-    print(f"People JSON type: {type(processed_people_json)}")
-    print(f"People YAML type: {type(processed_people_yml)}")
-    print(f"Promotions type: {type(processed_promotions)}")
-    print(f"Transfers type: {type(processed_transfers)}")
-    print(f"Transactions type: {type(processed_transactions)}")
-    
-    merger = MainDataMerger(
-        processed_people_json,
-        processed_people_yml,
-        processed_promotions,
-        processed_transfers,
-        processed_transactions,
-        output_dir=output_dir
-    )
-    
-    try:
-        merged_data = merger.merge()
-        
-        # Ensure all data was properly saved
-        for data_name, df in {
-            "transfers": processed_transfers,
-            "transactions": processed_transactions,
-        }.items():
-            if isinstance(df, pd.DataFrame) and not df.empty:
-                file_path = os.path.join(output_dir, f"{data_name}.csv")
-                if not os.path.exists(file_path) or os.path.getsize(file_path) == 0:
-                    print(f"Warning: {data_name}.csv was not properly saved, saving it manually")
-                    df.to_csv(file_path, index=False)
-        
-        # Save transaction_items separately if available
-        if processed_transaction_items is not None and not processed_transaction_items.empty:
-            file_path = os.path.join(output_dir, "transaction_items.csv")
-            if not os.path.exists(file_path) or os.path.getsize(file_path) == 0:
-                print(f"Saving transaction_items.csv manually")
-                processed_transaction_items.to_csv(file_path, index=False)
-                
-            # Also add to merged_data for reporting
-            merged_data['transaction_items'] = processed_transaction_items
-        
-        # Step 5: Report results
-        print("\nProcessing complete!")
-        print("Summary of merged data:")
-        for name, df in merged_data.items():
-            if isinstance(df, pd.DataFrame):
-                print(f"  - {name}: {df.shape[0]} rows, {df.shape[1]} columns")
-            else:
-                print(f"  - {name}: {type(df)} (not a DataFrame)")
-        
-        # List files in output directory
-        print(f"\nFiles in output directory ({output_dir}):")
-        for file in os.listdir(output_dir):
-            file_path = os.path.join(output_dir, file)
-            print(f"  - {file}: {os.path.getsize(file_path)} bytes")
-            
-    except Exception as e:
-        import traceback
-        print(f"Error during merge: {e}")
-        traceback.print_exc()
-    
-    print(f"\nResults saved to {output_dir}")
+        print("\nAll uploads completed successfully!")
 
 
 if __name__ == "__main__":
