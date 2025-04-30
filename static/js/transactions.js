@@ -274,11 +274,12 @@ const state = {
     // Add event listeners for view buttons
     tableBody.querySelectorAll('.view-transaction-btn').forEach(button => {
       button.addEventListener('click', () => {
-        const transactionId = button.dataset.transactionId;
+        const transactionId = button.dataset.transactionId;loadTransactionDetails
         loadTransactionDetails(transactionId);
       });
     });
   }
+  
  
   /**
    * Load transaction details for the modal with the new schema
@@ -356,4 +357,4 @@ const state = {
       document.getElementById('transaction-items').innerHTML = 
         '<div class="alert alert-danger">Failed to load transaction items. Please try again.</div>';
     }
-}
+  }
