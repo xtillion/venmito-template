@@ -78,6 +78,10 @@ def get_transactions():
 def get_transaction(transaction_id):
     return transactions_controller.get_transaction(transaction_id)
 
+@transactions_bp.route('/<string:transaction_id>/items', methods=['GET'])
+def get_transaction_items(transaction_id):
+    return transactions_controller.get_transaction_items(transaction_id)
+
 @transactions_bp.route('/user/<int:user_id>/summary', methods=['GET'])
 def get_user_transactions_summary(user_id):
     return transactions_controller.get_user_transactions_summary(user_id)
