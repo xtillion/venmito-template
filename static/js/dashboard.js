@@ -262,39 +262,50 @@ function updateTopStoresChart(stores) {
  * @param {Array} transactions Transaction data
  */
 function updateTransactionsTable(transactions) {
-  const tableBody = document.querySelector('#recent-transactions-table tbody');
-  if (!tableBody || !Array.isArray(transactions)) {
-    console.warn('Cannot update transactions table: Table not found or invalid data');
+  const transactionsBody = document.getElementById('recent-transactions-table')?.querySelector('tbody');
+  if (!transactionsBody) {
+    console.warn('Dashboard: Could not find transactions table body');
     return;
   }
   
-  console.log(`Updating transactions table with ${transactions.length} transactions`);
-  
-  if (transactions.length === 0) {
-    tableBody.innerHTML = '<tr><td colspan="4" class="text-center">No transactions available</td></tr>';
+  if (!Array.isArray(transactions) || transactions.length === 0) {
+    transactionsBody.innerHTML = '<tr><td colspan="4" class="text-center">No transactions available</td></tr>';
     return;
   }
   
-  // Create table rows
-  const rows = transactions.map(tx => {
-    // Make sure we have valid data or provide defaults
-    const txId = tx.transaction_id || 'N/A';
-    const item = tx.item || 'Unknown Item';
-    const store = tx.store || 'Unknown Store';
-    const price = tx.price !== undefined && tx.price !== null ? tx.price : 0;
+  // Sort by price (highest first)
+  const sortedTransactions = [...transactions].sort((a, b) => {
+    const priceA = typeof a.price === 'string' ? parseFloat(a.price) : (a.price || 0);
+    const priceB = typeof b.price === 'string' ? parseFloat(b.price) : (b.price || 0);
+    return priceB - priceA;
+  });
+  
+  // Take top 5
+  const topTransactions = sortedTransactions.slice(0, 5);
+  
+  // Display transactions
+  transactionsBody.innerHTML = topTransactions.map(transaction => {
+    // For item display, we need to handle the fact that items are now separate
+    let itemDisplay = 'Multiple items';
+    
+    // If we have transaction.items from our API, use the first item or indicate multiple items
+    if (transaction.items && transaction.items.length > 0) {
+      itemDisplay = transaction.items.length === 1 
+        ? transaction.items[0].item 
+        : `${transaction.items.length} items`;
+    }
     
     return `
       <tr>
-        <td>${txId}</td>
-        <td>${item}</td>
-        <td>${store}</td>
-        <td>${window.API.formatCurrency(price)}</td>
+        <td>${transaction.transaction_id || 'N/A'}</td>
+        <td>${itemDisplay}</td>
+        <td>${transaction.store || 'N/A'}</td>
+        <td>${transaction.price ? formatCurrency(transaction.price) : 'N/A'}</td>
       </tr>
     `;
   }).join('');
   
-  tableBody.innerHTML = rows;
-  console.log('Transactions table updated successfully');
+  console.log('Dashboard: Transactions table updated');
 }
 
 /**
