@@ -364,6 +364,19 @@ function getRecipientName(transfer) {
 }
 
 /**
+ * Display error message in a table
+ * 
+ * @param {string} tableId ID of the table element
+ * @param {string} message Error message to display
+ */
+function showTableError(tableId, message = 'Failed to load data') {
+  const tableBody = document.getElementById(tableId)?.querySelector('tbody');
+  if (tableBody) {
+    tableBody.innerHTML = `<tr><td colspan="4" class="text-center text-danger">${message}</td></tr>`;
+  }
+}
+
+/**
  * Load all dashboard data
  */
 async function loadDashboardData() {
