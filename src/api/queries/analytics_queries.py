@@ -180,18 +180,19 @@ def get_popular_items_by_month(months: int = 12):
     )
     SELECT
         to_char(ms.month, 'YYYY-MM') AS month,
-        COALESCE(item_summary.item, 'No Data') AS top_item,
+        COALESCE(item_summary.item, 'No Data') AS item,
         COALESCE(item_summary.items_sold, 0) AS items_sold,
         COALESCE(item_summary.total_revenue, 0) AS total_revenue
     FROM month_series ms
     LEFT JOIN LATERAL (
         SELECT
-            item,
-            SUM(quantity) AS items_sold,
-            SUM(price) AS total_revenue
-        FROM transactions
-        WHERE DATE_TRUNC('month', timestamp) = ms.month
-        GROUP BY item
+            ti.item,
+            SUM(ti.quantity) AS items_sold,
+            SUM(ti.subtotal) AS total_revenue
+        FROM transaction_items ti
+        JOIN transactions t ON ti.transaction_id = t.transaction_id
+        WHERE DATE_TRUNC('month', t.transaction_date) = ms.month
+        GROUP BY ti.item
         ORDER BY items_sold DESC
         LIMIT 1
     ) item_summary ON true
@@ -364,12 +365,12 @@ def get_top_items(limit: int = 5, order_by: str = 'revenue'):
     
     query = f"""
     SELECT 
-        item,
-        SUM(price) AS total_revenue,
-        SUM(quantity) AS items_sold,
-        COUNT(*) AS transaction_count
-    FROM transactions
-    GROUP BY item
+        ti.item,
+        SUM(ti.subtotal) AS total_revenue,
+        SUM(ti.quantity) AS items_sold,
+        COUNT(DISTINCT ti.transaction_id) AS transaction_count
+    FROM transaction_items ti
+    GROUP BY ti.item
     ORDER BY {order_column} DESC
     LIMIT %(limit)s
     """
