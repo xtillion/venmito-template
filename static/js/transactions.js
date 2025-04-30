@@ -238,14 +238,16 @@ const state = {
         return;
     }
     
+    // Note: Transaction items are now separate, so we need to display something generic for the "Item" column
+    // We'll update the item column to show a count instead of the specific item name
     tableBody.innerHTML = transactions.map(transaction => `
       <tr>
         <td>${transaction.transaction_id}</td>
         <td>${transaction.transaction_date ? API.formatDate(transaction.transaction_date) : 'N/A'}</td>
-        <td>${transaction.item}</td>
+        <td>${transaction.items ? transaction.items.length + ' items' : 'Unknown'}</td>
         <td>${transaction.store}</td>
         <td>${API.formatCurrency(transaction.price)}</td>
-        <td>${transaction.quantity}</td>
+        <td>${transaction.quantity || 'N/A'}</td>
         <td>
           <button class="btn btn-sm btn-primary view-transaction-btn" 
                   data-transaction-id="${transaction.transaction_id}" 
@@ -264,40 +266,71 @@ const state = {
         loadTransactionDetails(transactionId);
       });
     });
-}
-  
+  }
+
   /**
    * Load transaction details for the modal
    * 
    * @param {string} transactionId - Transaction ID to load details for
    */
   async function loadTransactionDetails(transactionId) {
-    try {
-      // Get transaction details
-      const transaction = await API.transactions.getTransaction(transactionId);
-      
-      if (!transaction) {
-        API.showError('Transaction not found');
-        return;
-      }
-      
-      // Get user details
-      const user = await API.people.getUser(transaction.user_id);
-      
-      // Update modal with transaction details
-      document.getElementById('transaction-id').textContent = transaction.transaction_id;
-      document.getElementById('transaction-user').textContent = user ? `${user.first_name} ${user.last_name}` : `User #${transaction.user_id}`;
-      document.getElementById('transaction-item').textContent = transaction.item;
-      document.getElementById('transaction-store').textContent = transaction.store;
-      document.getElementById('transaction-price').textContent = transaction.price.toFixed(2);
-      document.getElementById('transaction-quantity').textContent = transaction.quantity;
-      document.getElementById('transaction-price-per-item').textContent = transaction.price_per_item ? transaction.price_per_item.toFixed(2) : (transaction.price / transaction.quantity).toFixed(2);
-      
-      // Update user details link
-      document.getElementById('user-details-link').href = `/people/${transaction.user_id}`;
-      
-    } catch (error) {
-      console.error('Error loading transaction details:', error);
-      // Error handling is managed by the API utility
+  try {
+    // Get transaction details (now includes items array from our updated API method)
+    const transaction = await API.transactions.getTransaction(transactionId);
+    
+    if (!transaction) {
+      API.showError('Transaction not found');
+      return;
     }
+    
+    // Get user details
+    const user = await API.people.getUser(transaction.user_id);
+    
+    // Update modal with transaction details
+    document.getElementById('transaction-id').textContent = transaction.transaction_id;
+    document.getElementById('transaction-user').textContent = user ? `${user.first_name} ${user.last_name}` : `User #${transaction.user_id}`;
+    document.getElementById('transaction-store').textContent = transaction.store;
+    document.getElementById('transaction-price').textContent = transaction.price.toFixed(2);
+    
+    // Update items section - this assumes we add a new items section to the modal
+    const itemsContainer = document.getElementById('transaction-items');
+    if (itemsContainer) {
+      if (transaction.items && transaction.items.length > 0) {
+        // Generate HTML for each item
+        const itemsHtml = transaction.items.map(item => `
+          <tr>
+            <td>${item.item}</td>
+            <td>${item.quantity}</td>
+            <td>${API.formatCurrency(item.price_per_item)}</td>
+            <td>${API.formatCurrency(item.subtotal)}</td>
+          </tr>
+        `).join('');
+        
+        itemsContainer.innerHTML = `
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price/Item</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${itemsHtml}
+            </tbody>
+          </table>
+        `;
+      } else {
+        itemsContainer.innerHTML = '<p class="text-muted">No items found for this transaction.</p>';
+      }
+    }
+    
+    // Update user details link
+    document.getElementById('user-details-link').href = `/people/${transaction.user_id}`;
+    
+  } catch (error) {
+    console.error('Error loading transaction details:', error);
+    // Error handling is managed by the API utility
   }
+}
