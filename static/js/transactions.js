@@ -4,7 +4,7 @@
  * This file handles the transactions page functionality, including:
  * - Loading and displaying transactions list
  * - Handling pagination
- * - Displaying transaction details in modals
+ * - Displaying transaction details in modals with related items
  * - Filtering transactions by item, store, and price range
  * - Rendering charts for item and store data
  */
@@ -121,10 +121,10 @@ function setupEventListeners() {
   // Filter button click
   document.getElementById('filter-btn')?.addEventListener('click', () => {
     // Get filter values
-    const itemSearch = document.getElementById('item-search')?.value;
-    const storeSearch = document.getElementById('store-search')?.value;
-    const minPrice = document.getElementById('min-price')?.value;
-    const maxPrice = document.getElementById('max-price')?.value;
+    const itemSearch = document.getElementById('item-search').value;
+    const storeSearch = document.getElementById('store-search').value;
+    const minPrice = document.getElementById('min-price').value;
+    const maxPrice = document.getElementById('max-price').value;
     
     // Update state with filter values
     state.filters.item = itemSearch || null;
@@ -135,19 +135,6 @@ function setupEventListeners() {
     
     // Reload transactions with new filters
     loadTransactions();
-  });
-  
-  // Add event listeners for pagination links
-  const paginationLinks = document.querySelectorAll('#transactions-pagination .page-link');
-  paginationLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const page = parseInt(e.target.dataset.page);
-      if (!isNaN(page)) {
-        state.currentPage = page;
-        loadTransactions();
-      }
-    });
   });
 }
 
@@ -165,29 +152,23 @@ async function loadTransactions() {
       tableBody.innerHTML = '<tr><td colspan="7" class="text-center">Loading transactions...</td></tr>';
       
       // Fetch transactions data from API
-      const response = await window.API.transactions.getTransactions(state.currentPage, state.perPage, state.filters);
+      const response = await API.transactions.getTransactions(state.currentPage, state.perPage, state.filters);
       
       // Update state with transactions data
-      state.transactions = response.data || [];
+      state.transactions = response.data;
       
       // Render transactions table
-      renderTransactionsTable(state.transactions);
+      renderTransactionsTable(response.data);
       
       // Render pagination
-      if (response.pagination) {
-        window.API.renderPagination(response.pagination, (page) => {
-          state.currentPage = page;
-          loadTransactions();
-        }, 'transactions-pagination');
-      }
+      API.renderPagination(response.pagination, (page) => {
+        state.currentPage = page;
+        loadTransactions();
+      }, 'transactions-pagination');
     }
   } catch (error) {
     console.error('Error loading transactions:', error);
-    const transactionsTable = document.getElementById('transactions-table');
-    const tableBody = transactionsTable?.querySelector('tbody');
-    if (tableBody) {
-      tableBody.innerHTML = '<tr><td colspan="7" class="text-center text-danger">Failed to load transactions. Please try again.</td></tr>';
-    }
+    // Error handling is managed by the API utility
   }
 }
 
@@ -198,11 +179,11 @@ async function loadChartData() {
   console.log('Loading chart data...');
   try {
     // Load item summary data
-    const itemSummary = await window.API.transactions.getItemSummary(10);
+    const itemSummary = await API.transactions.getItemSummary(10);
     updateTopItemsChart(itemSummary);
     
     // Load store summary data
-    const storeSummary = await window.API.transactions.getStoreSummary(10);
+    const storeSummary = await API.transactions.getStoreSummary(10);
     updateTopStoresChart(storeSummary);
   } catch (error) {
     console.error('Error loading chart data:', error);
@@ -217,23 +198,12 @@ async function loadChartData() {
  */
 function updateTopItemsChart(data) {
   console.log('Updating top items chart...');
-  
-  if (!window.topItemsChart || !data || data.length === 0) {
-    console.warn('No chart or data available for top items');
-    return;
-  }
+  if (!window.topItemsChart || !data || data.length === 0) return;
   
   // Format data for chart
-  const sortedData = [...data]
-    .sort((a, b) => {
-      const revenueA = parseFloat(a.total_revenue) || 0;
-      const revenueB = parseFloat(b.total_revenue) || 0;
-      return revenueB - revenueA;
-    })
-    .slice(0, 10);
-  
+  const sortedData = [...data].sort((a, b) => b.total_revenue - a.total_revenue).slice(0, 10);
   const labels = sortedData.map(item => item.item);
-  const revenues = sortedData.map(item => parseFloat(item.total_revenue) || 0);
+  const revenues = sortedData.map(item => item.total_revenue);
   
   // Update chart data
   window.topItemsChart.data.labels = labels;
@@ -251,23 +221,12 @@ function updateTopItemsChart(data) {
  */
 function updateTopStoresChart(data) {
   console.log('Updating top stores chart...');
-  
-  if (!window.topStoresChart || !data || data.length === 0) {
-    console.warn('No chart or data available for top stores');
-    return;
-  }
+  if (!window.topStoresChart || !data || data.length === 0) return;
   
   // Format data for chart
-  const sortedData = [...data]
-    .sort((a, b) => {
-      const revenueA = parseFloat(a.total_revenue) || 0;
-      const revenueB = parseFloat(b.total_revenue) || 0;
-      return revenueB - revenueA;
-    })
-    .slice(0, 10);
-  
+  const sortedData = [...data].sort((a, b) => b.total_revenue - a.total_revenue).slice(0, 10);
   const labels = sortedData.map(store => store.store);
-  const revenues = sortedData.map(store => parseFloat(store.total_revenue) || 0);
+  const revenues = sortedData.map(store => store.total_revenue);
   
   // Update chart data
   window.topStoresChart.data.labels = labels;
@@ -285,53 +244,39 @@ function updateTopStoresChart(data) {
  */
 function renderTransactionsTable(transactions) {
   console.log('Rendering transactions table...');
-  
   const tableBody = document.getElementById('transactions-table')?.querySelector('tbody');
   
-  if (!tableBody) {
-    console.warn('No table body found for transactions');
-    return;
-  }
+  if (!tableBody) return;
   
-  if (!transactions || transactions.length === 0) {
+  if (transactions.length === 0) {
     tableBody.innerHTML = '<tr><td colspan="7" class="text-center">No transactions found</td></tr>';
     return;
   }
   
   tableBody.innerHTML = transactions.map(transaction => {
     // Format item display based on item_count or first_item
-    let itemDisplay = 'N/A';
-    let quantityDisplay = 'N/A';
-    
-    // Handle different possible ways item info could be provided
-    if (transaction.item_count > 0) {
-      // New schema with item_count
-      itemDisplay = transaction.item_count > 1 
-        ? `${transaction.item_count} items` 
-        : (transaction.first_item || 'Single item');
-      
-      quantityDisplay = transaction.total_quantity || 'N/A';
+    let itemDisplay = 'Unknown';
+    if (transaction.item_count > 1) {
+      itemDisplay = `${transaction.item_count} items`;
+    } else if (transaction.first_item) {
+      itemDisplay = transaction.first_item;
     } else if (transaction.items && transaction.items.length > 0) {
-      // If we have items array directly
       itemDisplay = transaction.items.length > 1 
         ? `${transaction.items.length} items` 
         : transaction.items[0].item;
-      
-      quantityDisplay = transaction.items.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0);
-    } else if (transaction.item) {
-      // Legacy schema with direct item field
-      itemDisplay = transaction.item;
-      quantityDisplay = transaction.quantity || 'N/A';
     }
+    
+    // Ensure price is a number
+    const price = typeof transaction.price === 'string' ? parseFloat(transaction.price) : transaction.price;
     
     return `
       <tr>
         <td>${transaction.transaction_id}</td>
-        <td>${transaction.transaction_date ? window.API.formatDate(transaction.transaction_date) : 'N/A'}</td>
+        <td>${transaction.transaction_date ? API.formatDate(transaction.transaction_date) : 'N/A'}</td>
         <td>${itemDisplay}</td>
-        <td>${transaction.store || 'N/A'}</td>
-        <td>${window.API.formatCurrency(transaction.price)}</td>
-        <td>${quantityDisplay}</td>
+        <td>${transaction.store}</td>
+        <td>${API.formatCurrency(price)}</td>
+        <td>${transaction.total_quantity || transaction.quantity || transaction.item_count || 'N/A'}</td>
         <td>
           <button class="btn btn-sm btn-primary view-transaction-btn" 
                   data-transaction-id="${transaction.transaction_id}" 
@@ -352,121 +297,102 @@ function renderTransactionsTable(transactions) {
     });
   });
   
-  console.log('Transactions table rendered with', transactions.length, 'rows');
+  console.log(`Transactions table rendered with ${transactions.length} rows`);
 }
 
 /**
- * Load transaction details for the modal
+ * Load transaction details for the modal with the new schema
  * 
  * @param {string} transactionId - Transaction ID to load details for
  */
 async function loadTransactionDetails(transactionId) {
-  console.log('Loading transaction details for', transactionId);
-  
+  console.log(`Loading transaction details for ${transactionId}`);
   try {
     // Show loading state in the modal
-    const itemsContainer = document.getElementById('transaction-items');
-    if (itemsContainer) {
-      itemsContainer.innerHTML = 
-        '<div class="text-center"><div class="spinner-border text-primary" role="status">' +
-        '<span class="visually-hidden">Loading...</span></div><p class="mt-2">Loading items...</p></div>';
-    }
+    document.getElementById('transaction-items').innerHTML = 
+      '<div class="text-center"><div class="spinner-border text-primary" role="status">' +
+      '<span class="visually-hidden">Loading...</span></div><p class="mt-2">Loading items...</p></div>';
     
-    // Get complete transaction with items
-    const transaction = await window.API.transactions.getTransactionWithItems(transactionId);
+    // Get transaction data
+    const transaction = await API.transactions.getTransaction(transactionId);
+    console.log('Transaction details loaded:', transaction);
     
     if (!transaction) {
-      console.error('Transaction not found');
-      window.API.showError('Transaction not found');
+      API.showError('Transaction not found');
       return;
     }
     
-    console.log('Transaction details loaded:', transaction);
+    // Get transaction items separately
+    const items = await API.transactions.getTransactionItems(transactionId);
+    console.log('Transaction items loaded:', items);
     
-    // Get user details
-    const user = await window.API.people.getUser(transaction.user_id);
-    console.log('User details loaded:', user);
+    // Get user details if user_id exists and is not null
+    let user = null;
+    if (transaction.user_id) {
+      user = await API.people.getUser(transaction.user_id);
+      console.log('User details loaded:', user);
+    }
+    
+    // Ensure price is a number for formatting
+    const price = typeof transaction.price === 'string' ? parseFloat(transaction.price) : transaction.price;
     
     // Update modal with transaction details
     document.getElementById('transaction-id').textContent = transaction.transaction_id;
-    document.getElementById('transaction-user').textContent = user 
-      ? `${user.first_name || ''} ${user.last_name || ''}`.trim() 
-      : `User #${transaction.user_id}`;
-    document.getElementById('transaction-store').textContent = transaction.store || 'N/A';
-    document.getElementById('transaction-price').textContent = transaction.price.toFixed(2);
-    
-    // Format and display date
-    const dateElement = document.getElementById('transaction-date');
-    if (dateElement) {
-      dateElement.textContent = transaction.transaction_date 
-        ? window.API.formatDateTime(transaction.transaction_date) 
-        : 'N/A';
-    }
+    document.getElementById('transaction-user').textContent = user ? `${user.first_name} ${user.last_name}` : 'Unknown User';
+    document.getElementById('transaction-store').textContent = transaction.store;
+    document.getElementById('transaction-price').textContent = price.toFixed(2);
+    document.getElementById('transaction-date').textContent = API.formatDateTime(transaction.transaction_date);
     
     // Update user details link
-    const userLink = document.getElementById('user-details-link');
-    if (userLink) {
-      userLink.href = `/people/${transaction.user_id}`;
+    const userDetailsLink = document.getElementById('user-details-link');
+    if (transaction.user_id) {
+      userDetailsLink.href = `/people/${transaction.user_id}`;
+      userDetailsLink.style.display = 'inline-block';
+    } else {
+      userDetailsLink.style.display = 'none';
     }
     
     // Update items container
-    if (itemsContainer) {
-      if (transaction.items && transaction.items.length > 0) {
-        // Generate HTML for each item
-        const itemsHtml = transaction.items.map(item => `
-          <tr>
-            <td>${item.item || 'Unknown'}</td>
-            <td>${item.quantity || 0}</td>
-            <td>${window.API.formatCurrency(item.price_per_item || 0)}</td>
-            <td>${window.API.formatCurrency(item.subtotal || (item.price_per_item * item.quantity) || 0)}</td>
-          </tr>
-        `).join('');
-        
-        // Create a table with the items
-        itemsContainer.innerHTML = `
-          <table class="table table-sm">
-            <thead>
-              <tr>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Price/Item</th>
-                <th>Subtotal</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${itemsHtml}
-            </tbody>
-            <tfoot>
-              <tr>
-                <th colspan="3" class="text-end">Total:</th>
-                <th>${window.API.formatCurrency(transaction.price)}</th>
-              </tr>
-            </tfoot>
-          </table>
-        `;
-        
-        // Add additional info if there's a discrepancy between items subtotal and transaction price
-        if (transaction.itemsSubtotal && Math.abs(transaction.itemsSubtotal - transaction.price) > 0.01) {
-          itemsContainer.innerHTML += `
-            <div class="alert alert-info mt-2">
-              <small>Note: There is a difference between the sum of item subtotals (${window.API.formatCurrency(transaction.itemsSubtotal)}) 
-              and the transaction total (${window.API.formatCurrency(transaction.price)}). 
-              This may be due to discounts, taxes, or other adjustments.</small>
-            </div>
-          `;
-        }
-      } else {
-        itemsContainer.innerHTML = '<p class="text-muted">No items found for this transaction.</p>';
-      }
+    const itemsContainer = document.getElementById('transaction-items');
+    if (items && items.length > 0) {
+      // Generate HTML for each item
+      const itemsHtml = items.map(item => `
+        <tr>
+          <td>${item.item}</td>
+          <td>${item.quantity}</td>
+          <td>${API.formatCurrency(item.price_per_item)}</td>
+          <td>${API.formatCurrency(item.subtotal)}</td>
+        </tr>
+      `).join('');
+      
+      // Create a table with the items
+      itemsContainer.innerHTML = `
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Price/Item</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${itemsHtml}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3" class="text-end">Total:</th>
+              <th>${API.formatCurrency(price)}</th>
+            </tr>
+          </tfoot>
+        </table>
+      `;
+    } else {
+      itemsContainer.innerHTML = '<p class="text-muted">No items found for this transaction.</p>';
     }
-    
-    console.log('Transaction details rendered successfully');
   } catch (error) {
     console.error('Error loading transaction details:', error);
-    const itemsContainer = document.getElementById('transaction-items');
-    if (itemsContainer) {
-      itemsContainer.innerHTML = 
-        '<div class="alert alert-danger">Failed to load transaction items. Please try again.</div>';
-    }
+    document.getElementById('transaction-items').innerHTML = 
+      '<div class="alert alert-danger">Failed to load transaction items. Please try again.</div>';
   }
 }
