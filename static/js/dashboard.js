@@ -406,6 +406,62 @@ function updateSummaryCards(totals) {
   if (topSellingItemElement && totals.top_selling_item) {
     topSellingItemElement.textContent = totals.top_selling_item;
   }
+
+  const transfersElement = document.getElementById('total-transfers');
+  if (transfersElement) {
+    transfersElement.textContent = window.API.formatLargeNumber(totals.total_transfers || 0);
+  }
+
+  const usersElement = document.getElementById('total-users');
+  if (usersElement) {
+    usersElement.textContent = window.API.formatLargeNumber(totals.total_users || 0);
+  }
+}
+
+/**
+ * Update top stores chart with data
+ * 
+ * @param {Array} data - Store summary data
+ */
+function updateTopStoresChart(data) {
+  console.log('Dashboard: Updating top stores chart');
+  
+  if (!window.topStoresChart) {
+    console.warn('Dashboard: topStoresChart not initialized');
+    return;
+  }
+  
+  if (!data || !Array.isArray(data) || data.length === 0) {
+    console.warn('Dashboard: No store data available for chart');
+    window.topStoresChart.data.labels = ['No data available'];
+    window.topStoresChart.data.datasets[0].data = [0];
+    window.topStoresChart.options.plugins.title.text = 'No Store Revenue Data Available';
+    window.topStoresChart.update();
+    return;
+  }
+  
+  // Sort data by revenue and limit to top 5
+  const sortedData = [...data]
+    .sort((a, b) => {
+      const revenueA = parseFloat(a.total_revenue) || 0;
+      const revenueB = parseFloat(b.total_revenue) || 0;
+      return revenueB - revenueA;
+    })
+    .slice(0, 5);
+  
+  // Get store names
+  const labels = sortedData.map(store => store.store);
+  
+  // Get revenue values
+  const revenues = sortedData.map(store => parseFloat(store.total_revenue) || 0);
+  
+  // Update chart
+  window.topStoresChart.data.labels = labels;
+  window.topStoresChart.data.datasets[0].data = revenues;
+  window.topStoresChart.options.plugins.title.text = 'Top Stores by Revenue';
+  window.topStoresChart.update();
+  
+  console.log('Dashboard: Stores chart updated with data');
 }
 
 /**

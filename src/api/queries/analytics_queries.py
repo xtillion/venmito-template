@@ -327,21 +327,27 @@ def get_dashboard_totals():
             COUNT(DISTINCT item) AS unique_items_sold
         FROM item_summary
     ), 
-    top_item AS (
-        SELECT item, total_revenue, items_sold
-        FROM item_summary
-        ORDER BY total_revenue DESC
-        LIMIT 1
+    transfer_metrics AS (
+        SELECT 
+            ROUND(SUM(total_volume), 2) AS total_transfers_amount,
+            SUM(transfer_count) AS total_transfers
+        FROM user_transfers
+    ),
+    user_metrics AS (
+        SELECT COUNT(*) AS total_users
+        FROM people
     )
     SELECT 
         rm.total_revenue,
         rm.total_transactions,
         rm.average_transaction_value,
         rm.unique_items_sold,
-        ti.item AS top_selling_item,
-        ti.total_revenue AS top_item_revenue,
-        ti.items_sold AS top_item_sales
-    FROM revenue_metrics rm, top_item ti;
+        tm.total_transfers_amount,
+        tm.total_transfers,
+        um.total_users
+    FROM revenue_metrics rm, 
+         transfer_metrics tm, 
+         user_metrics um;
     """
     
     return execute_query(query)[0]
