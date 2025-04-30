@@ -17,7 +17,8 @@ def get_all_transactions(limit: int = 100, offset: int = 0,
                        item: Optional[str] = None,
                        store: Optional[str] = None,
                        min_price: Optional[float] = None,
-                       max_price: Optional[float] = None):
+                       max_price: Optional[float] = None,
+                       include_first_item: bool = True):
     """
     Get all transactions with optional filtering.
     
@@ -29,48 +30,69 @@ def get_all_transactions(limit: int = 100, offset: int = 0,
         store (str, optional): Filter by store name
         min_price (float, optional): Filter by minimum price
         max_price (float, optional): Filter by maximum price
+        include_first_item (bool): Whether to include the first item for each transaction
     
     Returns:
         list: List of transaction records
     """
-    query = """
+    base_query = """
     SELECT 
         t.transaction_id, 
         t.user_id, 
-        t.item, 
         t.store,
         t.price,
-        t.quantity,
-        t.price_per_item,
-        t.transaction_date
-    FROM transactions t
-    WHERE 1=1
+        t.transaction_date,
+        COUNT(ti.item_id) as item_count
     """
+    
+    if include_first_item:
+        # Add a subquery to get the first item for each transaction
+        base_query += """
+        , (
+            SELECT item FROM transaction_items 
+            WHERE transaction_id = t.transaction_id 
+            ORDER BY item_id LIMIT 1
+        ) as first_item
+        """
+    
+    base_query += """
+    FROM transactions t
+    LEFT JOIN transaction_items ti ON t.transaction_id = ti.transaction_id
+    """
+    
+    # Item filter requires joining with transaction_items
+    if item:
+        base_query += """
+        JOIN transaction_items filter_items ON t.transaction_id = filter_items.transaction_id 
+            AND filter_items.item ILIKE %(item)s
+        """
+    
+    base_query += " WHERE 1=1 "
     
     params = {}
     
     if user_id:
-        query += " AND t.user_id = %(user_id)s"
+        base_query += " AND t.user_id = %(user_id)s"
         params['user_id'] = user_id
     
     if item:
-        query += " AND t.item ILIKE %(item)s"
         params['item'] = f'%{item}%'
     
     if store:
-        query += " AND t.store ILIKE %(store)s"
+        base_query += " AND t.store ILIKE %(store)s"
         params['store'] = f'%{store}%'
     
     if min_price is not None:
-        query += " AND t.price >= %(min_price)s"
+        base_query += " AND t.price >= %(min_price)s"
         params['min_price'] = min_price
     
     if max_price is not None:
-        query += " AND t.price <= %(max_price)s"
+        base_query += " AND t.price <= %(max_price)s"
         params['max_price'] = max_price
     
-    query += """
-    ORDER BY t.transaction_id
+    base_query += """
+    GROUP BY t.transaction_id, t.user_id, t.store, t.price, t.transaction_date
+    ORDER BY t.transaction_date DESC
     LIMIT %(limit)s OFFSET %(offset)s
     """
     
@@ -79,9 +101,34 @@ def get_all_transactions(limit: int = 100, offset: int = 0,
         'offset': offset
     })
     
+    return execute_query(base_query, params)
+
+def get_transaction_items_by_id(transaction_id: str):
+    """
+    Get items for a specific transaction.
+    
+    Args:
+        transaction_id (str): Transaction ID
+    
+    Returns:
+        list: List of transaction item records
+    """
+    query = """
+    SELECT 
+        item_id,
+        transaction_id,
+        item,
+        quantity,
+        price_per_item,
+        subtotal
+    FROM transaction_items
+    WHERE transaction_id = %(transaction_id)s
+    ORDER BY item_id
+    """
+    
+    params = {'transaction_id': transaction_id}
+    
     return execute_query(query, params)
-
-
 def get_transaction_by_id(transaction_id: str):
     """
     Get a transaction by ID.
@@ -94,16 +141,16 @@ def get_transaction_by_id(transaction_id: str):
     """
     query = """
     SELECT 
-        transaction_id, 
-        user_id, 
-        item, 
-        store,
-        price,
-        quantity,
-        price_per_item,
-        transaction_date
-    FROM transactions
-    WHERE transaction_id = %(transaction_id)s
+        t.transaction_id, 
+        t.user_id, 
+        t.store,
+        t.price,
+        t.transaction_date,
+        COUNT(ti.item_id) as item_count
+    FROM transactions t
+    LEFT JOIN transaction_items ti ON t.transaction_id = ti.transaction_id
+    WHERE t.transaction_id = %(transaction_id)s
+    GROUP BY t.transaction_id, t.user_id, t.store, t.price, t.transaction_date
     """
     
     params = {'transaction_id': transaction_id}
@@ -215,11 +262,11 @@ def get_item_summary(limit: int = 20):
     query = """
     SELECT
         item,
-        SUM(price) AS total_revenue,
+        SUM(subtotal) AS total_revenue,
         SUM(quantity) AS items_sold,
-        COUNT(*) AS transaction_count,
+        COUNT(DISTINCT transaction_id) AS transaction_count,
         ROUND(AVG(price_per_item), 2) AS average_price
-    FROM transactions
+    FROM transaction_items
     GROUP BY item
     ORDER BY total_revenue DESC
     LIMIT %(limit)s

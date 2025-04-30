@@ -120,7 +120,54 @@ def get_transaction(transaction_id: str):
         logger.error(f"Error getting transaction {transaction_id}: {str(e)}")
         return jsonify({'error': 'Internal server error'}), 500
 
+def get_transaction_items(transaction_id: str):
+    """
+    Get items for a specific transaction.
+    
+    Args:
+        transaction_id (str): Transaction ID
+    
+    Returns:
+        tuple: (JSON response, status code)
+    """
+    try:
+        items = transactions_queries.get_transaction_items_by_id(transaction_id)
+        
+        if not items:
+            return jsonify([]), 200  # Return empty array, not 404
+        
+        return jsonify(items), 200
+    
+    except Exception as e:
+        logger.error(f"Error getting items for transaction {transaction_id}: {str(e)}")
+        return jsonify({'error': 'Internal server error'}), 500
 
+
+def get_transaction_items_by_id(transaction_id: str):
+    """
+    Get items for a specific transaction.
+    
+    Args:
+        transaction_id (str): Transaction ID
+    
+    Returns:
+        list: List of transaction item records
+    """
+    query = """
+    SELECT 
+        item_id,
+        transaction_id,
+        item,
+        quantity,
+        price_per_item,
+        subtotal
+    FROM transaction_items
+    WHERE transaction_id = %(transaction_id)s
+    ORDER BY item_id
+    """
+    
+    params = {'transaction_id': transaction_id}
+    
 def get_user_transactions_summary(user_id: int):
     """
     Get a summary of a user's transactions.
