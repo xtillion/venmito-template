@@ -377,6 +377,37 @@ function showTableError(tableId, message = 'Failed to load data') {
 }
 
 /**
+ * Update the summary cards with dashboard totals
+ * 
+ * @param {Object} totals Dashboard totals data
+ */
+function updateSummaryCards(totals) {
+  // Update total revenue
+  const revenueElement = document.getElementById('total-revenue');
+  if (revenueElement) {
+    revenueElement.textContent = window.API.formatCurrency(totals.total_revenue || 0);
+  }
+  
+  // Update total transactions
+  const transactionsElement = document.getElementById('total-transactions');
+  if (transactionsElement) {
+    transactionsElement.textContent = window.API.formatLargeNumber(totals.total_transactions || 0);
+  }
+  
+  // Update average transaction value if available
+  const avgTransactionElement = document.getElementById('average-transaction-value');
+  if (avgTransactionElement && totals.average_transaction_value) {
+    avgTransactionElement.textContent = window.API.formatCurrency(totals.average_transaction_value);
+  }
+  
+  // Update top selling item if available
+  const topSellingItemElement = document.getElementById('top-selling-item');
+  if (topSellingItemElement && totals.top_selling_item) {
+    topSellingItemElement.textContent = totals.top_selling_item;
+  }
+}
+
+/**
  * Load all dashboard data
  */
 async function loadDashboardData() {
