@@ -388,7 +388,7 @@ window.API = {
     async getTransaction(transactionId) {
       return window.API.fetch(`/transactions/${transactionId}`, {}, () => null);
     },
-    
+
     /**
      * Get items for a specific transaction
      * 
@@ -398,12 +398,12 @@ window.API = {
     async getTransactionItems(transactionId) {
       return window.API.fetch(`/transactions/${transactionId}/items`, {}, () => []);
     },
-
+    
     /**
-     * Get a transaction with all its items
+     * Get items for a specific transaction
      * 
      * @param {string} transactionId - Transaction ID
-     * @returns {Promise<Object>} - Complete transaction data with items
+     * @returns {Promise<Array>} - Transaction items data
      */
     async getTransactionWithItems(transactionId) {
       try {
@@ -418,8 +418,28 @@ window.API = {
           transaction.items = items || [];
           
           // Calculate additional metrics
-          transaction.totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
-          transaction.averagePricePerItem = transaction.price / transaction.totalQuantity;
+          if (items && items.length > 0) {
+            transaction.totalItems = items.length;
+            
+            // Calculate total quantity across all items
+            transaction.totalQuantity = items.reduce((sum, item) => {
+              return sum + (parseInt(item.quantity) || 0);
+            }, 0);
+            
+            // Calculate average price per item if not already present
+            if (!transaction.averagePricePerItem && transaction.totalQuantity > 0) {
+              transaction.averagePricePerItem = transaction.price / transaction.totalQuantity;
+            }
+            
+            // Add an itemsSubtotal field to verify against transaction.price
+            transaction.itemsSubtotal = items.reduce((sum, item) => {
+              return sum + (parseFloat(item.subtotal) || 0);
+            }, 0);
+          } else {
+            transaction.totalItems = 0;
+            transaction.totalQuantity = 0;
+            transaction.itemsSubtotal = 0;
+          }
         }
         
         return transaction;
@@ -428,6 +448,63 @@ window.API = {
         return null;
       }
     },
+    
+    /**
+     * Get multiple transactions with their items
+     * 
+     * @param {Array<string>} transactionIds - List of transaction IDs
+     * @returns {Promise<Array<Object>>} - List of transactions with their items
+     */
+    async getTransactionsWithItems(transactionIds) {
+      try {
+        if (!transactionIds || !transactionIds.length) {
+          return [];
+        }
+        
+        // Fetch transactions first
+        const transactions = await Promise.all(
+          transactionIds.map(id => this.getTransaction(id))
+        );
+        
+        // Fetch items for each transaction
+        const transactionsWithItems = await Promise.all(
+          transactions.filter(t => t) // Filter out any null transactions
+            .map(async (transaction) => {
+              try {
+                const items = await this.getTransactionItems(transaction.transaction_id);
+                
+                // Attach items and calculate metrics
+                transaction.items = items || [];
+                
+                if (items && items.length > 0) {
+                  transaction.totalItems = items.length;
+                  transaction.totalQuantity = items.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0);
+                  transaction.itemsSubtotal = items.reduce((sum, item) => sum + (parseFloat(item.subtotal) || 0), 0);
+                } else {
+                  transaction.totalItems = 0;
+                  transaction.totalQuantity = 0;
+                  transaction.itemsSubtotal = 0;
+                }
+                
+                return transaction;
+              } catch (e) {
+                console.error(`Error fetching items for transaction ${transaction.transaction_id}:`, e);
+                transaction.items = [];
+                transaction.totalItems = 0;
+                transaction.totalQuantity = 0;
+                transaction.itemsSubtotal = 0;
+                return transaction;
+              }
+            })
+        );
+        
+        return transactionsWithItems;
+      } catch (error) {
+        console.error('Error fetching transactions with items:', error);
+        return [];
+      }
+    },
+  
 
     /**
      * Get a user's transaction summary
