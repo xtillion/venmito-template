@@ -185,76 +185,59 @@ function setDefaultSummaryValues() {
  * Update the top items chart
  * @param {Array} items Top items data
  */
-function updateTopItemsChart(items) {
-  if (!window.topItemsChart || !Array.isArray(items)) {
-    console.warn('Cannot update top items chart: Chart not initialized or invalid data');
-    return;
-  }
-  
-  if (items.length === 0) {
-    window.topItemsChart.data.labels = ['No data available'];
-    window.topItemsChart.data.datasets[0].data = [0];
-    window.topItemsChart.update();
-    return;
-  }
-  
-  // Sort items by revenue (highest first) and take top 5
-  const topItems = items.sort((a, b) => (b.total_revenue || 0) - (a.total_revenue || 0)).slice(0, 5);
-  
-  // Prepare data for chart
-  const labels = topItems.map(item => item.item || 'Unknown');
-  const values = topItems.map(item => item.total_revenue || 0);
-  
-  // Generate colors
-  const backgroundColors = window.API.generateChartColors(labels.length);
-  const borderColors = backgroundColors.map(color => color.replace('0.7', '1'));
-  
-  // Update chart
-  window.topItemsChart.data.labels = labels;
-  window.topItemsChart.data.datasets[0].data = values;
-  window.topItemsChart.data.datasets[0].backgroundColor = backgroundColors;
-  window.topItemsChart.data.datasets[0].borderColor = borderColors;
-  window.topItemsChart.options.plugins.title.text = 'Top Items by Revenue';
-  window.topItemsChart.update();
-  console.log('Top items chart updated');
-}
+
 
 /**
  * Update the top stores chart
  * @param {Array} stores Top stores data
  */
-function updateTopStoresChart(stores) {
-  if (!window.topStoresChart || !Array.isArray(stores)) {
-    console.warn('Cannot update top stores chart: Chart not initialized or invalid data');
+function updateTopItemsChart(data) {
+  console.log('Dashboard: Updating top items chart');
+  
+  if (!window.topItemsChart) {
+    console.warn('Dashboard: topItemsChart not initialized');
     return;
   }
   
-  if (stores.length === 0) {
-    window.topStoresChart.data.labels = ['No data available'];
-    window.topStoresChart.data.datasets[0].data = [0];
-    window.topStoresChart.update();
+  if (!data || !Array.isArray(data) || data.length === 0) {
+    console.warn('Dashboard: No item data available for chart');
+    window.topItemsChart.data.labels = ['No data available'];
+    window.topItemsChart.data.datasets[0].data = [0];
+    window.topItemsChart.options.plugins.title.text = 'No Item Revenue Data Available';
+    window.topItemsChart.update();
     return;
   }
   
-  // Sort stores by revenue (highest first) and take top 5
-  const topStores = stores.sort((a, b) => (b.total_revenue || 0) - (a.total_revenue || 0)).slice(0, 5);
+  // Sort data by revenue and limit to top 5
+  const sortedData = [...data]
+    .sort((a, b) => {
+      const revenueA = parseFloat(a.total_revenue) || 0;
+      const revenueB = parseFloat(b.total_revenue) || 0;
+      return revenueB - revenueA;
+    })
+    .slice(0, 5);
   
-  // Prepare data for chart
-  const labels = topStores.map(store => store.store || 'Unknown');
-  const values = topStores.map(store => store.total_revenue || 0);
+  // Get item names (handling different possible API response formats)
+  const labels = sortedData.map(item => {
+    if (typeof item.item === 'string') {
+      return item.item;
+    } else if (item.item && Array.isArray(item.item)) {
+      return item.item[0] || 'Unknown';
+    } else {
+      return String(item.item || 'Unknown');
+    }
+  });
   
-  // Generate colors
-  const backgroundColors = window.API.generateChartColors(labels.length);
-  const borderColors = backgroundColors.map(color => color.replace('0.7', '1'));
+  // Get revenue values
+  const revenues = sortedData.map(item => parseFloat(item.total_revenue) || 0);
   
   // Update chart
-  window.topStoresChart.data.labels = labels;
-  window.topStoresChart.data.datasets[0].data = values;
-  window.topStoresChart.data.datasets[0].backgroundColor = backgroundColors;
-  window.topStoresChart.data.datasets[0].borderColor = borderColors;
-  window.topStoresChart.options.plugins.title.text = 'Top Stores by Revenue';
-  window.topStoresChart.update();
-  console.log('Top stores chart updated');
+  window.topItemsChart.data.labels = labels;
+  window.topItemsChart.data.datasets[0].data = revenues;
+  window.topItemsChart.options.plugins.title.text = 'Top Items by Revenue';
+  window.topItemsChart.update();
+  
+  console.log('Dashboard: Items chart updated with data');
 }
 
 /**
@@ -262,6 +245,8 @@ function updateTopStoresChart(stores) {
  * @param {Array} transactions Transaction data
  */
 function updateTransactionsTable(transactions) {
+  console.log('Dashboard: Updating transactions table');
+  
   const transactionsBody = document.getElementById('recent-transactions-table')?.querySelector('tbody');
   if (!transactionsBody) {
     console.warn('Dashboard: Could not find transactions table body');
@@ -283,16 +268,26 @@ function updateTransactionsTable(transactions) {
   // Take top 5
   const topTransactions = sortedTransactions.slice(0, 5);
   
-  // Display transactions
+  // Display transactions with item display based on new schema
   transactionsBody.innerHTML = topTransactions.map(transaction => {
-    // For item display, we need to handle the fact that items are now separate
-    let itemDisplay = 'Multiple items';
+    // Format item display based on available data
+    let itemDisplay = 'N/A';
     
-    // If we have transaction.items from our API, use the first item or indicate multiple items
-    if (transaction.items && transaction.items.length > 0) {
-      itemDisplay = transaction.items.length === 1 
-        ? transaction.items[0].item 
-        : `${transaction.items.length} items`;
+    // Check different possible item-related fields based on API response
+    if (transaction.first_item) {
+      // If the API returns the first item directly
+      itemDisplay = transaction.first_item;
+    } else if (transaction.item_count > 1) {
+      // If the API returns an item count
+      itemDisplay = `${transaction.item_count} items`;
+    } else if (transaction.items && transaction.items.length > 0) {
+      // If we have the items array (from a detailed fetch)
+      itemDisplay = transaction.items.length > 1 
+        ? `${transaction.items.length} items` 
+        : transaction.items[0].item;
+    } else if (transaction.item) {
+      // For backward compatibility with old schema
+      itemDisplay = transaction.item;
     }
     
     return `
@@ -392,57 +387,9 @@ async function loadDashboardData() {
       window.API.people.getUsers(1, 1000) // Get user count
     ]);
     
-    // Update summary cards
+    // Update summary cards with data from dashboardTotals
     if (dashboardTotals.status === 'fulfilled' && dashboardTotals.value) {
-      const totals = dashboardTotals.value;
-      
-      // Update summary cards with data
-      const userElement = document.getElementById('total-users');
-      if (userElement) {
-        // Use the total from users API if available, fallback to dashboard totals
-        let userCount = totals.total_users || 0;
-        if (users.status === 'fulfilled' && users.value && users.value.pagination) {
-          userCount = users.value.pagination.total || userCount;
-        }
-        userElement.textContent = window.API.formatLargeNumber(userCount);
-      }
-      
-      const transfersElement = document.getElementById('total-transfers');
-      if (transfersElement) {
-        // Get total transfers count - either from totals or calculate
-        let transferCount = totals.total_transfers || 0;
-        if (transferCount === 0 && transfers.status === 'fulfilled' && transfers.value) {
-          // If we have pagination info, use it
-          if (transfers.value.pagination) {
-            transferCount = transfers.value.pagination.total || 0;
-          } else if (transfers.value.data && transfers.value.data.length > 0) {
-            // Just show at least the count of what we have
-            transferCount = transfers.value.data.length;
-          }
-        }
-        transfersElement.textContent = window.API.formatLargeNumber(transferCount);
-      }
-      
-      const transactionsElement = document.getElementById('total-transactions');
-      if (transactionsElement) {
-        // Get total transactions count - either from totals or calculate
-        let transactionCount = totals.total_transactions || 0;
-        if (transactionCount === 0 && transactions.status === 'fulfilled' && transactions.value) {
-          // If we have pagination info, use it
-          if (transactions.value.pagination) {
-            transactionCount = transactions.value.pagination.total || 0;
-          } else if (transactions.value.data && transactions.value.data.length > 0) {
-            // Just show at least the count of what we have
-            transactionCount = transactions.value.data.length;
-          }
-        }
-        transactionsElement.textContent = window.API.formatLargeNumber(transactionCount);
-      }
-      
-      const revenueElement = document.getElementById('total-revenue');
-      if (revenueElement) {
-        revenueElement.textContent = window.API.formatCurrency(totals.total_revenue || 0);
-      }
+      updateSummaryCards(dashboardTotals.value);
     }
     
     // Update top items chart
@@ -457,25 +404,10 @@ async function loadDashboardData() {
     
     // Update transactions table with top transactions by amount
     if (topTransactions.status === 'fulfilled' && topTransactions.value) {
-      console.log('Processing top transactions for table');
-      
-      let transactionData = topTransactions.value;
-      
-      // Make sure we have an array
-      if (!Array.isArray(transactionData)) {
-        console.warn('Top transactions response is not an array:', transactionData);
-        transactionData = [];
-      }
-      
-      console.log(`Found ${transactionData.length} top transactions to display`);
-      updateTransactionsTable(transactionData);
+      updateTransactionsTable(topTransactions.value);
     } else {
-      console.warn('Failed to load top transactions data:', 
-                 topTransactions.status === 'rejected' ? topTransactions.reason : 'No data');
-      
-      // Try an alternative approach if the main one failed
+      // Fallback to loading transactions directly if analytics endpoint fails
       try {
-        console.log('Trying alternative approach to get top transactions');
         const result = await window.API.transactions.getTransactions(1, 100);
         if (result && result.data && Array.isArray(result.data)) {
           // Sort by price and get top 5
@@ -492,40 +424,25 @@ async function loadDashboardData() {
         }
       } catch (error) {
         console.error('Alternative transactions approach failed:', error);
-        
-        // Show error message in the table
-        const tableBody = document.querySelector('#recent-transactions-table tbody');
-        if (tableBody) {
-          tableBody.innerHTML = '<tr><td colspan="4" class="text-center text-danger">Failed to load transaction data</td></tr>';
-        }
+        showTableError('recent-transactions-table');
       }
     }
     
-    // Update transfers table with recent transfers
+    // Update transfers table
     if (transfers.status === 'fulfilled' && transfers.value) {
-      console.log('Processing transfers for recent transfers table');
-      
       let transferData = [];
       
-      // Check if the data is in the expected format
       if (transfers.value.data && Array.isArray(transfers.value.data)) {
         transferData = transfers.value.data;
       } else if (Array.isArray(transfers.value)) {
         transferData = transfers.value;
       }
       
-      console.log(`Found ${transferData.length} transfers to display`);
       updateTransfersTable(transferData);
     } else {
-      console.warn('Failed to load transfers data:', 
-                 transfers.status === 'rejected' ? transfers.reason : 'No data');
-      
-      // Show error message in the table
-      const tableBody = document.querySelector('#recent-transfers-table tbody');
-      if (tableBody) {
-        tableBody.innerHTML = '<tr><td colspan="4" class="text-center text-danger">Failed to load transfer data</td></tr>';
-      }
+      showTableError('recent-transfers-table');
     }
+    
   } catch (error) {
     console.error('Error loading dashboard data:', error);
     throw error;
