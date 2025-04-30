@@ -323,23 +323,33 @@ def get_store_summary(limit: int = 20):
 
 def get_top_transactions_by_amount(limit: int = 5):
     """
-    Get top transactions by amount.
+    Get top transactions by amount, including item information.
     
     Args:
         limit (int): Maximum number of transactions to return
     
     Returns:
-        list: List of top transaction records sorted by price
+        list: List of top transaction records sorted by price, with item details
     """
     query = """
     SELECT 
-        transaction_id, 
-        user_id, 
-        store,
-        price,
-        transaction_date
-    FROM transactions
-    ORDER BY price DESC
+        t.transaction_id, 
+        t.user_id, 
+        t.store,
+        t.price,
+        t.transaction_date,
+        COUNT(ti.item_id) AS item_count,
+        (
+            SELECT ti2.item
+            FROM transaction_items ti2
+            WHERE ti2.transaction_id = t.transaction_id
+            ORDER BY ti2.subtotal DESC
+            LIMIT 1
+        ) AS first_item
+    FROM transactions t
+    LEFT JOIN transaction_items ti ON t.transaction_id = ti.transaction_id
+    GROUP BY t.transaction_id, t.user_id, t.store, t.price, t.transaction_date
+    ORDER BY t.price DESC
     LIMIT %(limit)s
     """
     
