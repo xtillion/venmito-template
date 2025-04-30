@@ -376,6 +376,196 @@ class DataLoader:
             logger.error(f"Error loading transfers data: {str(e)}")
             raise
   
+    # Load transactions data into the database
+    # Note: This method assumes the transactions_df has already been processed
+    def load_transactions_df(self, transactions_df: pd.DataFrame) -> int:
+        """
+        Load transactions data into the database.
+        
+        Args:
+            transactions_df (pd.DataFrame): DataFrame containing transactions data
+        
+        Returns:
+            int: Number of records inserted
+        """
+        if transactions_df.empty:
+            logger.warning("No transactions data to load")
+            return 0
+        
+        # Define the column types for the new schema (without item-specific columns)
+        column_types = {
+            'transaction_id': str,
+            'user_id': int,
+            'store': str,
+            'price': float,
+            'transaction_date': datetime.datetime
+        }
+        
+        try:
+            # Ensure we have a database connection
+            if not self.conn or not self.cursor:
+                self.connect()
+            
+            # Check if old-style transaction data (with item, quantity columns)
+            old_schema_columns = ['item', 'quantity', 'price_per_item']
+            has_old_schema = all(col in transactions_df.columns for col in old_schema_columns)
+            
+            if has_old_schema:
+                logger.warning("Converting old schema transactions to new schema")
+                
+                # Create a copy without item-specific columns
+                clean_df = transactions_df.drop(columns=old_schema_columns, errors='ignore')
+                
+                # Prepare transaction items data for separate loading
+                items_data = []
+                for idx, row in transactions_df.iterrows():
+                    items_data.append({
+                        'transaction_id': row['transaction_id'],
+                        'item': row['item'],
+                        'quantity': row['quantity'],
+                        'price_per_item': row['price_per_item'] if 'price_per_item' in row else row['price'] / row['quantity'],
+                        'subtotal': row['price']
+                    })
+                
+                # Create transaction_items DataFrame and load it
+                if items_data:
+                    items_df = pd.DataFrame(items_data)
+                    try:
+                        self.load_transaction_items_df(items_df)
+                    except Exception as e:
+                        logger.error(f"Error loading derived transaction items: {str(e)}")
+            else:
+                # New schema already - just use the DataFrame as is
+                clean_df = transactions_df
+            
+            # Select and prepare only the columns we need
+            needed_columns = list(column_types.keys())
+            available_columns = [col for col in needed_columns if col in clean_df.columns]
+            
+            if len(available_columns) < len(needed_columns):
+                missing = set(needed_columns) - set(available_columns)
+                logger.warning(f"Missing columns in transactions data: {missing}")
+            
+            # Ensure all needed columns exist (add empty ones if needed)
+            for col in needed_columns:
+                if col not in clean_df.columns:
+                    if col == 'transaction_date':
+                        clean_df[col] = pd.Timestamp.now()
+                    else:
+                        clean_df[col] = None
+            
+            # For primary key columns (transaction_id), use DELETE + INSERT instead of UPSERT
+            # First get the list of transaction IDs we're about to insert
+            transaction_ids = tuple(clean_df['transaction_id'].unique())
+            
+            if transaction_ids:
+                # If there's only one ID, ensure it's still formatted as a tuple
+                if len(transaction_ids) == 1:
+                    delete_clause = f"transaction_id = '{transaction_ids[0]}'"
+                else:
+                    delete_clause = f"transaction_id IN {transaction_ids}"
+                    
+                # Delete any existing transactions with these IDs
+                delete_query = f"DELETE FROM transactions WHERE {delete_clause}"
+                self.cursor.execute(delete_query)
+                deleted_count = self.cursor.rowcount
+                logger.info(f"Deleted {deleted_count} existing transactions")
+            
+            # Simple insert query without ON CONFLICT clause
+            insert_query = """
+            INSERT INTO transactions (transaction_id, user_id, store, price, transaction_date)
+            VALUES (%s, %s, %s, %s, %s)
+            """
+            
+            # Prepare parameters for insertion
+            params = self.prepare_parameters(clean_df, column_types)
+            
+            # Execute batch insert
+            execute_batch(self.cursor, insert_query, params, page_size=100)
+            self.conn.commit()
+            
+            logger.info(f"Loaded {len(params)} transaction records into database")
+            return len(params)
+        except Exception as e:
+            if self.conn:
+                self.conn.rollback()
+            logger.error(f"Error loading transactions data: {str(e)}")
+            raise
+    def load_transaction_items_df(self, transaction_items_df: pd.DataFrame) -> int:
+        """
+        Load transaction items data into the database.
+        
+        Args:
+            transaction_items_df (pd.DataFrame): DataFrame containing transaction items data
+        
+        Returns:
+            int: Number of records inserted
+        """
+        if transaction_items_df.empty:
+            logger.warning("No transaction items data to load")
+            return 0
+        
+        # Define the column types for transaction items
+        column_types = {
+            'transaction_id': str,
+            'item': str,
+            'quantity': int,
+            'price_per_item': float,
+            'subtotal': float
+        }
+        
+        try:
+            # Ensure we have a database connection
+            if not self.conn or not self.cursor:
+                self.connect()
+            
+            # Ensure all required columns exist
+            for col in column_types.keys():
+                if col not in transaction_items_df.columns:
+                    if col == 'subtotal' and 'price_per_item' in transaction_items_df.columns and 'quantity' in transaction_items_df.columns:
+                        # Calculate subtotal if missing
+                        transaction_items_df['subtotal'] = transaction_items_df['price_per_item'] * transaction_items_df['quantity']
+                    else:
+                        logger.warning(f"Missing column '{col}' in transaction items data")
+                        transaction_items_df[col] = None
+            
+            # First, delete existing items for these transactions to avoid duplicates
+            transaction_ids = tuple(transaction_items_df['transaction_id'].unique())
+            
+            # Only perform delete if we have transaction IDs (avoid empty tuple error)
+            if transaction_ids:
+                # If there's only one ID, ensure it's still formatted as a tuple
+                if len(transaction_ids) == 1:
+                    delete_clause = f"transaction_id = '{transaction_ids[0]}'"
+                else:
+                    delete_clause = f"transaction_id IN {transaction_ids}"
+                    
+                delete_query = f"DELETE FROM transaction_items WHERE {delete_clause}"
+                self.cursor.execute(delete_query)
+                deleted_count = self.cursor.rowcount
+                logger.info(f"Deleted {deleted_count} existing transaction items for {len(transaction_ids)} transactions")
+            
+            # Simple insert query without ON CONFLICT clause
+            insert_query = """
+            INSERT INTO transaction_items (transaction_id, item, quantity, price_per_item, subtotal)
+            VALUES (%s, %s, %s, %s, %s)
+            """
+            
+            # Prepare parameters for insertion
+            params = self.prepare_parameters(transaction_items_df, column_types)
+            
+            # Execute batch insert
+            execute_batch(self.cursor, insert_query, params, page_size=100)
+            self.conn.commit()
+            
+            logger.info(f"Loaded {len(params)} transaction item records into database")
+            return len(params)
+        except Exception as e:
+            if self.conn:
+                self.conn.rollback()
+            logger.error(f"Error loading transaction items data: {str(e)}")
+            raise
+    
     def load_transactions(self) -> int:
         """
         Load transactions data from CSV into the database.
@@ -421,124 +611,6 @@ class DataLoader:
             logger.error(error_msg)
             raise DatabaseError(error_msg)
 
-    def load_transactions_df(self, transactions_df: pd.DataFrame) -> int:
-        """
-        Load transactions data into the database.
-        
-        Args:
-            transactions_df (pd.DataFrame): DataFrame containing transactions data
-        
-        Returns:
-            int: Number of records inserted
-        """
-        if transactions_df.empty:
-            logger.warning("No transactions data to load")
-            return 0
-        
-        # Based on the new schema (without item, quantity, price_per_item columns)
-        column_types = {
-            'transaction_id': str,
-            'user_id': int,  # This can be NULL if no matching user
-            'store': str,
-            'price': float,
-            'transaction_date': datetime.datetime,
-            'store_account_id': int  # This can be NULL
-        }
-        
-        # Filter the DataFrame to include only columns in column_types
-        valid_columns = [col for col in column_types.keys() if col in transactions_df.columns]
-        filtered_df = transactions_df[valid_columns]
-        
-        # Build the SQL query dynamically based on available columns
-        columns_str = ", ".join(valid_columns)
-        placeholders = ", ".join(["%s"] * len(valid_columns))
-        
-        query = f"""
-        INSERT INTO transactions ({columns_str})
-        VALUES ({placeholders})
-        ON CONFLICT (transaction_id) DO UPDATE SET
-        """
-        
-        # Add SET clauses for each column except transaction_id
-        update_clauses = []
-        for col in valid_columns:
-            if col != 'transaction_id':
-                update_clauses.append(f"{col} = EXCLUDED.{col}")
-        
-        query += ", ".join(update_clauses)
-        
-        try:
-            # Ensure we have a database connection
-            if not self.conn or not self.cursor:
-                self.connect()
-            
-            # Prepare parameters
-            params_list = []
-            for _, row in filtered_df.iterrows():
-                params = tuple(row[col] for col in valid_columns)
-                params_list.append(params)
-            
-            # Execute batch insert
-            execute_batch(self.cursor, query, params_list, page_size=100)
-            self.conn.commit()
-            
-            logger.info(f"Loaded {len(params_list)} transaction records into database")
-            return len(params_list)
-        except Exception as e:
-            if self.conn:
-                self.conn.rollback()
-            logger.error(f"Error loading transactions data: {str(e)}")
-            raise
-    def load_transaction_items_df(self, transaction_items_df: pd.DataFrame) -> int:
-        """
-        Load transaction items data into the database.
-        
-        Args:
-            transaction_items_df (pd.DataFrame): DataFrame containing transaction items data
-        
-        Returns:
-            int: Number of records inserted
-        """
-        if transaction_items_df.empty:
-            logger.warning("No transaction items data to load")
-            return 0
-        
-        column_types = {
-            'transaction_id': str,
-            'item': str,
-            'quantity': int,
-            'price_per_item': float,
-            'subtotal': float
-        }
-        
-        query = """
-        INSERT INTO transaction_items (transaction_id, item, quantity, price_per_item, subtotal)
-        VALUES (%s, %s, %s, %s, %s)
-        ON CONFLICT (transaction_id, item) DO UPDATE SET
-            quantity = EXCLUDED.quantity,
-            price_per_item = EXCLUDED.price_per_item,
-            subtotal = EXCLUDED.subtotal
-        """
-        
-        try:
-            # Ensure we have a database connection
-            if not self.conn or not self.cursor:
-                self.connect()
-                
-            # Prepare parameters
-            params = self.prepare_parameters(transaction_items_df, column_types)
-            
-            # Execute batch insert
-            execute_batch(self.cursor, query, params, page_size=100)
-            self.conn.commit()
-            
-            logger.info(f"Loaded {len(params)} transaction item records into database")
-            return len(params)
-        except Exception as e:
-            if self.conn:
-                self.conn.rollback()
-            logger.error(f"Error loading transaction items data: {str(e)}")
-            raise  
     def load_user_transfers_df(self, user_transfers_df: pd.DataFrame) -> int:
         """
         Load user transfer summaries into the database.
