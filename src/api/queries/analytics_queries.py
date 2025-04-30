@@ -321,30 +321,30 @@ def get_dashboard_totals():
     query = """
     WITH revenue_metrics AS  (
         SELECT 
-            ROUND(SUM(total_revenue), 2) AS total_revenue,
-            SUM(transaction_count) AS total_transactions,
-            ROUND(AVG(average_price), 2) AS average_transaction_value,
-            COUNT(DISTINCT item) AS unique_items_sold
+            COALESCE(ROUND(SUM(total_revenue), 2), 0) AS total_revenue,
+            COALESCE(SUM(transaction_count), 0) AS total_transactions,
+            COALESCE(ROUND(AVG(average_price), 2), 0) AS average_transaction_value,
+            COALESCE(COUNT(DISTINCT item), 0) AS unique_items_sold
         FROM item_summary
     ), 
     transfer_metrics AS (
         SELECT 
-            ROUND(SUM(total_volume), 2) AS total_transfers_amount,
-            SUM(transfer_count) AS total_transfers
+            COALESCE(ROUND(SUM(total_sent + total_received), 2), 0) AS total_transfers_amount,
+            COALESCE(SUM(transfer_count), 0) AS total_transfers
         FROM user_transfers
     ),
     user_metrics AS (
-        SELECT COUNT(*) AS total_users
+        SELECT COALESCE(COUNT(*), 0) AS total_users
         FROM people
     )
     SELECT 
-        rm.total_revenue,
-        rm.total_transactions,
-        rm.average_transaction_value,
-        rm.unique_items_sold,
-        tm.total_transfers_amount,
-        tm.total_transfers,
-        um.total_users
+        COALESCE(rm.total_revenue, 0) AS total_revenue,
+        COALESCE(rm.total_transactions, 0) AS total_transactions,
+        COALESCE(rm.average_transaction_value, 0) AS average_transaction_value,
+        COALESCE(rm.unique_items_sold, 0) AS unique_items_sold,
+        COALESCE(tm.total_transfers_amount, 0) AS total_transfers_amount,
+        COALESCE(tm.total_transfers, 0) AS total_transfers,
+        COALESCE(um.total_users, 0) AS total_users
     FROM revenue_metrics rm, 
          transfer_metrics tm, 
          user_metrics um;
