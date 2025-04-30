@@ -85,22 +85,39 @@ def upload_csv_to_db(csv_dir, data_types=None, db_config=None):
             
             if not os.path.exists(csv_file):
                 logger.warning(f"CSV file not found: {csv_file}")
+                results[data_type] = "SKIPPED: File not found"
+                continue
+                
+            # Check if file is empty
+            if os.path.getsize(csv_file) == 0:
+                logger.warning(f"Empty CSV file: {csv_file}")
+                results[data_type] = "SKIPPED: Empty file"
                 continue
             
             logger.info(f"Loading {data_type} from {csv_file}")
             try:
-                # Read CSV file into DataFrame
-                df = pd.read_csv(csv_file)
+                # Try to read CSV file, handling potential parsing errors
+                try:
+                    df = pd.read_csv(csv_file)
+                except pd.errors.EmptyDataError:
+                    logger.warning(f"No data in CSV file: {csv_file}")
+                    results[data_type] = "SKIPPED: No data in file"
+                    continue
+                except Exception as e:
+                    logger.error(f"Error parsing CSV file {csv_file}: {str(e)}")
+                    results[data_type] = f"ERROR: CSV parsing failed - {str(e)}"
+                    continue
                 
                 if df.empty:
-                    logger.warning(f"Empty CSV file: {csv_file}")
-                    results[data_type] = 0
+                    logger.warning(f"Empty DataFrame from {csv_file}")
+                    results[data_type] = "SKIPPED: Empty DataFrame"
                     continue
                 
                 # Get appropriate loader method
                 method_name = available_types.get(data_type)
                 if not method_name or not hasattr(loader, method_name):
                     logger.warning(f"No loader method found for {data_type}")
+                    results[data_type] = "SKIPPED: No loader method"
                     continue
                 
                 # Call the loader method
