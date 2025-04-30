@@ -82,23 +82,34 @@
 
 <!-- Transaction Details Modal -->
 <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="transactionModalLabel">Transaction Details</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p><strong>Transaction ID:</strong> <span id="transaction-id"></span></p>
-                <p><strong>User:</strong> <span id="transaction-user"></span></p>
-                <p><strong>Item:</strong> <span id="transaction-item"></span></p>
-                <p><strong>Store:</strong> <span id="transaction-store"></span></p>
-                <p><strong>Price:</strong> $<span id="transaction-price"></span></p>
-                <p><strong>Quantity:</strong> <span id="transaction-quantity"></span></p>
-                <p><strong>Price Per Item:</strong> $<span id="transaction-price-per-item"></span></p>
-
-                <div class="mt-4">
-                    <a href="#" id="user-details-link" class="btn btn-outline-primary">View User Profile</a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>Transaction Information</h6>
+                        <p><strong>Transaction ID:</strong> <span id="transaction-id"></span></p>
+                        <p><strong>User:</strong> <span id="transaction-user"></span></p>
+                        <p><strong>Store:</strong> <span id="transaction-store"></span></p>
+                        <p><strong>Total Price:</strong> $<span id="transaction-price"></span></p>
+                        <p><strong>Date:</strong> <span id="transaction-date"></span></p>
+                        
+                        <div class="mt-4">
+                            <a href="#" id="user-details-link" class="btn btn-outline-primary btn-sm">View User Profile</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <h6>Items</h6>
+                        <div id="transaction-items">
+                            <!-- Items will be inserted here by JavaScript -->
+                            <p class="text-center text-muted">Loading items...</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
