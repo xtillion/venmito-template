@@ -113,6 +113,12 @@ class DataLoader:
         """
         params = []
         
+        # Add detailed logging for dates
+        if 'transaction_date' in data.columns:
+            # Log the date values and types for debugging
+            logger.info(f"Transaction date column dtype: {data['transaction_date'].dtype}")
+            logger.info(f"Transaction date sample values: {data['transaction_date'].head().tolist()}")
+        
         for _, row in data.iterrows():
             param_tuple = []
             
@@ -126,6 +132,42 @@ class DataLoader:
                 # Handle null values
                 if pd.isna(value):
                     param_tuple.append(None)
+                elif dtype == datetime.date or dtype == datetime.datetime:
+                    # Improved date/datetime handling
+                    try:
+                        if pd.isna(value):
+                            param_tuple.append(None)
+                        elif isinstance(value, str):
+                            # Try parsing the date string explicitly
+                            try:
+                                # First try with dateutil parser
+                                parsed_date = parse(value)
+                                param_tuple.append(parsed_date.date() if dtype == datetime.date else parsed_date)
+                                logger.debug(f"Parsed date string '{value}' to {parsed_date}")
+                            except:
+                                # Fallback to pandas datetime
+                                parsed_date = pd.to_datetime(value)
+                                param_tuple.append(parsed_date.date() if dtype == datetime.date else parsed_date)
+                                logger.debug(f"Parsed date string with pandas '{value}' to {parsed_date}")
+                        elif isinstance(value, pd.Timestamp):
+                            # Handle pandas Timestamp objects
+                            param_tuple.append(value.date() if dtype == datetime.date else value)
+                            logger.debug(f"Converted pandas Timestamp {value} to {value.date() if dtype == datetime.date else value}")
+                        elif isinstance(value, (datetime.datetime, datetime.date)):
+                            # Handle python datetime objects
+                            if dtype == datetime.date and isinstance(value, datetime.datetime):
+                                param_tuple.append(value.date())
+                                logger.debug(f"Converted datetime {value} to date {value.date()}")
+                            else:
+                                param_tuple.append(value)
+                                logger.debug(f"Used date/datetime as is: {value}")
+                        else:
+                            logger.warning(f"Unexpected date value type {type(value)}: {value}, using None")
+                            param_tuple.append(None)
+                    except Exception as e:
+                        logger.error(f"Error processing date value '{value}': {str(e)}")
+                        param_tuple.append(None)
+                # Continue with other data types handling...
                 elif dtype == int:
                     # For integer columns that can be null, handle empty strings and NaN
                     if value == '' or pd.isna(value):
@@ -161,26 +203,6 @@ class DataLoader:
                             param_tuple.append(bool(value) if not pd.isna(value) else None)
                         except (ValueError, TypeError):
                             param_tuple.append(None)
-                elif dtype == datetime.date or dtype == datetime.datetime:
-                    # Handle date/datetime conversion
-                    try:
-                        if pd.isna(value):
-                            param_tuple.append(None)
-                        elif isinstance(value, str):
-                            parsed_date = parse(value)
-                            if dtype == datetime.date:
-                                param_tuple.append(parsed_date.date())
-                            else:
-                                param_tuple.append(parsed_date)
-                        elif isinstance(value, (datetime.datetime, datetime.date)):
-                            if dtype == datetime.date and isinstance(value, datetime.datetime):
-                                param_tuple.append(value.date())
-                            else:
-                                param_tuple.append(value)
-                        else:
-                            param_tuple.append(None)
-                    except:
-                        param_tuple.append(None)
                 else:
                     # For other types, try direct conversion or None if not possible
                     try:
@@ -380,7 +402,7 @@ class DataLoader:
     # Note: This method assumes the transactions_df has already been processed
     def load_transactions_df(self, transactions_df: pd.DataFrame) -> int:
         """
-        Load transactions data into the database.
+        Load transactions data into the database with careful type handling.
         
         Args:
             transactions_df (pd.DataFrame): DataFrame containing transactions data
@@ -392,105 +414,130 @@ class DataLoader:
             logger.warning("No transactions data to load")
             return 0
         
-        # Define the column types for the new schema (without item-specific columns)
-        column_types = {
-            'transaction_id': str,
-            'user_id': int,
-            'store': str,
-            'price': float,
-            'transaction_date': datetime.datetime
-        }
-        
         try:
             # Ensure we have a database connection
             if not self.conn or not self.cursor:
                 self.connect()
             
-            # Check if old-style transaction data (with item, quantity columns)
-            old_schema_columns = ['item', 'quantity', 'price_per_item']
-            has_old_schema = all(col in transactions_df.columns for col in old_schema_columns)
+            # Work with a copy of the dataframe to avoid modifying the original
+            clean_df = transactions_df.copy()
             
-            if has_old_schema:
-                logger.warning("Converting old schema transactions to new schema")
-                
-                # Create a copy without item-specific columns
-                clean_df = transactions_df.drop(columns=old_schema_columns, errors='ignore')
-                
-                # Prepare transaction items data for separate loading
-                items_data = []
-                for idx, row in transactions_df.iterrows():
-                    items_data.append({
-                        'transaction_id': row['transaction_id'],
-                        'item': row['item'],
-                        'quantity': row['quantity'],
-                        'price_per_item': row['price_per_item'] if 'price_per_item' in row else row['price'] / row['quantity'],
-                        'subtotal': row['price']
-                    })
-                
-                # Create transaction_items DataFrame and load it
-                if items_data:
-                    items_df = pd.DataFrame(items_data)
-                    try:
-                        self.load_transaction_items_df(items_df)
-                    except Exception as e:
-                        logger.error(f"Error loading derived transaction items: {str(e)}")
+            # Handle date column - preserve original dates
+            if 'date' in clean_df.columns and 'transaction_date' not in clean_df.columns:
+                logger.info(f"Converting 'date' column to 'transaction_date'. Sample dates: {clean_df['date'].head().tolist()}")
+                clean_df['transaction_date'] = pd.to_datetime(clean_df['date']).dt.date
+                clean_df = clean_df.drop(columns=['date'])
+            elif 'transaction_date' in clean_df.columns:
+                # Ensure transaction_date is properly formatted as date objects
+                logger.info(f"Ensuring 'transaction_date' is correct format. Current values: {clean_df['transaction_date'].head().tolist()}")
+                clean_df['transaction_date'] = pd.to_datetime(clean_df['transaction_date']).dt.date
             else:
-                # New schema already - just use the DataFrame as is
-                clean_df = transactions_df
+                logger.warning("No date column found, using current date")
+                clean_df['transaction_date'] = datetime.date.today()
             
-            # Select and prepare only the columns we need
-            needed_columns = list(column_types.keys())
-            available_columns = [col for col in needed_columns if col in clean_df.columns]
+            # Log the date range for verification
+            min_date = clean_df['transaction_date'].min() if not clean_df['transaction_date'].isna().all() else None
+            max_date = clean_df['transaction_date'].max() if not clean_df['transaction_date'].isna().all() else None
+            logger.info(f"Transaction dates range: {min_date} to {max_date}")
             
-            if len(available_columns) < len(needed_columns):
-                missing = set(needed_columns) - set(available_columns)
-                logger.warning(f"Missing columns in transactions data: {missing}")
+            # Check and clean each column to prevent type errors
+            # Handle user_id - ensure valid integers and replace nulls with None
+            if 'user_id' in clean_df.columns:
+                # Replace empty strings and NaN with None for the database
+                clean_df['user_id'] = clean_df['user_id'].replace('', None)
+                clean_df['user_id'] = clean_df['user_id'].where(pd.notna(clean_df['user_id']), None)
+                
+                # Convert to integers where possible
+                def safe_int_convert(val):
+                    if pd.isna(val):
+                        return None
+                    try:
+                        return int(float(val))
+                    except (ValueError, TypeError):
+                        return None
+                
+                # Apply safe conversion to user_id
+                clean_df['user_id'] = clean_df['user_id'].apply(safe_int_convert)
+                
+                # Log some stats about user_id
+                non_null = clean_df['user_id'].count()
+                total = len(clean_df)
+                logger.info(f"user_id: {non_null}/{total} non-null values")
             
-            # Ensure all needed columns exist (add empty ones if needed)
-            for col in needed_columns:
-                if col not in clean_df.columns:
-                    if col == 'transaction_date':
-                        clean_df[col] = pd.Timestamp.now()
-                    else:
-                        clean_df[col] = None
+            # Ensure price is properly formatted as float
+            if 'price' in clean_df.columns:
+                clean_df['price'] = pd.to_numeric(clean_df['price'], errors='coerce')
+                clean_df['price'] = clean_df['price'].fillna(0.0)
+                logger.info(f"Price range: {clean_df['price'].min()} to {clean_df['price'].max()}")
             
-            # For primary key columns (transaction_id), use DELETE + INSERT instead of UPSERT
-            # First get the list of transaction IDs we're about to insert
+            # Delete any existing transactions with these IDs
             transaction_ids = tuple(clean_df['transaction_id'].unique())
-            
             if transaction_ids:
-                # If there's only one ID, ensure it's still formatted as a tuple
+                # Format the delete clause properly
                 if len(transaction_ids) == 1:
                     delete_clause = f"transaction_id = '{transaction_ids[0]}'"
                 else:
                     delete_clause = f"transaction_id IN {transaction_ids}"
-                    
-                # Delete any existing transactions with these IDs
+                
                 delete_query = f"DELETE FROM transactions WHERE {delete_clause}"
                 self.cursor.execute(delete_query)
                 deleted_count = self.cursor.rowcount
                 logger.info(f"Deleted {deleted_count} existing transactions")
             
-            # Simple insert query without ON CONFLICT clause
-            insert_query = """
-            INSERT INTO transactions (transaction_id, user_id, store, price, transaction_date)
-            VALUES (%s, %s, %s, %s, %s)
-            """
+            # Insert the transactions row by row to better handle errors
+            inserted_count = 0
+            errors = []
             
-            # Prepare parameters for insertion
-            params = self.prepare_parameters(clean_df, column_types)
+            for idx, row in clean_df.iterrows():
+                try:
+                    query = """
+                    INSERT INTO transactions (transaction_id, user_id, store, price, transaction_date)
+                    VALUES (%s, %s, %s, %s, %s)
+                    """
+                    
+                    # Create parameters with careful handling of each value
+                    params = (
+                        str(row.get('transaction_id')),
+                        row.get('user_id'),  # This should be None or an integer
+                        str(row.get('store', '')),
+                        float(row.get('price', 0.0)),
+                        row.get('transaction_date')
+                    )
+                    
+                    # Execute single insert
+                    self.cursor.execute(query, params)
+                    inserted_count += 1
+                    
+                    # Commit every 100 rows
+                    if inserted_count % 100 == 0:
+                        self.conn.commit()
+                        logger.info(f"Committed {inserted_count} transactions")
+                    
+                except Exception as e:
+                    # Log the error and continue with other rows
+                    error_msg = f"Error inserting transaction {row.get('transaction_id')}: {str(e)}"
+                    logger.error(error_msg)
+                    errors.append(error_msg)
+                    
+                    # If too many errors, stop processing
+                    if len(errors) > 10:
+                        logger.error(f"Too many errors ({len(errors)}), stopping processing")
+                        break
             
-            # Execute batch insert
-            execute_batch(self.cursor, insert_query, params, page_size=100)
+            # Final commit
             self.conn.commit()
             
-            logger.info(f"Loaded {len(params)} transaction records into database")
-            return len(params)
+            if errors:
+                logger.warning(f"Completed with {len(errors)} errors out of {len(clean_df)} transactions")
+            
+            logger.info(f"Successfully loaded {inserted_count} transaction records into database")
+            return inserted_count
         except Exception as e:
             if self.conn:
                 self.conn.rollback()
             logger.error(f"Error loading transactions data: {str(e)}")
             raise
+
     def load_transaction_items_df(self, transaction_items_df: pd.DataFrame) -> int:
         """
         Load transaction items data into the database.
