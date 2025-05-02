@@ -538,7 +538,7 @@ class DataLoader:
             logger.error(f"Error loading transactions data: {str(e)}")
             raise
 
-    def load_transaction_items_df(self, transaction_items_df: pd.DataFrame) -> int:
+    def load_transaction_items_df(self, transaction_items_df: pd.DataFrame) -> int: 
         """
         Load transaction items data into the database.
         
