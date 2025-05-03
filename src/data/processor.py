@@ -423,7 +423,68 @@ class TransactionsProcessor(DataProcessor):
                     logger.info("Converted user_id to integer type")
             except Exception as e:
                 self._add_error(f"Failed to convert user_id to integer: {str(e)}")
-    
+
+    def _add_user_references_to_transactions(self) -> pd.DataFrame:
+        """
+        Add user_id references to transactions based on phone.
+        
+        Returns:
+            pd.DataFrame: Transactions DataFrame with user_id references
+        """
+        if self.transactions_df is None:
+            logger.info("No transactions data provided for user reference merging")
+            return pd.DataFrame()
+        
+        transactions_df = self.transactions_df.copy()
+        
+        # Check if user_id already exists and is populated
+        if 'user_id' in transactions_df.columns and not transactions_df['user_id'].isna().all():
+            logger.info("Transactions already have user_id references")
+            return transactions_df
+        
+        # Initialize user_id column if it doesn't exist
+        if 'user_id' not in transactions_df.columns:
+            transactions_df['user_id'] = None
+        
+        # Check for phone reference
+        if 'phone' in transactions_df.columns and 'phone' in self.people_df.columns:
+            phone_map = self.people_df.set_index('phone')['user_id'].to_dict()
+            
+            for index, row in transactions_df.iterrows():
+                if pd.notna(row['phone']) and row['phone'] in phone_map:
+                    transactions_df.at[index, 'user_id'] = phone_map[row['phone']]
+            
+            # Log warning for transactions without user_id
+            missing_user_id = transactions_df['user_id'].isna().sum()
+            if missing_user_id > 0:
+                self._add_error(f"Could not find user_id for {missing_user_id} transactions")
+            
+            logger.info("Added user references to transactions based on phone")
+        
+        return transactions_df
+
+    def _standardize_phone(self) -> None:
+        """Standardize phone field in transactions to match the format in people table."""
+        if 'phone' in self.df.columns:
+            try:
+                # Apply same phone standardization as in PeopleProcessor
+                def clean_phone(phone):
+                    if pd.isna(phone):
+                        return None
+                    
+                    # Convert to string and remove non-numeric characters except + for country code
+                    phone_str = str(phone)
+                    # Keep + at the beginning if it exists
+                    if phone_str.startswith('+'):
+                        return '+' + re.sub(r'[^0-9]', '', phone_str[1:])
+                    else:
+                        return re.sub(r'[^0-9]', '', phone_str)
+                
+                self._apply_to_column('phone', clean_phone, 
+                                    "Error standardizing phone number in column")
+                logger.info("Standardized phone numbers in transactions")
+            except Exception as e:
+                self._add_error(f"Failed to standardize phone numbers: {str(e)}")
     def _standardize_numeric_fields(self) -> None:
         """Standardize numeric fields (price, quantity, price_per_item)."""
         numeric_fields = ['price', 'quantity', 'price_per_item']
@@ -611,6 +672,7 @@ class TransactionsProcessor(DataProcessor):
             self._standardize_numeric_fields()
             self._standardize_item_and_store_names()
             self._standardize_date()
+            self._standardize_phone()  # Add this line
             self._validate_price_and_quantity()
             
             # Process transaction items
@@ -629,7 +691,7 @@ class TransactionsProcessor(DataProcessor):
             logger.error(error_msg)
             self._add_error(error_msg)
             return {'transactions': self.df, 'transaction_items': pd.DataFrame()}
-
+    
 # Dictionary mapping data types to processor classes
 PROCESSOR_MAP = {
     'people': PeopleProcessor,
