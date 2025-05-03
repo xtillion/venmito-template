@@ -252,31 +252,39 @@ class UserReferencesMerger(DataMerger):
         
         transactions_df = self.transactions_df.copy()
         
-        # Check if user_id already exists and is populated
-        if 'user_id' in transactions_df.columns and not transactions_df['user_id'].isna().all():
-            logger.info("Transactions already have user_id references")
-            return transactions_df
-        
         # Initialize user_id column if it doesn't exist
         if 'user_id' not in transactions_df.columns:
             transactions_df['user_id'] = None
         
         # Check for phone reference
         if 'phone' in transactions_df.columns and 'phone' in self.people_df.columns:
+            # Create a mapping from phone numbers to user IDs
             phone_map = self.people_df.set_index('phone')['user_id'].to_dict()
             
-            for index, row in transactions_df.iterrows():
-                if pd.notna(row['phone']) and row['phone'] in phone_map:
-                    transactions_df.at[index, 'user_id'] = phone_map[row['phone']]
+            # Keep track of matches for logging
+            match_count = 0
             
-            # Drop phone column since we now have user_id
-            transactions_df.drop(columns=['phone'], inplace=True, errors='ignore')
-            logger.info("Added user references to transactions based on phone")
-        
-        # Log warning for transactions without user_id
-        missing_user_id = transactions_df['user_id'].isna().sum()
-        if missing_user_id > 0:
-            self._add_error(f"Could not find user_id for {missing_user_id} transactions")
+            for index, row in transactions_df.iterrows():
+                # Only update rows where user_id is missing but phone is available
+                if pd.isna(row['user_id']) and pd.notna(row['phone']) and row['phone'] in phone_map:
+                    transactions_df.at[index, 'user_id'] = phone_map[row['phone']]
+                    match_count += 1
+            
+            # Log the results
+            if match_count > 0:
+                logger.info(f"Added user references to {match_count} transactions based on phone")
+            
+            # Important: Do NOT drop the phone column, as we want to keep it for future reference
+            
+            # Log warning for transactions still missing user_id
+            missing_user_id = transactions_df['user_id'].isna().sum()
+            if missing_user_id > 0:
+                self._add_error(f"Could not find user_id for {missing_user_id} transactions")
+        else:
+            if 'phone' not in transactions_df.columns:
+                logger.warning("No 'phone' column found in transactions data for user reference merging")
+            if 'phone' not in self.people_df.columns:
+                logger.warning("No 'phone' column found in people data for user reference merging")
         
         return transactions_df
     
