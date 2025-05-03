@@ -1,12 +1,12 @@
 # src/services/service_factory.py
 from typing import Dict, Any, Optional, Type
 
-from src.services.data_processing_service import (
-    DataProcessingService, 
-    PeopleProcessingService,
-    TransactionProcessingService,
-    TransferProcessingService
-)
+from src.services.data_processing_service import DataProcessingService
+from src.services.people_service import PeopleProcessingService
+from src.services.transaction_service import TransactionProcessingService
+from src.services.transfer_service import TransferProcessingService
+from src.data.processor import process_dataframe
+
 from src.data.validator import get_validator
 
 class ServiceFactory:

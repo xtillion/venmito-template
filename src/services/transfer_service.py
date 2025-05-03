@@ -3,7 +3,7 @@ import pandas as pd
 
 from src.services.data_processing_service import DataProcessingService
 from src.data.processor import process_dataframe
-from src.data.merger import TransferMerger
+from src.data.merger import UserTransfersMerger
 
 class TransferProcessingService(DataProcessingService):
     """Service for processing transfer data."""
@@ -27,6 +27,6 @@ class TransferProcessingService(DataProcessingService):
     def merge_transfer_data(self, json_data: pd.DataFrame, yml_data: pd.DataFrame) -> Dict[str, pd.DataFrame]:
         """Merge transfer data from multiple sources."""
         # Create and use a TransferMerger
-        merger = TransferMerger(json_data, yml_data)
+        merger = UserTransfersMerger(json_data, yml_data)
         # Return the full dictionary result
         return merger.merge()

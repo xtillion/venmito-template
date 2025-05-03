@@ -2,7 +2,7 @@ from typing import List, Dict, Any
 import pandas as pd
 
 from src.data.processor import process_dataframe
-from src.data.merger import TransactionMerger
+from src.data.merger import ItemSummaryMerger
 from src.services.data_processing_service import DataProcessingService
 
 class TransactionProcessingService(DataProcessingService):
@@ -32,6 +32,6 @@ class TransactionProcessingService(DataProcessingService):
             return merged_result.get('transaction', pd.DataFrame())
         
         # Otherwise, create and use a TransactionMerger
-        merger = TransactionMerger(json_data, yml_data)
+        merger = ItemSummaryMerger(json_data, yml_data)
         result = merger.merge()
         return result.get('transaction', pd.DataFrame())
