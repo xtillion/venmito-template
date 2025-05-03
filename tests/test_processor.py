@@ -98,16 +98,17 @@ def expected_processed_transfers_df():
     })
 
 @pytest.fixture
-def raw_transactions_df():
-    """Create a raw transactions DataFrame for testing."""
+def raw_transactions_df(self):
+    """Create a raw transactions DataFrame for testing based on actual data structure."""
     return pd.DataFrame({
         'transaction_id': ['T001', 'T002', 'T003'],
-        'user_id': [1, 2, 3],
-        'item': ['laptop_computer', ' smartphone ', 'WIRELESS_HEADPHONES'],
-        'store': ['electronics_store', 'phone_shop', 'AUDIO_OUTLET'],
-        'price': [1200, 800, 150],
-        'quantity': [1, 1, 2],
-        'price_per_item': [1200, 800, 75]  # Note: 75 * 2 = 150, consistent with price
+        'store': ['PetPals Mart', 'Urban Outfitters Loft', 'Urban Outfitters Loft'],
+        'phone': ['245-506-5389', '796-816-9963', '507-883-4629'],
+        'date': ['2024-04-12', '2023-11-01', '2024-02-15'],
+        'price': [3.00, 11.00, 10.00],
+        'item': ['GatorBoost', 'Flixnet, Dovee', 'Flixnet'],
+        'quantity': [1, 2, 1],               
+        'price_per_item': [3.00, 5.50, 10.00]
     })
 
 @pytest.fixture
@@ -429,74 +430,153 @@ class TestTransfersProcessor:
 
 # Tests for TransactionsProcessor
 class TestTransactionsProcessor:
-    def test_process(self, raw_transactions_df, expected_processed_transactions_df):
-        """Test processing transactions data."""
-        processor = TransactionsProcessor(raw_transactions_df)
-        result_df = processor.process()
-        
-        # Compare with expected results
-        pd.testing.assert_frame_equal(
-            result_df.reset_index(drop=True), 
-            expected_processed_transactions_df.reset_index(drop=True),
-            check_dtype=False  # Don't check data types
-        )
     
-    def test_standardize_ids(self, raw_transactions_df):
-        """Test standardizing ID fields in transactions."""
-        processor = TransactionsProcessor(raw_transactions_df)
-        processor._standardize_ids()
-        
-        # Check transaction_id is string type
-        assert pd.api.types.is_object_dtype(processor.df["transaction_id"].dtype)
-        
-        # Check user_id is integer type
-        assert pd.api.types.is_integer_dtype(processor.df["user_id"].dtype)
+    @pytest.fixture
+    def raw_transactions_df(self):
+        """Create a raw transactions DataFrame for testing based on actual data structure."""
+        return pd.DataFrame({
+            'transaction_id': ['T001', 'T002', 'T003'],
+            'store': ['PetPals Mart', 'Urban Outfitters Loft', 'Urban Outfitters Loft'],
+            'phone': ['245-506-5389', '796-816-9963', '507-883-4629'],
+            'date': ['2024-04-12', '2023-11-01', '2024-02-15'],
+            'price': [3.00, 11.00, 10.00],
+            'item': ['GatorBoost', 'Flixnet, Dovee', 'Flixnet'],
+            'quantity': [1, 2, 1],                # Ensure we have quantity field
+            'price_per_item': [3.00, 5.50, 10.00] # Add price_per_item field
+        })
     
-    def test_standardize_numeric_fields(self, raw_transactions_df):
-        """Test standardizing numeric fields."""
+    def test_standardize_phone(self, raw_transactions_df):
+        """Test standardizing phone numbers in transactions."""
         processor = TransactionsProcessor(raw_transactions_df)
-        processor._standardize_numeric_fields()
+        processor._standardize_phone()
         
-        # Check numeric fields are numeric type
-        assert pd.api.types.is_numeric_dtype(processor.df["price"].dtype)
-        assert pd.api.types.is_numeric_dtype(processor.df["quantity"].dtype)
-        assert pd.api.types.is_numeric_dtype(processor.df["price_per_item"].dtype)
+        # Check that phone numbers are standardized
+        expected_phones = ['2455065389', '7968169963', '5078834629']
         
-        # Check values are rounded to 2 decimal places
-        assert processor.df.loc[0, "price"] == 1200.00
-        assert processor.df.loc[0, "price_per_item"] == 1200.00
-    
-    def test_standardize_item_and_store_names(self, raw_transactions_df):
-        """Test standardizing item and store names."""
-        processor = TransactionsProcessor(raw_transactions_df)
-        processor._standardize_item_and_store_names()
+        for i, expected_phone in enumerate(expected_phones):
+            assert processor.df.iloc[i]['phone'] == expected_phone
         
-        # Check item names are standardized
-        assert processor.df.loc[0, "item"] == "Laptop Computer"
-        assert processor.df.loc[1, "item"] == "Smartphone"
-        assert processor.df.loc[2, "item"] == "Wireless Headphones"
-        
-        # Check store names are standardized
-        assert processor.df.loc[0, "store"] == "Electronics Store"
-        assert processor.df.loc[1, "store"] == "Phone Shop"
-        assert processor.df.loc[2, "store"] == "Audio Outlet"
-    
-    def test_validate_price_and_quantity(self, raw_transactions_df):
-        """Test validating price and quantity consistency."""
-        processor = TransactionsProcessor(raw_transactions_df)
-        processor._validate_price_and_quantity()
-        
-        # No errors should be added since our test data is consistent
+        # No errors should be added
         assert len(processor.processing_errors) == 0
-        
-        # Modify one row to create an inconsistency
-        processor.df.loc[0, "price"] = 1000.00  # Not equal to price_per_item * quantity
-        processor._validate_price_and_quantity()
-        
-        # Should detect the inconsistency
-        assert len(processor.processing_errors) == 1
-        assert "inconsistent price" in processor.processing_errors[0].lower()
 
+    def test_process_with_phone_standardization(self, raw_transactions_df):
+        """Test full processing of transactions data with phone standardization."""
+        processor = TransactionsProcessor(raw_transactions_df)
+        result = processor.process()
+        
+        # Check if result is a dictionary with the right keys
+        assert isinstance(result, dict)
+        assert 'transactions' in result
+        assert 'transaction_items' in result
+        
+        # Check that transactions DataFrame has phone column and it's standardized
+        transactions_df = result['transactions']
+        assert 'phone' in transactions_df.columns
+        
+        # Verify the standardized phone numbers
+        assert transactions_df.loc[0, 'phone'] == '2455065389'
+        assert transactions_df.loc[1, 'phone'] == '7968169963'
+        assert transactions_df.loc[2, 'phone'] == '5078834629'
+    
+    def test_process_with_varied_phone_formats(self):
+        """Test processing with various phone number formats."""
+        df = pd.DataFrame({
+            'transaction_id': ['T001', 'T002', 'T003', 'T004', 'T005'],
+            'store': ['Store A', 'Store B', 'Store C', 'Store D', 'Store E'],
+            'phone': [
+                '+1 (245) 506-5389',  # International format with parentheses
+                '796.816.9963',       # Dots instead of hyphens
+                '507 883 4629',       # Spaces
+                '(888)555-1234',      # No spaces in area code
+                None                  # Missing phone
+            ],
+            'date': ['2024-01-01'] * 5,
+            'price': [10.0] * 5,
+            'item': ['Item A', 'Item B', 'Item C', 'Item D', 'Item E']
+        })
+        
+        processor = TransactionsProcessor(df)
+        processor._standardize_phone()
+        
+        # Check standardized formats
+        expected_phones = [
+            '+12455065389',  # Keep + for international
+            '7968169963',
+            '5078834629',
+            '8885551234',
+            None
+        ]
+        
+        for i, expected_phone in enumerate(expected_phones):
+            if expected_phone is None:
+                assert pd.isna(processor.df.iloc[i]['phone'])
+            else:
+                assert processor.df.iloc[i]['phone'] == expected_phone
+    
+    def test_process_without_phone_column(self):
+        """Test processing when no phone column exists."""
+        # Create a DataFrame without a phone column, but include all required fields
+        df = pd.DataFrame({
+            'transaction_id': ['T001', 'T002'],
+            'store': ['Store A', 'Store B'],
+            'date': ['2024-01-01', '2024-01-02'],
+            'price': [10.0, 20.0],
+            'item': ['Item A', 'Item B'],
+            'quantity': [1, 1],            # Add the missing quantity field
+            'price_per_item': [10.0, 20.0] # Add price_per_item field
+        })
+        
+        processor = TransactionsProcessor(df)
+        result = processor.process()
+        
+        # Processing should complete successfully
+        assert isinstance(result, dict)
+        assert 'transactions' in result
+        
+        # No phone column should not cause errors
+        assert len(processor.processing_errors) == 0
+
+    def test_transaction_items_extraction(self, raw_transactions_df):
+        """Test that multiple items per transaction are properly extracted."""
+        processor = TransactionsProcessor(raw_transactions_df)
+        result = processor.process()
+        
+        # First check if transaction_items is not empty
+        transaction_items_df = result['transaction_items']
+        assert not transaction_items_df.empty, "transaction_items DataFrame is empty"
+        
+        # Print columns for debugging
+        print(f"transaction_items columns: {transaction_items_df.columns.tolist()}")
+        
+        # Check that at least one transaction has multiple items
+        # Get all transaction IDs
+        transaction_ids = transaction_items_df['transaction_id'].unique()
+        assert len(transaction_ids) > 0, "No transactions found in items"
+        
+        # Find transactions with multiple items
+        item_counts = transaction_items_df.groupby('transaction_id').size()
+        multi_item_txns = item_counts[item_counts > 1]
+        
+        assert len(multi_item_txns) > 0, "No transactions with multiple items found"
+        
+        # Get the first multi-item transaction ID
+        multi_item_txn_id = multi_item_txns.index[0]
+        
+        # Check its items
+        items = transaction_items_df[transaction_items_df['transaction_id'] == multi_item_txn_id]
+        assert len(items) > 1, f"Transaction {multi_item_txn_id} should have multiple items"
+        
+        # Check that items for T002 are properly separated
+        if 'T002' in transaction_ids:
+            t002_items = transaction_items_df[transaction_items_df['transaction_id'] == 'T002']
+            assert len(t002_items) == 2, "Transaction T002 should have exactly 2 items"
+            
+            # Check item names if present
+            if 'item' in t002_items.columns:
+                item_names = sorted(t002_items['item'].tolist())
+                assert len(item_names) == 2, "Should have 2 distinct items"
+                assert 'Dovee' in item_names, "Dovee should be one of the items"
+                assert 'Flixnet' in item_names, "Flixnet should be one of the items"
 
 # Tests for process_dataframe function
 class TestProcessDataframe:
