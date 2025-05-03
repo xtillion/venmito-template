@@ -26,14 +26,10 @@ class PeopleProcessingService(DataProcessingService):
         # Process the data
         return process_dataframe(data, 'people')
     
-    def merge_people_data(self, json_data: pd.DataFrame, yml_data: pd.DataFrame) -> pd.DataFrame:
+    def merge_people_data(self, json_data: pd.DataFrame, yml_data: pd.DataFrame) -> Dict[str, pd.DataFrame]:
         """Merge people data from multiple sources."""
-        # If a merger is provided, use it
-        if self.merger:
-            merged_result = self.merger.merge()
-            return merged_result.get('people', pd.DataFrame())
-        
-        # Otherwise, create and use a PeopleMerger
+        # Create and use a PeopleMerger
         merger = PeopleMerger(json_data, yml_data)
-        result = merger.merge()
-        return result.get('people', pd.DataFrame())
+        # Return the full dictionary result
+        return merger.merge()
+            
