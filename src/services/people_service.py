@@ -1,4 +1,3 @@
-# src/services/people_service.py
 from typing import Dict, Any, Optional, Union
 
 import pandas as pd
@@ -18,11 +17,11 @@ class PeopleProcessingService(DataProcessingService):
     
     def process(self, data: pd.DataFrame, **kwargs) -> pd.DataFrame:
         """Process people data through the standard pipeline."""
-        # Validate data if validator is provided
-        if self.validator and hasattr(self.validator, 'validate'):
-            validation_errors = self.validator.validate(data)
-            if validation_errors:
-                print(f"Validation errors: {validation_errors}")
+        # Create validator on demand with the actual DataFrame
+        validator = self._validate('people', data)
+        validation_errors = validator.validate()
+        if validation_errors:
+            print(f"Validation errors: {validation_errors}")
         
         # Process the data
         return process_dataframe(data, 'people')

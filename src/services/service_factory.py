@@ -26,20 +26,15 @@ class ServiceFactory:
             An instance of the requested service
         """
         if service_type not in cls._services:
-            # Create a new service instance if it doesn't exist
             if service_type == 'people':
-                validator = get_validator('people', None)
-                cls._services[service_type] = PeopleProcessingService(validator=validator)
+                # Don't initialize validator with None
+                cls._services[service_type] = PeopleProcessingService()
             elif service_type == 'transactions':
-                validator = get_validator('transactions', None)
                 cls._services[service_type] = TransactionProcessingService(
-                    validator=validator,
                     people_service=cls.get_service('people')
                 )
             elif service_type == 'transfers':
-                validator = get_validator('transfers', None)
                 cls._services[service_type] = TransferProcessingService(
-                    validator=validator,
                     transaction_service=cls.get_service('transactions')
                 )
             else:
