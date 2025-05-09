@@ -1,3 +1,93 @@
+--Project submission:
+-name: Kevin J. Bonet Guadalupe
+-email: kevinjbonet@gmail.com
+-a description of your solution: Took provided files and turned them into database objects (tables). These tables i made sure to standardize the column titles for easier use (reading, merging, relating). Once it was all made easier to work with, a master table was created. A gui with preloaded questions/queries was made covering the overall utility of the project.
+-your design decisions: Tried at first to just get everything onto a table, but this lended itself to errors. Decided to just turn everything into tables first and then start connecting them in a modular approach. Once it was all connected, it was time to put it to work, used the suggested questions as a guid for what calculations to make and what information to display.
+-clear instructions on how to run your code: 
+Guide to Running the Venmito Data Explorer
+
+Prerequisites
+
+Before running the script, ensure that the following requirements are met:
+
+Python is installed on your system (preferably Python 3.x).
+
+The necessary Python libraries are installed:
+
+tkinter (built into Python)
+
+sqlite3 (built into Python)
+
+matplotlib
+
+Installation of Required Libraries
+
+If you haven't installed matplotlib, activate your virtual environment (if applicable) and install it using:
+
+pip install matplotlib
+
+Running the GUI
+
+To launch the Venmito Data Explorer, follow these steps:
+
+Navigate to the Project Directory:
+Open a terminal or command prompt and change the directory to where the script is located.
+
+cd path/to/your/project
+
+Activate Virtual Environment (if applicable):
+If you're using a virtual environment, activate it:
+
+# On Windows
+venv\Scripts\activate
+
+# On macOS/Linux
+source venv/bin/activate
+
+Run the script:
+
+python venmito_data_gui.py
+
+Using the GUI
+
+A window will open with a dropdown menu containing different queries.
+
+Select a question from the dropdown menu.
+
+Click the Run Query button to execute the query.
+
+The results will be displayed in a message box or as a visualization.
+
+Understanding the Available Queries
+
+The GUI provides insights into the data stored in venmito_master.db. The available queries include:
+
+Which clients have what type of promotion?
+
+Give suggestions on how to turn 'No' responses from clients in the promotions file.
+
+What item is the best seller? (Excludes blank entries)
+
+What store has had the most profit?
+
+How can we use the data we got from the transfer file? (Generates a visualization of top senders)
+
+Troubleshooting
+
+ImportError: No module named 'matplotlib'
+
+Run pip install matplotlib to install the missing module.
+
+Database Errors (e.g., Table Not Found)
+
+Ensure venmito_master.db exists in the same directory as the script.
+
+GUI Not Launching
+
+Check that you're running Python with the required libraries installed.
+
+-A method to consume the reorganized and analyzed data: python venmito_data_gui.py will allow you to launch the gui and see the data in action.
+
 # Venmito Data Engineering Project
 
 ## Introduction
