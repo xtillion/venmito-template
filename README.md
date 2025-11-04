@@ -1,8 +1,8 @@
-# Venmito Data Science Project
+# Venmito Data Analytics Project
 
 ## Introduction
 
-*Welcome to Xtillion's Data Engineering Project. For this exercise, we will simulate a client interaction where you are an engineering consultant for Venmito, your client. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.* 
+*Welcome to Xtillion's Data Analytics Project. For this exercise, we will simulate a client interaction where you are an engineering consultant for Venmito, your client. We're excited to see how you tackle this challenge and provide us with a solution that can bring together disparate data sources into an insightful and valuable resource.* 
 
 We are Venmito, a modest payments startup focused on making it easy for our customers to transfer funds, shop at participating local stores, and enjoy personalized promotions tailored just for them. As our popularity has steadily grown, so has the volume and complexity of our data. Unfortunately, this sustained growth has overwhelmed our original data systems, and we now find ourselves with a setup that's no longer sustainable.
 
