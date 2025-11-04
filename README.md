@@ -30,8 +30,8 @@ Your task is to develop a solution that reads, unifies, and structures our data 
 Your solution should process the conformed data to derive actionable insights that support improving customer engagement. The focus should be on identifying the factors that influence promotion response rates and sustained customer activity. This includes performing aggregations, statistical analyses, and applying predictive or clustering models to uncover meaningful trends in client and transaction behavior.
 Key areas of exploration may include (but are not limited to):
 
-Which customer segments are most or least responsive to specific types of promotions?
-How can we personalize promotions to increase response rates?
+- Which customer segments are most or least responsive to specific types of promotions?
+- How can we personalize promotions to increase response rates?
 
 4. **Code**: The code for your solution should be well-structured and comprehensible, with comments included where necessary. Remember, the quality and readability of the code will be a significant factor in the evaluation of the final deliverable.
 
